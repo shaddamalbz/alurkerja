@@ -16,7 +16,7 @@ const Button: FC<ButtonProps> = (props) => {
     children,
     size = 'small',
     variant = 'filled',
-    block = false,
+    block = true,
     loading = false,
     disabled = false,
   } = props

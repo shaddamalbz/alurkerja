@@ -24,7 +24,7 @@ const config: Config = {
         green: { alurkerja: '#50CD89' },
         'forst-white': { alurkerja: '#F3F6F9' },
         'light-blue': { alurkerja: '#E1F0FF' },
-        grey: {
+        gray: {
           alurkerja: {
             1: '#7E8299',
             2: '#B5B5C3',
@@ -34,6 +34,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
 export default config

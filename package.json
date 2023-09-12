@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev:docs": "pnpm --filter alurkerja-docs dev",
-    "build:ui": "pnpm --filter alurkerja-ui build"
+    "build:ui": "pnpm --filter alurkerja-ui build --watch"
   },
   "keywords": [],
   "author": "",
