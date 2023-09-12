@@ -1,0 +1,14 @@
+{
+  "name": "alurkerja",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:docs": "pnpm --filter alurkerja-docs dev",
+    "build:ui": "pnpm --filter alurkerja-ui build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
