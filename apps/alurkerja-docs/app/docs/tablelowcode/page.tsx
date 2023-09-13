@@ -18,9 +18,8 @@ export default function page() {
       <CodePreview
         name="TableLowcode"
         code="<TableLowcode
-          baseUrl='https://api-geekacademy.merapi.javan.id'
-          tableName='cuti'
-          module='bpmn'
+          baseUrl='https://kpm-sys.merapi.javan.id' 
+          tableName='takwim'
           selectedRow={selectedRow}
           setSelectedRow={setSelectedRow}
           renderState={renderState}
@@ -32,11 +31,12 @@ export default function page() {
           search={search}
           setSearch={setSearch}
         />"
+        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any }>()\n\tconst [search, setSearch] = useState<string>()\n\tconst [selectedRow, setSelectedRow] = useState<number[]>([])\n`}
+        externalImport="import { useState } from 'react'"
       >
         <TableLowcode
-          baseUrl="https://api-geekacademy.merapi.javan.id"
-          tableName="cuti"
-          module="bpmn"
+          baseUrl="https://kpm-sys.merapi.javan.id"
+          tableName="takwim"
           selectedRow={selectedRow}
           setSelectedRow={setSelectedRow}
           renderState={renderState}

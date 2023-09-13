@@ -8,9 +8,11 @@ import 'prismjs/components/prism-jsx'
 interface CodePreviewProps extends PropsWithChildren {
   name: string
   code: string
+  externalFunction?: string
+  externalImport?: string
 }
 
-export const CodePreview: FC<CodePreviewProps> = ({ name, code, children }) => {
+export const CodePreview: FC<CodePreviewProps> = ({ name, code, children, externalImport, externalFunction }) => {
   const [isJustCopied, setJustCopied] = useState(false)
 
   const copyToClipboard = (toCopy: string) => {
@@ -37,11 +39,11 @@ export const CodePreview: FC<CodePreviewProps> = ({ name, code, children }) => {
       </div>
       <pre>
         <code className="language-jsx">
-          {`import { ${titleCaseToUpperCamelCase(
-            name
-          )} } from 'alurkerja-ui'\n\nexport const ${titleCaseToUpperCamelCase(
-            name
-          )} = () => {\n\treturn (\n\t\t${code}\n\t)\n}`}
+          {`import { ${titleCaseToUpperCamelCase(name)} } from 'alurkerja-ui'${
+            externalImport ? '\n' + externalImport : ''
+          }\n\nexport const ${titleCaseToUpperCamelCase(name)} = () => {${
+            externalFunction ? '\n\t' + externalFunction : ''
+          }\n\treturn (\n\t\t${code}\n\t)\n}`}
         </code>
       </pre>
     </div>
