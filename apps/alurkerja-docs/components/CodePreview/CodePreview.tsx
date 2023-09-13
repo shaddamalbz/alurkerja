@@ -1,12 +1,6 @@
 'use client'
 
-import React, {
-  FC,
-  PropsWithChildren,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react'
 import Prism from 'prismjs'
 
 import 'prismjs/components/prism-jsx'
@@ -17,7 +11,6 @@ interface CodePreviewProps extends PropsWithChildren {
 }
 
 export const CodePreview: FC<CodePreviewProps> = ({ name, code, children }) => {
-  const ref = useRef<HTMLDivElement>(null)
   const [isJustCopied, setJustCopied] = useState(false)
 
   const copyToClipboard = (toCopy: string) => {
@@ -27,22 +20,14 @@ export const CodePreview: FC<CodePreviewProps> = ({ name, code, children }) => {
   }
 
   useEffect(() => {
-    if (ref.current) {
-      // highlight this specific component only.
-      // ! Do not use Prism.highlightAll().
-      Prism.highlightAllUnder(ref.current)
-    }
+    Prism.highlightAll()
   }, [])
 
   return (
     <div className="w-full border border-gray-200 rounded">
-      <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 sm:p-6">
-        {children}
-      </div>
+      <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 sm:p-6">{children}</div>
       <div className="flex justify-between items-center border-b border-gray-200 bg-gray-50">
-        <div className="text-xs border-r border-gray-200 bg-gray-100 px-3 py-2">
-          Typescript
-        </div>
+        <div className="text-xs border-r border-gray-200 bg-gray-100 px-3 py-2">Typescript</div>
         <button
           className="flex items-center border-l border-gray-200 bg-gray-100 px-3 py-2 text-xs font-medium text-gray-600 hover:text-primary-700 hover:text-main-blue-alurkerja"
           onClick={() => copyToClipboard(code)}

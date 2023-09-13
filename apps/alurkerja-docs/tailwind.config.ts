@@ -32,6 +32,13 @@ const config: Config = {
           },
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+          },
+        },
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
