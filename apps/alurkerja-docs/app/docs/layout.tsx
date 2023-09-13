@@ -1,4 +1,9 @@
+'use client'
+
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ChevronDown, ChevronUp } from 'lucide-react'
+import { useState } from 'react'
 
 export const metadata: Metadata = {
   title: 'Alurkerja',
@@ -10,12 +15,35 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const [isComponentToggled, setIsComponentToggled] = useState(false)
+
   return (
     <>
-      <header>header</header>
+      <header className="sticky h-[65px] w-full shadow flex items-center justify-between px-4">
+        <div>header</div>
+        <div className="hidden items-center gap-1 lg:flex">
+          <Link
+            className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-main-blue-alurkerja"
+            href="/docs"
+          >
+            Docs
+          </Link>
+        </div>
+      </header>
       <div className="lg:flex">
-        <div className="fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6">
-          Sidebar
+        <div className="fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6 px-4">
+          <details onToggle={() => setIsComponentToggled(!isComponentToggled)}>
+            <summary className="first:rounded-t-lg last:rounded-b-lg text-left dark:bg-transparent mb-1 text-gray-900  hover:text-main-blue-alurkerja flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide cursor-pointer py-4">
+              Components
+              {isComponentToggled ? <ChevronUp /> : <ChevronDown />}
+            </summary>
+            <Link
+              className="rounded-lg p-2.5 text-sm font-medium text-gray-alurkerja-1 hover:text-main-blue-alurkerja cursor-pointer"
+              href="/docs/button"
+            >
+              Button
+            </Link>
+          </details>
         </div>
         <div className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
           <div className="flex w-full">
@@ -32,7 +60,9 @@ export default function RootLayout({
               </footer>
             </div>
             <aside className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
-              Aside
+              <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 ">
+                On this page
+              </h4>
             </aside>
           </div>
         </div>
