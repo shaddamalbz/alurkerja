@@ -1,5 +1,10 @@
 # Alurkerja
 
+## Requirement
+
+- pnpm ^8.7.4
+- node 18
+
 ## Run Locally
 
 Clone the project
@@ -13,6 +18,12 @@ Clone the project
 Running development app
 
 ```bash
-  pnpm run build:ui
-  pnpm run dev:docs
+  pnpm build:ui
+  pnpm dev:docs
+```
+
+Running development packages using storybook
+
+```bash
+  pnpm dev:ui
 ```

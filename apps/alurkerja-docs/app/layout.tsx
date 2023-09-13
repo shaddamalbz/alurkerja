@@ -1,4 +1,5 @@
 import './globals.css'
+import './prism.css'
 
 import type { Metadata } from 'next'
 

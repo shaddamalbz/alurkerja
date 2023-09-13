@@ -10,17 +10,6 @@ import React, {
 import Prism from 'prismjs'
 
 import 'prismjs/components/prism-jsx'
-import 'prismjs/components/prism-tsx'
-
-// include line numbers and line highlights plugin,
-import 'prismjs/plugins/line-numbers/prism-line-numbers'
-import 'prismjs/plugins/line-highlight/prism-line-highlight'
-
-// include css for line numbers and highlights
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
-
-import 'prismjs/themes/prism.css'
 
 interface CodePreviewProps extends PropsWithChildren {
   name: string
