@@ -1,0 +1,31 @@
+.status {
+  @apply flex flex-col gap-2 px-3;
+
+  .content {
+    @apply px-3 py-2 text-center text-white rounded;
+  }
+
+  .primary {
+    @apply bg-[#6AC9CE];
+  }
+
+  .danger {
+    @apply bg-[#F40000];
+  }
+
+  .success {
+    @apply bg-[#6ACE7F];
+  }
+
+  .warning {
+    @apply bg-[#F79900];
+  }
+
+  .default {
+    @apply bg-[#64748b];
+  }
+}
+
+.status-empty {
+  @apply flex justify-center;
+}

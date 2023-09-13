@@ -23,7 +23,14 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@/components": ["./components/"]
+      "@/components": ["./components/"],
+      "@/types": ["./types"],
+      "@/contexts": ["./contexts"],
+      "@/theme": ["./theme"],
+      "@/api": ["./api"],
+      "@/hooks": ["./hooks"],
+      "@/helpers/*": ["./helpers/*"],
+      "@/assets/*": ["./assets/*"]
     }
   },
   "include": ["src"],
