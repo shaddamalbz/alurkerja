@@ -1,8 +1,9 @@
-import { FC, useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { BsPlus, BsDash, BsArrowsCollapse } from 'react-icons/bs'
 import { AuthContext } from '@/contexts'
 
 import BpmnJS from 'bpmn-js/dist/bpmn-navigated-viewer.production.min.js'
+
 import { Spinner } from '@/components'
 
 import '@/assets/scss/bpmn.scss'
@@ -12,7 +13,7 @@ export interface DiagramBpmnProps {
   onClickActivity?: (id: string) => void
   counterMode?: string
 }
-export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity }) => {
+export function DiagramBpmn({ url, onClickActivity }: DiagramBpmnProps) {
   const buttonZoomInRef = useRef<HTMLButtonElement>(null)
   const buttonZoomOutRef = useRef<HTMLButtonElement>(null)
   const buttonZoomResetRef = useRef<HTMLButtonElement>(null)

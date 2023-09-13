@@ -1,6 +1,6 @@
 export { Avatar, AvatarGroup } from './Avatar'
 export { Badge } from './Badge'
-export { DiagramBpmn, ReactDiagramSingle } from './Bpmn'
+export { DiagramBpmn } from './Bpmn'
 export { Button } from './Button'
 export { Card, CardFile, CardImage } from './Card'
 export { Checkbox } from './Checkbox'

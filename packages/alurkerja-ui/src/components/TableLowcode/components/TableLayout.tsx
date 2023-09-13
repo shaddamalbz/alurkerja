@@ -78,7 +78,7 @@ const TableLayout: FC<TableLayoutProps> = ({
       {(showBpmn || isShowBpmn) && (
         <DiagramBpmn
           url={baseUrl + tableSpec?.path}
-          onClickActivity={(id) =>
+          onClickActivity={(id: string) =>
             setFilterBy?.((prev) => (prev ? { ...prev, task_definition_key: id } : { task_definition_key: id }))
           }
         />
