@@ -221,12 +221,7 @@ export const FormLowcode: FC<IAlurkerjaFormLowcode> = (props) => {
             {renderCustomAction}
 
             {!asDetail && (
-              <Button
-                className="bg-[#0095E8] text-white"
-                type="submit"
-                loading={loadingSubmit}
-                disabled={loadingSubmit}
-              >
+              <Button type="submit" loading={loadingSubmit} disabled={loadingSubmit}>
                 {previewBeforeSubmit ? 'Preview' : textSubmitButton || 'Submit'}
               </Button>
             )}
