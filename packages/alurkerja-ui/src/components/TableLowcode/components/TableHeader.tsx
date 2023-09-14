@@ -1,8 +1,6 @@
 import { FC, useContext } from 'react'
-import { HiOutlineMenu } from 'react-icons/hi'
 
 import { TableHeaderProps } from '@/types'
-import { Dropdown, Button } from '@/components'
 import HeaderRight from './HeaderRight'
 import { TableLowcodeContext } from '@/contexts'
 import { getTheme } from '@/helpers/utils'
