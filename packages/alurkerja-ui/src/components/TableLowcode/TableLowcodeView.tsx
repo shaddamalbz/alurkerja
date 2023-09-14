@@ -1,6 +1,6 @@
 import { FC, Fragment, useContext, useMemo } from 'react'
 import { FieldValues, UseFormSetValue, useForm } from 'react-hook-form'
-import { FaChevronDown, FaChevronUp, FaEdit, FaEye, FaTrash, FaPlay } from 'react-icons/fa'
+import { FaChevronDown, FaChevronUp, FaTrash, FaPlay } from 'react-icons/fa'
 import { MdDownload } from 'react-icons/md'
 import Swal from 'sweetalert2'
 import clsx from 'clsx'
@@ -438,26 +438,28 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                           triggerButton={
                                             tooltip?.button_edit ? (
                                               <Tooltip content={tooltip.button_edit}>
-                                                <Button
+                                                <button
                                                   type="button"
                                                   className={
-                                                    tableConfig?.button_edit_color || 'bg-[#E1F0FF] text-[#0095E8]'
+                                                    tableConfig?.button_edit_color ||
+                                                    'bg-main-blue-alurkerja text-white p-2 rounded'
                                                   }
-                                                  size="small"
-                                                  icon={<FaEdit size={10} />}
                                                   data-testid={`button-edit-${rowIdx}`}
-                                                />
+                                                >
+                                                  <img src="/iconEdit.svg" alt="pencil" />
+                                                </button>
                                               </Tooltip>
                                             ) : (
-                                              <Button
+                                              <button
                                                 type="button"
                                                 className={
-                                                  tableConfig?.button_edit_color || 'bg-[#E1F0FF] text-[#0095E8]'
+                                                  tableConfig?.button_edit_color ||
+                                                  'bg-main-blue-alurkerja text-white p-2 rounded'
                                                 }
-                                                size="small"
-                                                icon={<FaEdit size={10} />}
                                                 data-testid={`button-edit-${rowIdx}`}
-                                              />
+                                              >
+                                                <img src="/iconEdit.svg" alt="pencil" />
+                                              </button>
                                             )
                                           }
                                         >
@@ -491,24 +493,30 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
 
                                       const ButtonWithAction = tooltip?.button_edit ? (
                                         <Tooltip content={tooltip.button_edit}>
-                                          <Button
+                                          <button
                                             type="button"
-                                            className={tableConfig?.button_edit_color || 'bg-gray-100 text-gray-400'}
-                                            size="small"
-                                            icon={<FaEdit size={10} />}
+                                            className={
+                                              tableConfig?.button_edit_color ||
+                                              'bg-main-blue-alurkerja text-white p-2 rounded'
+                                            }
                                             onClick={() => onClickEdit?.(action, row.id, row)}
                                             data-testid={`button-edit-${rowIdx}`}
-                                          />
+                                          >
+                                            <img src="/iconEdit.svg" alt="pencil" />
+                                          </button>
                                         </Tooltip>
                                       ) : (
-                                        <Button
+                                        <button
                                           type="button"
-                                          className={tableConfig?.button_edit_color || 'bg-gray-100 text-gray-400'}
-                                          size="small"
-                                          icon={<FaEdit size={10} />}
+                                          className={
+                                            tableConfig?.button_edit_color ||
+                                            'bg-main-blue-alurkerja text-white p-2 rounded'
+                                          }
                                           onClick={() => onClickEdit?.(action, row.id, row)}
                                           data-testid={`button-edit-${rowIdx}`}
-                                        />
+                                        >
+                                          <img src="/iconEdit.svg" alt="pencil" />
+                                        </button>
                                       )
                                       return (
                                         tableSpec.can_edit && (
@@ -577,26 +585,28 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                           triggerButton={
                                             tooltip?.button_detail ? (
                                               <Tooltip content={tooltip.button_detail}>
-                                                <Button
+                                                <button
                                                   type="button"
                                                   className={
-                                                    tableConfig?.button_detail_color || 'bg-gray-100 text-gray-400'
+                                                    tableConfig?.button_detail_color ||
+                                                    'bg-green-alurkerja text-white p-2 rounded'
                                                   }
-                                                  size="small"
-                                                  icon={<FaEye size={10} />}
                                                   data-testid={`button-detail-${rowIdx}`}
-                                                />
+                                                >
+                                                  <img src="/iconDetail.svg" alt="eye" />
+                                                </button>
                                               </Tooltip>
                                             ) : (
-                                              <Button
+                                              <button
                                                 type="button"
                                                 className={
-                                                  tableConfig?.button_detail_color || 'bg-gray-100 text-gray-400'
+                                                  tableConfig?.button_detail_color ||
+                                                  'bg-green-alurkerja text-white p-2 rounded'
                                                 }
-                                                size="small"
-                                                icon={<FaEye size={10} />}
                                                 data-testid={`button-detail-${rowIdx}`}
-                                              />
+                                              >
+                                                <img src="/iconDetail.svg" alt="eye" />
+                                              </button>
                                             )
                                           }
                                         />
@@ -604,24 +614,30 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
 
                                       const ButtonWithAction = tooltip?.button_detail ? (
                                         <Tooltip content={tooltip.button_detail}>
-                                          <Button
+                                          <button
                                             type="button"
-                                            className={tableConfig?.button_detail_color || 'bg-gray-100 text-gray-400'}
-                                            size="small"
-                                            icon={<FaEye size={10} />}
+                                            className={
+                                              tableConfig?.button_detail_color ||
+                                              'bg-green-alurkerja text-white p-2 rounded'
+                                            }
                                             onClick={() => onClickDetail?.(row.id, row)}
                                             data-testid={`button-detail-${rowIdx}`}
-                                          />
+                                          >
+                                            <img src="/iconDetail.svg" alt="eye" />
+                                          </button>
                                         </Tooltip>
                                       ) : (
-                                        <Button
+                                        <button
                                           type="button"
-                                          className={tableConfig?.button_detail_color || 'bg-gray-100 text-gray-400'}
-                                          size="small"
-                                          icon={<FaEye size={10} />}
+                                          className={
+                                            tableConfig?.button_detail_color ||
+                                            'bg-green-alurkerja text-white p-2 rounded'
+                                          }
                                           onClick={() => onClickDetail?.(row.id, row)}
                                           data-testid={`button-detail-${rowIdx}`}
-                                        />
+                                        >
+                                          <img src="/iconDetail.svg" alt="eye" />
+                                        </button>
                                       )
                                       return (
                                         tableSpec.can_detail && (

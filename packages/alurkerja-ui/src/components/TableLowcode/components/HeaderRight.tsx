@@ -159,6 +159,29 @@ const HeaderRight: FC<HeaderRightProps> = ({
           </button>
         </div>
       )}
+
+      {showFilter && canFilter && (
+        <Modal
+          title="Filter"
+          triggerButton={
+            <button id="button-filter" className="bg-light-blue-alurkerja text-main-blue-alurkerja p-2 rounded">
+              <FilterIcon />
+            </button>
+          }
+        >
+          {({ closeModal }) => renderFormFilter(closeModal)}
+        </Modal>
+      )}
+
+      {showBpmn && tableSpec?.is_bpmn && (
+        <button
+          className={`${tableConfig?.button_bpmn_color || 'bg-[#F1FAFF]'} p-2 rounded`}
+          onClick={() => onClickBpmn?.()}
+        >
+          <BpmnIcon />
+        </button>
+      )}
+
       {!readonly && (
         <>
           {showCreate &&
@@ -170,10 +193,11 @@ const HeaderRight: FC<HeaderRightProps> = ({
                     tooltip?.button_create ? (
                       <Tooltip content="tes Tooltip">
                         <button
+                          type="button"
                           id={`button-create-${idx}`}
                           className={`${
-                            tableConfig?.button_create_color || 'bg-blue-400 text-white'
-                          } cursor-pointer  flex items-center rounded-md py-2 px-4 text-sm gap-2`}
+                            tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
+                          }  flex items-center rounded py-2 px-4 text-sm gap-2`}
                           data-testid={`button-create-${idx}`}
                         >
                           <FaPlus />
@@ -182,10 +206,11 @@ const HeaderRight: FC<HeaderRightProps> = ({
                       </Tooltip>
                     ) : (
                       <button
+                        type="button"
                         id={`button-create-${idx}`}
                         className={`${
-                          tableConfig?.button_create_color || 'bg-blue-400 text-white'
-                        } cursor-pointer  flex items-center rounded-md py-2 px-4 text-sm gap-2`}
+                          tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
+                        }  flex items-center rounded py-2 px-4 text-sm gap-2`}
                         data-testid={`button-create-${idx}`}
                       >
                         <FaPlus />
@@ -224,10 +249,12 @@ const HeaderRight: FC<HeaderRightProps> = ({
               const ButtonWithAction = tooltip?.button_create ? (
                 <Tooltip content={tooltip.button_create}>
                   <button
+                    type="button"
                     id={`button-create-${idx}`}
                     className={`${
-                      tableConfig?.button_create_color || 'bg-blue-400 text-white'
-                    } cursor-pointer  flex items-center rounded-md py-2 px-4 text-sm gap-2`}
+                      tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
+                    }  flex items-center rounded py-2 px-4 text-sm gap-2`}
+                    data-testid={`button-create-${idx}`}
                     onClick={onClickCreate}
                   >
                     <FaPlus />
@@ -236,10 +263,12 @@ const HeaderRight: FC<HeaderRightProps> = ({
                 </Tooltip>
               ) : (
                 <button
+                  type="button"
                   id={`button-create-${idx}`}
                   className={`${
-                    tableConfig?.button_create_color || 'bg-blue-400 text-white'
-                  } cursor-pointer  flex items-center rounded-md py-2 px-4 text-sm gap-2`}
+                    tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
+                  }  flex items-center rounded py-2 px-4 text-sm gap-2`}
+                  data-testid={`button-create-${idx}`}
                   onClick={onClickCreate}
                 >
                   <FaPlus />
@@ -278,28 +307,6 @@ const HeaderRight: FC<HeaderRightProps> = ({
             </button>
           )}
         </>
-      )}
-
-      {showBpmn && tableSpec?.is_bpmn && (
-        <button
-          className={`${tableConfig?.button_bpmn_color || 'bg-[#F1FAFF]'} p-2 rounded`}
-          onClick={() => onClickBpmn?.()}
-        >
-          <BpmnIcon />
-        </button>
-      )}
-
-      {showFilter && canFilter && (
-        <Modal
-          title="Filter"
-          triggerButton={
-            <button id="button-filter" className="bg-[#F1FAFF] p-2 rounded" style={{ backgroundColor: '#F1FAFF' }}>
-              <FilterIcon />
-            </button>
-          }
-        >
-          {({ closeModal }) => renderFormFilter(closeModal)}
-        </Modal>
       )}
 
       {extraButton && extraButton()}

@@ -29,7 +29,7 @@ export const Pagination = ({ pagination, pageConfig, setPageConfig, tableSpec }:
   return (
     <>
       {pagination && pageConfig && setPageConfig && (
-        <div className="text-xs md:text-base sm:text-sm py-4 px-4 border-1 rounded alurkerja-pagination">
+        <div className="alurkerja-pagination text-xs md:text-base sm:text-sm py-4 px-4 rounded border-t">
           <div className="flex justify-between item-center relative">
             <nav>
               {pagination.total_page > 0 && (
@@ -143,7 +143,7 @@ export const Pagination = ({ pagination, pageConfig, setPageConfig, tableSpec }:
                 <option value={25}>25</option>
                 <option value={30}>30</option>
               </select>
-              <span className="whitespace-nowrap text-sm font-light">
+              <span className="whitespace-nowrap text-xs text-[#5E6278]">
                 {tableSpec?.languages?.pagination_info
                   ? tableSpec.languages?.pagination_info
                       .replace('{page}', `${getPage()}`)

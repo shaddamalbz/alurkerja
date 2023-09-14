@@ -43,7 +43,7 @@ const TableLayout: FC<TableLayoutProps> = ({
   }, [filterBy])
 
   return (
-    <div className="bg-white rounded">
+    <div className="bg-white rounded py-4">
       {headerElement ? (
         headerElement
       ) : (

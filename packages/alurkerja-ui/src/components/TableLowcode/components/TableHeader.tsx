@@ -38,19 +38,21 @@ const TableHeader: FC<TableHeaderProps> = ({
 
   return (
     <>
-      <div className="flex flex-row items-center justify-between gap-2 px-4 py-4 border-b">
-        <h5 className={theme.table_title} data-testid="title">
-          {title || tableName}
-        </h5>
-        <div className="flex-row hidden gap-2 lg:flex">
-          {/* extraButton used in HeaderRight */}
-          <HeaderRight {...ActionProps} />
-        </div>
-        <div className="inline-block lg:hidden">
-          <Dropdown
-            triggerElement={<Button className="p-2" icon={<HiOutlineMenu />} />}
-            content={<HeaderRight {...ActionProps} />}
-          />
+      <div className="py-4 border-b">
+        <div className="px-7 flex flex-row items-center justify-between gap-2">
+          <h5 className={theme.table_title} data-testid="title">
+            {title || tableName}
+          </h5>
+          <div className="flex-row hidden gap-2 lg:flex">
+            {/* extraButton used in HeaderRight */}
+            <HeaderRight {...ActionProps} />
+          </div>
+          <div className="inline-block lg:hidden">
+            <Dropdown
+              triggerElement={<Button className="p-2" icon={<HiOutlineMenu />} />}
+              content={<HeaderRight {...ActionProps} />}
+            />
+          </div>
         </div>
       </div>
     </>
