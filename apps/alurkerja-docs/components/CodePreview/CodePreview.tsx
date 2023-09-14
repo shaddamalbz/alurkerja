@@ -4,6 +4,7 @@ import React, { FC, PropsWithChildren, useEffect, useState } from 'react'
 import Prism from 'prismjs'
 
 import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-tsx'
 
 interface CodePreviewProps extends PropsWithChildren {
   name: string
@@ -38,7 +39,7 @@ export const CodePreview: FC<CodePreviewProps> = ({ name, code, children, extern
         </button>
       </div>
       <pre>
-        <code className="language-jsx">
+        <code className="language-tsx">
           {`import { ${titleCaseToUpperCamelCase(name)} } from 'alurkerja-ui'${
             externalImport ? '\n' + externalImport : ''
           }\n\nexport const ${titleCaseToUpperCamelCase(name)} = () => {${

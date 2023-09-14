@@ -1,5 +1,5 @@
 /* PrismJS 1.29.0
-https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+css-extras+jsx */
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+jsx+tsx+typescript */
 code[class*='language-'],
 pre[class*='language-'] {
   color: #000;
@@ -43,6 +43,7 @@ pre[class*='language-']::selection {
 }
 pre[class*='language-'] {
   padding: 1em;
+  margin: 0.5em 0;
   overflow: auto;
 }
 :not(pre) > code[class*='language-'],
@@ -51,6 +52,7 @@ pre[class*='language-'] {
 }
 :not(pre) > code[class*='language-'] {
   padding: 0.1em;
+  border-radius: 0.3em;
   white-space: normal;
 }
 .token.cdata,
