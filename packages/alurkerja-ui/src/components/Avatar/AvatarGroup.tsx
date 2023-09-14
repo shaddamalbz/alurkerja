@@ -1,4 +1,4 @@
-import { Children, cloneElement, Fragment, ReactNode } from 'react'
+import { Children, cloneElement, FC, Fragment, ReactNode } from 'react'
 import clsx from 'clsx'
 import { Avatar, AvatarProps } from './Avatar'
 
@@ -12,17 +12,7 @@ const GroupContainer = ({
   children: ReactNode
   chained: boolean
   className?: string
-}) => (
-  <div
-    className={clsx(
-      'avatar-group',
-      chained && 'avatar-group-chained',
-      className
-    )}
-  >
-    {children}
-  </div>
-)
+}) => <div className={clsx('avatar-group', chained && 'avatar-group-chained', className)}>{children}</div>
 
 export interface AvatarGroupProps {
   maxCount?: number
@@ -33,7 +23,7 @@ export interface AvatarGroupProps {
   onOmittedAvatarClick?: () => void
 }
 
-export const AvatarGroup = (props: AvatarGroupProps) => {
+export const AvatarGroup: FC<AvatarGroupProps> = (props) => {
   const {
     maxCount = 3,
     chained = false,

@@ -4,18 +4,7 @@ import _ from 'underscore'
 import { FieldProperties } from '@/types'
 import { AuthContext } from '@/contexts'
 
-import {
-  Checkbox,
-  DirectUpload,
-  Input,
-  InputDate,
-  // InputTable,
-  Radio,
-  Select,
-  Skeleton,
-  Switch,
-  // Wysiwyg,
-} from '@/components'
+import { Checkbox, DirectUpload, Input, InputDate, InputTable, Radio, Select, Skeleton, Switch } from '@/components'
 
 import DetailField from './DetailField'
 
@@ -42,7 +31,7 @@ const InputTypes: FC<InputTypes> = (props) => {
   const [listOption, setListOption] = useState<SelectedOption[]>()
   const [selectedOption, setSelectedOption] = useState<SelectedOption>()
 
-  // const [selectedTable, setSelectedTable] = useState<any>()
+  const [selectedTable, setSelectedTable] = useState<any>()
 
   const [loadingOptions, setLoadingOptions] = useState(false)
 
@@ -97,9 +86,9 @@ const InputTypes: FC<InputTypes> = (props) => {
     setValue(name, defaultValue)
   }, [defaultValue])
 
-  // useEffect(() => {
-  //   setValue(name, selectedTable)
-  // }, [selectedTable])
+  useEffect(() => {
+    setValue(name, selectedTable)
+  }, [selectedTable])
 
   if (asDetail) {
     if (fieldSpec.is_hidden_in_detail) {
@@ -152,9 +141,9 @@ const InputTypes: FC<InputTypes> = (props) => {
         />
       )}
 
-      {/* {fieldSpec.form_field_type === 'INPUT_TABLE' && fieldSpec.custom_field_atribute?.spec && (
+      {fieldSpec.form_field_type === 'INPUT_TABLE' && fieldSpec.custom_field_atribute?.spec && (
         <InputTable fieldSpec={fieldSpec} onChange={(row) => setSelectedTable(row)} />
-      )} */}
+      )}
 
       {(fieldSpec.form_field_type === 'INPUT_FOREIGN-SELECT' || fieldSpec.form_field_type === 'INPUT_SELECT') && (
         <>
@@ -190,9 +179,6 @@ const InputTypes: FC<InputTypes> = (props) => {
             }}
           />
         )}
-      {/* {fieldSpec.form_field_type === 'INPUT_WYSIWYG' && (
-        <Wysiwyg onChange={(value) => setValue(name, value)} defaultValue={defaultValue} readonly={disabled} />
-      )} */}
     </>
   )
 }

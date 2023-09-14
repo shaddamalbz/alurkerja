@@ -1,9 +1,9 @@
 import { PaginationProps } from '@/types'
-import { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import _ from 'underscore'
 
-export const Pagination = ({ pagination, pageConfig, setPageConfig, tableSpec }: PaginationProps) => {
+export const Pagination: FC<PaginationProps> = ({ pagination, pageConfig, setPageConfig, tableSpec }) => {
   var totalShowedPagination = 3
   const [paginationRange, setPaginationRange] = useState<any[]>([])
 

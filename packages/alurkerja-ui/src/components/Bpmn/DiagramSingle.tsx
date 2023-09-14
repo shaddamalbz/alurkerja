@@ -3,17 +3,17 @@ import { BsPlus, BsDash, BsArrowsCollapse } from 'react-icons/bs'
 import { AuthContext } from '@/contexts'
 
 import BpmnJS from 'bpmn-js/dist/bpmn-navigated-viewer.production.min.js'
-
 import { Spinner } from '@/components'
 
 import '@/assets/scss/bpmn.scss'
 
-export interface DiagramBpmnProps {
+export interface BpmnInterface {
   url: string
   onClickActivity?: (id: string) => void
   counterMode?: string
+  selectedItem: string
 }
-export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity }) => {
+export const ReactDiagramSingle: FC<BpmnInterface> = ({ url, selectedItem }) => {
   const buttonZoomInRef = useRef<HTMLButtonElement>(null)
   const buttonZoomOutRef = useRef<HTMLButtonElement>(null)
   const buttonZoomResetRef = useRef<HTMLButtonElement>(null)
@@ -27,12 +27,6 @@ export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity }) => {
   const getXml = () =>
     axiosInstance.get(url + '/xml').then((res) => {
       if (res.status === 200) return res
-    })
-
-  const getStatistic = () =>
-    axiosInstance.get(url + '/statistic').then((res) => {
-      if (res.status === 200) return res
-      return null
     })
 
   const handleZoom = (bpmnViewer: any) => {
@@ -67,7 +61,7 @@ export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity }) => {
 
   useEffect(() => {
     setLoading(true)
-    Promise.allSettled([getXml(), getStatistic()])
+    Promise.allSettled([getXml()])
       .then((res) => {
         if (res[0].status === 'fulfilled' && res[0].value) {
           bpmnViewer.attachTo('.bpmn-container')
@@ -75,36 +69,18 @@ export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity }) => {
           bpmnViewer.importXML(res[0].value.data).then(() => {
             var eventBus = bpmnViewer.get('eventBus')
 
+            var overlays = bpmnViewer.get('overlays')
             // you may hook into any of the following events
             var events = ['element.click']
-
-            events.forEach((event) => {
-              eventBus.on(event, (e: any) => {
-                // e.element = the model element
-                // e.gfx = the graphical element
-                if (e.element.type === 'bpmn:UserTask') {
-                  onClickActivity?.(e.element.id)
-                }
-              })
+            overlays.add(selectedItem, {
+              position: {
+                bottom: 87,
+                left: -6,
+              },
+              html: `<div class="w-[112px] h-[94px] text-white text-center border-8 border-blue-300 rounded-2xl cursor-pointer">
+                    </div>
+                    `,
             })
-
-            if (res[1].status === 'fulfilled' && res[1].value) {
-              const statistic = res[1].value.data.data.tasks
-              var overlays = bpmnViewer.get('overlays')
-
-              Object.keys(statistic).forEach((key) => {
-                overlays.add(key, {
-                  position: {
-                    bottom: 28,
-                    left: 5,
-                  },
-                  html: `<div class="w-10 text-white text-center bg-blue-400 rounded-full cursor-pointer">
-                          ${statistic[key]}
-                        </div>
-                        `,
-                })
-              })
-            }
 
             handleZoom(bpmnViewer)
           })

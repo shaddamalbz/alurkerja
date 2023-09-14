@@ -176,10 +176,6 @@ const InputTypesForFilter: FC<InputTypesLite> = ({
                 )}
               </>
             )}
-
-            {/* {fieldSpec.form_field_type === 'INPUT_WYSIWYG' && (
-              <Wysiwyg onChange={(value) => setValue(fieldSpec.name, value)} defaultValue={fieldSpec.defaultValue} />
-            )} */}
           </>
         )}
       />
