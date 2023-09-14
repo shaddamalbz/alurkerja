@@ -213,7 +213,7 @@ export const FormLowcode: FC<IAlurkerjaFormLowcode> = (props) => {
         {!hideAction && (
           <div className="w-fit ml-auto flex gap-4 mt-4">
             {!hideSecondary && (
-              <Button type="button" onClick={() => onCancel?.()}>
+              <Button type="button" variant="outlined" onClick={() => onCancel?.()}>
                 Kembali
               </Button>
             )}

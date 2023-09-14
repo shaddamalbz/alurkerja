@@ -43,15 +43,9 @@ const TableHeader: FC<TableHeaderProps> = ({
           <h5 className={theme.table_title} data-testid="title">
             {title || tableName}
           </h5>
-          <div className="flex-row hidden gap-2 lg:flex">
+          <div className="flex flex-row gap-2">
             {/* extraButton used in HeaderRight */}
             <HeaderRight {...ActionProps} />
-          </div>
-          <div className="inline-block lg:hidden">
-            <Dropdown
-              triggerElement={<Button className="p-2" icon={<HiOutlineMenu />} />}
-              content={<HeaderRight {...ActionProps} />}
-            />
           </div>
         </div>
       </div>

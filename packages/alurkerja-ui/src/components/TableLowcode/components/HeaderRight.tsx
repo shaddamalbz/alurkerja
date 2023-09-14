@@ -109,6 +109,7 @@ const HeaderRight: FC<HeaderRightProps> = ({
       <div className="w-full flex gap-4 justify-end">
         <Button
           size="small"
+          variant="outlined"
           onClick={() => {
             setFilterBy?.(undefined)
             HooFormFilter.reset()
@@ -127,7 +128,7 @@ const HeaderRight: FC<HeaderRightProps> = ({
   return (
     <>
       {setSearch && showSearch && (
-        <div className="flex flex-row rounded border as-2 border-gray-100 shadow-sm w-full lg:w-[300px] justify-self-end">
+        <div className="hidden md:flex flex-row rounded border as-2 border-gray-100 shadow-sm w-full lg:w-[300px] justify-self-end">
           <input
             className="p-1 px-2 w-full border-0 rounded-l bg-gray-100 focus:ring-0"
             type="text"
@@ -153,7 +154,6 @@ const HeaderRight: FC<HeaderRightProps> = ({
               <RxCross2 color="#9CA3AF" />
             </button>
           )}
-
           <button className="flex items-center px-2  p-2 bg-gray-100" onClick={() => setSearch?.(tempSearch)}>
             <FaSearch color="#9CA3AF" />
           </button>
