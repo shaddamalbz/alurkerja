@@ -1,6 +1,6 @@
 import { FC, Fragment, useContext, useMemo } from 'react'
 import { FieldValues, UseFormSetValue, useForm } from 'react-hook-form'
-import { FaChevronDown, FaChevronUp, FaTrash, FaPlay } from 'react-icons/fa'
+import { FaChevronDown, FaChevronUp, FaPlay } from 'react-icons/fa'
 import { MdDownload } from 'react-icons/md'
 import Swal from 'sweetalert2'
 import clsx from 'clsx'
@@ -10,7 +10,7 @@ import DOMPurify from 'dompurify'
 
 import { TableLowcodeProps, FieldActionProperties, File, FieldProperties } from '@/types'
 import { getValueByPath, getTheme } from '@/helpers/utils'
-import { IconDetail, IconEdit } from '@/assets/icons'
+import { IconDelete, IconDetail, IconEdit } from '@/assets/icons'
 import { AuthContext, TableLowcodeContext } from '@/contexts'
 import { Avatar, AvatarGroup, Button, Modal, Tooltip, FormLowcode } from '@/components'
 import { useFieldOrder } from '@/hooks'
@@ -534,36 +534,38 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                       const DefaultButton = () =>
                                         tooltip?.button_delete ? (
                                           <Tooltip content={tooltip.button_delete}>
-                                            <Button
+                                            <button
                                               type="button"
                                               className={
-                                                tableConfig?.button_delete_color || 'bg-[#FFE2E5] text-[#F64E60]'
+                                                tableConfig?.button_delete_color ||
+                                                'bg-red-alurkerja text-white p-2 rounded'
                                               }
-                                              size="small"
-                                              icon={<FaTrash size={10} />}
                                               onClick={() =>
                                                 onClickDelete
                                                   ? onClickDelete(action, row.id, row)
                                                   : handleDelete?.(action, row.id)
                                               }
                                               data-testid={`button-delete-${rowIdx}`}
-                                            />
+                                            >
+                                              <IconDelete />
+                                            </button>
                                           </Tooltip>
                                         ) : (
-                                          <Button
+                                          <button
                                             type="button"
                                             className={
-                                              tableConfig?.button_delete_color || 'bg-[#FFE2E5] text-[#F64E60]'
+                                              tableConfig?.button_delete_color ||
+                                              'bg-red-alurkerja text-white p-2 rounded'
                                             }
-                                            size="small"
-                                            icon={<FaTrash size={10} />}
                                             onClick={() =>
                                               onClickDelete
                                                 ? onClickDelete(action, row.id, row)
                                                 : handleDelete?.(action, row.id)
                                             }
                                             data-testid={`button-delete-${rowIdx}`}
-                                          />
+                                          >
+                                            <IconDelete />
+                                          </button>
                                         )
                                       return (
                                         tableSpec.can_delete && (
@@ -670,7 +672,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                           type="button"
                                           className="text-gray-400 bg-gray-100"
                                           size="small"
-                                          icon={<FaPlay size={10} />}
+                                          icon={<FaPlay />}
                                         />
                                       }
                                     >
