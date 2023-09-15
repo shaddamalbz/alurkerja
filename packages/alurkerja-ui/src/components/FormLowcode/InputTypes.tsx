@@ -181,7 +181,9 @@ const InputTypes: FC<InputTypes> = (props) => {
 
       {inputTypesExtend?.map(({ Element, form_field_type }, i) => (
         <div className="w-full relative" key={i}>
-          {fieldSpec.form_field_type === form_field_type && <Element onChange={(value) => setValue(name, value)} />}
+          {fieldSpec.form_field_type === form_field_type && (
+            <Element onChange={(value: string | number | boolean) => setValue(name, value)} />
+          )}
         </div>
       ))}
     </>
