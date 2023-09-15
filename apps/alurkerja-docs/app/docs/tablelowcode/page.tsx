@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { Card, FormLowcodeLite, TableLowcode, InputTypesContext } from 'alurkerja-ui'
 
 import { CodePreview } from '@/components'
@@ -32,8 +32,17 @@ export default function page() {
     },
   ]
 
-  const ElementExtend = ({ onChange }: { onChange: (value: string | number | boolean) => void }) => {
+  const ElementFormExtend = ({ onChange }: { onChange: (value: string | number | boolean) => void }) => {
     return <input className="w-full border border-indigo-400" type="text" onChange={(e) => onChange(e.target.value)} />
+  }
+
+  const ElementTableExtend = ({ children }: { children: JSX.Element }) => {
+    return (
+      <div className="bg-blue-400">
+        <div>ini custom cell via context</div>
+        <div>{children}</div>
+      </div>
+    )
   }
 
   return (
@@ -159,10 +168,15 @@ export default function page() {
         <CodePreview
           name="TableLowcode"
           externalImport={`import { useState } from 'react'`}
-          externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any }>()\n\tconst [search, setSearch] = useState<string>()\n\n\tconst ElementExtend = ({ onChange }: { onChange: (value: string | number | boolean) => void }) => {\n\t\treturn <input className="w-full border border-indigo-400" type="text" onChange={(e) => onChange(e.target.value)} />\n\t}`}
+          externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any }>()\n\tconst [search, setSearch] = useState<string>()\n\n\tconst ElementFormExtend = ({ onChange }: { onChange: (value: string | number | boolean) => void }) => {\n\t\treturn <input className="w-full border border-indigo-400" type="text" onChange={(e) => onChange(e.target.value)} />\n\t}\n\n\tconst ElementTableExtend = ({ children }: { children: JSX.Element }) => {\n\t\treturn (\n\t\t\t<div className="bg-blue-400">\n\t\t\t\t<div>ini custom cell via context</div>\n\t\t\t\t<div>{children}</div>\n\t\t\t</div>\n\t)}}\n`}
           internalImport={['InputTypesContext']}
-          code={`<InputTypesContext.Provider value={[{ form_field_type: 'INPUT_EXTEND', Element: ElementExtend }]}>
+          code={`<InputTypesContext.Provider
+          value={[
+            { form_field_type: 'INPUT_WYSIWYG', ElementForm: ElementFormExtend, ElementTable: ElementTableExtend },
+          ]}
+        >
           <TableLowcode
+            spec={dummySpec1}
             baseUrl="https://kpm-sys.merapi.javan.id"
             tableName="main-kursus"
             renderState={renderState}
@@ -176,7 +190,11 @@ export default function page() {
           />
         </InputTypesContext.Provider>`}
         >
-          <InputTypesContext.Provider value={[{ form_field_type: 'INPUT_WYSIWYG', Element: ElementExtend }]}>
+          <InputTypesContext.Provider
+            value={[
+              { form_field_type: 'INPUT_WYSIWYG', ElementForm: ElementFormExtend, ElementTable: ElementTableExtend },
+            ]}
+          >
             <TableLowcode
               spec={dummySpec1}
               baseUrl="https://kpm-sys.merapi.javan.id"
@@ -397,7 +415,7 @@ const dummySpec1 = {
       primary: false,
       is_hidden_in_create: false,
       is_hidden_in_edit: false,
-      is_hidden_in_list: true,
+      is_hidden_in_list: false,
       is_hidden_in_detail: false,
       rules: ['required', 'string', 'max:255'],
       format: '',
