@@ -1,5 +1,5 @@
 import moment from 'moment'
-import React from 'react'
+
 import { BiTime } from 'react-icons/bi'
 
 const CardTask = ({ taskData, onClick }: any) => {

@@ -24,11 +24,10 @@ export interface TaskType {
 }
 
 export const Task: FC<TaskType> = (props) => {
-  const { process_definition, renderChildren, base_url, taskListLabel, taskEndpoint } = props
+  const { process_definition, base_url, taskListLabel, taskEndpoint } = props
   const [selectedPath, setSelectedPath] = useState('')
 
   const [myTask, setMyTask] = useState([])
-  const [taskRendeStatus, setTaskRendeStatus] = useState(0.0)
 
   const axiosInstance = useContext(AuthContext)
 
@@ -58,7 +57,7 @@ export const Task: FC<TaskType> = (props) => {
           .post(base_url + selectedPath + '/claim-task', {
             task_id: task.id,
           })
-          .then((response) => {
+          .then((_response) => {
             // Todo add handler
             Swal.fire('Claim Task', 'Behasil Melakukan Claim Task', 'success')
           })
@@ -67,7 +66,7 @@ export const Task: FC<TaskType> = (props) => {
   }
   const [selectedData, setSelectedData] = useState<null | any>(null)
 
-  const { formState, handleSubmit, control, setValue, watch } = useForm()
+  const { formState, handleSubmit, control, setValue } = useForm()
   return (
     <div className="bg-white rounded-lg">
       <h1 className="py-7 px-9 font-bold uppercase border-b-2 border-gray-200">{taskListLabel}</h1>
@@ -216,7 +215,7 @@ const AssigneModal = ({ action, baseUrl, selectedData }: { action: string; selec
             user_id: selectedAssigne,
             message: message,
           })
-          .then((response) => {
+          .then((_response) => {
             // Todo add handler
             Swal.fire('Assigne Task', 'Behasil Melakukan ' + action + ' Task', 'success')
           })

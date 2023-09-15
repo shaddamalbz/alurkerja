@@ -67,11 +67,8 @@ export const ReactDiagramSingle: FC<BpmnInterface> = ({ url, selectedItem }) => 
           bpmnViewer.attachTo('.bpmn-container')
 
           bpmnViewer.importXML(res[0].value.data).then(() => {
-            var eventBus = bpmnViewer.get('eventBus')
-
             var overlays = bpmnViewer.get('overlays')
             // you may hook into any of the following events
-            var events = ['element.click']
             overlays.add(selectedItem, {
               position: {
                 bottom: 87,
