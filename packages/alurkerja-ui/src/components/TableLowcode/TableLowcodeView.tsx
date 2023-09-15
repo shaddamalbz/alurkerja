@@ -10,6 +10,7 @@ import DOMPurify from 'dompurify'
 
 import { TableLowcodeProps, FieldActionProperties, File, FieldProperties } from '@/types'
 import { getValueByPath, getTheme } from '@/helpers/utils'
+import { IconDetail, IconEdit } from '@/assets/icons'
 import { AuthContext, TableLowcodeContext } from '@/contexts'
 import { Avatar, AvatarGroup, Button, Modal, Tooltip, FormLowcode } from '@/components'
 import { useFieldOrder } from '@/hooks'
@@ -446,13 +447,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                                   }
                                                   data-testid={`button-edit-${rowIdx}`}
                                                 >
-                                                  <img
-                                                    className="max-w-none"
-                                                    src="/iconEdit.svg"
-                                                    alt="pencil"
-                                                    width={16}
-                                                    height={16}
-                                                  />
+                                                  <IconEdit />
                                                 </button>
                                               </Tooltip>
                                             ) : (
@@ -464,13 +459,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                                 }
                                                 data-testid={`button-edit-${rowIdx}`}
                                               >
-                                                <img
-                                                  className="max-w-none"
-                                                  src="/iconEdit.svg"
-                                                  alt="pencil"
-                                                  width={16}
-                                                  height={16}
-                                                />
+                                                <IconEdit />
                                               </button>
                                             )
                                           }
@@ -514,13 +503,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                             onClick={() => onClickEdit?.(action, row.id, row)}
                                             data-testid={`button-edit-${rowIdx}`}
                                           >
-                                            <img
-                                              className="max-w-none"
-                                              src="/iconEdit.svg"
-                                              alt="pencil"
-                                              width={16}
-                                              height={16}
-                                            />
+                                            <IconEdit />
                                           </button>
                                         </Tooltip>
                                       ) : (
@@ -533,13 +516,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                           onClick={() => onClickEdit?.(action, row.id, row)}
                                           data-testid={`button-edit-${rowIdx}`}
                                         >
-                                          <img
-                                            className="max-w-none"
-                                            src="/iconEdit.svg"
-                                            alt="pencil"
-                                            width={16}
-                                            height={16}
-                                          />
+                                          <IconEdit />
                                         </button>
                                       )
                                       return (
@@ -617,13 +594,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                                   }
                                                   data-testid={`button-detail-${rowIdx}`}
                                                 >
-                                                  <img
-                                                    className="max-w-none"
-                                                    src="/iconDetail.svg"
-                                                    alt="eye"
-                                                    width={16}
-                                                    height={16}
-                                                  />
+                                                  <IconDetail />
                                                 </button>
                                               </Tooltip>
                                             ) : (
@@ -635,13 +606,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                                 }
                                                 data-testid={`button-detail-${rowIdx}`}
                                               >
-                                                <img
-                                                  className="max-w-none"
-                                                  src="/iconDetail.svg"
-                                                  alt="eye"
-                                                  width={16}
-                                                  height={16}
-                                                />
+                                                <IconDetail />
                                               </button>
                                             )
                                           }
@@ -659,13 +624,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                             onClick={() => onClickDetail?.(row.id, row)}
                                             data-testid={`button-detail-${rowIdx}`}
                                           >
-                                            <img
-                                              className="max-w-none"
-                                              src="/iconDetail.svg"
-                                              alt="eye"
-                                              width={16}
-                                              height={16}
-                                            />
+                                            <IconDetail />
                                           </button>
                                         </Tooltip>
                                       ) : (
@@ -678,13 +637,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                           onClick={() => onClickDetail?.(row.id, row)}
                                           data-testid={`button-detail-${rowIdx}`}
                                         >
-                                          <img
-                                            className="max-w-none"
-                                            src="/iconDetail.svg"
-                                            alt="eye"
-                                            width={16}
-                                            height={16}
-                                          />
+                                          <IconDetail />
                                         </button>
                                       )
                                       return (
