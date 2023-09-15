@@ -2,7 +2,7 @@ import { useContext, useState, useEffect, Fragment, FC } from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import _ from 'underscore'
 import { FieldProperties } from '@/types'
-import { AuthContext } from '@/contexts'
+import { AuthContext, InputTypesContext } from '@/contexts'
 
 import { Checkbox, DirectUpload, Input, InputDate, InputTable, Radio, Select, Skeleton, Switch } from '@/components'
 
@@ -27,12 +27,11 @@ interface SelectedOption {
 const InputTypes: FC<InputTypes> = (props) => {
   const { fieldSpec, name, setValue, defaultValue, disabled, baseUrl, asDetail, data } = props
   const axiosInstance = useContext(AuthContext)
+  const inputTypesExtend = useContext(InputTypesContext)
 
   const [listOption, setListOption] = useState<SelectedOption[]>()
   const [selectedOption, setSelectedOption] = useState<SelectedOption>()
-
   const [selectedTable, setSelectedTable] = useState<any>()
-
   const [loadingOptions, setLoadingOptions] = useState(false)
 
   const getListOption = async (signal: AbortSignal) => {
@@ -179,6 +178,12 @@ const InputTypes: FC<InputTypes> = (props) => {
             }}
           />
         )}
+
+      {inputTypesExtend?.map(({ Element, form_field_type }, i) => (
+        <div className="w-full relative" key={i}>
+          {fieldSpec.form_field_type === form_field_type && <Element onChange={(value) => setValue(name, value)} />}
+        </div>
+      ))}
     </>
   )
 }

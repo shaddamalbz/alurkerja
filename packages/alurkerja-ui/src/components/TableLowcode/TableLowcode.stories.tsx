@@ -5,10 +5,11 @@ import { AiOutlineUndo } from 'react-icons/ai'
 import { HiMagnifyingGlass } from 'react-icons/hi2'
 
 import { Button, Card, Radio, TableLowcode, FormLowcodeLite } from '@/components'
-import { ThemeContext } from '@/contexts'
+import { InputTypesContext, ThemeContext } from '@/contexts'
 import { themeConfig } from '@/theme'
 import staticSpec from '@/helpers/constants/tableSpec.json'
 import staticData from '@/helpers/constants/tableData.json'
+import staticSpec2 from '@/helpers/constants/tableSpec2.json'
 
 const meta = {
   title: 'TableLowcode',
@@ -1026,6 +1027,50 @@ export const Bordered: Story = {
         selectedRow={selectedRow}
         setSelectedRow={setSelectedRow}
       />
+    )
+  },
+}
+
+export const ExtendInputTypes: Story = {
+  args: {
+    spec: staticSpec2,
+    baseUrl: 'https://kpm-sys.merapi.javan.id',
+    tableName: 'main-kursus',
+    onClickCreate: undefined,
+    onClickEdit: undefined,
+    onClickDetail: undefined,
+    onClickDelete: undefined,
+    onDeleteConfirm: undefined,
+  },
+  render: (args) => {
+    const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
+    const [renderState, setRenderState] = useState(0)
+    const [filterBy, setFilterBy] = useState<{ [x: string]: any }>()
+    const [search, setSearch] = useState<string>()
+    const [selectedRow, setSelectedRow] = useState<number[]>([])
+
+    const ElementExtend = ({ onChange }: { onChange: (value: string | number | boolean) => void }) => {
+      return (
+        <input className="w-full border border-indigo-400" type="text" onChange={(e) => onChange(e.target.value)} />
+      )
+    }
+
+    return (
+      <InputTypesContext.Provider value={[{ form_field_type: 'INPUT_EXTEND', Element: ElementExtend }]}>
+        <TableLowcode
+          {...args}
+          selectedRow={selectedRow}
+          setSelectedRow={setSelectedRow}
+          renderState={renderState}
+          setRenderState={setRenderState}
+          pageConfig={pageConfig}
+          setPageConfig={setPageConfig}
+          filterBy={filterBy}
+          setFilterBy={setFilterBy}
+          search={search}
+          setSearch={setSearch}
+        />
+      </InputTypesContext.Provider>
     )
   },
 }
