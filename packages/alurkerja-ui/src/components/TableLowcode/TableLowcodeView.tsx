@@ -1,28 +1,31 @@
 import { FC, Fragment, useContext, useMemo } from 'react'
 import { FieldValues, UseFormSetValue, useForm } from 'react-hook-form'
 import { FaChevronDown, FaChevronUp, FaPlay } from 'react-icons/fa'
-import { MdDownload } from 'react-icons/md'
 import Swal from 'sweetalert2'
 import clsx from 'clsx'
 import _ from 'underscore'
-import moment from 'moment'
-import DOMPurify from 'dompurify'
 
-import { TableLowcodeProps, FieldActionProperties, File, FieldProperties } from '@/types'
-import { getValueByPath, getTheme } from '@/helpers/utils'
+import { TableLowcodeProps, FieldActionProperties, FieldProperties } from '@/types'
+import { getTheme } from '@/helpers/utils'
 import { IconDelete, IconDetail, IconEdit } from '@/assets/icons'
 import { AuthContext, TableLowcodeContext } from '@/contexts'
-import { Avatar, AvatarGroup, Button, Modal, Tooltip, FormLowcode } from '@/components'
+import { Button, Modal, Tooltip, FormLowcode } from '@/components'
 import { useFieldOrder } from '@/hooks'
+
+import { TableCellType } from './TableCellType'
 
 export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
   const { tableSpec, tableData, pagination, selectedAll, setSelectedAll, orderBy, setOrderBy, sortBy, setSortBy } =
     props
-  const axiosInstance = useContext(AuthContext)
-  const { readonly, customBulkCell, onSelectAll, tooltip, bordered } = useContext(TableLowcodeContext)
   const theme = getTheme()
 
+  const axiosInstance = useContext(AuthContext)
   const {
+    readonly,
+    customBulkCell,
+    onSelectAll,
+    tooltip,
+    bordered,
     tableConfig,
     tableName,
     baseUrl,
@@ -98,22 +101,6 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
         setSelectedAll(false)
         setSelectedRow?.([])
       }
-    }
-  }
-
-  const parsedData = (value: any, type: string, format: string) => {
-    if (value) {
-      switch (type) {
-        case 'datetime-local':
-        case 'date':
-          const formatedValue = moment(value).format(format)
-
-          return formatedValue
-        default:
-          return value
-      }
-    } else {
-      return '-'
     }
   }
 
@@ -311,88 +298,6 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                           dataKey: tableSpec.fields[key]?.table_value_mapping?.relation,
                         }
 
-                        let defaultCell: JSX.Element = <></>
-
-                        if (tableSpec.fields[key]?.form_field_type === 'INPUT_IMAGE_UPLOAD') {
-                          defaultCell = (
-                            <div className="flex justify-center px-3 py-3 text-center text-black">
-                              <AvatarGroup chained maxCount={4} omittedAvatarProps={{ shape: 'circle' }}>
-                                <>
-                                  {row[key].map((item: File, idx: number) => (
-                                    <Avatar
-                                      className="cursor-pointer"
-                                      shape="circle"
-                                      src={item.original_url}
-                                      key={idx}
-                                    />
-                                  ))}
-                                </>
-                              </AvatarGroup>
-                            </div>
-                          )
-                        } else if (tableSpec.fields[key]?.form_field_type === 'INPUT_FILE_UPLOAD') {
-                          defaultCell = (
-                            <div className="flex justify-center px-3 py-3 text-center text-black">
-                              <Modal
-                                title={tableConfig?.cell_file_modal_title ?? 'Uploaded Files'}
-                                triggerButton={
-                                  <Button
-                                    className="text-gray-400 bg-gray-100 hover:bg-gray-200"
-                                    size="small"
-                                    icon={<MdDownload />}
-                                  />
-                                }
-                              >
-                                <>
-                                  {row[key].length > 0 ? (
-                                    row[key].map((item: File, idx: number) => (
-                                      <div className="flex items-center justify-between w-full" key={idx}>
-                                        <span>{item.file_name}</span>
-                                        <a
-                                          href={item.original_url}
-                                          target="_blank"
-                                          rel="noreferrer"
-                                          download={item.file_name}
-                                        >
-                                          <Button
-                                            className="text-gray-400 bg-gray-100 hover:bg-gray-200"
-                                            size="small"
-                                            icon={<MdDownload />}
-                                          />
-                                        </a>
-                                      </div>
-                                    ))
-                                  ) : (
-                                    <div className="text-center">
-                                      <p>Tidak memiliki file</p>
-                                    </div>
-                                  )}
-                                </>
-                              </Modal>
-                            </div>
-                          )
-                        } else if (tableSpec.fields[key]?.form_field_type === 'INPUT_WYSIWYG') {
-                          defaultCell = <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(row[key]) }}></div>
-                        } else {
-                          defaultCell = (
-                            <>
-                              {tableSpec.fields[key]?.table_value_mapping
-                                ? nestedSpec.dataKey &&
-                                  nestedSpec.valueKey &&
-                                  parsedData(
-                                    getValueByPath(row[nestedSpec.dataKey], nestedSpec.valueKey),
-                                    tableSpec.fields[key]?.type,
-                                    tableSpec.fields[key]?.format
-                                  )
-                                : parsedData(
-                                    getValueByPath(row, key),
-                                    tableSpec.fields[key]?.type,
-                                    tableSpec.fields[key]?.format
-                                  )}
-                            </>
-                          )
-                        }
-
                         const isCenter =
                           tableSpec.fields[key]?.type === 'number' || tableSpec.fields[key]?.type === 'datetime-local'
 
@@ -407,15 +312,29 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                                   bordered && 'border-r border-gray-200'
                                 )}
                               >
-                                {customCell
-                                  ? customCell({
-                                      name: key,
-                                      fields: tableSpec.fields,
-                                      value: !nestedSpec.dataKey ? row[key] : row[nestedSpec.dataKey],
-                                      rowValue: row,
-                                      defaultCell: defaultCell,
-                                    })
-                                  : defaultCell}
+                                {customCell ? (
+                                  customCell({
+                                    name: key,
+                                    fields: tableSpec.fields,
+                                    value: !nestedSpec.dataKey ? row[key] : row[nestedSpec.dataKey],
+                                    rowValue: row,
+                                    defaultCell: (
+                                      <TableCellType
+                                        fieldSpec={tableSpec.fields[key]}
+                                        name={key}
+                                        row={row}
+                                        nestedSpec={nestedSpec}
+                                      />
+                                    ),
+                                  })
+                                ) : (
+                                  <TableCellType
+                                    fieldSpec={tableSpec.fields[key]}
+                                    name={key}
+                                    row={row}
+                                    nestedSpec={nestedSpec}
+                                  />
+                                )}
                               </td>
                             )}
                           </Fragment>

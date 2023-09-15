@@ -4,7 +4,10 @@ import { IAlurkerjaTableLowcode, Theme } from '@/types'
 
 type InputTypesContextInterface = {
   form_field_type: string
-  Element: ({}: any) => JSX.Element
+  // should have onChange that passed value on type
+  ElementForm?: ({}: any) => JSX.Element
+  // should have children on type
+  ElementTable?: ({ children }: any) => JSX.Element
 }[]
 
 const AuthContext = createContext<AxiosInstance | AxiosStatic>(axios)

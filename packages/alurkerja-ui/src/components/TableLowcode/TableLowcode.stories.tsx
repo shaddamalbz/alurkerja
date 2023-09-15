@@ -1049,14 +1049,25 @@ export const ExtendInputTypes: Story = {
     const [search, setSearch] = useState<string>()
     const [selectedRow, setSelectedRow] = useState<number[]>([])
 
-    const ElementExtend = ({ onChange }: { onChange: (value: string | number | boolean) => void }) => {
+    const ElementFormExtend = ({ onChange }: { onChange: (value: string | number | boolean) => void }) => {
       return (
         <input className="w-full border border-indigo-400" type="text" onChange={(e) => onChange(e.target.value)} />
       )
     }
 
+    const ElementTableExtend = ({ children }: { children: JSX.Element }) => {
+      return (
+        <div className="bg-blue-400">
+          <div>ini custom cell via context</div>
+          <div>{children}</div>
+        </div>
+      )
+    }
+
     return (
-      <InputTypesContext.Provider value={[{ form_field_type: 'INPUT_EXTEND', Element: ElementExtend }]}>
+      <InputTypesContext.Provider
+        value={[{ form_field_type: 'INPUT_EXTEND', ElementForm: ElementFormExtend, ElementTable: ElementTableExtend }]}
+      >
         <TableLowcode
           {...args}
           selectedRow={selectedRow}

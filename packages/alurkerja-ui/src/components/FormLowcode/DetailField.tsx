@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import moment from 'moment'
-import DOMPurify from 'dompurify'
+
 import { FieldProperties } from '@/types'
 import { CardFile, CardImage } from '@/components'
 
@@ -28,8 +28,6 @@ const DetailField: FC<DetailFieldProps> = ({ fieldSpec, defaultValue, data }) =>
     const selected = options.filter((opt) => opt.key.toString() === defaultValue?.toString())[0]
 
     return <div>{selected?.label}</div>
-  } else if (fieldSpec.form_field_type === 'INPUT_WYSIWYG') {
-    return <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(defaultValue) }}></div>
   } else if (fieldSpec.form_field_type === 'INPUT_DATE' || fieldSpec.form_field_type === 'INPUT_DATETIME-LOCAL') {
     return <div>{moment(defaultValue).format(fieldSpec.format)}</div>
   }

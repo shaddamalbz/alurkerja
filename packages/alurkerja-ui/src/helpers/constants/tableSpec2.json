@@ -198,7 +198,7 @@
       "primary": false,
       "is_hidden_in_create": false,
       "is_hidden_in_edit": false,
-      "is_hidden_in_list": true,
+      "is_hidden_in_list": false,
       "is_hidden_in_detail": false,
       "rules": ["required", "string", "max:255"],
       "format": "",
