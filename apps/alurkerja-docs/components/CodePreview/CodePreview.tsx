@@ -11,9 +11,17 @@ interface CodePreviewProps extends PropsWithChildren {
   code: string
   externalFunction?: string
   externalImport?: string
+  internalImport?: string[]
 }
 
-export const CodePreview: FC<CodePreviewProps> = ({ name, code, children, externalImport, externalFunction }) => {
+export const CodePreview: FC<CodePreviewProps> = ({
+  name,
+  code,
+  children,
+  externalImport,
+  externalFunction,
+  internalImport,
+}) => {
   const [isJustCopied, setJustCopied] = useState(false)
 
   const copyToClipboard = (toCopy: string) => {
@@ -40,7 +48,9 @@ export const CodePreview: FC<CodePreviewProps> = ({ name, code, children, extern
       </div>
       <pre>
         <code className="language-tsx">
-          {`import { ${titleCaseToUpperCamelCase(name)} } from 'alurkerja-ui'${
+          {`import { ${titleCaseToUpperCamelCase(name)} ${internalImport?.map(
+            (elm) => elm + ' '
+          )}} from 'alurkerja-ui'${
             externalImport ? '\n' + externalImport : ''
           }\n\nexport const ${titleCaseToUpperCamelCase(name)} = () => {${
             externalFunction ? '\n\t' + externalFunction : ''

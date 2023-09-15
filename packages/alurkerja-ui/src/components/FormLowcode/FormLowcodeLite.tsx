@@ -77,15 +77,10 @@ export const FormLowcodeLite: FC<FormLowcodeLiteProps> = ({
         ))}
       </div>
       <div className="flex gap-4">
-        <Button icon={cancelButtonIcon} size="small" onClick={() => onCancel(reset)}>
+        <Button icon={cancelButtonIcon} variant="outlined" onClick={() => onCancel(reset)}>
           {cancelButtonText || 'Cancel'}
         </Button>
-        <Button
-          className="bg-[#0095E8] text-white"
-          icon={submitButtonIcon}
-          size="small"
-          onClick={() => onSubmit(watch())}
-        >
+        <Button variant="filled" icon={submitButtonIcon} onClick={() => onSubmit(watch())}>
           {submitButtonText || 'Submit'}
         </Button>
       </div>
