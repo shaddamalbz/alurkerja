@@ -47,18 +47,46 @@ export default function page() {
 
   return (
     <article>
+      <aside className="hidden" id="table-of-contents">
+        <ul>
+          <li>
+            <a aria-label="Link to this section: Base" href="#base">
+              Base
+            </a>
+          </li>
+          <li>
+            <a aria-label="Link to this section: Custom Header" href="#custom-header">
+              Custom Header
+            </a>
+          </li>
+          <li>
+            <a aria-label="Link to this section: Extend Input Type" href="#extend-input-type">
+              Extend Input Types
+            </a>
+          </li>
+        </ul>
+      </aside>
       <h1>TableLowcode</h1>
       <p>
         komponen ini digunakan untuk menampilkan list data dan sudah include CRUD apabila API dan spesifikasi nya sudah
         tersedia benar
       </p>
-      {/* Base */}
-      <section>
-        <h2>Base</h2>
+
+      <section id="base">
+        <h2>
+          Base
+          <a
+            aria-label="Link to this section: Getting started"
+            href="#base"
+            className="ml-2 text-main-blue-alurkerja opacity-0 transition-opacity hover:opacity-100 no-underline"
+          >
+            #
+          </a>
+        </h2>
         <p>ini contoh sederhana penggunaan TableLowcode</p>
         <CodePreview
           name="TableLowcode"
-          code="<TableLowcode
+          code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
           tableName='takwim'
           renderState={renderState}
@@ -69,10 +97,9 @@ export default function page() {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-        />"
+        />`}
           externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any }>()\n\tconst [search, setSearch] = useState<string>()\n\tconst [selectedRow, setSelectedRow] = useState<number[]>([])\n`}
           externalImport="import { useState } from 'react'"
-          internalImport={['Card', 'FormLowcodeLite']}
         >
           <TableLowcode
             baseUrl="https://kpm-sys.merapi.javan.id"
@@ -88,14 +115,24 @@ export default function page() {
           />
         </CodePreview>
       </section>
-      {/* Custom Header */}
-      <section>
-        <h2>Custom Header</h2>
+
+      <section id="custom-header">
+        <h2>
+          Custom Header
+          <a
+            aria-label="Link to this section: Getting started"
+            href="#custom-header"
+            className="ml-2 text-main-blue-alurkerja opacity-0 transition-opacity hover:opacity-100 no-underline"
+          >
+            #
+          </a>
+        </h2>
         <p>ini contoh apabila ingin header pada tableLowcode diganti</p>
         <CodePreview
           name="TableLowcode"
           externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any }>()\n\tconst [search, setSearch] = useState<string>()\n\n`}
           externalImport={`import { useState } from 'react'`}
+          internalImport={['Card', 'FormLowcodeLite']}
           code={`<TableLowcode
             baseUrl="https://kpm-sys.merapi.javan.id"
             tableName="takwim"
@@ -157,13 +194,19 @@ export default function page() {
           />
         </CodePreview>
       </section>
-      {/* Extend Input Type */}
-      <section>
-        <h2>Extend Input Types</h2>
-        <p>
-          ini contoh apabila di project terdapat input type yang belum disupport oleh alurkerja ui contohnya
-          INPUT_WYSIWYG
-        </p>
+
+      <section id="extend-input-type">
+        <h2>
+          Extend Input Types
+          <a
+            aria-label="Link to this section: Getting started"
+            href="#extend-input-type"
+            className="ml-2 text-main-blue-alurkerja opacity-0 transition-opacity hover:opacity-100 no-underline"
+          >
+            #
+          </a>
+        </h2>
+        <p>ini contoh apabila di project terdapat input type yang belum disupport oleh alurkerja ui</p>
 
         <CodePreview
           name="TableLowcode"
@@ -172,7 +215,7 @@ export default function page() {
           internalImport={['InputTypesContext']}
           code={`<InputTypesContext.Provider
           value={[
-            { form_field_type: 'INPUT_WYSIWYG', ElementForm: ElementFormExtend, ElementTable: ElementTableExtend },
+            { form_field_type: 'INPUT_EXTEND', ElementForm: ElementFormExtend, ElementTable: ElementTableExtend },
           ]}
         >
           <TableLowcode
@@ -192,7 +235,7 @@ export default function page() {
         >
           <InputTypesContext.Provider
             value={[
-              { form_field_type: 'INPUT_WYSIWYG', ElementForm: ElementFormExtend, ElementTable: ElementTableExtend },
+              { form_field_type: 'INPUT_EXTEND', ElementForm: ElementFormExtend, ElementTable: ElementTableExtend },
             ]}
           >
             <TableLowcode
@@ -411,7 +454,7 @@ const dummySpec1 = {
       filterable: false,
       sortable: true,
       type: 'text',
-      form_field_type: 'INPUT_WYSIWYG',
+      form_field_type: 'INPUT_EXTEND',
       primary: false,
       is_hidden_in_create: false,
       is_hidden_in_edit: false,

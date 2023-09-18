@@ -1,10 +1,6 @@
 'use client'
 
 import React, { FC, PropsWithChildren, useEffect, useState } from 'react'
-import Prism from 'prismjs'
-
-import 'prismjs/components/prism-jsx'
-import 'prismjs/components/prism-tsx'
 
 interface CodePreviewProps extends PropsWithChildren {
   name: string
@@ -30,10 +26,6 @@ export const CodePreview: FC<CodePreviewProps> = ({
     setTimeout(() => setJustCopied(false), 2000)
   }
 
-  useEffect(() => {
-    Prism.highlightAll()
-  }, [])
-
   return (
     <div className="w-full border border-gray-200 rounded">
       <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 sm:p-6">{children}</div>
@@ -48,9 +40,9 @@ export const CodePreview: FC<CodePreviewProps> = ({
       </div>
       <pre>
         <code className="language-tsx">
-          {`import { ${titleCaseToUpperCamelCase(name)} ${internalImport?.map(
-            (elm) => elm + ' '
-          )}} from 'alurkerja-ui'${
+          {`import { ${titleCaseToUpperCamelCase(name)} ${
+            internalImport ? internalImport.map((elm) => elm + ' ') : ''
+          }} from 'alurkerja-ui'${
             externalImport ? '\n' + externalImport : ''
           }\n\nexport const ${titleCaseToUpperCamelCase(name)} = () => {${
             externalFunction ? '\n\t' + externalFunction : ''

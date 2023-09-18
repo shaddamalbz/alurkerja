@@ -2,8 +2,13 @@
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ChevronDown, ChevronUp, Menu } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import prism from 'prismjs'
+
+import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-tsx'
 
 export const metadata: Metadata = {
   title: 'Alurkerja',
@@ -11,11 +16,25 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+
   const [isComponentToggled, setIsComponentToggled] = useState(false)
+  const [tableOfContents, setTableOfContents] = useState('')
+
+  useEffect(() => {
+    // syntax-highlight on each re-render, since user may interact with the page
+    prism.highlightAll()
+
+    // update client-rendered Table of Contents on each new page
+    const toc = document.querySelector('#table-of-contents')?.innerHTML
+    console.log(toc)
+
+    setTableOfContents(toc ?? '')
+  }, [pathname])
 
   return (
     <>
-      <header className="sticky h-[65px] w-full shadow flex items-center justify-between px-4">
+      <header className="sticky top-0 h-[65px] w-full shadow flex items-center justify-between px-4 bg-white">
         <div className="flex items-center gap-4">
           <div className="inline-block lg:hidden">
             <Menu />
@@ -31,8 +50,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Link>
         </div>
       </header>
+
       <div className="lg:flex">
-        <div className="hidden fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6 px-4">
+        <div className="hidden fixed inset-0 h-full w-64 flex-none border-r border-gray-200 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6 px-4">
           <details onToggle={() => setIsComponentToggled(!isComponentToggled)}>
             <summary className="first:rounded-t-lg last:rounded-b-lg text-left dark:bg-transparent mb-1 text-gray-900  hover:text-main-blue-alurkerja flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide cursor-pointer py-4">
               Components
@@ -61,7 +81,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <footer className="border-none"></footer>
             </div>
             <aside className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
-              <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 ">On this page</h4>
+              <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
+                <div>
+                  <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 ">
+                    On this page
+                  </h4>
+                  <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
+                </div>
+              </div>
             </aside>
           </div>
         </div>
