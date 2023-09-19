@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback, useMemo, useContext, FC } from 'react'
 import { AuthContext } from '@/contexts'
 import clsx from 'clsx'
+import { getTheme } from '@/helpers/utils'
 
-export interface CheckboxProps {
+interface CheckboxProps {
   listOptionWithAPI?: {
     url: string
     nameKey: string
@@ -13,6 +14,7 @@ export interface CheckboxProps {
   listOption?: ListOption[]
   onChange?: (value: (string | number)[] | null) => void
   defaultValue?: (string | number)[]
+  name?: string
   className?: string
 }
 
@@ -21,12 +23,14 @@ interface ListOption {
   value: string | number
 }
 
-export const Checkbox: FC<CheckboxProps> = (props) => {
-  const { listOption, listOptionWithAPI, onChange, defaultValue, className, disabled } = props
+const Checkbox: FC<CheckboxProps> = (props) => {
+  const { listOption, listOptionWithAPI, name, onChange, defaultValue, className, disabled } = props
   const axiosInstance = useContext(AuthContext)
 
   const [value, setValue] = useState<(string | number)[]>()
   const [optionsFromAPI, setOptionFromAPI] = useState<ListOption[]>()
+
+  const theme = getTheme()
 
   useEffect(() => {
     if (value) {
@@ -66,8 +70,9 @@ export const Checkbox: FC<CheckboxProps> = (props) => {
       {options?.map((option, idx) => (
         <div key={idx}>
           <input
+            name={name}
             type="checkbox"
-            className="form-checkbox rounded bg-[#EBEDF3] text-indigo-600 border-none focus:border-none focus:outline-indigo-600 mr-2"
+            className={theme.checkbox}
             disabled={disabled}
             onChange={(e) =>
               setValue((prev) => {
@@ -89,3 +94,5 @@ export const Checkbox: FC<CheckboxProps> = (props) => {
     </div>
   )
 }
+
+export default Checkbox

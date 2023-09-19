@@ -1,10 +1,8 @@
 import { FC, useState } from 'react'
 
-import { TableLowcodeView } from '@/components'
-import { Spinner } from '@/components'
+import { Spinner, TableLowcodeView } from '@/components'
 
-import { getTableSpec, getTableData } from '@/api'
-
+import { getTableData, getTableSpec } from '@/api'
 import { IAlurkerjaTableLowcode } from '@/types'
 
 import TableLayout from './components/TableLayout'
@@ -17,7 +15,7 @@ export const TableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
   return <FetchedTableLowcode {...props} />
 }
 
-export const StaticTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
+const StaticTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
   const {
     baseUrl,
     filterBy,
@@ -109,6 +107,7 @@ const FetchedTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
     hideBpmnButton,
     hideCreateButton,
     hideTable,
+    dataPath,
   } = props
 
   const [selectedAll, setSelectedAll] = useState<boolean>(false)
@@ -132,6 +131,7 @@ const FetchedTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
     orderBy: orderBy,
     extendQuery: extendQuery,
     doFetch: !hideTable,
+    dataPath: dataPath,
   })
 
   return !loadingSpec ? (
@@ -173,4 +173,5 @@ const FetchedTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
   )
 }
 
+export { TableLowcodeContext }
 export default TableLowcode

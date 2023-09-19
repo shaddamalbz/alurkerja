@@ -167,6 +167,11 @@ export interface PaginationProps {
 export interface IAlurkerjaTableLowcode {
   spec?: TableSpec
   data?: { [x: string]: any }[]
+  /**
+   * when u facing issue for example API endpoint for list data not same as API endpoint for spec, used this for overide endpoint for list data
+   * @param string eg '/api/crud/custom-path'
+   */
+  dataPath?: string
   /** trying to custom title instead using tableName? use this */
   title?: string
   /** base API url (lowcode spec) */
@@ -837,6 +842,8 @@ export interface Theme {
   table_body_row?: string
   table_body_col?: string
   table_body_col_action?: string
+
+  checkbox?: string
 }
 
 export interface BaseInputProps {

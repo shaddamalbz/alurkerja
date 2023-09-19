@@ -18,6 +18,7 @@ export interface GetTableData {
   extendQuery?: { [x: string]: string }
   data?: any
   doFetch?: boolean
+  dataPath?: string
 }
 
 export const getTableData = ({
@@ -33,6 +34,7 @@ export const getTableData = ({
   extendQuery,
   data,
   doFetch = true,
+  dataPath,
 }: GetTableData) => {
   const axiosInstance = useContext(AuthContext)
 
@@ -51,7 +53,12 @@ export const getTableData = ({
 
     const filterQuery = objToQueryParam('filter', filter)
 
-    let url = baseUrl + spec?.path
+    let url = baseUrl
+    if (dataPath) {
+      url += dataPath
+    } else {
+      url += spec?.path
+    }
 
     if (id) {
       url += `/${id}`
