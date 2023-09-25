@@ -26,8 +26,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     prism.highlightAll()
 
     // update client-rendered Table of Contents on each new page
-    const toc = document.querySelector('#table-of-contents')?.innerHTML
-    console.log(toc)
+    const toc = document.querySelector('article section > li')?.innerHTML
+    console.log(toc, 'toc')
 
     setTableOfContents(toc ?? '')
   }, [pathname])
