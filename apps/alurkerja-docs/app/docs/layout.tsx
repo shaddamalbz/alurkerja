@@ -19,17 +19,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname()
 
   const [isComponentToggled, setIsComponentToggled] = useState(false)
-  const [tableOfContents, setTableOfContents] = useState('')
+  const [tableOfContents, setTableOfContents] = useState<string[]>()
 
   useEffect(() => {
     // syntax-highlight on each re-render, since user may interact with the page
     prism.highlightAll()
 
     // update client-rendered Table of Contents on each new page
-    const toc = document.querySelector('article section > li')?.innerHTML
-    console.log(toc, 'toc')
+    const nodeListElement = document.querySelectorAll('h3')
+    const toc: string[] = []
+    nodeListElement.forEach(({ outerText }) => {
+      toc.push(outerText)
+    })
 
-    setTableOfContents(toc ?? '')
+    setTableOfContents(toc)
   }, [pathname])
 
   return (
@@ -86,7 +89,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 ">
                     On this page
                   </h4>
-                  <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
+                  {tableOfContents?.map((toc) => (
+                    <div className="hover:text-main-blue-alurkerja cursor-pointer">{toc}</div>
+                  ))}
                 </div>
               </div>
             </aside>
