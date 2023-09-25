@@ -7,6 +7,11 @@ import { FilterSection } from './FilterSection'
 import { AllFeatureSection } from './AllFeatureSection'
 import { OnClickCreateProps } from './OnClickCreateProps'
 import { CustomButtonCreateProps } from './CustomButtonCreate'
+import { OnClickDetailProps } from './OnClickDetailProps'
+import { CustomButtonDetailProps } from './CustomButtonDetail'
+import { OnClickEditProps } from './OnClickEditProps'
+import { CustomButtonEditProps } from './CustomButtonEdit'
+import { CustomCellProps } from './CustomCellProps'
 
 export default function page() {
   return (
@@ -29,6 +34,11 @@ export default function page() {
       <h2>Props</h2>
       <OnClickCreateProps />
       <CustomButtonCreateProps />
+      <OnClickDetailProps />
+      <CustomButtonDetailProps />
+      <OnClickEditProps />
+      <CustomButtonEditProps />
+      <CustomCellProps />
     </article>
   )
 }

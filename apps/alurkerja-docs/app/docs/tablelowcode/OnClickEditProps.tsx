@@ -3,9 +3,12 @@
 import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
-export const CustomButtonCreateProps = () => {
+export const OnClickEditProps = () => {
+  const router = useRouter()
+
   const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
   const [renderState, setRenderState] = useState(0)
   const [search, setSearch] = useState<string>()
@@ -13,10 +16,8 @@ export const CustomButtonCreateProps = () => {
 
   return (
     <SectionLayout
-      title="customButtonCreate()"
-      description="props ini umumnya digunakan untuk overwrite button create yang tersedia bisa karena tampilan yang tidak sesuai, ingin menambahkan logic/fungsi yang belum bisa di provide alurkerja. dengan diberikan opsi overwrite ini akan mempermudah programmer ketika tampilan buttonnya ingin diganti,menjawab 'aduh gimana yaa caranya button ini klo kondisinya ini harus begini?' duh gimana yaa cara menambahkan title pada modal create?, jawabannya buat sendiri kemudian overwrite.
-      perlu hide button? tinggal return Fragment <></>
-      "
+      title="onClickEdit()"
+      description="ini contoh apabila ingin mengganti fungsi edit contohnya saya ingin tombol edit ketika di klik pindah halaman"
     >
       <CodePreview
         name="TableLowcode"
@@ -31,10 +32,13 @@ export const CustomButtonCreateProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          customButtonCreate={() => <div>mau nya custom aja</div>}
+          onClickEdit={(_fieldSpec,id) => {
+            router.push('/edit/' + id) // next
+            navigate('/edit/' + id) // react
+          }}
         />`}
-        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
-        externalImport={`import { useState } from 'react'`}
+        externalFunction={`const navigate = useNavigate() // react\n\tconst router = useRouter() // next\n\n\tconst [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
+        externalImport={`import { useState } from 'react'\n// react \nimport { useNavigate } from 'react-router-dom'\n// next\nimport { useRouter } from 'next/navigation'`}
       >
         <TableLowcode
           baseUrl="https://kpm-sys.merapi.javan.id"
@@ -47,7 +51,7 @@ export const CustomButtonCreateProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          customButtonCreate={() => <div>mau nya custom aja</div>}
+          onClickEdit={(_fieldSpec, id) => router.push(`${id}`)}
         />
       </CodePreview>
     </SectionLayout>
