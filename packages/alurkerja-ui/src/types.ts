@@ -688,16 +688,6 @@ export interface TableHeaderProps {
   hideCreateButton?: boolean
 }
 
-export interface TableNested {
-  spec?: TableSpec
-  /** callback to get value */
-  onSubmit?: (value?: number[]) => void
-  /** props to set defaultvalue */
-  defaultValue?: number[]
-  canSelect?: boolean
-  /** limit row selected, eg: limit={1} means table should select maximum 1 row */
-  limit?: number
-}
 export interface File {
   collection_name: string
   conversions_disk: string

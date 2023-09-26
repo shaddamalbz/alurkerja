@@ -1,16 +1,10 @@
 import { useState, useEffect, FC } from 'react'
-import { TableNested as TableNestedInteface } from '@/types'
+import { TableNestedProps } from './TableNested.types'
 
 import { Button, TableLowcode } from '@/components'
 import _ from 'lodash'
 
-export const TableNested: FC<TableNestedInteface> = ({
-  onSubmit,
-  defaultValue,
-  spec,
-  canSelect = true,
-  limit = 10,
-}) => {
+export const TableNested: FC<TableNestedProps> = ({ onSubmit, defaultValue, spec, canSelect = true, limit = 10 }) => {
   const [selected, setSelected] = useState<any[]>()
   const [renderState, setRenderState] = useState(0)
 
