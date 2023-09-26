@@ -1,2 +1,2 @@
 export * from './TableLowcode'
-export * from './TableLowcodeView'
+export * from './components/TableLowcodeView'
