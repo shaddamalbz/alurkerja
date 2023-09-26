@@ -1,9 +1,22 @@
 {
   "name": "alurkerja-ui",
-  "private": true,
   "version": "1.0.0",
+  "description": "",
   "type": "module",
-  "main": "dist/alurkerja-ui.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/alurkerja-ui.js",
+  "module": "./dist/alurkerja-ui.js",
+  "types": "./dist/alurkerja-ui.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/alurkerja-ui.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "keywords": [],
+  "author": "shaddamalbz",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

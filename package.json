@@ -7,7 +7,8 @@
     "dev:docs": "pnpm --filter alurkerja-docs dev",
     "dev:ui": "pnpm --filter alurkerja-ui storybook",
     "build:ui": "pnpm --filter alurkerja-ui build --watch",
-    "build:docs": "pnpm --filter alurkerja-docs build"
+    "build:docs": "pnpm --filter alurkerja-docs build",
+    "publish:ui": "pnpm --filter alurkerja-ui publish --no-git-checks --tag beta"
   },
   "keywords": [],
   "author": "",
