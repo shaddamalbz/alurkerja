@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import _ from 'underscore'
+import _ from 'lodash'
 import { AuthContext } from '@/contexts'
 
 export interface GetDetail {
@@ -7,7 +7,7 @@ export interface GetDetail {
   tableName?: string
   path?: string
   renderState?: number
-  id?: number
+  id?: number | string
 }
 
 export const getDetail = ({ baseUrl, tableName, path, renderState, id }: GetDetail) => {

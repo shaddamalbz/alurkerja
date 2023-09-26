@@ -1,2 +1,1 @@
-export { StatusIcon } from './StatusIcon'
-export type { StatusIconProps } from './StatusIcon'
+export * from './StatusIcon'

@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect, Fragment, FC } from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
-import _ from 'underscore'
+import _ from 'lodash'
 import { FieldProperties } from '@/types'
 import { AuthContext, InputTypesContext } from '@/contexts'
 

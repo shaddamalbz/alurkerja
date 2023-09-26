@@ -1,7 +1,7 @@
 import { PaginationProps } from '@/types'
 import { FC, useEffect, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import _ from 'underscore'
+import _ from 'lodash'
 
 export const Pagination: FC<PaginationProps> = ({ pagination, pageConfig, setPageConfig, tableSpec }) => {
   var totalShowedPagination = 3

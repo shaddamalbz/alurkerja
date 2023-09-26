@@ -3,7 +3,7 @@ import React, { FC, ReactNode } from 'react'
 import { Control, Controller, FieldErrors, FieldValues } from 'react-hook-form'
 import { BaseInputProps } from '@/types'
 import clsx from 'clsx'
-import _ from 'underscore'
+import _ from 'lodash'
 
 export interface ReactHookWrapperProps {
   inline?: boolean

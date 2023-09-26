@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone'
 import { FaUpload } from 'react-icons/fa'
 
 // utils
-import { CardFile, CardImage } from '@/components'
+import { CardFile, CardImage } from '../Card'
 
 export interface PendingUploadProps {
   name?: string
@@ -14,6 +14,7 @@ export interface PendingUploadProps {
   asFile?: boolean
   multiple?: boolean
   onChange?: (file: any) => void
+  onDownload?: (file: any) => void
   disabled?: boolean
   defaultValue?: any[]
   hidePreview?: boolean
@@ -28,6 +29,7 @@ export const PendingUpload: FC<PendingUploadProps> = ({
   asFile = false,
   multiple,
   onChange,
+  onDownload,
   disabled,
   defaultValue,
   hidePreview = false,
@@ -50,8 +52,13 @@ export const PendingUpload: FC<PendingUploadProps> = ({
         fileType['application/msword'] = []
       } else if (ext === 'docx') {
         fileType['application/vnd.openxmlformats-officedocument.wordprocessingml.document'] = []
+      } else if (ext === 'xls') {
+        fileType['application/vnd.ms-excel'] = [`.${ext}`]
+      } else if (ext === 'xlsx') {
+        fileType['application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet'] = [`.${ext}`]
       }
     })
+
     return fileType
   }
 
@@ -133,7 +140,9 @@ export const PendingUpload: FC<PendingUploadProps> = ({
       {!hidePreview && uploadedFiles.length !== 0 && (
         <>
           {type === 'image' && <CardImage data={uploadedFiles} onClickDelete={handleDelete} />}
-          {type === 'file' && <CardFile data={uploadedFiles} onClickDelete={handleDelete} />}
+          {type === 'file' && (
+            <CardFile data={uploadedFiles} onClickDelete={handleDelete} onClickDownload={onDownload} />
+          )}
         </>
       )}
     </div>

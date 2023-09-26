@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import clsx from 'clsx'
 import ReactSelect, { Props } from 'react-select'
-import _ from 'underscore'
+import _ from 'lodash'
 import { HiCheck, HiChevronDown, HiX } from 'react-icons/hi'
 import { BaseInputProps } from '@/types'
 

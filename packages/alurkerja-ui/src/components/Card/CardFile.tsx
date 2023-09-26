@@ -6,33 +6,39 @@ import { MdDownload } from 'react-icons/md'
 
 export const CardFile: FC<{
   data: File[]
-  onClickDelete?: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    file: File
-  ) => void
+  onClickDelete?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, file: File) => void
+  onClickDownload?: (file: File) => void
   readonly?: boolean
-}> = ({ data, onClickDelete, readonly }) => {
+}> = ({ data, onClickDownload, onClickDelete, readonly }) => {
+  const downloadAction = (file: File) => {
+    if (onClickDownload) {
+      onClickDownload(file)
+    } else {
+      const a = document.createElement('a')
+      a.href = file.original_url
+      a.target = '_blank'
+      a.download = 'true'
+      a.rel = 'noopener noreferrer'
+      a.click()
+
+      a.remove()
+    }
+  }
+
   return (
-    <div className="border-2 border-b-0 border-gray-200 rounded text-gray-600">
+    <div className="text-gray-600 border-2 border-b-0 border-gray-200 rounded">
       {data &&
         data.map((file: any, index: number) => (
-          <div
-            className="flex items-center justify-between p-2 border-b-2"
-            key={index}
-          >
+          <div className="flex items-center justify-between p-2 border-b-2" key={index}>
             <div className="flex items-center gap-x-2">
               <FaFileImage /> <span>{file.name}</span>
             </div>
             <div className="flex items-center gap-x-2">
               <span>{toKiloByte(file.size, 'byte')}KB</span>
-              <a
-                href={file.original_url}
-                target="_blank"
-                download
-                rel="noopener noreferrer"
-              >
+              <div onClick={() => downloadAction(file)}>
                 <MdDownload />
-              </a>
+              </div>
+              {/* <a href={file.original_url} target="_blank" download rel="noopener noreferrer"></a> */}
               {!readonly && (
                 <button type="button" onClick={(e) => onClickDelete?.(e, file)}>
                   <FaTrash />

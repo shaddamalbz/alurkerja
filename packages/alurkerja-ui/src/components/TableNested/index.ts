@@ -1,1 +1,1 @@
-export { TableNested } from './TableNested'
+export * from './TableNested'

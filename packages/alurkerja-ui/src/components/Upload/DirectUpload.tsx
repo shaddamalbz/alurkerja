@@ -1,7 +1,7 @@
 import React, { FC, useContext, useEffect, useState } from 'react'
 import { FaUpload } from 'react-icons/fa'
 import { FileUploader } from 'react-drag-drop-files'
-import _ from 'underscore'
+import _ from 'lodash'
 import Swal from 'sweetalert2'
 
 // utils

@@ -1,2 +1,2 @@
-export { TableLowcode } from './TableLowcode'
-export { TableLowcodeView } from './TableLowcodeView'
+export * from './TableLowcode'
+export * from './TableLowcodeView'

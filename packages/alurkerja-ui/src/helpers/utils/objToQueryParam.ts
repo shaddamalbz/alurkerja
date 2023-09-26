@@ -1,4 +1,4 @@
-import _ from 'underscore'
+import _ from 'lodash'
 
 function objToQueryParam(query: string, obj?: { [x: string]: any }): string {
   let str = ''

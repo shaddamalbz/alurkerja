@@ -3,7 +3,7 @@ import { AuthContext } from '@/contexts'
 import clsx from 'clsx'
 import { getTheme } from '@/helpers/utils'
 
-interface CheckboxProps {
+export interface CheckboxProps {
   listOptionWithAPI?: {
     url: string
     nameKey: string
@@ -23,7 +23,7 @@ interface ListOption {
   value: string | number
 }
 
-const Checkbox: FC<CheckboxProps> = (props) => {
+export const Checkbox: FC<CheckboxProps> = (props) => {
   const { listOption, listOptionWithAPI, name, onChange, defaultValue, className, disabled } = props
   const axiosInstance = useContext(AuthContext)
 
@@ -94,5 +94,3 @@ const Checkbox: FC<CheckboxProps> = (props) => {
     </div>
   )
 }
-
-export default Checkbox

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import _ from 'underscore'
+import _ from 'lodash'
 
 import { PaginationLowcode, TableSpec } from '@/types'
 import { AuthContext } from '@/contexts'
@@ -98,7 +98,7 @@ export const getTableData = ({
         if (id) {
           setDetail(result)
         } else {
-          const pagination = _.omit(result, 'content')
+          const pagination = _.omit(result, 'content') as PaginationLowcode
           setTableData(result.content)
           setPagination(pagination)
         }

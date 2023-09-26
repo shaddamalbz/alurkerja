@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useEffect, useState } from 'react'
-import _ from 'underscore'
+import _ from 'lodash'
 import { AiOutlineUndo } from 'react-icons/ai'
 import { HiMagnifyingGlass } from 'react-icons/hi2'
 

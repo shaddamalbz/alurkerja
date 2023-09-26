@@ -1,11 +1,13 @@
 import React, { ReactNode, useMemo, useState, useRef, useEffect } from 'react'
 import { BaseInputProps } from '@/types'
 import clsx from 'clsx'
-import _ from 'underscore'
+import _ from 'lodash'
 
 import '@/assets/scss/input.scss'
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'size'>, BaseInputProps {
+export interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'size'>,
+    BaseInputProps {
   asElement?: React.ElementType
   disabled?: boolean
   textArea?: boolean
@@ -76,7 +78,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref)
     !prefix && !suffix ? className : '',
     disabled && 'input-disabled',
     isInvalid && 'input-invalid',
-    textArea && 'input-textarea',
+    textArea && 'input-textarea'
   )
 
   const prefixNode = useRef<any>()

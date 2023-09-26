@@ -3,7 +3,7 @@ import { FieldValues, UseFormSetValue, useForm } from 'react-hook-form'
 import { FaChevronDown, FaChevronUp, FaPlay } from 'react-icons/fa'
 import Swal from 'sweetalert2'
 import clsx from 'clsx'
-import _ from 'underscore'
+import _ from 'lodash'
 
 import { TableLowcodeProps, FieldActionProperties, FieldProperties } from '@/types'
 import { getTheme } from '@/helpers/utils'

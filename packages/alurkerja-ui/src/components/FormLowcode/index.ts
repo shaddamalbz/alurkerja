@@ -1,3 +1,2 @@
-export { FormLowcode } from './FormLowcode'
-export { FormLowcodeLite } from './FormLowcodeLite'
-export type { FormLowcodeLiteProps } from './FormLowcodeLite'
+export * from './FormLowcode'
+export * from './FormLowcodeLite'

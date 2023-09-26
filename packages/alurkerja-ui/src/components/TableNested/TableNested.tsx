@@ -2,7 +2,7 @@ import { useState, useEffect, FC } from 'react'
 import { TableNested as TableNestedInteface } from '@/types'
 
 import { Button, TableLowcode } from '@/components'
-import _ from 'underscore'
+import _ from 'lodash'
 
 export const TableNested: FC<TableNestedInteface> = ({
   onSubmit,

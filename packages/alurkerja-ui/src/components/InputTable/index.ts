@@ -1,1 +1,1 @@
-export { InputTable } from './InputTable'
+export * from './InputTable'
