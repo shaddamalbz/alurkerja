@@ -4,15 +4,16 @@ import Swal from 'sweetalert2'
 
 import { useFormSpec } from '@/hooks'
 import { AuthContext } from '@/contexts'
-import { FieldProperties, IAlurkerjaFormLowcode } from '@/types'
+import { FieldProperties } from '@/types'
 import { getDetail } from '@/api'
 
 // components
 import { Button, ModalWithState, Skeleton } from '@/components'
 import InputTypes from './InputTypes'
 import InputLayout from './InputLayout'
+import { FormLowcodeProps } from './FormLowcode.types'
 
-export const FormLowcode: FC<IAlurkerjaFormLowcode> = (props) => {
+export const FormLowcode: FC<FormLowcodeProps> = (props) => {
   const {
     baseUrl,
     tableName,

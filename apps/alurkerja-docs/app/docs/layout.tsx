@@ -74,6 +74,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               >
                 TableLowcode
               </Link>
+              <Link
+                className="rounded-lg px-2 text-sm font-medium text-gray-alurkerja-1 hover:text-main-blue-alurkerja cursor-pointer"
+                href="/docs/formlowcode"
+              >
+                FormLowcode
+              </Link>
             </div>
           </details>
         </div>
