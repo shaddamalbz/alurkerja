@@ -52,6 +52,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
     message,
     extraActionButton,
     hideActionColumn,
+    canBulk = false,
   } = useContext(TableLowcodeContext)
 
   const { handleSubmit, setValue, formState, control } = useForm()
@@ -182,7 +183,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
             </th>
             {tableSpec && (
               <>
-                {tableSpec.can_bulk && (
+                {(canBulk || tableSpec.can_bulk) && (
                   <th
                     id="table_head_col_bulk"
                     className={clsx(theme.table_head_col_bulk, bordered && 'border-r border-gray-200')}
@@ -268,7 +269,7 @@ export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
                     >
                       {pagination ? rowIdx + 1 + pagination.size * pagination.number : rowIdx + 1}
                     </td>
-                    {tableSpec.can_bulk && (
+                    {(canBulk || tableSpec.can_bulk) && (
                       <td
                         id="table_body_col"
                         className={clsx(theme.table_body_col, 'text-center', bordered && 'border-r border-gray-200')}

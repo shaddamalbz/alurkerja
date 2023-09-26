@@ -3,7 +3,7 @@
 import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
-import React, { useState } from 'react'
+import React from 'react'
 
 export const BaseSection = () => {
   return (

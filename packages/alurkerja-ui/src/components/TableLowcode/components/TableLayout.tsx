@@ -19,7 +19,7 @@ const TableLayout: FC<TableLayoutProps> = ({
   hideTable = false,
 }) => {
   const { setValue } = useForm()
-  const { subHeader, baseUrl, filterBy, setFilterBy, pageConfig, setPageConfig, headerElement } =
+  const { subHeader, baseUrl, filterBy, setFilterBy, pageConfig, setPageConfig, customHeader } =
     useContext(TableLowcodeContext)
 
   // const fields = tableSpec?.fields
@@ -44,8 +44,8 @@ const TableLayout: FC<TableLayoutProps> = ({
 
   return (
     <div className="bg-white rounded py-4">
-      {headerElement ? (
-        headerElement
+      {customHeader ? (
+        customHeader
       ) : (
         <TableHeader
           tableSpec={tableSpec}

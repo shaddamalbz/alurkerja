@@ -200,6 +200,7 @@ export interface IAlurkerjaTableLowcode {
   pageConfig?: { limit: number; page: number }
   /**  setter to set page config*/
   setPageConfig?: Dispatch<SetStateAction<{ limit: number; page: number }>>
+  canBulk?: boolean
   /**  state to store selected row*/
   selectedRow?: number[]
   /**  setter to set selected row*/
@@ -230,7 +231,7 @@ export interface IAlurkerjaTableLowcode {
   onClickDetail?: (id: number, row: any) => void
   onDeleteConfirm?: (id: number) => void
   /** trying to custom header table? use this*/
-  headerElement?: JSX.Element
+  customHeader?: JSX.Element
   customField?: ({
     field,
     setValue,
@@ -335,9 +336,6 @@ export interface IAlurkerjaTableLowcode {
   /** If you want hide bpmn button but still bpmn */
   hideBpmnButton?: boolean
 
-  /** If you want hide create button */
-  hideCreateButton?: boolean
-
   hideActionColumn?: boolean
 
   /** If you want hide table */
@@ -437,7 +435,7 @@ export interface IAlurkerjaTableLowcode {
   onClickDetail?: (id: number, row: any) => void
   onDeleteConfirm?: (id: number) => void
   /** trying to custom header table? use this*/
-  headerElement?: JSX.Element
+  customHeader?: JSX.Element
   customField?: ({
     field,
     setValue,

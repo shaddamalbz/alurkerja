@@ -12,6 +12,8 @@ import { CustomButtonDetailProps } from './CustomButtonDetail'
 import { OnClickEditProps } from './OnClickEditProps'
 import { CustomButtonEditProps } from './CustomButtonEdit'
 import { CustomCellProps } from './CustomCellProps'
+import { CustomHeaderProps } from './CustomHeaderProps'
+import { BulkSection } from './BulkFeatureSection'
 
 export default function page() {
   return (
@@ -30,6 +32,7 @@ export default function page() {
       <PaginationSection />
       <SearchSection />
       <FilterSection />
+      <BulkSection />
       <AllFeatureSection />
       <h2>Props</h2>
       <OnClickCreateProps />
@@ -39,6 +42,7 @@ export default function page() {
       <OnClickEditProps />
       <CustomButtonEditProps />
       <CustomCellProps />
+      <CustomHeaderProps />
     </article>
   )
 }

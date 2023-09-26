@@ -567,7 +567,7 @@ export const HideHeaderButton: Story = {
     onDeleteConfirm: undefined,
     canFilter: false,
     hideBpmnButton: true,
-    hideCreateButton: true,
+    customButtonCreate: () => <></>,
   },
 
   render: (args) => {

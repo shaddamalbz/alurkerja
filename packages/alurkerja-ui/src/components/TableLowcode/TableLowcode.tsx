@@ -30,7 +30,6 @@ const StaticTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
     extraButton,
     showBpmn,
     hideBpmnButton,
-    hideCreateButton,
     hideTable,
   } = props
 
@@ -63,7 +62,6 @@ const StaticTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
         extraButton={extraButton}
         showBpmn={showBpmn}
         hideBpmnButton={hideBpmnButton}
-        hideCreateButton={hideCreateButton}
         hideTable={hideTable}
       >
         {!loadingData ? (
@@ -105,7 +103,6 @@ const FetchedTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
     extraButton,
     showBpmn,
     hideBpmnButton,
-    hideCreateButton,
     hideTable,
     dataPath,
   } = props
@@ -143,7 +140,6 @@ const FetchedTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
           extraButton={extraButton}
           showBpmn={showBpmn}
           hideBpmnButton={hideBpmnButton}
-          hideCreateButton={hideCreateButton}
           hideTable={hideTable}
         >
           {!loadingData ? (
@@ -172,6 +168,3 @@ const FetchedTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
     </section>
   )
 }
-
-export { TableLowcodeContext }
-export default TableLowcode
