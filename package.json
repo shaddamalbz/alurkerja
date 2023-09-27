@@ -7,11 +7,12 @@
     "dev:docs": "pnpm --filter alurkerja-docs dev",
     "dev:ui": "pnpm --filter alurkerja-ui storybook",
     "build:ui": "pnpm --filter alurkerja-ui build --watch",
-    "build:docs": "pnpm --filter alurkerja-docs build",
-    "publish:ui": "pnpm --filter alurkerja-ui publish --no-git-checks --tag beta"
+    "build:docs": "pnpm --filter alurkerja-docs build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2"
+  }
 }

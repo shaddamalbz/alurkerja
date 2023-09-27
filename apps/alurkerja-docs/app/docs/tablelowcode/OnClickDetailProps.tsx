@@ -32,7 +32,7 @@ export const OnClickDetailProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          onClickDetail={() => {
+          onClickDetail={(id) => {
             router.push('/detail/' + id) // next
             navigate('/detail/' + id) // react
           }}
