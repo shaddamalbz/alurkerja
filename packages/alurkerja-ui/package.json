@@ -30,6 +30,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0"
   },
+  "peerDependencies": {
+    "react-select": "^5.7.4"
+  },
   "devDependencies": {
     "@floating-ui/core": "^1.4.1",
     "@floating-ui/react": "^0.25.4",
@@ -42,7 +45,6 @@
     "@storybook/react": "7.4.1",
     "@storybook/react-vite": "7.4.1",
     "@storybook/testing-library": "0.2.0",
-    "@types/moment": "^2.13.0",
     "@types/node": "^20.6.0",
     "@types/react": "^18.2.15",
     "@types/react-datepicker": "^4.15.0",
