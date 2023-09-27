@@ -4,6 +4,7 @@ import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
 import React, { useState } from 'react'
+import spec from './spec.json'
 
 export const CustomButtonCreateProps = () => {
   const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
@@ -37,6 +38,7 @@ export const CustomButtonCreateProps = () => {
         externalImport={`import { useState } from 'react'`}
       >
         <TableLowcode
+          spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
           tableName="takwim"
           renderState={renderState}

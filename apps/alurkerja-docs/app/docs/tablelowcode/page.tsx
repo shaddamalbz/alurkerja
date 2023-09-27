@@ -14,6 +14,7 @@ import { CustomButtonEditProps } from './CustomButtonEdit'
 import { CustomCellProps } from './CustomCellProps'
 import { CustomHeaderProps } from './CustomHeaderProps'
 import { BulkSection } from './BulkFeatureSection'
+import { ExtraActionButtonProps } from './ExtraActionButtonProps'
 
 export default function page() {
   return (
@@ -43,6 +44,7 @@ export default function page() {
       <CustomButtonEditProps />
       <CustomCellProps />
       <CustomHeaderProps />
+      <ExtraActionButtonProps />
     </article>
   )
 }

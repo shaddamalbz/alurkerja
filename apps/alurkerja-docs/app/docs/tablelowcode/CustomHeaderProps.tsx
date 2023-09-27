@@ -3,12 +3,10 @@
 import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
-import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import spec from './spec.json'
 
 export const CustomHeaderProps = () => {
-  const router = useRouter()
-
   const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
   const [renderState, setRenderState] = useState(0)
   const [search, setSearch] = useState<string>()
@@ -37,6 +35,7 @@ export const CustomHeaderProps = () => {
         externalImport={`import { useState } from 'react'\n`}
       >
         <TableLowcode
+          spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
           tableName="takwim"
           renderState={renderState}

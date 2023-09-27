@@ -5,6 +5,7 @@ import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import spec from './spec.json'
 
 export const OnClickDetailProps = () => {
   const router = useRouter()
@@ -41,6 +42,7 @@ export const OnClickDetailProps = () => {
         externalImport={`import { useState } from 'react'\n// react \nimport { useNavigate } from 'react-router-dom'\n// next\nimport { useRouter } from 'next/navigation'`}
       >
         <TableLowcode
+          spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
           tableName="takwim"
           renderState={renderState}

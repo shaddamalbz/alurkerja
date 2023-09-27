@@ -4,6 +4,7 @@ import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
 import React from 'react'
+import spec from './spec.json'
 
 export const BaseSection = () => {
   return (
@@ -15,7 +16,7 @@ export const BaseSection = () => {
           tableName='takwim'
         />`}
       >
-        <TableLowcode baseUrl="https://kpm-sys.merapi.javan.id" tableName="takwim" />
+        <TableLowcode spec={spec as any} baseUrl="https://kpm-sys.merapi.javan.id" tableName="takwim" />
       </CodePreview>
     </SectionLayout>
   )

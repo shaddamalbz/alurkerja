@@ -4,6 +4,7 @@ import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
 import React, { useState } from 'react'
+import spec from './spec.json'
 
 export const PaginationSection = () => {
   const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
@@ -25,6 +26,7 @@ export const PaginationSection = () => {
         externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n`}
       >
         <TableLowcode
+          spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
           tableName="takwim"
           pageConfig={pageConfig}
