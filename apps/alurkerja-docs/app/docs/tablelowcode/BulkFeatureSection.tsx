@@ -20,6 +20,8 @@ export const BulkSection = () => {
           selectedRow={selected}
           setSelectedRow={setSelected}
         />`}
+        externalFunction="const [selected, setSelected] = useState<number[]>([])
+        "
       >
         <TableLowcode
           spec={spec as any}
