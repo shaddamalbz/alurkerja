@@ -8,7 +8,7 @@ import { InputTypesContext, TableLowcodeContext } from '@/contexts'
 import { getValueByPath } from '@/helpers/utils'
 import { inputTypes } from '@/helpers/constants/inputTypes'
 
-interface TableCellTypeInterface {
+interface TableCellTypeProps {
   name: string
   fieldSpec: FieldProperties
   row: { [x: string]: any }
@@ -18,7 +18,7 @@ interface TableCellTypeInterface {
   }
 }
 
-export const TableCellType: FC<TableCellTypeInterface> = ({ name, fieldSpec, row, nestedSpec }) => {
+export const TableCellType: FC<TableCellTypeProps> = ({ name, fieldSpec, row, nestedSpec }) => {
   const { tableConfig } = useContext(TableLowcodeContext)
   const inputTypesExtend = useContext(InputTypesContext)
 

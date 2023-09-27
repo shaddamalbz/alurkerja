@@ -1,4 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react'
+import _ from 'lodash'
 
 interface SectionLayoutProps extends PropsWithChildren {
   title: string
@@ -7,10 +8,10 @@ interface SectionLayoutProps extends PropsWithChildren {
 
 export const SectionLayout: FC<SectionLayoutProps> = ({ children, title, description }) => {
   return (
-    <section>
+    <section id={_.toLower(title).replaceAll(' ', '-').replace('()', '')}>
       <h3>{title}</h3>
       <p>{description}</p>
-      {children}
+      <div>{children}</div>
     </section>
   )
 }

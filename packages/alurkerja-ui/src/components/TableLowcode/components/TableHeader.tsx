@@ -1,9 +1,9 @@
 import { FC, useContext } from 'react'
 
-import { TableHeaderProps } from '@/types'
 import HeaderRight from './HeaderRight'
 import { TableLowcodeContext } from '@/contexts'
 import { getTheme } from '@/helpers/utils'
+import { TableHeaderProps } from '../TableLowcode.types'
 
 const TableHeader: FC<TableHeaderProps> = ({
   fieldList,

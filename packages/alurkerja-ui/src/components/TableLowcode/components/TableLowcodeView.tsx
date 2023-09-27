@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import clsx from 'clsx'
 import _ from 'lodash'
 
-import { TableLowcodeProps, FieldActionProperties, FieldProperties } from '@/types'
+import { FieldActionProperties, FieldProperties } from '@/types'
 import { getTheme } from '@/helpers/utils'
 import { IconDelete, IconDetail, IconEdit } from '@/assets/icons'
 import { AuthContext, TableLowcodeContext } from '@/contexts'
@@ -13,8 +13,9 @@ import { Button, Modal, Tooltip, FormLowcode } from '@/components'
 import { useFieldOrder } from '@/hooks'
 
 import { TableCellType } from './TableCellType'
+import { TableLowcodeViewProps } from '../TableLowcode.types'
 
-export const TableLowcodeView: FC<TableLowcodeProps> = (props) => {
+export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
   const { tableSpec, tableData, pagination, selectedAll, setSelectedAll, orderBy, setOrderBy, sortBy, setSortBy } =
     props
   const theme = getTheme()

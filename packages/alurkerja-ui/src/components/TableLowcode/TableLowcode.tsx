@@ -3,19 +3,20 @@ import { FC, useState } from 'react'
 import { Spinner, TableLowcodeView } from '@/components'
 
 import { getTableData, getTableSpec } from '@/api'
-import { IAlurkerjaTableLowcode } from '@/types'
 
 import TableLayout from './components/TableLayout'
 import { TableLowcodeContext } from '@/contexts'
 
-export const TableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
+import { TableLowcodeProps } from './TableLowcode.types'
+
+export const TableLowcode: FC<TableLowcodeProps> = (props) => {
   if (props.spec) {
     return <StaticTableLowcode {...props} />
   }
   return <FetchedTableLowcode {...props} />
 }
 
-const StaticTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
+const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
   const {
     baseUrl,
     filterBy,
@@ -86,7 +87,7 @@ const StaticTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
   )
 }
 
-const FetchedTableLowcode: FC<IAlurkerjaTableLowcode> = (props) => {
+const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
   const {
     baseUrl,
     module,

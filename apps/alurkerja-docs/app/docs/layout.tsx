@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { ChevronDown, ChevronUp, Menu } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import prism from 'prismjs'
+import _ from 'lodash'
 
 import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-tsx'
@@ -90,7 +91,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     On this page
                   </h4>
                   {tableOfContents?.map((toc) => (
-                    <div className="hover:text-main-blue-alurkerja cursor-pointer">{toc}</div>
+                    <a
+                      href={'#' + _.toLower(toc).replaceAll(' ', '-').replace('()', '')}
+                      className="hover:text-main-blue-alurkerja cursor-pointer block"
+                    >
+                      {toc.replace('()', '')}
+                    </a>
                   ))}
                 </div>
               </div>

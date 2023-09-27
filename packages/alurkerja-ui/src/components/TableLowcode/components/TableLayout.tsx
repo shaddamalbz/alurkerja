@@ -1,12 +1,13 @@
 import { useState, useEffect, FC, useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { FieldProperties, TableLayoutProps } from '@/types'
+import { FieldProperties } from '@/types'
 
 // components
 import { Pagination, DiagramBpmn } from '@/components'
 import TableHeader from './TableHeader'
 import { TableLowcodeContext } from '@/contexts'
 import HeaderRight from './HeaderRight'
+import { TableLayoutProps } from '../TableLowcode.types'
 
 const TableLayout: FC<TableLayoutProps> = ({
   children,
