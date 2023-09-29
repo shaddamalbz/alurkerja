@@ -9,21 +9,10 @@ import { TableLowcodeContext } from '@/contexts'
 import HeaderRight from './HeaderRight'
 import { TableLayoutProps } from '../TableLowcode.types'
 
-const TableLayout: FC<TableLayoutProps> = ({
-  children,
-  tableSpec,
-  pagination,
-  extraButton,
-  showBpmn,
-  hideBpmnButton = false,
-  hideCreateButton = false,
-  hideTable = false,
-}) => {
+const TableLayout: FC<TableLayoutProps> = ({ children, tableSpec, pagination, extraButton, hideTable = false }) => {
   const { setValue } = useForm()
-  const { subHeader, baseUrl, filterBy, setFilterBy, pageConfig, setPageConfig, customHeader } =
+  const { subHeader, baseUrl, filterBy, setFilterBy, pageConfig, setPageConfig, customHeader, customBadgeDiagram } =
     useContext(TableLowcodeContext)
-
-  // const fields = tableSpec?.fields
 
   const [fieldList, setFieldList] = useState<[string, FieldProperties][]>([])
   const [isShowBpmn, setIsShowBpmn] = useState(false)
@@ -53,11 +42,6 @@ const TableLayout: FC<TableLayoutProps> = ({
           fieldList={fieldList}
           extraButton={extraButton}
           onClickBpmn={() => setIsShowBpmn((prev) => !prev)}
-          showBpmn={subHeader ? false : true}
-          showFilter={subHeader ? false : true}
-          showSearch={subHeader ? false : true}
-          hideBpmnButton={hideBpmnButton}
-          hideCreateButton={hideCreateButton}
         />
       )}
 
@@ -68,20 +52,18 @@ const TableLayout: FC<TableLayoutProps> = ({
             <HeaderRight
               fieldList={fieldList}
               tableSpec={tableSpec}
-              showCreate={false}
               onClickBpmn={() => setIsShowBpmn((prev) => !prev)}
-              showBpmn={!hideBpmnButton}
-              showBulkButton={false}
             />
           </div>
         </>
       )}
-      {(showBpmn || isShowBpmn) && (
+      {isShowBpmn && (
         <DiagramBpmn
           url={baseUrl + tableSpec?.path}
           onClickActivity={(id: string) =>
             setFilterBy?.((prev) => (prev ? { ...prev, task_definition_key: id } : { task_definition_key: id }))
           }
+          customBadge={customBadgeDiagram}
         />
       )}
 

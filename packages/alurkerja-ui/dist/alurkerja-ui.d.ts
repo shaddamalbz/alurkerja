@@ -1306,9 +1306,6 @@ declare interface TableLowcodeProps_2 {
     title?: string
     /** base API url (lowcode spec) */
     baseUrl: string
-    /**  table name, will be added in base url for fetching spec & data */
-    tableName?: string
-    module?: string
     specPath?: string
     /**  state for refetching data*/
     renderState?: number

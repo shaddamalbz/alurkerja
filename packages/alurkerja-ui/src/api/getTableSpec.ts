@@ -3,19 +3,7 @@ import { useState, useEffect, useContext } from 'react'
 import { TableSpec } from '@/types'
 import { AuthContext } from '@/contexts'
 
-export const getTableSpec = ({
-  baseUrl,
-  table,
-  module,
-  path,
-  spec,
-}: {
-  baseUrl?: string
-  table?: string
-  module?: string
-  path?: string
-  spec?: TableSpec
-}) => {
+export const getTableSpec = ({ baseUrl, path, spec }: { baseUrl?: string; path?: string; spec?: TableSpec }) => {
   const axiosInstance = useContext(AuthContext)
 
   const [tableSpec, setTableSpec] = useState<TableSpec | undefined>(spec)
@@ -23,22 +11,19 @@ export const getTableSpec = ({
   const [error, setError] = useState()
 
   const fetch = (signal: AbortSignal) => {
-    setLoading(true)
-
-    let url = baseUrl + `/api/${module || 'crud'}/${table}/spec`
-    if (path) {
-      url = baseUrl + path + '/spec'
+    if (baseUrl && path) {
+      setLoading(true)
+      let url = baseUrl + path + '/spec'
+      axiosInstance
+        .get(url, { signal })
+        .then((res: any) => {
+          if (res.status === 200) {
+            setTableSpec(res.data.data)
+          }
+        })
+        .catch((err) => setError(err.response))
+        .finally(() => setLoading(false))
     }
-
-    axiosInstance
-      .get(url, { signal })
-      .then((res: any) => {
-        if (res.status === 200) {
-          setTableSpec(res.data.data)
-        }
-      })
-      .catch((err) => setError(err.response))
-      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
@@ -50,7 +35,7 @@ export const getTableSpec = ({
     return () => {
       abortController.abort()
     }
-  }, [table, baseUrl, path, module, spec])
+  }, [baseUrl, path, spec])
 
   return { tableSpec, loading, error }
 }

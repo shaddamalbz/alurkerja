@@ -22,9 +22,6 @@ export interface TableLowcodeProps {
   title?: string
   /** base API url (lowcode spec) */
   baseUrl: string
-  /**  table name, will be added in base url for fetching spec & data */
-  tableName?: string
-  module?: string
   specPath?: string
   /**  state for refetching data*/
   renderState?: number
@@ -136,6 +133,8 @@ export interface TableLowcodeProps {
   formConfig?: FormConfig
   tableConfig?: TableConfig
   customActionCell?: (data: { [x: string]: any }) => JSX.Element
+  customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
+  customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: () => JSX.Element }) => void
   customButtonBpmn?: ({
     available_task,
     rowValue,
@@ -145,7 +144,7 @@ export interface TableLowcodeProps {
     rowValue: { [x: string]: any }
     usertaskMapping: UserTaskMapping[]
   }) => JSX.Element
-
+  customBadgeDiagram?: (task_id: string) => string
   defaultOrder?: 'asc' | 'desc'
   defaultSortBy?: string
   subHeader?: JSX.Element

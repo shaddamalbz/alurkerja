@@ -4,15 +4,13 @@ import { FieldProperties, HeaderAction, FieldActionProperties, TableSpec } from 
 
 export interface UseFormSpec {
   baseUrl: string
-  tableName?: string
-  module?: string
   path?: string
   spec?: TableSpec
 }
 
 export const useFormSpec = (props: UseFormSpec) => {
-  const { baseUrl, tableName, module, path, spec } = props
-  const { tableSpec, loading } = getTableSpec({ baseUrl, table: tableName, module, path: path, spec })
+  const { baseUrl, path, spec } = props
+  const { tableSpec, loading } = getTableSpec({ baseUrl, path, spec })
 
   const [createFieldList, setCreateFieldList] = useState<FieldProperties[]>([])
   const [editFieldList, setEditFieldList] = useState<FieldProperties[]>([])

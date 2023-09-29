@@ -15,12 +15,11 @@ const TableHeader: FC<TableHeaderProps> = ({
   hideBpmnButton,
   hideCreateButton,
 }) => {
-  const { title, tableName, filterBy, setFilterBy, module } = useContext(TableLowcodeContext)
+  const { title, filterBy, setFilterBy } = useContext(TableLowcodeContext)
   const theme = getTheme()
 
   const ActionProps = {
     fieldList,
-    tableName,
     extraButton,
     module,
     filterBy,
@@ -39,7 +38,7 @@ const TableHeader: FC<TableHeaderProps> = ({
       <div className="py-4 border-b">
         <div className="px-7 flex flex-row items-center justify-between gap-2">
           <h5 className={theme.table_title} data-testid="title">
-            {title || tableName}
+            {title}
           </h5>
           <div className="flex flex-row gap-2">
             {/* extraButton used in HeaderRight */}

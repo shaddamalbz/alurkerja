@@ -90,9 +90,7 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
 const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
   const {
     baseUrl,
-    module,
     specPath,
-    tableName,
     filterBy,
     pageConfig,
     renderState,
@@ -112,7 +110,7 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
   const [sortBy, setSortBy] = useState<string | undefined>(defaultSortBy)
   const [orderBy, setOrderBy] = useState<'asc' | 'desc' | undefined>(defaultOrder)
 
-  const { tableSpec, loading: loadingSpec } = getTableSpec({ baseUrl, module, table: tableName, path: specPath })
+  const { tableSpec, loading: loadingSpec } = getTableSpec({ baseUrl, path: specPath })
 
   const {
     tableData,

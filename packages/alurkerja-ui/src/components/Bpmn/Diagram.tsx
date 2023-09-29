@@ -12,8 +12,13 @@ export interface DiagramBpmnProps {
   url: string
   onClickActivity?: (id: string) => void
   counterMode?: string
+  /**
+   * @param string
+   * {children} akan di replace dengan jumlah data per usertask
+   */
+  customBadge?: (task_id: string) => string
 }
-export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity }) => {
+export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity, customBadge }) => {
   const buttonZoomInRef = useRef<HTMLButtonElement>(null)
   const buttonZoomOutRef = useRef<HTMLButtonElement>(null)
   const buttonZoomResetRef = useRef<HTMLButtonElement>(null)
@@ -98,7 +103,9 @@ export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity }) => {
                     bottom: 28,
                     left: 5,
                   },
-                  html: `<div class="w-10 text-white text-center bg-blue-400 rounded-full cursor-pointer">
+                  html: customBadge
+                    ? customBadge(key).replace('{children}', statistic[key])
+                    : `<div class="w-10 text-white text-center bg-blue-400 rounded-full cursor-pointer">
                           ${statistic[key]}
                         </div>
                         `,

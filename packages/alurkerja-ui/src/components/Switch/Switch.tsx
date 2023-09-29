@@ -1,9 +1,9 @@
 import { useState, useEffect, FC } from 'react'
 
 export interface SwitchProps {
-  options: any[]
+  options: { value: string | number | boolean; label: string }[]
   /** callback to get value */
-  onChange?: (value: boolean | undefined) => void
+  onChange?: (value: boolean | string | number | undefined) => void
   /** props to set defaultvalue */
   defaultValue?: boolean
 }
@@ -13,7 +13,7 @@ export interface SwitchProps {
  * @returns 0 for false, 1 for true
  */
 export const Switch: FC<SwitchProps> = ({ options, onChange, defaultValue = false }) => {
-  const [selected, setSelected] = useState<boolean>()
+  const [selected, setSelected] = useState<boolean | number | string>()
 
   useEffect(() => {
     onChange?.(selected)
