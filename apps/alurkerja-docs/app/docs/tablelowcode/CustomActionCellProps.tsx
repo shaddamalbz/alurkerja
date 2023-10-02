@@ -31,12 +31,8 @@ export const CustomActionCellProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          customCell={({ defaultCell, name, value }) => {
-            if (name === 'nama_aktiviti') {
-              return <div className="bg-yellow-900 rounded p-1 text-white">ini custom {value}</div>
-            }
-
-            return defaultCell
+          customActionCell={(data) => {
+            return <Button variant="filled">{data.id}</Button>
           }}
         />`}
         externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
