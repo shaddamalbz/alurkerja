@@ -465,8 +465,8 @@ declare interface FormLowcodeProps {
     /**  handler cancel  action*/
     onCancel?: () => void;
     /** id for detail / edit form  */
-    id?: number;
-    taskId?: number;
+    id?: number | string;
+    taskId?: number | string;
     /** to disabled form */
     disabled?: boolean;
     textSubmitButton?: string;
