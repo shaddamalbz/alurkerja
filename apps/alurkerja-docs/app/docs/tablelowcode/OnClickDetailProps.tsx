@@ -6,6 +6,7 @@ import { TableLowcode } from 'alurkerja-ui'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import spec from './spec.json'
+import data from './data.json'
 
 export const OnClickDetailProps = () => {
   const router = useRouter()
@@ -43,6 +44,7 @@ export const OnClickDetailProps = () => {
       >
         <TableLowcode
           spec={spec as any}
+          data={data.content}
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
           renderState={renderState}

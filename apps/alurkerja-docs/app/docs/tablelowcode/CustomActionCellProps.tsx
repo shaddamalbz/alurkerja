@@ -2,12 +2,12 @@
 
 import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
-import { TableLowcode } from 'alurkerja-ui'
+import { Button, TableLowcode } from 'alurkerja-ui'
 import React, { useState } from 'react'
 import spec from './spec.json'
 import data from './data.json'
 
-export const CustomButtonFilterProps = () => {
+export const CustomActionCellProps = () => {
   const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
   const [renderState, setRenderState] = useState(0)
   const [search, setSearch] = useState<string>()
@@ -15,8 +15,8 @@ export const CustomButtonFilterProps = () => {
 
   return (
     <SectionLayout
-      title="customButtonFilter()"
-      description="filter nya tidak sesuai dengan kebutuhan user? custom saja pakai props ini"
+      title="customActionCell()"
+      description="props ini digunakan untuk mengcustom aksi atau action cell secara keseluruhan"
     >
       <CodePreview
         name="TableLowcode"
@@ -31,10 +31,16 @@ export const CustomButtonFilterProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          customButtonEdit={(Modal,Button, row) => <div>ini id {row.id}</div>}
+          customCell={({ defaultCell, name, value }) => {
+            if (name === 'nama_aktiviti') {
+              return <div className="bg-yellow-900 rounded p-1 text-white">ini custom {value}</div>
+            }
+
+            return defaultCell
+          }}
         />`}
         externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
-        externalImport={`import { useState } from 'react'`}
+        externalImport="import { useState } from 'react'"
       >
         <TableLowcode
           spec={spec as any}
@@ -49,7 +55,9 @@ export const CustomButtonFilterProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          customButtonFilter={() => <>custom</>}
+          customActionCell={(data) => {
+            return <Button variant="filled">{data.id}</Button>
+          }}
         />
       </CodePreview>
     </SectionLayout>

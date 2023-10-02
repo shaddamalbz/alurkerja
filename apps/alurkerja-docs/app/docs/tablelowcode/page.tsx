@@ -16,6 +16,7 @@ import { CustomHeaderProps } from './CustomHeaderProps'
 import { BulkSection } from './BulkFeatureSection'
 import { ExtraActionButtonProps } from './ExtraActionButtonProps'
 import { CustomButtonFilterProps } from './CustomButtonFilterProps'
+import { CustomActionCellProps } from './CustomActionCellProps'
 
 export default function page() {
   return (
@@ -38,15 +39,16 @@ export default function page() {
       <AllFeatureSection />
       <h2>Props</h2>
       <OnClickCreateProps />
-      <CustomButtonCreateProps />
       <OnClickDetailProps />
-      <CustomButtonDetailProps />
       <OnClickEditProps />
+      <CustomButtonDetailProps />
       <CustomButtonEditProps />
       <CustomCellProps />
       <CustomHeaderProps />
-      <ExtraActionButtonProps />
       <CustomButtonFilterProps />
+      <CustomButtonCreateProps />
+      <CustomActionCellProps />
+      <ExtraActionButtonProps />
     </article>
   )
 }

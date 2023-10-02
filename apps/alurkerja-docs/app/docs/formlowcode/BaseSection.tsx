@@ -16,7 +16,7 @@ export const BaseSection = () => {
         code={`<FormLowcode
           title="Create"
           baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          specPath='/api/crud/takwim'
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -29,7 +29,7 @@ export const BaseSection = () => {
         <FormLowcode
           title="Create"
           baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          specPath="/api/crud/takwim"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}

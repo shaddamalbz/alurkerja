@@ -19,7 +19,7 @@ export const CustomFieldProps = () => {
         code={`<FormLowcode
           title="Create"
           baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          specPath='/api/crud/takwim'
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -37,8 +37,8 @@ export const CustomFieldProps = () => {
       >
         <FormLowcode
           title="Create"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          baseUrl="https://kpm-sys.merapi.javan.id"    
+          specPath='/api/crud/takwim'
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
