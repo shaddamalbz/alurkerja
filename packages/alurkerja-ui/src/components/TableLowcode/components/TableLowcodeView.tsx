@@ -28,9 +28,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     tooltip,
     bordered,
     tableConfig,
-    tableName,
     baseUrl,
-    module,
     setRenderState,
     selectedRow,
     setSelectedRow,
@@ -146,10 +144,8 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
             tableSpec={tableSpec}
             hideTitle
             id={row.id}
-            module={module}
             baseUrl={baseUrl}
             specPath={tableSpec?.path}
-            tableName={tableName}
             formState={formState}
             handleSubmit={handleSubmit}
             control={control}
@@ -389,9 +385,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                             <FormLowcode
                                               id={row.id}
                                               tableSpec={tableSpec}
-                                              module={module}
                                               baseUrl={baseUrl}
-                                              tableName={tableName}
                                               formState={formState}
                                               specPath={tableSpec?.path}
                                               handleSubmit={handleSubmit}

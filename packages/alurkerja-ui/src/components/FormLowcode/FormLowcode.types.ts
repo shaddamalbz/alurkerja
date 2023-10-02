@@ -5,10 +5,6 @@ import { Control, FieldValues, FormState, UseFormHandleSubmit, UseFormSetValue }
 export interface FormLowcodeProps {
   /**  base API url (lowcode spec)*/
   baseUrl: string
-  /**  table name, will be added in base url for fetching spec & data*/
-  tableName?: string
-  /** to customize /crud on endpoint  */
-  module?: string
   specPath?: string
   /**  handleSubmit from  react-hook-form*/
   handleSubmit: UseFormHandleSubmit<FieldValues>

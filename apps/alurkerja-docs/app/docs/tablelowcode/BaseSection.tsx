@@ -13,10 +13,11 @@ export const BaseSection = () => {
         name="TableLowcode"
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
-          tableName='takwim'
+          specPath='/api/crud/takwim'
+
         />`}
       >
-        <TableLowcode spec={spec as any} baseUrl="https://kpm-sys.merapi.javan.id" tableName="takwim" />
+        <TableLowcode spec={spec as any} baseUrl="https://kpm-sys.merapi.javan.id" specPath="/api/crud/takwim" />
       </CodePreview>
     </SectionLayout>
   )

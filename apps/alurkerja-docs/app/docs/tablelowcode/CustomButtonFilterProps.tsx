@@ -3,13 +3,10 @@
 import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
-import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import spec from './spec.json'
 
-export const OnClickDetailProps = () => {
-  const router = useRouter()
-
+export const CustomButtonFilterProps = () => {
   const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
   const [renderState, setRenderState] = useState(0)
   const [search, setSearch] = useState<string>()
@@ -17,8 +14,8 @@ export const OnClickDetailProps = () => {
 
   return (
     <SectionLayout
-      title="onClickDetail()"
-      description="ini contoh apabila ingin mengganti fungsi detail contohnya saya ingin tombol detail ketika di klik pindah halaman"
+      title="customButtonFilter()"
+      description="filter nya tidak sesuai dengan kebutuhan user? custom saja pakai props ini"
     >
       <CodePreview
         name="TableLowcode"
@@ -33,13 +30,10 @@ export const OnClickDetailProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          onClickDetail={(id) => {
-            router.push('/detail/' + id) // next
-            navigate('/detail/' + id) // react
-          }}
+          customButtonEdit={(Modal,Button, row) => <div>ini id {row.id}</div>}
         />`}
-        externalFunction={`const navigate = useNavigate() // react\n\tconst router = useRouter() // next\n\n\tconst [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
-        externalImport={`import { useState } from 'react'\n// react \nimport { useNavigate } from 'react-router-dom'\n// next\nimport { useRouter } from 'next/navigation'`}
+        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
+        externalImport={`import { useState } from 'react'`}
       >
         <TableLowcode
           spec={spec as any}
@@ -53,7 +47,7 @@ export const OnClickDetailProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          onClickDetail={(id) => router.push(`${id}`)}
+          customButtonFilter={() => <>custom</>}
         />
       </CodePreview>
     </SectionLayout>

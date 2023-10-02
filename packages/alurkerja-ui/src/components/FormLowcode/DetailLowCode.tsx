@@ -10,16 +10,15 @@ import { getDetail } from '@/api'
 import DetailField from './DetailField'
 
 const DetailLowcode: FC<IAlurkerjaDetailLowcode> = (props) => {
-  const { baseUrl, tableName, module, specPath, id } = props
+  const { baseUrl, specPath, id } = props
 
   const { editSpec, loading, createFieldList, editFieldList } = useFormSpec({
     baseUrl,
-    tableName,
-    module,
+
     path: specPath,
   })
 
-  const { detail } = getDetail({ baseUrl, tableName, id, path: editSpec?.path })
+  const { detail } = getDetail({ baseUrl, id, path: editSpec?.path })
 
   return (
     <section className="p-4 space-y-6">

@@ -30,7 +30,6 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
     extendQuery,
     extraButton,
     showBpmn,
-    hideBpmnButton,
     hideTable,
   } = props
 
@@ -62,7 +61,6 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
         pagination={pagination}
         extraButton={extraButton}
         showBpmn={showBpmn}
-        hideBpmnButton={hideBpmnButton}
         hideTable={hideTable}
       >
         {!loadingData ? (
@@ -101,7 +99,6 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
     extendQuery,
     extraButton,
     showBpmn,
-    hideBpmnButton,
     hideTable,
     dataPath,
   } = props
@@ -138,7 +135,6 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
           pagination={pagination}
           extraButton={extraButton}
           showBpmn={showBpmn}
-          hideBpmnButton={hideBpmnButton}
           hideTable={hideTable}
         >
           {!loadingData ? (

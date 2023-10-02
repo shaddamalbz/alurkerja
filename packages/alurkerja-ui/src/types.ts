@@ -175,14 +175,10 @@ export interface TableConfig {
 }
 
 export interface IPendingAlurkerjaTableLowcode {
-  /** trying to custom title instead using tableName? use this */
   title?: string
   /** base API url (lowcode spec) */
   baseUrl: string
   setValue: Function
-  /**  table name, will be added in base url for fetching spec & data */
-  tableName: string
-  module?: string
   /**  state for refetching data*/
   renderState?: number
   /**  setter state for refeching data*/
@@ -270,10 +266,6 @@ export interface FormConfig {
 export interface IAlurkerjaDetailLowcode {
   /**  base API url (lowcode spec)*/
   baseUrl: string
-  /**  table name, will be added in base url for fetching spec & data*/
-  tableName?: string
-  /** to customize /crud on endpoint  */
-  module?: string
   specPath?: string
   id: number
 }
@@ -303,13 +295,9 @@ export interface MenuConfig {
 }
 
 export interface PendingTableLayoutProps {
-  /** trying to custom title instead using tableName? use this */
   title?: string
   /** base API url (lowcode spec) */
   baseUrl: string
-  /**  table name, will be added in base url for fetching spec & data */
-  tableName: string
-  module?: string
   /**  setter state for refeching data*/
   setRenderState?: Dispatch<SetStateAction<number>>
   /**  state to store filter data*/

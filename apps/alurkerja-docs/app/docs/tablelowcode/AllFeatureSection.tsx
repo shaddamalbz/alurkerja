@@ -22,7 +22,7 @@ export const AllFeatureSection = () => {
         name="TableLowcode"
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
-          tableName='takwim' 
+          specPath='/api/crud/takwim'
           renderState={renderState}
           setRenderState={setRenderState}
           pageConfig={pageConfig}
@@ -35,13 +35,13 @@ export const AllFeatureSection = () => {
           selectedRow={selected}
           setSelectedRow={setSelected}
         />`}
-        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n\tselectedRow={selected}\n\tsetSelectedRow={setSelected}\n`}
+        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n\tconst [selected, setSelected] = useState<number[]>([])\n`}
         externalImport="import { useState } from 'react'"
       >
         <TableLowcode
           spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          specPath="/api/crud/takwim"
           renderState={renderState}
           setRenderState={setRenderState}
           pageConfig={pageConfig}

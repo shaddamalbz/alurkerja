@@ -18,7 +18,8 @@ export const PaginationSection = () => {
         name="TableLowcode"
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
-          tableName='takwim'
+          specPath='/api/crud/takwim'
+
           pageConfig={pageConfig}
           setPageConfig={setPageConfig}
         />`}
@@ -28,7 +29,7 @@ export const PaginationSection = () => {
         <TableLowcode
           spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          specPath="/api/crud/takwim"
           pageConfig={pageConfig}
           setPageConfig={setPageConfig}
         />

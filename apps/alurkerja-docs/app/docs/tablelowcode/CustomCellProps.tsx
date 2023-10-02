@@ -21,7 +21,7 @@ export const CustomCellProps = () => {
         name="TableLowcode"
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
-          tableName='takwim' 
+          specPath='/api/crud/takwim'
           renderState={renderState}
           setRenderState={setRenderState}
           pageConfig={pageConfig}
@@ -44,7 +44,7 @@ export const CustomCellProps = () => {
         <TableLowcode
           spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          specPath="/api/crud/takwim"
           renderState={renderState}
           setRenderState={setRenderState}
           pageConfig={pageConfig}

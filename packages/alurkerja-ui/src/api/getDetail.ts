@@ -4,13 +4,12 @@ import { AuthContext } from '@/contexts'
 
 export interface GetDetail {
   baseUrl: string
-  tableName?: string
   path?: string
   renderState?: number
   id?: number | string
 }
 
-export const getDetail = ({ baseUrl, tableName, path, renderState, id }: GetDetail) => {
+export const getDetail = ({ baseUrl, path, renderState, id }: GetDetail) => {
   const axiosInstance = useContext(AuthContext)
 
   const [detail, setDetail] = useState<{ [x: string]: any }>()
@@ -34,7 +33,7 @@ export const getDetail = ({ baseUrl, tableName, path, renderState, id }: GetDeta
 
   useEffect(() => {
     fetch()
-  }, [id, tableName, baseUrl, renderState, path])
+  }, [id, baseUrl, renderState, path])
 
   return { loading, detail }
 }

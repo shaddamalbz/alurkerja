@@ -10,11 +10,12 @@ import { CustomButtonCreateProps } from './CustomButtonCreate'
 import { OnClickDetailProps } from './OnClickDetailProps'
 import { CustomButtonDetailProps } from './CustomButtonDetail'
 import { OnClickEditProps } from './OnClickEditProps'
-import { CustomButtonEditProps } from './CustomButtonEdit'
+import { CustomButtonEditProps } from './CustomButtonEditProps'
 import { CustomCellProps } from './CustomCellProps'
 import { CustomHeaderProps } from './CustomHeaderProps'
 import { BulkSection } from './BulkFeatureSection'
 import { ExtraActionButtonProps } from './ExtraActionButtonProps'
+import { CustomButtonFilterProps } from './CustomButtonFilterProps'
 
 export default function page() {
   return (
@@ -45,6 +46,7 @@ export default function page() {
       <CustomCellProps />
       <CustomHeaderProps />
       <ExtraActionButtonProps />
+      <CustomButtonFilterProps />
     </article>
   )
 }

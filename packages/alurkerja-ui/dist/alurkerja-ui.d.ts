@@ -142,6 +142,11 @@ export declare interface DiagramBpmnProps {
     url: string;
     onClickActivity?: (id: string) => void;
     counterMode?: string;
+    /**
+     * @param string
+     * {children} akan di replace dengan jumlah data per usertask
+     */
+    customBadge?: (task_id: string) => string;
 }
 
 export declare const DirectUpload: FC<DirectUploadProps>;
@@ -436,10 +441,6 @@ export declare interface FormLowcodeLiteProps {
 declare interface FormLowcodeProps {
     /**  base API url (lowcode spec)*/
     baseUrl: string;
-    /**  table name, will be added in base url for fetching spec & data*/
-    tableName?: string;
-    /** to customize /crud on endpoint  */
-    module?: string;
     specPath?: string;
     /**  handleSubmit from  react-hook-form*/
     handleSubmit: UseFormHandleSubmit<FieldValues>;
@@ -567,10 +568,6 @@ export declare interface HeaderProps {
 export declare interface IAlurkerjaDetailLowcode {
     /**  base API url (lowcode spec)*/
     baseUrl: string;
-    /**  table name, will be added in base url for fetching spec & data*/
-    tableName?: string;
-    /** to customize /crud on endpoint  */
-    module?: string;
     specPath?: string;
     id: number;
 }
@@ -632,14 +629,10 @@ export declare interface InputYearProps {
 }
 
 export declare interface IPendingAlurkerjaTableLowcode {
-    /** trying to custom title instead using tableName? use this */
     title?: string;
     /** base API url (lowcode spec) */
     baseUrl: string;
     setValue: Function;
-    /**  table name, will be added in base url for fetching spec & data */
-    tableName: string;
-    module?: string;
     /**  state for refetching data*/
     renderState?: number;
     /**  setter state for refeching data*/
@@ -832,13 +825,9 @@ export declare interface PaginationProps {
 }
 
 export declare interface PendingTableLayoutProps {
-    /** trying to custom title instead using tableName? use this */
     title?: string;
     /** base API url (lowcode spec) */
     baseUrl: string;
-    /**  table name, will be added in base url for fetching spec & data */
-    tableName: string;
-    module?: string;
     /**  setter state for refeching data*/
     setRenderState?: Dispatch<SetStateAction<number>>;
     /**  state to store filter data*/
@@ -1063,9 +1052,12 @@ export declare interface StatusIconProps {
 export declare const Switch: FC<SwitchProps>;
 
 export declare interface SwitchProps {
-    options: any[];
+    options: {
+        value: string | number | boolean;
+        label: string;
+    }[];
     /** callback to get value */
-    onChange?: (value: boolean | undefined) => void;
+    onChange?: (value: boolean | string | number | undefined) => void;
     /** props to set defaultvalue */
     defaultValue?: boolean;
 }
@@ -1124,13 +1116,9 @@ declare interface TableLowcodeProps {
      * @param string eg '/api/crud/custom-path'
      */
     dataPath?: string;
-    /** trying to custom title instead using tableName? use this */
     title?: string;
     /** base API url (lowcode spec) */
     baseUrl: string;
-    /**  table name, will be added in base url for fetching spec & data */
-    tableName?: string;
-    module?: string;
     specPath?: string;
     /**  state for refetching data*/
     renderState?: number;
@@ -1237,6 +1225,12 @@ declare interface TableLowcodeProps {
     customActionCell?: (data: {
         [x: string]: any;
     }) => JSX.Element;
+    customButtonDiagram?: ({ ButtonDiagram }: {
+        ButtonDiagram: () => JSX.Element;
+    }) => void;
+    customButtonFilter?: ({ ButtonFilter }: {
+        ButtonFilter: () => JSX.Element;
+    }) => void;
     customButtonBpmn?: ({ available_task, rowValue, usertaskMapping, }: {
         available_task: any;
         rowValue: {
@@ -1244,6 +1238,7 @@ declare interface TableLowcodeProps {
         };
         usertaskMapping: UserTaskMapping_2[];
     }) => JSX.Element;
+    customBadgeDiagram?: (task_id: string) => string;
     defaultOrder?: 'asc' | 'desc';
     defaultSortBy?: string;
     subHeader?: JSX.Element;
@@ -1302,7 +1297,7 @@ declare interface TableLowcodeProps_2 {
      * @param string eg '/api/crud/custom-path'
      */
     dataPath?: string
-    /** trying to custom title instead using tableName? use this */
+
     title?: string
     /** base API url (lowcode spec) */
     baseUrl: string
@@ -1417,6 +1412,8 @@ declare interface TableLowcodeProps_2 {
     formConfig?: FormConfig_2
     tableConfig?: TableConfig_2
     customActionCell?: (data: { [x: string]: any }) => JSX.Element
+    customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
+    customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: () => JSX.Element }) => void
     customButtonBpmn?: ({
         available_task,
         rowValue,
@@ -1426,7 +1423,7 @@ declare interface TableLowcodeProps_2 {
         rowValue: { [x: string]: any }
         usertaskMapping: UserTaskMapping_2[]
     }) => JSX.Element
-
+    customBadgeDiagram?: (task_id: string) => string
     defaultOrder?: 'asc' | 'desc'
     defaultSortBy?: string
     subHeader?: JSX.Element

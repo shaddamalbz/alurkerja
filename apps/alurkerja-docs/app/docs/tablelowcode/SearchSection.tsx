@@ -18,7 +18,7 @@ export const SearchSection = () => {
         name="TableLowcode"
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
-          tableName='takwim' 
+          specPath='/api/crud/takwim'
           search={search}
           setSearch={setSearch}
         />`}
@@ -28,7 +28,7 @@ export const SearchSection = () => {
         <TableLowcode
           spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          specPath="/api/crud/takwim"
           search={search}
           setSearch={setSearch}
         />

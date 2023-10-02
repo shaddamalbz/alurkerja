@@ -18,7 +18,7 @@ export const FilterSection = () => {
         name="TableLowcode"
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
-          tableName='takwim' 
+          specPath='/api/crud/takwim'
           filterBy={filterBy}
           setFilterBy={setFilterBy}
         />`}
@@ -28,7 +28,7 @@ export const FilterSection = () => {
         <TableLowcode
           spec={spec as any}
           baseUrl="https://kpm-sys.merapi.javan.id"
-          tableName="takwim"
+          specPath="/api/crud/takwim"
           filterBy={filterBy}
           setFilterBy={setFilterBy}
         />

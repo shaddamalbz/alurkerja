@@ -18,7 +18,7 @@ export interface TableLowcodeProps {
    * @param string eg '/api/crud/custom-path'
    */
   dataPath?: string
-  /** trying to custom title instead using tableName? use this */
+
   title?: string
   /** base API url (lowcode spec) */
   baseUrl: string
@@ -178,9 +178,6 @@ export interface TableLowcodeProps {
   /** If you want show bpmn manual */
   showBpmn?: boolean
 
-  /** If you want hide bpmn button but still bpmn */
-  hideBpmnButton?: boolean
-
   hideActionColumn?: boolean
 
   /** If you want hide table */
@@ -223,7 +220,7 @@ export interface TableLayoutProps {
   children: React.ReactNode
   tableSpec: TableSpec | undefined
   showBpmn?: boolean
-  hideBpmnButton?: boolean
+
   hideCreateButton?: boolean
   hideTable?: boolean
 }
@@ -237,6 +234,5 @@ export interface TableHeaderProps {
   showFilter?: boolean
   showSearch?: boolean
   showBpmn?: boolean
-  hideBpmnButton?: boolean
   hideCreateButton?: boolean
 }

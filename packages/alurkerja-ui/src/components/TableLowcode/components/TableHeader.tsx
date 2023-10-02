@@ -12,7 +12,6 @@ const TableHeader: FC<TableHeaderProps> = ({
   onClickBpmn,
   showFilter,
   showSearch,
-  hideBpmnButton,
   hideCreateButton,
 }) => {
   const { title, filterBy, setFilterBy } = useContext(TableLowcodeContext)
@@ -21,14 +20,12 @@ const TableHeader: FC<TableHeaderProps> = ({
   const ActionProps = {
     fieldList,
     extraButton,
-    module,
     filterBy,
     setFilterBy,
     tableSpec,
     title,
     onClickBpmn,
     showCreate: !hideCreateButton,
-    showBpmn: !hideBpmnButton,
     showFilter,
     showSearch,
   }

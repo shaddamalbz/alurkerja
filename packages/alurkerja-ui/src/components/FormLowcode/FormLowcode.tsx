@@ -16,8 +16,6 @@ import { FormLowcodeProps } from './FormLowcode.types'
 export const FormLowcode: FC<FormLowcodeProps> = (props) => {
   const {
     baseUrl,
-    tableName,
-    module,
     handleSubmit,
     onSubmit,
     control,
@@ -50,13 +48,11 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
 
   const { createSpec, editSpec, loading, createFieldList, editFieldList, detailFieldList } = useFormSpec({
     baseUrl,
-    tableName,
-    module,
     path: specPath,
     spec: tableSpec,
   })
 
-  const { detail } = getDetail({ baseUrl, tableName, id, path: editSpec?.path })
+  const { detail } = getDetail({ baseUrl, id, path: editSpec?.path })
 
   const [loadingSubmit, setLoadingSubmit] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
