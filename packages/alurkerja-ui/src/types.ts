@@ -399,3 +399,12 @@ export interface BaseInputProps {
   withoutLabel?: boolean
   rules?: RegisterOptions
 }
+
+export interface Lang {
+  validation: {
+    required: string
+    pattern: string
+    maxLength: string
+    max: string
+  }
+}
