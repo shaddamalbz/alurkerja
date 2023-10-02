@@ -19,7 +19,6 @@ export const PaginationSection = () => {
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
           specPath='/api/crud/takwim'
-
           pageConfig={pageConfig}
           setPageConfig={setPageConfig}
         />`}

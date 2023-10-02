@@ -15,7 +15,6 @@ export const BaseSection = () => {
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
           specPath='/api/crud/takwim'
-
         />`}
       >
         <TableLowcode
