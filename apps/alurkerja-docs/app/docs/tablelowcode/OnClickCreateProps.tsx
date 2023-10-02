@@ -35,8 +35,9 @@ export const OnClickCreateProps = () => {
           search={search}
           setSearch={setSearch}
           onCLickCreate={() => {
-            router.push('/create') // next
-            navigate('/create') // react
+            alert('create clicked')
+            // contoh next router.push('/create') 
+            // contoh react navigate('/create')
           }}
         />`}
         externalFunction={`const navigate = useNavigate() // react\n\tconst router = useRouter() // next\n\n\tconst [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
@@ -55,7 +56,7 @@ export const OnClickCreateProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          onClickCreate={() => router.push('/create')}
+          onClickCreate={() => alert('create clicked')}
         />
       </CodePreview>
     </SectionLayout>

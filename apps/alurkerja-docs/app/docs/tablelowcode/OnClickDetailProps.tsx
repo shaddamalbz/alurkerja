@@ -35,8 +35,9 @@ export const OnClickDetailProps = () => {
           search={search}
           setSearch={setSearch}
           onClickDetail={(id) => {
-            router.push('/detail/' + id) // next
-            navigate('/detail/' + id) // react
+            alert('click detail')
+            // contoh next router.push('/detail/' + id) 
+            // contoh react navigate('/detail/' + id) // react
           }}
         />`}
         externalFunction={`const navigate = useNavigate() // react\n\tconst router = useRouter() // next\n\n\tconst [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
@@ -55,7 +56,7 @@ export const OnClickDetailProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          onClickDetail={(id) => router.push(`${id}`)}
+          onClickDetail={(id) => alert('click detail')}
         />
       </CodePreview>
     </SectionLayout>
