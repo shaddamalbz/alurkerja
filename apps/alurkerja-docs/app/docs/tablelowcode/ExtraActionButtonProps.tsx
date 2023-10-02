@@ -31,6 +31,7 @@ export const ExtraActionButtonProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
+          extraActionButton={() => <>Export PDF</>}
         />`}
         externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
         externalImport={`import { useState } from 'react`}
