@@ -1262,8 +1262,6 @@ declare interface TableLowcodeProps {
     extraButton?: () => JSX.Element | null;
     /** If you want show bpmn manual */
     showBpmn?: boolean;
-    /** If you want hide bpmn button but still bpmn */
-    hideBpmnButton?: boolean;
     hideActionColumn?: boolean;
     /** If you want hide table */
     hideTable?: boolean;
@@ -1456,9 +1454,6 @@ declare interface TableLowcodeProps_2 {
 
     /** If you want show bpmn manual */
     showBpmn?: boolean
-
-    /** If you want hide bpmn button but still bpmn */
-    hideBpmnButton?: boolean
 
     hideActionColumn?: boolean
 
