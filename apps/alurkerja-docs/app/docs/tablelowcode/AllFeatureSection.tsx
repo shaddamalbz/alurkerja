@@ -41,7 +41,6 @@ export const AllFeatureSection = () => {
       >
         <TableLowcode
           spec={spec as any}
-          data={data.content}
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
           renderState={renderState}
