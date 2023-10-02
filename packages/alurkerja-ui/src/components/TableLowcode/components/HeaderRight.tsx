@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState, Fragment, useContext } from 'react'
+import { Dispatch, FC, SetStateAction, useState, Fragment, useContext, useCallback, memo } from 'react'
 import { FaSearch, FaPlus } from 'react-icons/fa'
 import { BiSelectMultiple } from 'react-icons/bi'
 import { RxCross2 } from 'react-icons/rx'
@@ -20,179 +20,195 @@ interface HeaderRightProps {
   showBpmn?: boolean
 }
 
-const HeaderRight: FC<HeaderRightProps> = ({ tableSpec, extraButton, fieldList, onClickBpmn, showSearch = true }) => {
-  const { handleSubmit, setValue, formState, control } = useForm()
-  const HookFormFilter = useForm()
-  const {
-    setSearch,
-    onClickCreate,
-    baseUrl,
-    customField,
-    customCreateField,
-    setRenderState,
-    message,
-    textSubmitButton,
-    customFilterField,
-    formConfig,
-    tableConfig,
-    selectedRow,
-    onClickBulk,
-    setPageConfig,
-    customButtonCreate,
-    customButtonBulk,
-    customButtonDiagram,
-    customButtonFilter,
-    data,
-    readonly,
-    tooltip,
-    setFilterBy,
-  } = useContext(TableLowcodeContext)
+const HeaderRight: FC<HeaderRightProps> = memo(
+  ({ tableSpec, extraButton, fieldList, onClickBpmn, showSearch = true }) => {
+    const { handleSubmit, setValue, formState, control } = useForm()
+    const HookFormFilter = useForm()
+    const {
+      setSearch,
+      onClickCreate,
+      baseUrl,
+      customField,
+      customCreateField,
+      setRenderState,
+      message,
+      textSubmitButton,
+      customFilterField,
+      formConfig,
+      tableConfig,
+      selectedRow,
+      onClickBulk,
+      setPageConfig,
+      customButtonCreate,
+      customButtonBulk,
+      customButtonDiagram,
+      customButtonFilter,
+      data,
+      readonly,
+      tooltip,
+      setFilterBy,
+    } = useContext(TableLowcodeContext)
 
-  const [tempSearch, setTempSearch] = useState<string>('')
+    const [tempSearch, setTempSearch] = useState<string>('')
 
-  const FormFilter = ({ onClose }: { onClose: () => void }) => {
-    const handleFilter = (data: FieldValues) => {
-      setFilterBy?.(data)
-      setPageConfig?.((prev) => ({ ...prev, page: 0 }))
-      onClose()
-    }
-    return (
-      <div className="space-y-4 p-4">
-        {fieldList.map((field: [string, FieldProperties], idx: number) => {
-          const [key, spec] = field
-
-          if (spec.filterable) {
-            return (
-              <div key={idx}>
-                <label htmlFor={key}>{spec.label}</label>
-                {customFilterField ? (
-                  customFilterField({
-                    field,
-                    setValue,
-                    defaultField: (
-                      <InputTypes
-                        baseUrl={baseUrl}
-                        fieldSpec={spec}
-                        name={spec.name}
-                        setValue={HookFormFilter.setValue}
-                        defaultValue={HookFormFilter.watch(key)}
-                      />
-                    ),
-                  })
-                ) : (
-                  <InputTypes
-                    baseUrl={baseUrl}
-                    fieldSpec={spec}
-                    name={spec.name}
-                    setValue={HookFormFilter.setValue}
-                    defaultValue={HookFormFilter.watch(key)}
-                  />
-                )}
-              </div>
-            )
-          }
-        })}
-        <div className="w-full flex gap-4 justify-end">
-          <Button
-            size="small"
-            variant="outlined"
-            onClick={() => {
-              setFilterBy?.(undefined)
-              HookFormFilter.reset()
-              onClose()
-            }}
-          >
-            Clear Filter
-          </Button>
-          <Button size="small" onClick={HookFormFilter.handleSubmit((data) => handleFilter(data))}>
-            Filter
-          </Button>
-        </div>
-      </div>
-    )
-  }
-
-  const ButtonDiagram = () => (
-    <button
-      id="button-diagram"
-      className={`${tableConfig?.button_bpmn_color || 'bg-light-blue-alurkerja'} p-2 rounded text-white`}
-      onClick={() => onClickBpmn?.()}
-    >
-      <BpmnIcon />
-    </button>
-  )
-
-  const ButtonFilter = () => (
-    <Modal
-      title="Filter"
-      triggerButton={
-        <button id="button-filter" className="bg-light-blue-alurkerja text-main-blue-alurkerja p-2 rounded">
-          <FilterIcon />
-        </button>
+    const FormFilter = useCallback(({ onClose }: { onClose: () => void }) => {
+      const handleFilter = (data: FieldValues) => {
+        setFilterBy?.(data)
+        setPageConfig?.((prev) => ({ ...prev, page: 0 }))
+        onClose()
       }
-    >
-      {({ closeModal }) => <FormFilter onClose={() => closeModal()} />}
-    </Modal>
-  )
+      return (
+        <div className="space-y-4 p-4">
+          {fieldList.map((field: [string, FieldProperties], idx: number) => {
+            const [key, spec] = field
 
-  return (
-    <>
-      {setSearch && showSearch && (
-        <div className="hidden md:flex flex-row rounded border as-2 border-gray-100 shadow-sm w-full lg:w-[300px] justify-self-end">
-          <input
-            className="p-1 px-2 w-full border-0 rounded-l bg-gray-100 focus:ring-0"
-            type="text"
-            id="search"
-            name="search"
-            value={tempSearch}
-            onChange={(e) => setTempSearch(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                setPageConfig?.((prev) => ({ ...prev, page: 0 }))
-                setSearch?.(tempSearch)
-              }
-            }}
-          />
-          {tempSearch !== '' && (
-            <button
-              className="flex items-center px-2  p-2 bg-gray-100"
+            if (spec.filterable) {
+              return (
+                <div key={idx}>
+                  <label htmlFor={key}>{spec.label}</label>
+                  {customFilterField ? (
+                    customFilterField({
+                      field,
+                      setValue,
+                      defaultField: (
+                        <InputTypes
+                          baseUrl={baseUrl}
+                          fieldSpec={spec}
+                          name={spec.name}
+                          setValue={HookFormFilter.setValue}
+                          defaultValue={HookFormFilter.watch(key)}
+                        />
+                      ),
+                    })
+                  ) : (
+                    <InputTypes
+                      baseUrl={baseUrl}
+                      fieldSpec={spec}
+                      name={spec.name}
+                      setValue={HookFormFilter.setValue}
+                      defaultValue={HookFormFilter.watch(key)}
+                    />
+                  )}
+                </div>
+              )
+            }
+          })}
+          <div className="w-full flex gap-4 justify-end">
+            <Button
+              size="small"
+              variant="outlined"
               onClick={() => {
-                setTempSearch('')
-                setSearch?.('')
+                setFilterBy?.(undefined)
+                HookFormFilter.reset()
+                onClose()
               }}
             >
-              <RxCross2 color="#9CA3AF" />
-            </button>
-          )}
-          <button className="flex items-center px-2  p-2 bg-gray-100" onClick={() => setSearch?.(tempSearch)}>
-            <FaSearch color="#9CA3AF" />
-          </button>
+              Clear Filter
+            </Button>
+            <Button size="small" onClick={() => HookFormFilter.handleSubmit((data) => handleFilter(data))()}>
+              Filter
+            </Button>
+          </div>
         </div>
-      )}
+      )
+    }, [])
 
-      {customButtonFilter ? (
-        customButtonFilter({ ButtonFilter: ButtonFilter })
-      ) : (
-        <>
-          <ButtonFilter />
-        </>
-      )}
+    const ButtonDiagram = useCallback(() => {
+      return (
+        <button
+          id="button-diagram"
+          className={`${tableConfig?.button_bpmn_color || 'bg-light-blue-alurkerja'} p-2 rounded text-white`}
+          onClick={() => onClickBpmn?.()}
+        >
+          <BpmnIcon />
+        </button>
+      )
+    }, [])
 
-      {customButtonDiagram ? (
-        customButtonDiagram({ ButtonDiagram: ButtonDiagram })
-      ) : (
-        <>{tableSpec?.is_bpmn && <ButtonDiagram />}</>
-      )}
+    const ButtonFilter = useCallback(() => {
+      return (
+        <Modal
+          title="Filter"
+          triggerButton={
+            <button id="button-filter" className="bg-light-blue-alurkerja text-main-blue-alurkerja p-2 rounded">
+              <FilterIcon />
+            </button>
+          }
+        >
+          {({ closeModal }) => <FormFilter onClose={() => closeModal()} />}
+        </Modal>
+      )
+    }, [])
 
-      {!readonly && (
-        <>
-          {tableSpec?.header_action.map((actionSpec: HeaderAction, idx: number) => {
-            const ButtonWithModal = (
-              <Modal
-                title={actionSpec.action_label}
-                triggerButton={
-                  tooltip?.button_create ? (
-                    <Tooltip content="tes Tooltip">
+    return (
+      <>
+        {setSearch && showSearch && (
+          <div className="hidden md:flex flex-row rounded border as-2 border-gray-100 shadow-sm w-full lg:w-[300px] justify-self-end">
+            <input
+              className="p-1 px-2 w-full border-0 rounded-l bg-gray-100 focus:ring-0"
+              type="text"
+              id="search"
+              name="search"
+              value={tempSearch}
+              onChange={(e) => setTempSearch(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setPageConfig?.((prev) => ({ ...prev, page: 0 }))
+                  setSearch?.(tempSearch)
+                }
+              }}
+            />
+            {tempSearch !== '' && (
+              <button
+                className="flex items-center px-2  p-2 bg-gray-100"
+                onClick={() => {
+                  setTempSearch('')
+                  setSearch?.('')
+                }}
+              >
+                <RxCross2 color="#9CA3AF" />
+              </button>
+            )}
+            <button className="flex items-center px-2  p-2 bg-gray-100" onClick={() => setSearch?.(tempSearch)}>
+              <FaSearch color="#9CA3AF" />
+            </button>
+          </div>
+        )}
+
+        {customButtonFilter ? (
+          customButtonFilter({ ButtonFilter: ButtonFilter })
+        ) : (
+          <>{setFilterBy && <ButtonFilter />}</>
+        )}
+
+        {customButtonDiagram ? (
+          customButtonDiagram({ ButtonDiagram: ButtonDiagram })
+        ) : (
+          <>{tableSpec?.is_bpmn && <ButtonDiagram />}</>
+        )}
+
+        {!readonly && (
+          <>
+            {tableSpec?.header_action.map((actionSpec: HeaderAction, idx: number) => {
+              const ButtonWithModal = (
+                <Modal
+                  title={actionSpec.action_label}
+                  triggerButton={
+                    tooltip?.button_create ? (
+                      <Tooltip content="tes Tooltip">
+                        <button
+                          type="button"
+                          id={`button-create-${idx}`}
+                          className={`${
+                            tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
+                          }  flex items-center rounded py-2 px-4 text-sm gap-2`}
+                          data-testid={`button-create-${idx}`}
+                        >
+                          <FaPlus />
+                          <span>{actionSpec.action_label}</span>
+                        </button>
+                      </Tooltip>
+                    ) : (
                       <button
                         type="button"
                         id={`button-create-${idx}`}
@@ -204,49 +220,50 @@ const HeaderRight: FC<HeaderRightProps> = ({ tableSpec, extraButton, fieldList, 
                         <FaPlus />
                         <span>{actionSpec.action_label}</span>
                       </button>
-                    </Tooltip>
-                  ) : (
-                    <button
-                      type="button"
-                      id={`button-create-${idx}`}
-                      className={`${
-                        tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
-                      }  flex items-center rounded py-2 px-4 text-sm gap-2`}
-                      data-testid={`button-create-${idx}`}
-                    >
-                      <FaPlus />
-                      <span>{actionSpec.action_label}</span>
-                    </button>
-                  )
-                }
-              >
-                {({ closeModal }) => (
-                  <FormLowcode
-                    tableSpec={tableSpec}
-                    baseUrl={baseUrl}
-                    formState={formState}
-                    specPath={tableSpec?.path}
-                    handleSubmit={handleSubmit}
-                    control={control}
-                    setValue={setValue}
-                    onSuccess={() => {
-                      closeModal()
-                      setRenderState?.((prev) => prev + 1)
-                    }}
-                    onCancel={() => closeModal()}
-                    customField={customCreateField ?? customField}
-                    textSubmitButton={textSubmitButton}
-                    hideTitle
-                    message={message}
-                    hideSecondary={formConfig?.hideButtonCancel}
-                    previewBeforeSubmit={tableConfig?.preview_before_submit}
-                  />
-                )}
-              </Modal>
-            )
+                    )
+                  }
+                >
+                  {({ closeModal }) => (
+                    <FormLowcode
+                      tableSpec={tableSpec}
+                      baseUrl={baseUrl}
+                      formState={formState}
+                      specPath={tableSpec?.path}
+                      handleSubmit={handleSubmit}
+                      control={control}
+                      setValue={setValue}
+                      onSuccess={() => {
+                        closeModal()
+                        setRenderState?.((prev) => prev + 1)
+                      }}
+                      onCancel={() => closeModal()}
+                      customField={customCreateField ?? customField}
+                      textSubmitButton={textSubmitButton}
+                      hideTitle
+                      message={message}
+                      hideSecondary={formConfig?.hideButtonCancel}
+                      previewBeforeSubmit={tableConfig?.preview_before_submit}
+                    />
+                  )}
+                </Modal>
+              )
 
-            const ButtonWithAction = tooltip?.button_create ? (
-              <Tooltip content={tooltip.button_create}>
+              const ButtonWithAction = tooltip?.button_create ? (
+                <Tooltip content={tooltip.button_create}>
+                  <button
+                    type="button"
+                    id={`button-create-${idx}`}
+                    className={`${
+                      tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
+                    }  flex items-center rounded py-2 px-4 text-sm gap-2`}
+                    data-testid={`button-create-${idx}`}
+                    onClick={onClickCreate}
+                  >
+                    <FaPlus />
+                    <span>{actionSpec.action_label}</span>
+                  </button>
+                </Tooltip>
+              ) : (
                 <button
                   type="button"
                   id={`button-create-${idx}`}
@@ -259,58 +276,45 @@ const HeaderRight: FC<HeaderRightProps> = ({ tableSpec, extraButton, fieldList, 
                   <FaPlus />
                   <span>{actionSpec.action_label}</span>
                 </button>
-              </Tooltip>
-            ) : (
-              <button
-                type="button"
-                id={`button-create-${idx}`}
-                className={`${
-                  tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
-                }  flex items-center rounded py-2 px-4 text-sm gap-2`}
-                data-testid={`button-create-${idx}`}
-                onClick={onClickCreate}
-              >
-                <FaPlus />
-                <span>{actionSpec.action_label}</span>
-              </button>
-            )
+              )
 
-            return (
-              <Fragment key={idx}>
-                {tableSpec.can_create && actionSpec.label === 'Tambah' && (
-                  <>
-                    {customButtonCreate
-                      ? customButtonCreate(ButtonWithModal, ButtonWithAction, data)
-                      : !onClickCreate
-                      ? ButtonWithModal
-                      : ButtonWithAction}
-                  </>
-                )}
-              </Fragment>
-            )
-          })}
-        </>
-      )}
+              return (
+                <Fragment key={idx}>
+                  {tableSpec.can_create && actionSpec.label === 'Tambah' && (
+                    <>
+                      {customButtonCreate
+                        ? customButtonCreate(ButtonWithModal, ButtonWithAction, data)
+                        : !onClickCreate
+                        ? ButtonWithModal
+                        : ButtonWithAction}
+                    </>
+                  )}
+                </Fragment>
+              )
+            })}
+          </>
+        )}
 
-      {customButtonBulk ? (
-        customButtonBulk(() => (
-          <button className="p-2 bg-[#F1FAFF] rounded text-[#0095E8]" onClick={() => onClickBulk?.()}>
-            <BiSelectMultiple />
-          </button>
-        ))
-      ) : (
-        <>
-          {selectedRow && selectedRow.length > 0 && (
+        {customButtonBulk ? (
+          customButtonBulk(() => (
             <button className="p-2 bg-[#F1FAFF] rounded text-[#0095E8]" onClick={() => onClickBulk?.()}>
               <BiSelectMultiple />
             </button>
-          )}
-        </>
-      )}
+          ))
+        ) : (
+          <>
+            {selectedRow && selectedRow.length > 0 && (
+              <button className="p-2 bg-[#F1FAFF] rounded text-[#0095E8]" onClick={() => onClickBulk?.()}>
+                <BiSelectMultiple />
+              </button>
+            )}
+          </>
+        )}
 
-      {extraButton && extraButton()}
-    </>
-  )
-}
+        {extraButton && extraButton()}
+      </>
+    )
+  }
+)
 
 export default HeaderRight
