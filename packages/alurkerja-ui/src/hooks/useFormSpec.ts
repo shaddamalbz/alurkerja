@@ -10,7 +10,6 @@ export interface UseFormSpec {
 
 export const useFormSpec = (props: UseFormSpec) => {
   const { baseUrl, path, spec } = props
-  console.log(spec)
   const { tableSpec, loading } = getTableSpec({ baseUrl, path, spec })
 
   const [createFieldList, setCreateFieldList] = useState<FieldProperties[]>([])
