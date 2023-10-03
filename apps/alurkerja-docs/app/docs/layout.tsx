@@ -6,12 +6,9 @@ import { ChevronDown, ChevronUp, Menu } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import prism from 'prismjs'
 import _ from 'lodash'
-//@ts-ignore
-import { DocSearch } from '@docsearch/react'
 
 import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-tsx'
-import '@docsearch/css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -45,7 +42,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Link>
         </div>
         <div className="hidden items-center gap-1 lg:flex">
-          <DocSearch appId="DZW6GOAFA6" indexName="alurkerja" apiKey="7a8ea7900f3252261e75018b818fc108" />
           <Link
             className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-main-blue-alurkerja"
             href="/docs"
