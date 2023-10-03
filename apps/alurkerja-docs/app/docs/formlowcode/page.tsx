@@ -6,6 +6,7 @@ import { Checkbox, Input, InputDate, PendingUpload, Radio, Switch, Select } from
 import { CustomFieldProps } from './CustomFieldProps'
 import { ColumnSpanColumnNumberProps } from './ColumnSpan&ColumnNumberProps'
 import { ReadonlyProps } from './ReadonlyProps'
+import { ExtraActionButtonProps } from './ExtraActionButtonProps'
 
 export default function page() {
   return (
@@ -98,6 +99,7 @@ export default function page() {
       <CustomFieldProps />
       <ColumnSpanColumnNumberProps />
       <ReadonlyProps />
+      <ExtraActionButtonProps />
     </article>
   )
 }

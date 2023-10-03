@@ -55,7 +55,7 @@ export interface FormLowcodeProps {
   hideSecondary?: boolean
   spec?: TableSpec
   previewBeforeSubmit?: boolean
-  renderCustomAction?: ReactElement<any>
+  extraActionButton?: ReactElement<JSX.Element>
   inline?: boolean
 
   /**

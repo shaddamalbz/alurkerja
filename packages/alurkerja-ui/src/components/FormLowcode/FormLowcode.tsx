@@ -39,7 +39,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     taskId,
     spec,
     previewBeforeSubmit,
-    renderCustomAction,
+    extraActionButton,
     inline,
     columnNumber = 1,
     columnSpan,
@@ -215,7 +215,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
               </Button>
             )}
 
-            {renderCustomAction}
+            {extraActionButton}
 
             {!readonly && (
               <Button type="submit" loading={loadingSubmit} disabled={loadingSubmit}>

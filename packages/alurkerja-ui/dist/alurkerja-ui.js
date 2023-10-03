@@ -39050,7 +39050,7 @@ const fN = (e) => {
     taskId: ie,
     spec: ne,
     previewBeforeSubmit: we,
-    renderCustomAction: Ae,
+    extraActionButton: Ae,
     inline: me,
     columnNumber: Ce = 1,
     columnSpan: je
