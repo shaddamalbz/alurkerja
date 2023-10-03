@@ -11,6 +11,7 @@ import { DisabledProps } from './DisabledProps'
 import { CustomCancelButton } from './CustomCancelButton'
 import { CustomSubmitButton } from './CustomSubmitButton'
 import { InlineProps } from './InlineProps'
+import { OnSubmitProps } from './OnSubmitProps'
 
 export default function page() {
   return (
@@ -108,6 +109,7 @@ export default function page() {
       <CustomCancelButton />
       <CustomSubmitButton />
       <InlineProps />
+      <OnSubmitProps />
     </article>
   )
 }

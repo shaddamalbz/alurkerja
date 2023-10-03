@@ -215,7 +215,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
             </Button>
           )}
 
-          {extraActionButton}
+          {extraActionButton?.()}
 
           {customSubmitButton?.() ?? (
             <>

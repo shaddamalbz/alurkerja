@@ -17,7 +17,6 @@ import { Props } from 'react-select';
 import type { PropsWithChildren } from 'react';
 import { default as React_2 } from 'react';
 import { ReactDatePickerProps } from 'react-datepicker';
-import { ReactElement } from 'react';
 import { ReactNode } from 'react';
 import { RefAttributes } from 'react';
 import { RegisterOptions } from 'react-hook-form';
@@ -475,7 +474,7 @@ declare interface FormLowcodeProps {
     isUsertask?: boolean;
     spec?: TableSpec;
     previewBeforeSubmit?: boolean;
-    extraActionButton?: ReactElement<JSX.Element>;
+    extraActionButton?: () => ReactNode;
     inline?: boolean;
     customCancelButton?: () => ReactNode;
     customSubmitButton?: () => ReactNode;
@@ -524,7 +523,7 @@ declare interface FormLowcodeProps {
     columnSpan?: {
         [x: string]: 2 | 3;
     };
-    customTitle?: ReactElement<JSX.Element>;
+    customTitle?: () => ReactNode;
 }
 
 export declare const Header: FC<HeaderProps>;

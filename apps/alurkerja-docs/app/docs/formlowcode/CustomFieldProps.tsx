@@ -26,7 +26,6 @@ export const CustomFieldProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
           customField={({ defaultField, field }) => {
             if (field.name === 'status') {
               return <>ini bisa buat custom klo form nya tidak standar</>
@@ -52,7 +51,6 @@ export const CustomFieldProps = () => {
             }
             return defaultField
           }}
-          onSubmit={(data) => console.log(data)}
         />
       </CodePreview>
     </SectionLayout>

@@ -39175,7 +39175,7 @@ const fN = (e) => {
       ] }),
       /* @__PURE__ */ k.jsxs("div", { className: "w-fit ml-auto flex gap-4 mt-4", children: [
         (xe == null ? void 0 : xe()) ?? /* @__PURE__ */ k.jsx(Is, { type: "button", variant: "outlined", onClick: () => N == null ? void 0 : N(), children: "Kembali" }),
-        ie,
+        ie == null ? void 0 : ie(),
         (pe == null ? void 0 : pe()) ?? /* @__PURE__ */ k.jsx(k.Fragment, { children: !M && /* @__PURE__ */ k.jsx(Is, { type: "submit", loading: _e, disabled: _e, children: Q ? "Preview" : L || "Submit" }) })
       ] }),
       je && /* @__PURE__ */ k.jsx(QK, { title: "Preview", setShow: Re, children: /* @__PURE__ */ k.jsx("div", { className: "p-4", children: /* @__PURE__ */ k.jsx(k.Fragment, { children: /* @__PURE__ */ k.jsxs(k.Fragment, { children: [
@@ -51353,8 +51353,8 @@ const r9 = C7(
               taskId: A.id,
               isBpmn: !0,
               isUsertask: !0,
-              customCancelButton: /* @__PURE__ */ k.jsx(k.Fragment, {}),
-              customSubmitButton: /* @__PURE__ */ k.jsx(k.Fragment, {}),
+              customCancelButton: () => /* @__PURE__ */ k.jsx(k.Fragment, {}),
+              customSubmitButton: () => /* @__PURE__ */ k.jsx(k.Fragment, {}),
               formState: M,
               handleSubmit: L,
               control: V,

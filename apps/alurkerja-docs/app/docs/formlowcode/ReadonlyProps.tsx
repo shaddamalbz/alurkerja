@@ -24,7 +24,6 @@ export const ReadonlyProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
           readonly
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}

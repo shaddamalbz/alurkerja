@@ -8,37 +8,38 @@ import { useForm } from 'react-hook-form'
 
 import spec from './spec.json'
 
-export const InlineProps = () => {
+export const OnSubmitProps = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
   return (
-    <SectionLayout title="Inline()" description="">
+    <SectionLayout title="onSubmit()" description="">
       <CodePreview
         name="FormLowcode"
         code={`<FormLowcode
-          title="Inline"
+          id={1}
+          title="OnSubmit"
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath='/api/crud/takwim'
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
-          inline
+          
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}
         externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
       >
         <FormLowcode
+          id={1}
           spec={spec as any}
-          title="Inline"
+          title="OnSubmit"
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          inline
+          onSubmit={(data) => alert(JSON.stringify(data))}
         />
       </CodePreview>
     </SectionLayout>

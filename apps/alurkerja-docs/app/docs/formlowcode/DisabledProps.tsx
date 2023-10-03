@@ -24,7 +24,6 @@ export const DisabledProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
           disabled
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}

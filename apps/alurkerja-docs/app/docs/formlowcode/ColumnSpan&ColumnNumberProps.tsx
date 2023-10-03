@@ -23,7 +23,6 @@ export const ColumnSpanColumnNumberProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
           columnNumber={2}
           columnSpan={{ status: 2 }}
         />`}
@@ -41,7 +40,6 @@ export const ColumnSpanColumnNumberProps = () => {
           setValue={setValue}
           columnNumber={2}
           columnSpan={{ status: 2 }}
-          onSubmit={(data) => console.log(data)}
         />
       </CodePreview>
     </SectionLayout>

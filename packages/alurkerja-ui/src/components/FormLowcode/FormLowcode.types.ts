@@ -1,5 +1,5 @@
 import { FieldProperties, TableSpec } from '@/types'
-import { ReactElement, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Control, FieldValues, FormState, UseFormHandleSubmit, UseFormSetValue } from 'react-hook-form'
 
 export interface FormLowcodeProps {
@@ -52,7 +52,7 @@ export interface FormLowcodeProps {
   isUsertask?: boolean
   spec?: TableSpec
   previewBeforeSubmit?: boolean
-  extraActionButton?: ReactElement<JSX.Element>
+  extraActionButton?: () => ReactNode
   inline?: boolean
   customCancelButton?: () => ReactNode
   customSubmitButton?: () => ReactNode

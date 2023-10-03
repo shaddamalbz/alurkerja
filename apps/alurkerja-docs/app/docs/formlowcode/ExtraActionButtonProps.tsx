@@ -23,7 +23,6 @@ export const ExtraActionButtonProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
           extraActionButton={<Button variant="outlined">Button Extra</Button>}
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}
@@ -39,7 +38,7 @@ export const ExtraActionButtonProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          extraActionButton={<Button variant="outlined">Button Extra</Button>}
+          extraActionButton={() => <Button variant="outlined">Button Extra</Button>}
         />
       </CodePreview>
     </SectionLayout>

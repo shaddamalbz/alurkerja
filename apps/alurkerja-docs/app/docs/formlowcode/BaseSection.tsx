@@ -21,7 +21,6 @@ export const BaseSection = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}
         externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
@@ -34,7 +33,6 @@ export const BaseSection = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
         />
       </CodePreview>
     </SectionLayout>

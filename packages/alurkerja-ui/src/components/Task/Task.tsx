@@ -146,8 +146,8 @@ export const Task: FC<TaskType> = (props) => {
                 taskId={selectedData.id}
                 isBpmn={true}
                 isUsertask={true}
-                customCancelButton={<></>}
-                customSubmitButton={<></>}
+                customCancelButton={() => <></>}
+                customSubmitButton={() => <></>}
                 formState={formState}
                 handleSubmit={handleSubmit}
                 control={control}

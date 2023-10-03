@@ -23,7 +23,6 @@ export const CustomSubmitButton = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
           customSubmitButton={() => <Button variant="outlined">Custom Submit</Button>}
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}

@@ -23,7 +23,6 @@ export const CustomCancelButton = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => console.log(data)}
           customCancelButton={() => <Button variant="filled">Custom Cancel</Button>}
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}
