@@ -50794,11 +50794,11 @@ const r9 = C7(
     action: se,
     row: De,
     customField: ze,
-    asDetail: pt = !1
+    readonly: pt = !1
   }) => /* @__PURE__ */ k.jsx(Oh, { title: se.action_label, triggerButton: Nt, children: ({ closeModal: xt }) => /* @__PURE__ */ k.jsx(
     uw,
     {
-      asDetail: pt,
+      readonly: pt,
       spec: t,
       hideTitle: !0,
       id: De.id,
@@ -51045,7 +51045,7 @@ const r9 = C7(
                 const pt = /* @__PURE__ */ k.jsx(
                   Et,
                   {
-                    asDetail: !0,
+                    readonly: !0,
                     action: De,
                     row: Nt,
                     customField: Ne,

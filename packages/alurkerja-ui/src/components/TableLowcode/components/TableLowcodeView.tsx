@@ -118,10 +118,10 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     action,
     row,
     customField,
-    asDetail = false,
+    readonly = false,
   }: {
     triggerButton: JSX.Element
-    asDetail?: boolean
+    readonly?: boolean
     action: FieldActionProperties
     row: { [x: string]: any }
     customField?: ({
@@ -140,7 +140,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
       <Modal title={action.action_label} triggerButton={triggerButton}>
         {({ closeModal }) => (
           <FormLowcode
-            asDetail={asDetail}
+            readonly={readonly}
             spec={tableSpec}
             hideTitle
             id={row.id}
@@ -496,7 +496,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                     } else if (action.label === 'Detail') {
                                       const ButtonWithModal = (
                                         <ModalAction
-                                          asDetail
+                                          readonly
                                           action={action}
                                           row={row}
                                           customField={customDetailField}

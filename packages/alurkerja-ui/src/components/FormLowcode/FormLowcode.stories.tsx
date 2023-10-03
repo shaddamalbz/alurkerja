@@ -63,7 +63,7 @@ export const Detail: Story = {
   args: {
     baseUrl: 'https://kpm-sys.merapi.javan.id',
     specPath: '/api/crud/murid-layak-embpk',
-    asDetail: true,
+    readonly: true,
     id: 1,
   },
   render: (args) => {
