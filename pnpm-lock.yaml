@@ -41,7 +41,7 @@ importers:
         specifier: 18.2.7
         version: 18.2.7
       alurkerja-ui:
-        specifier: workspace:^1.0.1
+        specifier: workspace:^
         version: link:../../packages/alurkerja-ui
       autoprefixer:
         specifier: 10.4.15
