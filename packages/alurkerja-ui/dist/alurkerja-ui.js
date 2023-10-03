@@ -37938,7 +37938,8 @@ const EL = ({ fieldSpec: e, defaultValue: t, data: n }) => {
       {
         dateFormat: "dd/MM/yyyy",
         defaultValue: r ? new Date(r) : void 0,
-        onChange: (ie) => a(n, ie)
+        onChange: (ie) => a(n, ie),
+        disabled: l
       }
     ),
     t.form_field_type === "INPUT_RADIO" && /* @__PURE__ */ k.jsx(

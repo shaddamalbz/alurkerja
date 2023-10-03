@@ -1,6 +1,6 @@
 .select {
   @apply w-full;
-  .select__control--is-disabled {
+  &.select--is-disabled {
     @apply bg-gray-100 text-gray-400 cursor-not-allowed;
 
     .select__placeholder {

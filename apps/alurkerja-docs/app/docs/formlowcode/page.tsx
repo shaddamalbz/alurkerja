@@ -7,6 +7,7 @@ import { CustomFieldProps } from './CustomFieldProps'
 import { ColumnSpanColumnNumberProps } from './ColumnSpan&ColumnNumberProps'
 import { ReadonlyProps } from './ReadonlyProps'
 import { ExtraActionButtonProps } from './ExtraActionButtonProps'
+import { DisabledProps } from './DisabledProps'
 
 export default function page() {
   return (
@@ -100,6 +101,7 @@ export default function page() {
       <ColumnSpanColumnNumberProps />
       <ReadonlyProps />
       <ExtraActionButtonProps />
+      <DisabledProps />
     </article>
   )
 }

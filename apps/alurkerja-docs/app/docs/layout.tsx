@@ -100,10 +100,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </h4>
                   {tableOfContents?.map((toc) => (
                     <a
-                      href={'#' + _.toLower(toc).replaceAll(' ', '-').replace('()', '')}
+                      href={'#' + _.toLower(toc).replaceAll(' ', '-').replaceAll('()', '')}
                       className="hover:text-main-blue-alurkerja cursor-pointer block"
                     >
-                      {toc.replace('()', '')}
+                      {toc.replaceAll('()', '')}
                     </a>
                   ))}
                 </div>

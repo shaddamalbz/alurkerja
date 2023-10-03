@@ -117,6 +117,7 @@ const InputTypes: FC<InputTypes> = (props) => {
           dateFormat="dd/MM/yyyy"
           defaultValue={defaultValue ? new Date(defaultValue) : undefined}
           onChange={(date) => setValue(name, date)}
+          disabled={disabled}
         />
       )}
       {fieldSpec.form_field_type === 'INPUT_RADIO' && (
