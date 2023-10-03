@@ -5,7 +5,6 @@ import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
 import React, { useState } from 'react'
 import spec from './spec.json'
-import data from './data.json'
 
 export const AllFeatureSection = () => {
   const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })

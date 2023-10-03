@@ -40,8 +40,8 @@ export const CodePreview: FC<CodePreviewProps> = ({
       </div>
       <pre>
         <code className="language-tsx">
-          {`import { ${titleCaseToUpperCamelCase(name)} ${
-            internalImport ? internalImport.map((elm) => elm + ' ') : ''
+          {`import { ${titleCaseToUpperCamelCase(name)}${
+            internalImport ? ', ' + internalImport.map((elm) => ' ' + elm) + ' ' : ''
           }} from 'alurkerja-ui'${
             externalImport ? '\n' + externalImport : ''
           }\n\nexport const ${titleCaseToUpperCamelCase(name)} = () => {${

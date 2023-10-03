@@ -484,7 +484,7 @@ declare interface FormLowcodeProps {
     isUsertask?: boolean;
     hideTitle?: boolean;
     hideSecondary?: boolean;
-    tableSpec?: TableSpec;
+    spec?: TableSpec;
     previewBeforeSubmit?: boolean;
     renderCustomAction?: ReactElement<any>;
     inline?: boolean;
@@ -711,6 +711,17 @@ export declare interface IPendingAlurkerjaTableLowcode {
     /** using this to overide default modal create on TableLowcode */
     formConfig?: FormConfig;
 }
+
+export declare interface Lang {
+    validation: {
+        required: string;
+        pattern: string;
+        maxLength: string;
+        max: string;
+    };
+}
+
+export declare const LangContext: Context<Lang | null>;
 
 declare interface ListOption {
     label: string;

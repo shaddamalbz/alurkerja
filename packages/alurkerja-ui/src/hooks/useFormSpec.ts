@@ -10,6 +10,7 @@ export interface UseFormSpec {
 
 export const useFormSpec = (props: UseFormSpec) => {
   const { baseUrl, path, spec } = props
+  console.log(spec)
   const { tableSpec, loading } = getTableSpec({ baseUrl, path, spec })
 
   const [createFieldList, setCreateFieldList] = useState<FieldProperties[]>([])
@@ -19,42 +20,46 @@ export const useFormSpec = (props: UseFormSpec) => {
   const [createSpec, setCreateSpec] = useState<HeaderAction>()
   const [editSpec, setEditSpec] = useState<FieldActionProperties>()
 
-  const getSpec = () => {
-    tableSpec?.header_action.forEach((action: HeaderAction) => {
+  const getFormSpec = (spec: TableSpec) => {
+    spec?.header_action.forEach((action: HeaderAction) => {
       if (action.label === 'Tambah') {
         setCreateSpec(action)
       } else if (action.label === 'Edit') {
         setEditSpec(action)
       }
     })
-    tableSpec?.field_action.forEach((action: FieldActionProperties) => {
+    spec?.field_action.forEach((action: FieldActionProperties) => {
       if (action.label === 'Edit') {
         setEditSpec(action)
       }
     })
   }
 
+  const getFieldList = (spec: TableSpec) => {
+    setCreateFieldList(
+      Object.entries(spec.fields)
+        .map(([_key, value]) => value)
+        .sort((a, b) => a.create_order - b.create_order)
+        .filter((item) => !item.is_hidden_in_create)
+    )
+    setEditFieldList(
+      Object.entries(spec.fields)
+        .map(([_key, value]) => value)
+        .sort((a, b) => a.create_order - b.create_order)
+        .filter((item) => !item.is_hidden_in_edit)
+    )
+    setDetailFieldList(
+      Object.entries(spec.fields)
+        .map(([_key, value]) => value)
+        .sort((a, b) => a.create_order - b.create_order)
+        .filter((item) => !item.is_hidden_in_detail)
+    )
+  }
+
   useEffect(() => {
     if (tableSpec) {
-      getSpec()
-      setCreateFieldList(
-        Object.entries(tableSpec.fields)
-          .map(([_key, value]) => value)
-          .sort((a, b) => a.create_order - b.create_order)
-          .filter((item) => !item.is_hidden_in_create)
-      )
-      setEditFieldList(
-        Object.entries(tableSpec.fields)
-          .map(([_key, value]) => value)
-          .sort((a, b) => a.create_order - b.create_order)
-          .filter((item) => !item.is_hidden_in_edit)
-      )
-      setDetailFieldList(
-        Object.entries(tableSpec.fields)
-          .map(([_key, value]) => value)
-          .sort((a, b) => a.create_order - b.create_order)
-          .filter((item) => !item.is_hidden_in_detail)
-      )
+      getFormSpec(tableSpec)
+      getFieldList(tableSpec)
     }
   }, [tableSpec])
 

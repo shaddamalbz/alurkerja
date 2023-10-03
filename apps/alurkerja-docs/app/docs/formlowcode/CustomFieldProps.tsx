@@ -6,6 +6,8 @@ import { FormLowcode } from 'alurkerja-ui'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
+import spec from './spec.json'
+
 export const CustomFieldProps = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
@@ -35,22 +37,25 @@ export const CustomFieldProps = () => {
         externalImport={`import { useForm } from 'react-hook-form'`}
         externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
       >
-        <FormLowcode
-          title="Create"
-          baseUrl="https://kpm-sys.merapi.javan.id"    
-          specPath='/api/crud/takwim'
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-          customField={({ defaultField, field }) => {
-            if (field.name === 'status') {
-              return <div>ini bisa buat custom klo form nya tidak standar</div>
-            }
-            return defaultField
-          }}
-          onSubmit={(data) => console.log(data)}
-        />
+        {spec && (
+          <FormLowcode
+            spec={spec as any}
+            title="Create"
+            baseUrl="https://kpm-sys.merapi.javan.id"
+            specPath="/api/crud/takwim"
+            formState={formState}
+            handleSubmit={handleSubmit}
+            control={control}
+            setValue={setValue}
+            customField={({ defaultField, field }) => {
+              if (field.name === 'status') {
+                return <div>ini bisa buat custom klo form nya tidak standar</div>
+              }
+              return defaultField
+            }}
+            onSubmit={(data) => console.log(data)}
+          />
+        )}
       </CodePreview>
     </SectionLayout>
   )
