@@ -8,23 +8,23 @@ import { useForm } from 'react-hook-form'
 
 import spec from './spec.json'
 
-export const OnSubmitProps = () => {
+export const OnCancelProps = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
   return (
-    <SectionLayout title="onSubmit()" description="">
+    <SectionLayout title="onCancel()" description="">
       <CodePreview
         name="FormLowcode"
         code={`<FormLowcode
           id={1}
-          title="OnSubmit"
+          title="OnCancel"
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath='/api/crud/takwim'
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => alert(JSON.stringify(data))}
+          onCancel={() => alert(JSON.stringify('cancel clicked'))}
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}
         externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
@@ -32,14 +32,14 @@ export const OnSubmitProps = () => {
         <FormLowcode
           id={1}
           spec={spec as any}
-          title="OnSubmit"
+          title="OnCancel"
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => alert(JSON.stringify(data))}
+          onCancel={() => alert(JSON.stringify('cancel clicked'))}
         />
       </CodePreview>
     </SectionLayout>
