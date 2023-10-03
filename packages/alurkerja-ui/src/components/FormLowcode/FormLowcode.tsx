@@ -37,7 +37,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     isUsertask,
     hideSecondary,
     taskId,
-    tableSpec,
+    spec,
     previewBeforeSubmit,
     renderCustomAction,
     inline,
@@ -49,7 +49,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
   const { createSpec, editSpec, loading, createFieldList, editFieldList, detailFieldList } = useFormSpec({
     baseUrl,
     path: specPath,
-    spec: tableSpec,
+    spec,
   })
 
   const { detail } = getDetail({ baseUrl, id, path: editSpec?.path })
@@ -143,7 +143,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
 
   return (
     <section className="p-4 space-y-6">
-      {!hideTitle && <h5 className="text-xl font-bold">{title || tableSpec?.label}</h5>}
+      {!hideTitle && <h5 className="text-xl font-bold">{title || spec?.label}</h5>}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         {!loading && editFieldList && createFieldList ? (

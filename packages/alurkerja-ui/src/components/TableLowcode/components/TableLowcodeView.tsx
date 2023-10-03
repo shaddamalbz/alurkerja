@@ -141,7 +141,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
         {({ closeModal }) => (
           <FormLowcode
             asDetail={asDetail}
-            tableSpec={tableSpec}
+            spec={tableSpec}
             hideTitle
             id={row.id}
             baseUrl={baseUrl}
@@ -384,7 +384,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                           {({ closeModal }) => (
                                             <FormLowcode
                                               id={row.id}
-                                              tableSpec={tableSpec}
+                                              spec={tableSpec}
                                               baseUrl={baseUrl}
                                               formState={formState}
                                               specPath={tableSpec?.path}

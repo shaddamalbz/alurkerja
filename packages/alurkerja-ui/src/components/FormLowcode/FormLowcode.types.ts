@@ -53,7 +53,7 @@ export interface FormLowcodeProps {
   isUsertask?: boolean
   hideTitle?: boolean
   hideSecondary?: boolean
-  tableSpec?: TableSpec
+  spec?: TableSpec
   previewBeforeSubmit?: boolean
   renderCustomAction?: ReactElement<any>
   inline?: boolean

@@ -225,7 +225,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                 >
                   {({ closeModal }) => (
                     <FormLowcode
-                      tableSpec={tableSpec}
+                      spec={tableSpec}
                       baseUrl={baseUrl}
                       formState={formState}
                       specPath={tableSpec?.path}
