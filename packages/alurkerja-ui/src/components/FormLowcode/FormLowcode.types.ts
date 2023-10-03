@@ -39,7 +39,7 @@ export interface FormLowcodeProps {
   /** to disabled form */
   disabled?: boolean
   textSubmitButton?: string
-  asDetail?: boolean
+  readonly?: boolean
   hideAction?: boolean
   title?: string
   message?: {

@@ -15,7 +15,7 @@ interface InputTypes {
   setValue: UseFormSetValue<FieldValues>
   defaultValue?: any
   disabled?: boolean
-  asDetail?: boolean
+  readonly?: boolean
   data?: { [x: string]: any }
 }
 
@@ -25,7 +25,7 @@ interface SelectedOption {
 }
 
 const InputTypes: FC<InputTypes> = (props) => {
-  const { fieldSpec, name, setValue, defaultValue, disabled, baseUrl, asDetail, data } = props
+  const { fieldSpec, name, setValue, defaultValue, disabled, baseUrl, readonly, data } = props
   const axiosInstance = useContext(AuthContext)
   const inputTypesExtend = useContext(InputTypesContext)
 
@@ -89,7 +89,7 @@ const InputTypes: FC<InputTypes> = (props) => {
     setValue(name, selectedTable)
   }, [selectedTable])
 
-  if (asDetail) {
+  if (readonly) {
     if (fieldSpec.is_hidden_in_detail) {
       return <Fragment></Fragment>
     }

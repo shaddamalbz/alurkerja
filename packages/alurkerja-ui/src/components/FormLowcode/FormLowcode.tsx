@@ -27,7 +27,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     onError,
     id,
     disabled,
-    asDetail,
+    readonly,
     textSubmitButton,
     title,
     onCancel,
@@ -148,7 +148,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         {!loading && editFieldList && createFieldList ? (
           <div className={`grid ${columnNumberMapping[columnNumber]} gap-x-4`}>
-            {(id ? (asDetail ? detailFieldList : editFieldList) : createFieldList).map(
+            {(id ? (readonly ? detailFieldList : editFieldList) : createFieldList).map(
               (fieldSpec: FieldProperties, idx: number) => {
                 return (
                   <div
@@ -171,7 +171,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
                           setValue,
                           defaultField: (
                             <InputTypes
-                              asDetail={asDetail}
+                              readonly={readonly}
                               disabled={disabled}
                               baseUrl={baseUrl}
                               fieldSpec={fieldSpec}
@@ -191,7 +191,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
                           setValue={setValue}
                           defaultValue={detail?.[fieldSpec.name]}
                           disabled={disabled}
-                          asDetail={asDetail}
+                          readonly={readonly}
                           data={detail}
                         />
                       )}
@@ -217,7 +217,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
 
             {renderCustomAction}
 
-            {!asDetail && (
+            {!readonly && (
               <Button type="submit" loading={loadingSubmit} disabled={loadingSubmit}>
                 {previewBeforeSubmit ? 'Preview' : textSubmitButton || 'Submit'}
               </Button>
@@ -247,7 +247,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
                             setValue={setValue}
                             defaultValue={tempData?.[fieldSpec.name]}
                             disabled={disabled}
-                            asDetail={true}
+                            readonly={true}
                             data={tempData}
                           />
                         </InputLayout>
