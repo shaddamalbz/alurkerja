@@ -8,6 +8,9 @@ import { ColumnSpanColumnNumberProps } from './ColumnSpan&ColumnNumberProps'
 import { ReadonlyProps } from './ReadonlyProps'
 import { ExtraActionButtonProps } from './ExtraActionButtonProps'
 import { DisabledProps } from './DisabledProps'
+import { CustomCancelButton } from './CustomCancelButton'
+import { CustomSubmitButton } from './CustomSubmitButton'
+import { InlineProps } from './InlineProps'
 
 export default function page() {
   return (
@@ -102,6 +105,9 @@ export default function page() {
       <ReadonlyProps />
       <ExtraActionButtonProps />
       <DisabledProps />
+      <CustomCancelButton />
+      <CustomSubmitButton />
+      <InlineProps />
     </article>
   )
 }

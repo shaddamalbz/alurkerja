@@ -1,12 +1,11 @@
 import {
   FieldActionProperties,
   FieldProperties,
-  FormConfig,
   PaginationLowcode,
   TableConfig,
   TableSpec,
   UserTaskMapping,
-} from 'lib'
+} from '@/types'
 import { Dispatch, SetStateAction } from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 
@@ -129,8 +128,6 @@ export interface TableLowcodeProps {
   /** https://tailwindcss.com/docs/table-layout */
   layout?: 'auto' | 'fixed'
   canFilter?: boolean
-  /** using this to overide default modal create on TableLowcode */
-  formConfig?: FormConfig
   tableConfig?: TableConfig
   customActionCell?: (data: { [x: string]: any }) => JSX.Element
   customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void

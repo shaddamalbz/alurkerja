@@ -15,7 +15,7 @@ export interface TaskType {
       process_defintion_key: string
       process_defintion_path: string
       process_defintion_label: string
-    }
+    },
   ]
   renderChildren: Function
   base_url: string
@@ -146,7 +146,8 @@ export const Task: FC<TaskType> = (props) => {
                 taskId={selectedData.id}
                 isBpmn={true}
                 isUsertask={true}
-                hideAction={true}
+                customCancelButton={<></>}
+                customSubmitButton={<></>}
                 formState={formState}
                 handleSubmit={handleSubmit}
                 control={control}

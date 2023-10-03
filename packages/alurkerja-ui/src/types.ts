@@ -255,12 +255,6 @@ export interface IPendingAlurkerjaTableLowcode {
   /** https://tailwindcss.com/docs/table-layout */
   layout?: 'auto' | 'fixed'
   canFilter?: boolean
-  /** using this to overide default modal create on TableLowcode */
-  formConfig?: FormConfig
-}
-
-export interface FormConfig {
-  hideButtonCancel?: boolean
 }
 
 export interface IAlurkerjaDetailLowcode {
@@ -350,7 +344,6 @@ export interface PendingTableLayoutProps {
     success_delete_text?: string
   }
   canFilter?: boolean
-  formConfig?: FormConfig
 }
 
 export interface File {

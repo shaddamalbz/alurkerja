@@ -1,5 +1,5 @@
 import { FieldProperties, TableSpec } from '@/types'
-import { ReactElement } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import { Control, FieldValues, FormState, UseFormHandleSubmit, UseFormSetValue } from 'react-hook-form'
 
 export interface FormLowcodeProps {
@@ -40,8 +40,7 @@ export interface FormLowcodeProps {
   disabled?: boolean
   textSubmitButton?: string
   readonly?: boolean
-  hideAction?: boolean
-  title?: string
+  title?: ReactNode
   message?: {
     success_create_title?: string
     success_create_text?: string
@@ -51,13 +50,12 @@ export interface FormLowcodeProps {
   }
   isBpmn?: boolean
   isUsertask?: boolean
-  hideTitle?: boolean
-  hideSecondary?: boolean
   spec?: TableSpec
   previewBeforeSubmit?: boolean
   extraActionButton?: ReactElement<JSX.Element>
   inline?: boolean
-
+  customCancelButton?: () => ReactNode
+  customSubmitButton?: () => ReactNode
   /**
    * render form using grid with 1/2/3 column
    * @param number
@@ -101,4 +99,6 @@ export interface FormLowcodeProps {
     ```
    */
   columnSpan?: { [x: string]: 2 | 3 }
+
+  customTitle?: () => ReactNode
 }

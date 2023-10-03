@@ -45,7 +45,6 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     customField,
     onDeleteConfirm,
     textSubmitButton,
-    formConfig,
     layout,
     labelAction,
     message,
@@ -142,7 +141,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
           <FormLowcode
             readonly={readonly}
             spec={tableSpec}
-            hideTitle
+            title={<></>}
             id={row.id}
             baseUrl={baseUrl}
             specPath={tableSpec?.path}
@@ -160,7 +159,6 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
             customField={customField}
             textSubmitButton={textSubmitButton}
             message={message}
-            hideSecondary={formConfig?.hideButtonCancel}
           />
         )}
       </Modal>
@@ -398,9 +396,8 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                               onCancel={() => closeModal()}
                                               customField={customField}
                                               textSubmitButton={textSubmitButton}
-                                              hideTitle
+                                              title={<></>}
                                               message={message}
-                                              hideSecondary={formConfig?.hideButtonCancel}
                                               previewBeforeSubmit={tableConfig?.preview_before_submit}
                                             />
                                           )}
@@ -614,8 +611,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                                 >
                                                   {({ closeModal }) => (
                                                     <FormLowcode
-                                                      // tableSpec={tableSpec}
-                                                      hideTitle
+                                                      title={<></>}
                                                       baseUrl={baseUrl}
                                                       specPath={taskMapping?.url}
                                                       formState={formState}

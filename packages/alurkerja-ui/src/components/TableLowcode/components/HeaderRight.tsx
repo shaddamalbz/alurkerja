@@ -34,7 +34,6 @@ const HeaderRight: FC<HeaderRightProps> = memo(
       message,
       textSubmitButton,
       customFilterField,
-      formConfig,
       tableConfig,
       selectedRow,
       onClickBulk,
@@ -239,9 +238,8 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                       onCancel={() => closeModal()}
                       customField={customCreateField ?? customField}
                       textSubmitButton={textSubmitButton}
-                      hideTitle
+                      title={<></>}
                       message={message}
-                      hideSecondary={formConfig?.hideButtonCancel}
                       previewBeforeSubmit={tableConfig?.preview_before_submit}
                     />
                   )}

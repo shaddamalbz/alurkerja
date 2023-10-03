@@ -32,10 +32,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     title,
     onCancel,
     message,
-    hideTitle,
-    hideAction,
     isUsertask,
-    hideSecondary,
     taskId,
     spec,
     previewBeforeSubmit,
@@ -43,6 +40,9 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     inline,
     columnNumber = 1,
     columnSpan,
+    customSubmitButton,
+    customCancelButton,
+    customTitle,
   } = props
   const axiosInstance = useContext(AuthContext)
 
@@ -143,7 +143,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
 
   return (
     <section className="p-4 space-y-6">
-      {!hideTitle && <h5 className="text-xl font-bold">{title || spec?.label}</h5>}
+      {customTitle?.() ?? <div className="text-xl font-bold">{title || spec?.label}</div>}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         {!loading && editFieldList && createFieldList ? (
@@ -207,23 +207,27 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
             <Skeleton height={40} />
           </div>
         )}
-        {!hideAction && (
-          <div className="w-fit ml-auto flex gap-4 mt-4">
-            {!hideSecondary && (
-              <Button type="button" variant="outlined" onClick={() => onCancel?.()}>
-                Kembali
-              </Button>
-            )}
 
-            {extraActionButton}
+        <div className="w-fit ml-auto flex gap-4 mt-4">
+          {customCancelButton?.() ?? (
+            <Button type="button" variant="outlined" onClick={() => onCancel?.()}>
+              Kembali
+            </Button>
+          )}
 
-            {!readonly && (
-              <Button type="submit" loading={loadingSubmit} disabled={loadingSubmit}>
-                {previewBeforeSubmit ? 'Preview' : textSubmitButton || 'Submit'}
-              </Button>
-            )}
-          </div>
-        )}
+          {extraActionButton}
+
+          {customSubmitButton?.() ?? (
+            <>
+              {!readonly && (
+                <Button type="submit" loading={loadingSubmit} disabled={loadingSubmit}>
+                  {previewBeforeSubmit ? 'Preview' : textSubmitButton || 'Submit'}
+                </Button>
+              )}
+            </>
+          )}
+        </div>
+
         {showPreview && (
           <ModalWithState title="Preview" setShow={setShowPreview}>
             <div className="p-4">
@@ -255,20 +259,26 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
                     }
                   })}
                   <div className="w-fit ml-auto flex gap-4">
-                    {!hideSecondary && (
-                      <Button type="button" onClick={() => onCancel?.()}>
+                    {customCancelButton?.() ?? (
+                      <Button type="button" variant="outlined" onClick={() => onCancel?.()}>
                         Kembali
                       </Button>
                     )}
 
-                    <Button
-                      className="bg-[#0095E8] text-white"
-                      type="submit"
-                      loading={loadingSubmit}
-                      disabled={loadingSubmit}
-                    >
-                      {textSubmitButton || 'Submit'}
-                    </Button>
+                    {customSubmitButton?.() ?? (
+                      <>
+                        {!readonly && (
+                          <Button
+                            className="bg-[#0095E8] text-white"
+                            type="submit"
+                            loading={loadingSubmit}
+                            disabled={loadingSubmit}
+                          >
+                            {textSubmitButton || 'Submit'}
+                          </Button>
+                        )}
+                      </>
+                    )}
                   </div>
                 </>
               </>

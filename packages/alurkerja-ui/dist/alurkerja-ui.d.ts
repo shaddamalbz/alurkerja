@@ -393,14 +393,6 @@ export declare interface FlowbiteFloatingTheme {
 
 export declare type FlowbiteTooltipTheme = FlowbiteFloatingArrowTheme;
 
-export declare interface FormConfig {
-    hideButtonCancel?: boolean;
-}
-
-declare interface FormConfig_2 {
-    hideButtonCancel?: boolean
-}
-
 export declare const FormLowcode: FC<FormLowcodeProps>;
 
 export declare const FormLowcodeLite: FC<FormLowcodeLiteProps>;
@@ -471,8 +463,7 @@ declare interface FormLowcodeProps {
     disabled?: boolean;
     textSubmitButton?: string;
     readonly?: boolean;
-    hideAction?: boolean;
-    title?: string;
+    title?: ReactNode;
     message?: {
         success_create_title?: string;
         success_create_text?: string;
@@ -482,12 +473,12 @@ declare interface FormLowcodeProps {
     };
     isBpmn?: boolean;
     isUsertask?: boolean;
-    hideTitle?: boolean;
-    hideSecondary?: boolean;
     spec?: TableSpec;
     previewBeforeSubmit?: boolean;
     extraActionButton?: ReactElement<JSX.Element>;
     inline?: boolean;
+    customCancelButton?: () => ReactNode;
+    customSubmitButton?: () => ReactNode;
     /**
      * render form using grid with 1/2/3 column
      * @param number
@@ -533,6 +524,7 @@ declare interface FormLowcodeProps {
     columnSpan?: {
         [x: string]: 2 | 3;
     };
+    customTitle?: ReactElement<JSX.Element>;
 }
 
 export declare const Header: FC<HeaderProps>;
@@ -708,8 +700,6 @@ export declare interface IPendingAlurkerjaTableLowcode {
     /** https://tailwindcss.com/docs/table-layout */
     layout?: 'auto' | 'fixed';
     canFilter?: boolean;
-    /** using this to overide default modal create on TableLowcode */
-    formConfig?: FormConfig;
 }
 
 export declare interface Lang {
@@ -801,27 +791,6 @@ export declare interface PaginationLowcode {
     total_page: number;
 }
 
-declare interface PaginationLowcode_2 {
-    empty: boolean
-    first: boolean
-    last: boolean
-    number: number
-    number_of_element: number
-    pageable: {
-        offset: number
-        unpaged: false
-        paged: boolean
-    }
-    size: number
-    sort: {
-        empty: boolean
-        sorted: boolean
-        unsorted: boolean
-    }
-    total_elements: number
-    total_page: number
-}
-
 export declare interface PaginationProps {
     pagination?: any | undefined;
     pageConfig?: {
@@ -892,7 +861,6 @@ export declare interface PendingTableLayoutProps {
         success_delete_text?: string;
     };
     canFilter?: boolean;
-    formConfig?: FormConfig;
 }
 
 export declare const PendingUpload: FC<PendingUploadProps>;
@@ -1118,7 +1086,7 @@ export declare const TableLowcode: FC<TableLowcodeProps>;
 export declare const TableLowcodeContext: Context<TableLowcodeProps_2>;
 
 declare interface TableLowcodeProps {
-    spec?: TableSpec_2;
+    spec?: TableSpec;
     data?: {
         [x: string]: any;
     }[];
@@ -1174,7 +1142,7 @@ declare interface TableLowcodeProps {
     customCell?: ({ name, fields, value, rowValue, defaultCell, }: {
         name: string;
         fields: {
-            [x: string]: FieldProperties_2;
+            [x: string]: FieldProperties;
         };
         value: any;
         rowValue: {
@@ -1185,35 +1153,35 @@ declare interface TableLowcodeProps {
     /**  will be trigger when create button clicked*/
     onClickCreate?: () => void;
     /**  will be trigger when button edit clicked*/
-    onClickEdit?: (fieldSpec: FieldActionProperties_2, id: number | string, row: any) => void;
+    onClickEdit?: (fieldSpec: FieldActionProperties, id: number | string, row: any) => void;
     /**  will be trigger when button delete clicked*/
-    onClickDelete?: (fieldSpec: FieldActionProperties_2, id: number | string, row: any) => void;
+    onClickDelete?: (fieldSpec: FieldActionProperties, id: number | string, row: any) => void;
     /**  will be trigger when button detail clicked*/
     onClickDetail?: (id: number, row: any) => void;
     onDeleteConfirm?: (id: number) => void;
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element;
     customField?: ({ field, setValue, defaultField, }: {
-        field: FieldProperties_2;
+        field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
         defaultField: JSX.Element;
         value: string | number | boolean;
     }) => JSX.Element;
     customDetailField?: ({ field, setValue, defaultField, value, }: {
-        field: FieldProperties_2;
+        field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
         defaultField: JSX.Element;
         value: string | number | boolean;
     }) => JSX.Element;
     customCreateField?: ({ field, setValue, defaultField, }: {
-        field: FieldProperties_2;
+        field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
         defaultField: JSX.Element;
         value: string | number | boolean;
     }) => JSX.Element;
     textSubmitButton?: string;
     customFilterField?: ({ field, setValue, defaultField, }: {
-        field: [string, FieldProperties_2];
+        field: [string, FieldProperties];
         setValue: UseFormSetValue<FieldValues>;
         defaultField: JSX.Element;
     }) => JSX.Element;
@@ -1230,9 +1198,7 @@ declare interface TableLowcodeProps {
     /** https://tailwindcss.com/docs/table-layout */
     layout?: 'auto' | 'fixed';
     canFilter?: boolean;
-    /** using this to overide default modal create on TableLowcode */
-    formConfig?: FormConfig_2;
-    tableConfig?: TableConfig_2;
+    tableConfig?: TableConfig;
     customActionCell?: (data: {
         [x: string]: any;
     }) => JSX.Element;
@@ -1247,7 +1213,7 @@ declare interface TableLowcodeProps {
         rowValue: {
             [x: string]: any;
         };
-        usertaskMapping: UserTaskMapping_2[];
+        usertaskMapping: UserTaskMapping[];
     }) => JSX.Element;
     customBadgeDiagram?: (task_id: string) => string;
     defaultOrder?: 'asc' | 'desc';
@@ -1417,8 +1383,6 @@ declare interface TableLowcodeProps_2 {
     /** https://tailwindcss.com/docs/table-layout */
     layout?: 'auto' | 'fixed'
     canFilter?: boolean
-    /** using this to overide default modal create on TableLowcode */
-    formConfig?: FormConfig_2
     tableConfig?: TableConfig_2
     customActionCell?: (data: { [x: string]: any }) => JSX.Element
     customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
@@ -1493,11 +1457,11 @@ declare interface TableLowcodeProps_2 {
 export declare const TableLowcodeView: FC<TableLowcodeViewProps>;
 
 declare interface TableLowcodeViewProps {
-    tableSpec: TableSpec_2 | undefined;
+    tableSpec: TableSpec | undefined;
     tableData: {
         [x: string]: any;
     }[] | undefined;
-    pagination: PaginationLowcode_2 | undefined;
+    pagination: PaginationLowcode | undefined;
     selectedAll: boolean;
     setSelectedAll: Dispatch<SetStateAction<boolean>>;
     sortBy?: string;
