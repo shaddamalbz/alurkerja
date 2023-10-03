@@ -8,18 +8,16 @@ import { useForm } from 'react-hook-form'
 
 import spec from './spec.json'
 
-export const CustomFieldProps = () => {
+export const ReadonlyProps = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
   return (
-    <SectionLayout
-      title="customField()"
-      description="custom field digunakan untuk mereplace field yang sudah dibuat oleh alurkerja (hanya field label tidak termasuk)"
-    >
+    <SectionLayout title="readonly()" description="">
       <CodePreview
         name="FormLowcode"
         code={`<FormLowcode
-          title="Create"
+          id={1}
+          title="Readonly"
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath='/api/crud/takwim'
           formState={formState}
@@ -27,32 +25,22 @@ export const CustomFieldProps = () => {
           control={control}
           setValue={setValue}
           onSubmit={(data) => console.log(data)}
-          customField={({ defaultField, field }) => {
-            if (field.name === 'status') {
-              return <>ini bisa buat custom klo form nya tidak standar</>
-            }
-            return defaultField
-          }}
+          readonly
         />`}
         externalImport={`import { useForm } from 'react-hook-form'`}
         externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
       >
         <FormLowcode
+          id={1}
           spec={spec as any}
-          title="Create"
+          title="Readonly"
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          customField={({ defaultField, field }) => {
-            if (field.name === 'status') {
-              return <div>ini bisa buat custom klo form nya tidak standar</div>
-            }
-            return defaultField
-          }}
-          onSubmit={(data) => console.log(data)}
+          readonly
         />
       </CodePreview>
     </SectionLayout>

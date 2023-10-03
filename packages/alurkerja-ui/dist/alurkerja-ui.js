@@ -33777,9 +33777,7 @@ const mz = ({
     };
   }, [e, t, n]), { tableSpec: r, loading: u, error: g };
 }, k5 = (e) => {
-  const { baseUrl: t, path: n, spec: a } = e;
-  console.log(a);
-  const { tableSpec: r, loading: l } = R5({ baseUrl: t, path: n, spec: a }), [u, h] = Qt([]), [g, w] = Qt([]), [C, A] = Qt([]), [I, M] = Qt(), [L, V] = Qt(), N = (G) => {
+  const { baseUrl: t, path: n, spec: a } = e, { tableSpec: r, loading: l } = R5({ baseUrl: t, path: n, spec: a }), [u, h] = Qt([]), [g, w] = Qt([]), [C, A] = Qt([]), [I, M] = Qt(), [L, V] = Qt(), N = (G) => {
     G == null || G.header_action.forEach((K) => {
       K.label === "Tambah" ? M(K) : K.label === "Edit" && V(K);
     }), G == null || G.field_action.forEach((K) => {
@@ -37878,7 +37876,7 @@ const EL = ({ fieldSpec: e, defaultValue: t, data: n }) => {
   return /* @__PURE__ */ k.jsx("div", { children: t ?? "-" });
 }, lw = (e) => {
   var ee, Q;
-  const { fieldSpec: t, name: n, setValue: a, defaultValue: r, disabled: l, baseUrl: u, asDetail: h, data: g } = e, w = Yr(Uf), C = Yr(PP), [A, I] = Qt(), [M, L] = Qt(), [V, N] = Qt(), [X, G] = Qt(!1), K = async (ie) => {
+  const { fieldSpec: t, name: n, setValue: a, defaultValue: r, disabled: l, baseUrl: u, readonly: h, data: g } = e, w = Yr(Uf), C = Yr(PP), [A, I] = Qt(), [M, L] = Qt(), [V, N] = Qt(), [X, G] = Qt(!1), K = async (ie) => {
     if (G(!0), t.select_options) {
       const { method: ne, option_key: we, option_label: Ae, url: me, options: Ce } = t.select_options;
       if (Ce) {
@@ -39040,7 +39038,7 @@ const fN = (e) => {
     onError: C,
     id: A,
     disabled: I,
-    asDetail: M,
+    readonly: M,
     textSubmitButton: L,
     title: V,
     onCancel: N,
@@ -39141,7 +39139,7 @@ const fN = (e) => {
                   defaultField: /* @__PURE__ */ k.jsx(
                     lw,
                     {
-                      asDetail: M,
+                      readonly: M,
                       disabled: I,
                       baseUrl: t,
                       fieldSpec: Je,
@@ -39161,7 +39159,7 @@ const fN = (e) => {
                     setValue: h,
                     defaultValue: fe == null ? void 0 : fe[Je.name],
                     disabled: I,
-                    asDetail: M,
+                    readonly: M,
                     data: fe
                   }
                 )
@@ -39199,7 +39197,7 @@ const fN = (e) => {
                     setValue: h,
                     defaultValue: st == null ? void 0 : st[Je.name],
                     disabled: I,
-                    asDetail: !0,
+                    readonly: !0,
                     data: st
                   }
                 )

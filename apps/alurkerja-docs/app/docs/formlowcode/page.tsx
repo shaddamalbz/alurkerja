@@ -5,6 +5,7 @@ import { BaseSection } from './BaseSection'
 import { Checkbox, Input, InputDate, PendingUpload, Radio, Switch, Select } from 'alurkerja-ui'
 import { CustomFieldProps } from './CustomFieldProps'
 import { ColumnSpanColumnNumberProps } from './ColumnSpan&ColumnNumberProps'
+import { ReadonlyProps } from './ReadonlyProps'
 
 export default function page() {
   return (
@@ -96,6 +97,7 @@ export default function page() {
       <h2>Props</h2>
       <CustomFieldProps />
       <ColumnSpanColumnNumberProps />
+      <ReadonlyProps />
     </article>
   )
 }
