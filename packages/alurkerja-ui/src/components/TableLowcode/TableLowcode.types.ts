@@ -17,7 +17,15 @@ export interface TableLowcodeProps {
    * @param string eg '/api/crud/custom-path'
    */
   dataPath?: string
-
+  /**
+   * @param label label ini akan ditampilkan sebagai nama kolom
+   * @param value key dari object data yang diterima untuk ditampilkan di cell
+   * @example
+   * misal data yang diterima [{nama: shaddam, age: 20}, {nama: alghafiqih, age: 20}]
+   * apabila ingin menampilkan column nama saja maka propsnya akan seperti ini
+   * `column={[{label: 'Nama User', value: 'nama'}]}`
+   */
+  column?: { label: string; key: string }[]
   title?: string
   /** base API url (lowcode spec) */
   baseUrl: string

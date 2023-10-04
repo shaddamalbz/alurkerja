@@ -169,8 +169,6 @@ export interface TableConfig {
 
   table_number_header?: string
 
-  header_uppercase?: boolean
-
   cell_file_modal_title?: string
 }
 

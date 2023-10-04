@@ -81,6 +81,7 @@ export const BPMN: Story = {
         setFilterBy={setFilterBy}
         search={search}
         setSearch={setSearch}
+        column={[{ key: 'alasan_cuti', label: 'Halo' }]}
       />
     )
   },

@@ -51,6 +51,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     extraActionButton,
     hideActionColumn,
     canBulk = false,
+    column,
   } = useContext(TableLowcodeContext)
 
   const { handleSubmit, setValue, formState, control } = useForm()
@@ -198,8 +199,8 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                     />
                   </th>
                 )}
-                {listFieldKey?.map(
-                  (key, idx) =>
+                {(column ?? listFieldKey)?.map(
+                  ({ label, key }, idx) =>
                     !tableSpec.fields[key]?.is_hidden_in_list && (
                       <th
                         id="table_head_col"
@@ -223,9 +224,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                           }
                         }}
                       >
-                        {tableConfig?.header_uppercase
-                          ? tableSpec.fields[key]?.label.toUpperCase()
-                          : tableSpec.fields[key]?.label}
+                        {label}
                         {orderBy && sortBy === key && (
                           <div className="absolute right-0 -translate-y-1/2 top-1/2">
                             {orderBy === 'asc' ? <FaChevronUp /> : <FaChevronDown />}
@@ -288,7 +287,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                       </td>
                     )}
                     {tableSpec &&
-                      listFieldKey?.map((key, idx) => {
+                      (column ?? listFieldKey)?.map(({ key }, idx) => {
                         const nestedSpec = {
                           valueKey: tableSpec.fields[key]?.table_value_mapping?.value,
                           dataKey: tableSpec.fields[key]?.table_value_mapping?.relation,

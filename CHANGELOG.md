@@ -8,3 +8,5 @@
 4. Menghapus props formConfig di TableLowcode
 
 ## Minor Change
+
+1. props `column` untuk menentukan column apa saja yang ingin ditampilkan
