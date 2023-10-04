@@ -47065,11 +47065,11 @@ const kF = (e) => {
           children: /* @__PURE__ */ k.jsxs(
             r2.Panel,
             {
-              className: `${ZK[r ?? "lg"]} transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all relative pb-6`,
+              className: `${ZK[r ?? "lg"]} transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all relative`,
               style: { ...h, width: l || "100%" },
               children: [
                 /* @__PURE__ */ k.jsx(I, {}),
-                /* @__PURE__ */ k.jsx("div", { className: "px-2.5", children: typeof u == "function" ? u({ closeModal: C, openModal: A }) : u })
+                /* @__PURE__ */ k.jsx("div", { className: "p-6", children: typeof u == "function" ? u({ closeModal: C, openModal: A }) : u })
               ]
             }
           )

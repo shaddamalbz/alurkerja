@@ -2,18 +2,18 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ChevronDown, ChevronUp, Menu } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import prism from 'prismjs'
 import _ from 'lodash'
 
 import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-tsx'
+import { Sidebar } from '@/components'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
-  const [isComponentToggled, setIsComponentToggled] = useState(false)
   const [tableOfContents, setTableOfContents] = useState<string[]>()
 
   useEffect(() => {
@@ -52,40 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </header>
 
       <div className="lg:flex relative">
-        <div className="hidden lg:block sticky top-20 left-0 inset-0 w-64 flex-none border-r border-gray-200 h-[calc(100vh-65px)] lg:overflow-y-visible lg:pt-6 px-4">
-          <details onToggle={() => setIsComponentToggled(!isComponentToggled)}>
-            <summary className="first:rounded-t-lg last:rounded-b-lg text-left dark:bg-transparent mb-1 text-gray-900  hover:text-main-blue-alurkerja flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide cursor-pointer py-4">
-              Components
-              {isComponentToggled ? <ChevronUp /> : <ChevronDown />}
-            </summary>
-            <div className="flex flex-col gap-2">
-              <Link
-                className="rounded-lg px-2 text-sm font-medium text-gray-alurkerja-1 hover:text-main-blue-alurkerja cursor-pointer"
-                href="/docs/reacthookwrapper"
-              >
-                ReactHookWrapper
-              </Link>
-              <Link
-                className="rounded-lg px-2 text-sm font-medium text-gray-alurkerja-1 hover:text-main-blue-alurkerja cursor-pointer"
-                href="/docs/button"
-              >
-                Button
-              </Link>
-              <Link
-                className="rounded-lg px-2 text-sm font-medium text-gray-alurkerja-1 hover:text-main-blue-alurkerja cursor-pointer"
-                href="/docs/tablelowcode"
-              >
-                TableLowcode
-              </Link>
-              <Link
-                className="rounded-lg px-2 text-sm font-medium text-gray-alurkerja-1 hover:text-main-blue-alurkerja cursor-pointer"
-                href="/docs/formlowcode"
-              >
-                FormLowcode
-              </Link>
-            </div>
-          </details>
-        </div>
+        <Sidebar />
         <div className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
           <div className="flex w-full">
             <div className="pb:12 mx-auto flex w-full max-w-5xl flex-col divide-y divide-gray-200 px-4 pt-6 dark:divide-gray-800 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">

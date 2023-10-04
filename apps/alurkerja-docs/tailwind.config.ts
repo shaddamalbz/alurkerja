@@ -7,6 +7,7 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './node_modules/alurkerja-ui/dist/**/*.{js,ts,jsx,tsx,mdx}',
+    './mdx-components.tsx',
   ],
   theme: {
     extend: {

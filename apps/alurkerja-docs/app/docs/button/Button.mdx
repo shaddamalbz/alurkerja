@@ -1,18 +1,50 @@
 import { Button } from 'alurkerja-ui'
+import { Menu } from 'lucide-react'
 import { CodePreview } from '@/components'
 
 # Button
 
 Enable user interaction with the button component to perform actions on your website as links, for payment, form submission, social buttons and more based on React and Tailwind CSS
 
-## Default Button
+### Base
 
 <CodePreview name="button" code="<Button>Default</Button>">
   <Button>Default</Button>
 </CodePreview>
 
-## Button with full width
+### Button with full width
 
 <CodePreview name="button" code="<Button block={false}>Default</Button>">
-  <Button block={0}>Default</Button>
+  <Button block={false}>Default</Button>
+</CodePreview>
+
+### Loading
+
+<CodePreview name="button" code="<Button loading>Loading</Button>">
+  <Button loading>Loading</Button>
+</CodePreview>
+
+### Variant
+
+<CodePreview
+  name="button"
+  code={`<Button variant='outlined'>Button</Button>
+        <Button variant='filled'>Loading</Button>
+        <Button variant='text'>Loading</Button>`}
+>
+  <Button variant="outlined">Button</Button>
+  <Button variant="filled">Loading</Button>
+  <Button variant="text">Loading</Button>
+</CodePreview>
+
+## Icon
+
+<CodePreview
+  name="button"
+  code={`<Button icon={<Menu />}>Button</Button>
+        <Button icon={<Menu />} />`}
+  externalImport={`import { Menu } from 'lucide-react'`}
+>
+  <Button icon={<Menu />}>Button</Button>
+  <Button icon={<Menu />} />
 </CodePreview>

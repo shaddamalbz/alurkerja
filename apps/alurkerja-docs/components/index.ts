@@ -1,1 +1,2 @@
-export { CodePreview } from './CodePreview'
+export * from './CodePreview'
+export * from './Sidebar'

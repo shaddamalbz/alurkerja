@@ -8,8 +8,13 @@ interface SectionLayoutProps extends PropsWithChildren {
 
 export const SectionLayout: FC<SectionLayoutProps> = ({ children, title, description }) => {
   return (
-    <section id={_.toLower(title).replaceAll(' ', '-').replaceAll('()', '')}>
-      <h3>{title}</h3>
+    <section>
+      <h3
+        id={_.toLower(title).replaceAll(' ', '-').replaceAll('()', '')}
+        className="group relative z-10 text-2xl font-bold text-gray-900 before:invisible before:-mt-20 before:block before:h-20 before:content"
+      >
+        {title}
+      </h3>
       <p>{description}</p>
       <div>{children}</div>
     </section>

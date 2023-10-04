@@ -1,0 +1,43 @@
+import { Badge } from 'alurkerja-ui'
+import { CodePreview } from '@/components'
+
+# Badge
+
+### Base
+
+<CodePreview
+  name="Avatar"
+  code={`<Badge content={1}>
+          <button className="h-10 w-10 rounded-full bg-gray-200" />
+        </Badge>`}
+>
+  <Badge content={1}>
+    <button className="h-10 w-10 rounded-full bg-gray-200" />
+  </Badge>
+</CodePreview>
+
+### String Content
+
+<CodePreview
+  name="Avatar"
+  code={`<Badge content={'A+'}>
+          <button className="h-10 w-10 rounded-full bg-gray-200" />
+        </Badge>`}
+>
+  <Badge content={'A+'}>
+    <button className="h-10 w-10 rounded-full bg-gray-200" />
+  </Badge>
+</CodePreview>
+
+### Over Content
+
+<CodePreview
+  name="Avatar"
+  code={`<Badge content={3} maxCount={2}>
+          <button className="h-10 w-10 rounded-full bg-gray-200" />
+        </Badge>`}
+>
+  <Badge content={3} maxCount={2}>
+    <button className="h-10 w-10 rounded-full bg-gray-200" />
+  </Badge>
+</CodePreview>

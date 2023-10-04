@@ -78,11 +78,11 @@ export const Modal = React.forwardRef<ModalRef, ModalProps>((props, ref) => {
                 <Dialog.Panel
                   className={`${
                     maxWidhtMapping[maxWidth ?? 'lg']
-                  } transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all relative pb-6`}
+                  } transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all relative`}
                   style={{ ...style, width: width || '100%' }}
                 >
                   <Title />
-                  <div className="px-2.5">
+                  <div className="p-6">
                     {typeof children === 'function' ? children({ closeModal, openModal }) : children}
                   </div>
                 </Dialog.Panel>
