@@ -1054,7 +1054,6 @@ export declare interface TableConfig {
     preview_before_submit?: boolean;
     message_not_found?: string;
     table_number_header?: string;
-    header_uppercase?: boolean;
     cell_file_modal_title?: string;
 }
 
@@ -1075,8 +1074,6 @@ declare interface TableConfig_2 {
 
     table_number_header?: string
 
-    header_uppercase?: boolean
-
     cell_file_modal_title?: string
 }
 
@@ -1094,6 +1091,18 @@ declare interface TableLowcodeProps {
      * @param string eg '/api/crud/custom-path'
      */
     dataPath?: string;
+    /**
+     * @param label label ini akan ditampilkan sebagai nama kolom
+     * @param value key dari object data yang diterima untuk ditampilkan di cell
+     * @example
+     * misal data yang diterima [{nama: shaddam, age: 20}, {nama: alghafiqih, age: 20}]
+     * apabila ingin menampilkan column nama saja maka propsnya akan seperti ini
+     * `column={[{label: 'Nama User', value: 'nama'}]}`
+     */
+    column?: {
+        label: string;
+        key: string;
+    }[];
     title?: string;
     /** base API url (lowcode spec) */
     baseUrl: string;
@@ -1271,7 +1280,15 @@ declare interface TableLowcodeProps_2 {
      * @param string eg '/api/crud/custom-path'
      */
     dataPath?: string
-
+    /**
+     * @param label label ini akan ditampilkan sebagai nama kolom
+     * @param value key dari object data yang diterima untuk ditampilkan di cell
+     * @example
+     * misal data yang diterima [{nama: shaddam, age: 20}, {nama: alghafiqih, age: 20}]
+     * apabila ingin menampilkan column nama saja maka propsnya akan seperti ini
+     * `column={[{label: 'Nama User', value: 'nama'}]}`
+     */
+    column?: { label: string; key: string }[]
     title?: string
     /** base API url (lowcode spec) */
     baseUrl: string

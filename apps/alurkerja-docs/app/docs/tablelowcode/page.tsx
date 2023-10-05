@@ -17,6 +17,7 @@ import { BulkSection } from './BulkFeatureSection'
 import { ExtraActionButtonProps } from './ExtraActionButtonProps'
 import { CustomButtonFilterProps } from './CustomButtonFilterProps'
 import { CustomActionCellProps } from './CustomActionCellProps'
+import { ColumnProps } from './ColumnProps'
 
 export default function page() {
   return (
@@ -49,6 +50,7 @@ export default function page() {
       <CustomButtonCreateProps />
       <CustomActionCellProps />
       <ExtraActionButtonProps />
+      <ColumnProps />
     </article>
   )
 }
