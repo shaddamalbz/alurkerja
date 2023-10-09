@@ -1,6 +1,7 @@
 import { AxiosInstance } from 'axios';
 import { AxiosStatic } from 'axios';
 import { ButtonHTMLAttributes } from 'react';
+import { Component } from 'react';
 import type { ComponentProps } from 'react';
 import { Context } from 'react';
 import { Control } from 'react-hook-form';
@@ -147,6 +148,17 @@ export declare interface DiagramBpmnProps {
      */
     customBadge?: (task_id: string) => string;
 }
+
+export declare class Dialog extends Component {
+    static success: (arg?: DialogProps) => void;
+    static error: (arg?: DialogProps) => void;
+}
+
+declare type DialogProps = {
+    title?: string;
+    description?: string;
+    callback?: () => void;
+};
 
 export declare const DirectUpload: FC<DirectUploadProps>;
 
@@ -1173,19 +1185,24 @@ declare interface TableLowcodeProps {
         field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
         defaultField: JSX.Element;
-        value: string | number | boolean;
+        value: any;
     }) => JSX.Element;
     customDetailField?: ({ field, setValue, defaultField, value, }: {
         field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
         defaultField: JSX.Element;
-        value: string | number | boolean;
+        value: any;
+    }) => JSX.Element;
+    customEditField?: ({ field, setValue, defaultField, value, }: {
+        field: FieldProperties;
+        setValue: UseFormSetValue<FieldValues>;
+        defaultField: JSX.Element;
+        value: any;
     }) => JSX.Element;
     customCreateField?: ({ field, setValue, defaultField, }: {
         field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
         defaultField: JSX.Element;
-        value: string | number | boolean;
     }) => JSX.Element;
     textSubmitButton?: string;
     customFilterField?: ({ field, setValue, defaultField, }: {
@@ -1353,7 +1370,7 @@ declare interface TableLowcodeProps_2 {
         field: FieldProperties_2
         setValue: UseFormSetValue<FieldValues>
         defaultField: JSX.Element
-        value: string | number | boolean
+        value: any
     }) => JSX.Element
     customDetailField?: ({
         field,
@@ -1364,7 +1381,18 @@ declare interface TableLowcodeProps_2 {
         field: FieldProperties_2
         setValue: UseFormSetValue<FieldValues>
         defaultField: JSX.Element
-        value: string | number | boolean
+        value: any
+    }) => JSX.Element
+    customEditField?: ({
+        field,
+        setValue,
+        defaultField,
+        value,
+    }: {
+        field: FieldProperties_2
+        setValue: UseFormSetValue<FieldValues>
+        defaultField: JSX.Element
+        value: any
     }) => JSX.Element
     customCreateField?: ({
         field,
@@ -1374,7 +1402,6 @@ declare interface TableLowcodeProps_2 {
         field: FieldProperties_2
         setValue: UseFormSetValue<FieldValues>
         defaultField: JSX.Element
-        value: string | number | boolean
     }) => JSX.Element
     textSubmitButton?: string
     customFilterField?: ({

@@ -42,6 +42,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     customButtonEdit,
     customButtonDelete,
     customDetailField,
+    customEditField,
     customField,
     onDeleteConfirm,
     textSubmitButton,
@@ -393,7 +394,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                                 setRenderState?.((prev) => prev + 1)
                                               }}
                                               onCancel={() => closeModal()}
-                                              customField={customField}
+                                              customField={customField ?? customEditField}
                                               textSubmitButton={textSubmitButton}
                                               title={<></>}
                                               message={message}
@@ -495,7 +496,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                           readonly
                                           action={action}
                                           row={row}
-                                          customField={customDetailField}
+                                          customField={customField ?? customDetailField}
                                           triggerButton={
                                             tooltip?.button_detail ? (
                                               <Tooltip content={tooltip.button_detail}>

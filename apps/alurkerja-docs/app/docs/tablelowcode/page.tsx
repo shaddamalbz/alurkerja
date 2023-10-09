@@ -18,6 +18,8 @@ import { ExtraActionButtonProps } from './ExtraActionButtonProps'
 import { CustomButtonFilterProps } from './CustomButtonFilterProps'
 import { CustomActionCellProps } from './CustomActionCellProps'
 import { ColumnProps } from './ColumnProps'
+import { TitleProps } from './TitleProps'
+import { BorderedProps } from './BorderedProps'
 
 export default function page() {
   return (
@@ -39,15 +41,17 @@ export default function page() {
       <BulkSection />
       <AllFeatureSection />
       <h2>Props</h2>
+      <TitleProps />
+      <BorderedProps />
       <OnClickCreateProps />
       <OnClickDetailProps />
       <OnClickEditProps />
       <CustomButtonDetailProps />
       <CustomButtonEditProps />
-      <CustomCellProps />
-      <CustomHeaderProps />
       <CustomButtonFilterProps />
       <CustomButtonCreateProps />
+      <CustomCellProps />
+      <CustomHeaderProps />
       <CustomActionCellProps />
       <ExtraActionButtonProps />
       <ColumnProps />

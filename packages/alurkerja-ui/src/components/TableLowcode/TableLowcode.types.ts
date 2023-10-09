@@ -90,7 +90,7 @@ export interface TableLowcodeProps {
     field: FieldProperties
     setValue: UseFormSetValue<FieldValues>
     defaultField: JSX.Element
-    value: string | number | boolean
+    value: any
   }) => JSX.Element
   customDetailField?: ({
     field,
@@ -101,7 +101,18 @@ export interface TableLowcodeProps {
     field: FieldProperties
     setValue: UseFormSetValue<FieldValues>
     defaultField: JSX.Element
-    value: string | number | boolean
+    value: any
+  }) => JSX.Element
+  customEditField?: ({
+    field,
+    setValue,
+    defaultField,
+    value,
+  }: {
+    field: FieldProperties
+    setValue: UseFormSetValue<FieldValues>
+    defaultField: JSX.Element
+    value: any
   }) => JSX.Element
   customCreateField?: ({
     field,
@@ -111,7 +122,6 @@ export interface TableLowcodeProps {
     field: FieldProperties
     setValue: UseFormSetValue<FieldValues>
     defaultField: JSX.Element
-    value: string | number | boolean
   }) => JSX.Element
   textSubmitButton?: string
   customFilterField?: ({

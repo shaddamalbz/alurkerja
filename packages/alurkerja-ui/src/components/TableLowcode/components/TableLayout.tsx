@@ -33,7 +33,7 @@ const TableLayout: FC<TableLayoutProps> = ({ children, tableSpec, pagination, ex
   }, [filterBy])
 
   return (
-    <div className="bg-white rounded py-4">
+    <div className="bg-white rounded">
       {customHeader ? (
         customHeader
       ) : (
