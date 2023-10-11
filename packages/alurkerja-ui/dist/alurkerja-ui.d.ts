@@ -1035,21 +1035,17 @@ export declare interface StatusIconProps {
     type: 'info' | 'success' | 'warning' | 'danger';
 }
 
-/**
- *
- * @returns 0 for false, 1 for true
- */
-export declare const Switch: FC<SwitchProps>;
+export declare const Switch: (props: SwtichProps) => JSX_2.Element;
 
-export declare interface SwitchProps {
-    options: {
-        value: string | number | boolean;
-        label: string;
-    }[];
+export declare interface SwtichProps {
+    disabled?: boolean;
+    options: any[];
     /** callback to get value */
-    onChange?: (value: boolean | string | number | undefined) => void;
+    onChange?: (value: boolean | undefined) => void;
     /** props to set defaultvalue */
     defaultValue?: boolean;
+    name?: string;
+    'aria-label?'?: string;
 }
 
 export declare interface TableConfig {

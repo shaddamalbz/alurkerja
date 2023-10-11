@@ -5,5 +5,7 @@ export const listMenu = [
   { label: 'Modal', href: '/docs/modal' },
   { label: 'ReactHookWrapper', href: '/docs/reacthookwrapper' },
   { label: 'TableLowcode', href: '/docs/tablelowcode' },
-  { label: 'FormLowcode', href: '/docs/FormLowcode' },
+  { label: 'FormLowcode', href: '/docs/formlowcode' },
+  { label: 'Spinner', href: '/docs/spinner' },
+  { label: 'Switch', href: '/docs/switch' },
 ]

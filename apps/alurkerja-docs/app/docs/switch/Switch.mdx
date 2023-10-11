@@ -1,0 +1,67 @@
+import { Switch } from 'alurkerja-ui'
+import { CodePreview } from '@/components'
+
+# Switch
+
+### Base
+
+<CodePreview
+  name="Switch"
+  code={`<Switch
+          options={[
+            { label: 'Ya', value: true },
+            { label: 'Tidak', value: false },
+          ]}
+        />`}
+>
+  <Switch
+    options={[
+      { label: 'Ya', value: true },
+      { label: 'Tidak', value: false },
+    ]}
+  />
+</CodePreview>
+
+### Default Value
+
+<CodePreview
+  name="Switch"
+  code={`<Switch
+          options={[
+            { label: 'Ya', value: true },
+            { label: 'Tidak', value: false },
+          ]}
+          defaultValue={false}
+        />`}
+>
+  <Switch
+    options={[
+      { label: 'Ya', value: true },
+      { label: 'Tidak', value: false },
+    ]}
+    defaultValue={false}
+  />
+</CodePreview>
+
+### OnChange
+
+<CodePreview
+  name="Switch"
+  code={`<Switch
+          options={[
+            { label: 'Ya', value: true },
+            { label: 'Tidak', value: false },
+          ]}
+          onChange={(value) => value !== undefined && alert(value)}
+        />`}
+
+>
+
+  <Switch
+    options={[
+      { label: 'Ya', value: true },
+      { label: 'Tidak', value: false },
+    ]}
+    onChange={(value) => value !== undefined && alert(value)}
+  />
+</CodePreview>
