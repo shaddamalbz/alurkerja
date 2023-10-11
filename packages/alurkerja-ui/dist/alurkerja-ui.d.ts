@@ -580,7 +580,7 @@ export declare const Input: React_2.ForwardRefExoticComponent<InputProps & React
 export declare const InputDate: FC<InputDateProps>;
 
 export declare interface InputDateProps extends Omit<ReactDatePickerProps, 'onChange'>, BaseInputProps {
-    onChange?: (date: Date | null | undefined) => void;
+    onChange?: (date?: Date | null) => void;
     defaultValue?: Date;
 }
 
@@ -628,7 +628,7 @@ export declare const InputYear: FC<InputYearProps>;
 
 export declare interface InputYearProps {
     onChange?: (value?: Date | null) => void;
-    defaultValue?: Date | null;
+    defaultValue?: Date;
 }
 
 export declare interface IPendingAlurkerjaTableLowcode {

@@ -65,10 +65,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 ">
                     On this page
                   </h4>
-                  {tableOfContents?.map((toc) => (
+                  {tableOfContents?.map((toc, i) => (
                     <a
                       href={'#' + _.toLower(toc).replaceAll(' ', '-').replaceAll('()', '')}
                       className="hover:text-main-blue-alurkerja cursor-pointer block"
+                      key={i}
                     >
                       {toc.replaceAll('()', '')}
                     </a>

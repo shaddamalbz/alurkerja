@@ -8,7 +8,7 @@ import { BaseInputProps } from '@/types'
 import clsx from 'clsx'
 
 export interface InputDateProps extends Omit<ReactDatePickerProps, 'onChange'>, BaseInputProps {
-  onChange?: (date: Date | null | undefined) => void
+  onChange?: (date?: Date | null) => void
   defaultValue?: Date
 }
 
