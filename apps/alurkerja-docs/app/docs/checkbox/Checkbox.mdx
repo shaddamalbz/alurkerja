@@ -1,0 +1,45 @@
+import { Checkbox } from 'alurkerja-ui'
+import { CodePreview } from '@/components'
+
+# Checkbox
+
+### Base
+
+<CodePreview
+  name="button"
+  code={`<Checkbox
+          listOption={[
+            { label: 'option 1', value: 1 },
+            { label: 'option 2', value: 2 },
+          ]}
+        />`}
+>
+  <Checkbox
+    listOption={[
+      { label: 'option 1', value: 1 },
+      { label: 'option 2', value: 2 },
+    ]}
+  />
+</CodePreview>
+
+### DefaultValue
+
+<CodePreview
+  name="button"
+  code={`<Checkbox
+          listOption={[
+            { label: 'option 1', value: 1 },
+            { label: 'option 2', value: 2 },
+          ]}
+          defaultValue={[1]}
+        />`}
+>
+
+  <Checkbox
+    listOption={[
+      { label: 'option 1', value: 1 },
+      { label: 'option 2', value: 2 },
+    ]}
+    defaultValue={[1]}
+  />
+</CodePreview>

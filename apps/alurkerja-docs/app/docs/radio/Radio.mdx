@@ -1,0 +1,88 @@
+import { Radio } from 'alurkerja-ui'
+import { CodePreview } from '@/components'
+
+# Radio
+
+note: props name di Radio harus uniq, jika ada 2 component radio di satu halaman pastikan name nya berbeda
+
+### Base
+
+<CodePreview
+  name="Radio"
+  code={`<Radio name="radio" 
+          listOption={{ label: 'radio1', key: 1 },{ label: 'radio2', key: 2 }} 
+        />`}
+>
+  <Radio
+    name="radio"
+    listOption={[
+      { label: 'radio1', key: 1 },
+      { label: 'radio2', key: 2 },
+    ]}
+  />
+</CodePreview>
+
+### DefaultValue
+
+<CodePreview
+  name="Radio"
+  code={`<Radio name="radio-1" 
+          listOption={{ label: 'radio1', key: 1 },{ label: 'radio2', key: 2 }} 
+          defaultValue={2}
+        />`}
+>
+  <Radio
+    name="radio"
+    listOption={[
+      { label: 'radio1', key: 1 },
+      { label: 'radio2', key: 2 },
+    ]}
+    defaultValue={2}
+/>
+
+</CodePreview>
+
+### Disabled
+
+<CodePreview
+  name="Radio"
+  code={`<Radio name="radio-2" 
+          listOption={{ label: 'radio1', key: 1 },{ label: 'radio2', key: 2 }} 
+          defaultValue={2}
+          disabled
+        />`}
+>
+  <Radio
+    name="radio-3"
+    listOption={[
+      { label: 'radio1', key: 1 },
+      { label: 'radio2', key: 2 },
+    ]}
+    defaultValue={2}
+    disabled
+/>
+
+</CodePreview>
+
+### OnChange
+
+<CodePreview
+  name="Radio"
+  code={`<Radio name="radio-3" 
+          listOption={{ label: 'radio1', key: 1 },{ label: 'radio2', key: 2 }} 
+          onChange={(value) => value !== undefined && alert(value)}
+        />`}
+
+>
+
+  <Radio
+    name="radio-5"
+    listOption={[
+      { label: 'radio1', key: 1 },
+      { label: 'radio2', key: 2 },
+    ]}
+    onChange={(value) => value !== undefined && alert(value)}
+
+/>
+
+</CodePreview>
