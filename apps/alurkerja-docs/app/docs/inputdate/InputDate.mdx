@@ -1,0 +1,24 @@
+import { InputDate } from 'alurkerja-ui'
+import { CodePreview } from '@/components'
+
+# InputDate
+
+### Base
+
+<CodePreview name="Input" code={`<InputDate />`}>
+  <InputDate />
+</CodePreview>
+
+### Formating
+
+ref: https://reactdatepicker.com/#example-custom-date-format
+
+<CodePreview name="Input" code={`<InputDate dateFormat='dd MM yyyy' />`}>
+  <InputDate dateFormat="dd MM yyyy" />
+</CodePreview>
+
+### DefaultValue
+
+<CodePreview name="Input" code={`<InputDate defaulValue={new Date('2000-06-26')} />`}>
+  <InputDate defaultValue={new Date('2000-06-26')} />
+</CodePreview>
