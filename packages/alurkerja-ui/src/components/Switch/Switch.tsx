@@ -1,19 +1,21 @@
-import { useState, useEffect, FC } from 'react'
+import clsx from 'clsx'
+import { useState, useEffect } from 'react'
 
-export interface SwitchProps {
-  options: { value: string | number | boolean; label: string }[]
+export interface SwtichProps {
+  disabled?: boolean
+  options: any[]
   /** callback to get value */
-  onChange?: (value: boolean | string | number | undefined) => void
+  onChange?: (value: boolean | undefined) => void
   /** props to set defaultvalue */
   defaultValue?: boolean
+  name?: string
+  'aria-label?'?: string
 }
 
-/**
- *
- * @returns 0 for false, 1 for true
- */
-export const Switch: FC<SwitchProps> = ({ options, onChange, defaultValue = false }) => {
-  const [selected, setSelected] = useState<boolean | number | string>()
+export const Switch = (props: SwtichProps) => {
+  const { onChange, defaultValue, options, disabled } = props
+
+  const [selected, setSelected] = useState<boolean>()
 
   useEffect(() => {
     onChange?.(selected)
@@ -30,10 +32,17 @@ export const Switch: FC<SwitchProps> = ({ options, onChange, defaultValue = fals
       <div className="w-full flex items-center">
         {options.map((option, idx: number) => (
           <div
-            className={`w-fit text-white p-2 flex justify-center cursor-pointer ${
-              selected === option.value ? (idx % 2 === 0 ? 'bg-[#005FC2]' : ' bg-[#F4402C]') : 'bg-[#DFDFDF]'
-            } ${idx % 2 === 0 ? `rounded-l` : 'rounded-r'}`}
-            onClick={() => setSelected(option.value)}
+            className={clsx(
+              'w-fit text-white p-2 flex justify-center ',
+              selected === option.value ? (idx % 2 === 0 ? 'bg-[#005FC2]' : ' bg-[#F4402C]') : 'bg-[#DFDFDF]',
+              idx % 2 === 0 ? `rounded-l` : 'rounded-r',
+              disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+            )}
+            onClick={() => {
+              if (!disabled) {
+                setSelected(option.value)
+              }
+            }}
             key={idx}
           >
             {option.label}

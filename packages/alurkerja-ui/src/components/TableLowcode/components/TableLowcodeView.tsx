@@ -215,7 +215,6 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                         onClick={() => {
                           if (tableSpec.fields[key]?.sortable) {
                             setOrderBy?.((prev) => {
-                              ;``
                               if (prev) {
                                 return prev === 'asc' ? 'desc' : 'asc'
                               }

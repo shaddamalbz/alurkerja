@@ -106,7 +106,7 @@ const InputTypesForFilter: FC<InputTypesLite> = ({
 
   useEffect(() => {
     if (selectedOption) {
-      setValue(fieldSpec.name, selectedOption)
+      setValue(fieldSpec.name, selectedOption.value)
     }
   }, [selectedOption])
 
@@ -172,7 +172,13 @@ const InputTypesForFilter: FC<InputTypesLite> = ({
                 {loadingOptions ? (
                   <Skeleton className="h-9" />
                 ) : (
-                  <Select {...field} options={listOption} defaultValue={selectedOption} />
+                  <Select
+                    options={listOption}
+                    defaultValue={selectedOption}
+                    onChange={(v: any) => {
+                      setValue(fieldSpec.name, v.value)
+                    }}
+                  />
                 )}
               </>
             )}
