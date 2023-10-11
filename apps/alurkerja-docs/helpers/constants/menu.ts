@@ -6,6 +6,7 @@ export const listMenu = [
   { label: 'ReactHookWrapper', href: '/docs/reacthookwrapper' },
   { label: 'TableLowcode', href: '/docs/tablelowcode' },
   { label: 'FormLowcode', href: '/docs/formlowcode' },
+  { label: 'Skeleton', href: '/docs/skeleton' },
   { label: 'Spinner', href: '/docs/spinner' },
   { label: 'Switch', href: '/docs/switch' },
 ]
