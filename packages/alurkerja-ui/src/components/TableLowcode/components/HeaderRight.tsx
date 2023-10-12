@@ -223,25 +223,27 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                   }
                 >
                   {({ closeModal }) => (
-                    <FormLowcode
-                      spec={tableSpec}
-                      baseUrl={baseUrl}
-                      formState={formState}
-                      specPath={tableSpec?.path}
-                      handleSubmit={handleSubmit}
-                      control={control}
-                      setValue={setValue}
-                      onSuccess={() => {
-                        closeModal()
-                        setRenderState?.((prev) => prev + 1)
-                      }}
-                      onCancel={() => closeModal()}
-                      customField={customCreateField ?? customField}
-                      textSubmitButton={textSubmitButton}
-                      title={<></>}
-                      message={message}
-                      previewBeforeSubmit={tableConfig?.preview_before_submit}
-                    />
+                    <div className="px-2.5">
+                      <FormLowcode
+                        spec={tableSpec}
+                        baseUrl={baseUrl}
+                        formState={formState}
+                        specPath={tableSpec?.path}
+                        handleSubmit={handleSubmit}
+                        control={control}
+                        setValue={setValue}
+                        onSuccess={() => {
+                          closeModal()
+                          setRenderState?.((prev) => prev + 1)
+                        }}
+                        onCancel={() => closeModal()}
+                        customField={customCreateField ?? customField}
+                        textSubmitButton={textSubmitButton}
+                        title={<></>}
+                        message={message}
+                        previewBeforeSubmit={tableConfig?.preview_before_submit}
+                      />
+                    </div>
                   )}
                 </Modal>
               )

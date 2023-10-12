@@ -140,28 +140,30 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     return (
       <Modal title={action.action_label} triggerButton={triggerButton}>
         {({ closeModal }) => (
-          <FormLowcode
-            readonly={readonly}
-            spec={tableSpec}
-            title={<></>}
-            id={row.id}
-            baseUrl={baseUrl}
-            specPath={tableSpec?.path}
-            formState={formState}
-            handleSubmit={handleSubmit}
-            control={control}
-            setValue={setValue}
-            onSuccess={() => {
-              closeModal()
-              setRenderState?.((prev) => prev + 1)
-            }}
-            onCancel={() => {
-              closeModal()
-            }}
-            customField={customField}
-            textSubmitButton={textSubmitButton}
-            message={message}
-          />
+          <div>
+            <FormLowcode
+              readonly={readonly}
+              spec={tableSpec}
+              title={<></>}
+              id={row.id}
+              baseUrl={baseUrl}
+              specPath={tableSpec?.path}
+              formState={formState}
+              handleSubmit={handleSubmit}
+              control={control}
+              setValue={setValue}
+              onSuccess={() => {
+                closeModal()
+                setRenderState?.((prev) => prev + 1)
+              }}
+              onCancel={() => {
+                closeModal()
+              }}
+              customField={customField}
+              textSubmitButton={textSubmitButton}
+              message={message}
+            />
+          </div>
         )}
       </Modal>
     )
@@ -202,7 +204,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                 )}
                 {(column ?? listFieldKey)?.map(
                   ({ label, key }, idx) =>
-                    !tableSpec.fields[key]?.is_hidden_in_list && (
+                    (column ? true : false || !tableSpec.fields[key]?.is_hidden_in_list) && (
                       <th
                         id="table_head_col"
                         className={clsx(
@@ -298,7 +300,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
 
                         return (
                           <Fragment key={idx}>
-                            {!tableSpec.fields[key]?.is_hidden_in_list && (
+                            {(column ? true : false || !tableSpec.fields[key]?.is_hidden_in_list) && (
                               <td
                                 id="table_body_col"
                                 className={clsx(
@@ -379,26 +381,28 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                           }
                                         >
                                           {({ closeModal }) => (
-                                            <FormLowcode
-                                              id={row.id}
-                                              spec={tableSpec}
-                                              baseUrl={baseUrl}
-                                              formState={formState}
-                                              specPath={tableSpec?.path}
-                                              handleSubmit={handleSubmit}
-                                              control={control}
-                                              setValue={setValue}
-                                              onSuccess={() => {
-                                                closeModal()
-                                                setRenderState?.((prev) => prev + 1)
-                                              }}
-                                              onCancel={() => closeModal()}
-                                              customField={customField ?? customEditField}
-                                              textSubmitButton={textSubmitButton}
-                                              title={<></>}
-                                              message={message}
-                                              previewBeforeSubmit={tableConfig?.preview_before_submit}
-                                            />
+                                            <div className="px-2.5">
+                                              <FormLowcode
+                                                id={row.id}
+                                                spec={tableSpec}
+                                                baseUrl={baseUrl}
+                                                formState={formState}
+                                                specPath={tableSpec?.path}
+                                                handleSubmit={handleSubmit}
+                                                control={control}
+                                                setValue={setValue}
+                                                onSuccess={() => {
+                                                  closeModal()
+                                                  setRenderState?.((prev) => prev + 1)
+                                                }}
+                                                onCancel={() => closeModal()}
+                                                customField={customField ?? customEditField}
+                                                textSubmitButton={textSubmitButton}
+                                                title={<></>}
+                                                message={message}
+                                                previewBeforeSubmit={tableConfig?.preview_before_submit}
+                                              />
+                                            </div>
                                           )}
                                         </Modal>
                                       )

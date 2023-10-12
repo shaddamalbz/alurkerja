@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import React, { CSSProperties, Fragment, useImperativeHandle, useState } from 'react'
 import { RxCross2 } from 'react-icons/rx'
 
-export interface ModalProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
+interface IModal extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
   triggerButton?: React.ReactNode
   title?: string
   style?: CSSProperties
@@ -10,10 +10,10 @@ export interface ModalProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
     | (({ closeModal, openModal }: { closeModal: () => void; openModal: () => void }) => JSX.Element)
     | JSX.Element
   width?: string | number
-  maxWidth?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'
+  maxWidth?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl'
 }
 
-export type ModalRef = {
+export type IRefModal = {
   closeModal: () => void
   openModal: () => void
 }
@@ -25,9 +25,12 @@ const maxWidhtMapping = {
   '2xl': 'max-w-2xl',
   '3xl': 'max-w-3xl',
   '4xl': 'max-w-4xl',
+  '5xl': 'max-w-5xl',
+  '6xl': 'max-w-6xl',
+  '7xl': 'max-w-7xl',
 }
 
-export const Modal = React.forwardRef<ModalRef, ModalProps>((props, ref) => {
+export const Modal = React.forwardRef<IRefModal, IModal>((props, ref) => {
   const { title, triggerButton, maxWidth, width, children, style } = props
   const [isOpen, setIsOpen] = useState(false)
 
@@ -61,7 +64,7 @@ export const Modal = React.forwardRef<ModalRef, ModalProps>((props, ref) => {
       {triggerButton && <div onClick={openModal}>{triggerButton}</div>}
 
       <Transition show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <div className="fixed inset-0 bg-black opacity-20" />
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -82,9 +85,7 @@ export const Modal = React.forwardRef<ModalRef, ModalProps>((props, ref) => {
                   style={{ ...style, width: width || '100%' }}
                 >
                   <Title />
-                  <div className="p-6">
-                    {typeof children === 'function' ? children({ closeModal, openModal }) : children}
-                  </div>
+                  {typeof children === 'function' ? children({ closeModal, openModal }) : children}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
