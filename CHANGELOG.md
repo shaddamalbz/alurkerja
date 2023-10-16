@@ -10,3 +10,4 @@
 ## Minor Change
 
 1. props `column` untuk menentukan column apa saja yang ingin ditampilkan
+2. FormLowcodeLite behavior ketika menggunakan INPUT_SELECT yang sebelumnya ngereturn opsi yang berisi label dan value, sekarang langsung ngereturn value nya

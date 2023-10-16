@@ -575,6 +575,18 @@ export declare interface IAlurkerjaDetailLowcode {
     id: number;
 }
 
+declare interface IModal extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'children'> {
+    triggerButton?: React_2.ReactNode;
+    title?: string;
+    style?: CSSProperties;
+    children: (({ closeModal, openModal }: {
+        closeModal: () => void;
+        openModal: () => void;
+    }) => JSX.Element) | JSX.Element;
+    width?: string | number;
+    maxWidth?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
+}
+
 export declare const Input: React_2.ForwardRefExoticComponent<InputProps & React_2.RefAttributes<HTMLInputElement>>;
 
 export declare const InputDate: FC<InputDateProps>;
@@ -743,19 +755,7 @@ export declare interface MenuConfig {
     description?: string;
 }
 
-export declare const Modal: React_2.ForwardRefExoticComponent<ModalProps & React_2.RefAttributes<ModalRef>>;
-
-export declare interface ModalProps extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'children'> {
-    triggerButton?: React_2.ReactNode;
-    title?: string;
-    style?: CSSProperties;
-    children: (({ closeModal, openModal }: {
-        closeModal: () => void;
-        openModal: () => void;
-    }) => JSX.Element) | JSX.Element;
-    width?: string | number;
-    maxWidth?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
-}
+export declare const Modal: React_2.ForwardRefExoticComponent<IModal & React_2.RefAttributes<ModalRef>>;
 
 export declare type ModalRef = {
     closeModal: () => void;

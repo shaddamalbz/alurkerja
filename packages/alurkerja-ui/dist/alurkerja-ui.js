@@ -35167,7 +35167,6 @@ const wz = ({
   const M = Yr(Uf), [L, V] = Jt(), [N, X] = Jt(), [G, q] = Jt(), [ne, Q] = Jt(!0), ie = async (re) => {
     if (C)
       return Q(!1), { tableData: C, loading: ne, pagination: G, detail: N };
-    Q(!0);
     const we = sH("filter", r);
     let De = e;
     if (I ? De += I : De += a == null ? void 0 : a.path, n)
@@ -35181,8 +35180,7 @@ const wz = ({
       }
       h && (De += `${r || l || u || w ? "&" : "?"}asc=${h === "asc"}`), g && (De += `${r || l || u || h ? "&" : "?"}sort=${g}`);
     }
-    try {
-      const { data: pe, status: xe } = await M.get(De, { signal: re });
+    M.get(De, { signal: re }).then(({ data: pe, status: xe }) => {
       if (xe === 200) {
         const je = pe.data;
         if (n)
@@ -35192,11 +35190,9 @@ const wz = ({
           V(je.content), q(me);
         }
       }
-    } catch {
-      V([]);
-    } finally {
+    }).finally(() => {
       Q(!1);
-    }
+    });
   };
   return yn(() => {
     const re = new AbortController(), we = re.signal;
@@ -47065,7 +47061,10 @@ const IF = (e) => {
   xl: "max-w-xl",
   "2xl": "max-w-2xl",
   "3xl": "max-w-3xl",
-  "4xl": "max-w-4xl"
+  "4xl": "max-w-4xl",
+  "5xl": "max-w-5xl",
+  "6xl": "max-w-6xl",
+  "7xl": "max-w-7xl"
 }, Oh = Te.forwardRef((e, t) => {
   const { title: n, triggerButton: a, maxWidth: r, width: l, children: u, style: h } = e, [g, w] = Jt(!1);
   cP(t, () => ({
@@ -47082,7 +47081,7 @@ const IF = (e) => {
   ] });
   return /* @__PURE__ */ k.jsxs(sa, { children: [
     a && /* @__PURE__ */ k.jsx("div", { onClick: A, children: a }),
-    /* @__PURE__ */ k.jsx(aw, { show: g, as: sa, children: /* @__PURE__ */ k.jsxs(r2, { as: "div", className: "relative z-50", onClose: C, children: [
+    /* @__PURE__ */ k.jsx(aw, { show: g, as: sa, children: /* @__PURE__ */ k.jsxs(r2, { as: "div", className: "relative z-10", onClose: C, children: [
       /* @__PURE__ */ k.jsx("div", { className: "fixed inset-0 bg-black opacity-20" }),
       /* @__PURE__ */ k.jsx("div", { className: "fixed inset-0 overflow-y-auto", children: /* @__PURE__ */ k.jsx("div", { className: "flex items-center justify-center min-h-full p-4 text-center", children: /* @__PURE__ */ k.jsx(
         aw.Child,
@@ -47101,7 +47100,7 @@ const IF = (e) => {
               style: { ...h, width: l || "100%" },
               children: [
                 /* @__PURE__ */ k.jsx(I, {}),
-                /* @__PURE__ */ k.jsx("div", { className: "p-6", children: typeof u == "function" ? u({ closeModal: C, openModal: A }) : u })
+                typeof u == "function" ? u({ closeModal: C, openModal: A }) : u
               ]
             }
           )
@@ -50465,7 +50464,7 @@ const a9 = T7(
                 ]
               }
             ),
-            children: ({ closeModal: Oe }) => /* @__PURE__ */ k.jsx(
+            children: ({ closeModal: Oe }) => /* @__PURE__ */ k.jsx("div", { className: "px-2.5", children: /* @__PURE__ */ k.jsx(
               uw,
               {
                 spec: e,
@@ -50485,7 +50484,7 @@ const a9 = T7(
                 message: N,
                 previewBeforeSubmit: q == null ? void 0 : q.preview_before_submit
               }
-            )
+            ) })
           }
         ), He = me != null && me.button_create ? /* @__PURE__ */ k.jsx(qv, { content: me.button_create, children: /* @__PURE__ */ k.jsxs(
           "button",
@@ -50834,7 +50833,7 @@ const a9 = T7(
     row: wt,
     customField: lt,
     readonly: ht = !1
-  }) => /* @__PURE__ */ k.jsx(Oh, { title: We.action_label, triggerButton: Se, children: ({ closeModal: At }) => /* @__PURE__ */ k.jsx(
+  }) => /* @__PURE__ */ k.jsx(Oh, { title: We.action_label, triggerButton: Se, children: ({ closeModal: At }) => /* @__PURE__ */ k.jsx("div", { children: /* @__PURE__ */ k.jsx(
     uw,
     {
       readonly: ht,
@@ -50857,7 +50856,7 @@ const a9 = T7(
       textSubmitButton: Qe,
       message: Ae
     }
-  ) });
+  ) }) });
   return /* @__PURE__ */ k.jsx("div", { id: "table_wrapper", className: ui(ce === "auto" && "overflow-x-auto", C.table_wrapper), children: /* @__PURE__ */ k.jsxs("table", { id: "table", className: ui(ce === "auto" ? "table-auto" : "table-fixed", C.table), children: [
     /* @__PURE__ */ k.jsx("thead", { id: "table_head", className: C.table_head, children: /* @__PURE__ */ k.jsxs("tr", { id: "table_head_row", className: C.table_head_row, children: [
       /* @__PURE__ */ k.jsx(
@@ -50891,7 +50890,7 @@ const a9 = T7(
         (Wn = ve ?? Et) == null ? void 0 : Wn.map(
           ({ label: Se, key: We }, wt) => {
             var lt, ht;
-            return !((lt = t.fields[We]) != null && lt.is_hidden_in_list) && /* @__PURE__ */ k.jsxs(
+            return (ve ? !0 : !((lt = t.fields[We]) != null && lt.is_hidden_in_list)) && /* @__PURE__ */ k.jsxs(
               "th",
               {
                 id: "table_head_col",
@@ -50952,7 +50951,7 @@ const a9 = T7(
             valueKey: (Gt = (xt = t.fields[lt]) == null ? void 0 : xt.table_value_mapping) == null ? void 0 : Gt.value,
             dataKey: (Rn = (un = t.fields[lt]) == null ? void 0 : un.table_value_mapping) == null ? void 0 : Rn.relation
           }, Ye = ((di = t.fields[lt]) == null ? void 0 : di.type) === "number" || ((fr = t.fields[lt]) == null ? void 0 : fr.type) === "datetime-local";
-          return /* @__PURE__ */ k.jsx(sa, { children: !((Ft = t.fields[lt]) != null && Ft.is_hidden_in_list) && /* @__PURE__ */ k.jsx(
+          return /* @__PURE__ */ k.jsx(sa, { children: (ve ? !0 : !((Ft = t.fields[lt]) != null && Ft.is_hidden_in_list)) && /* @__PURE__ */ k.jsx(
             "td",
             {
               id: "table_body_col",
@@ -51016,7 +51015,7 @@ const a9 = T7(
                           children: /* @__PURE__ */ k.jsx(HC, {})
                         }
                       ),
-                      children: ({ closeModal: xt }) => /* @__PURE__ */ k.jsx(
+                      children: ({ closeModal: xt }) => /* @__PURE__ */ k.jsx("div", { className: "px-2.5", children: /* @__PURE__ */ k.jsx(
                         uw,
                         {
                           id: Se.id,
@@ -51037,7 +51036,7 @@ const a9 = T7(
                           message: Ae,
                           previewBeforeSubmit: X == null ? void 0 : X.preview_before_submit
                         }
-                      )
+                      ) })
                     }
                   ), Ye = V != null && V.button_edit ? /* @__PURE__ */ k.jsx(qv, { content: V.button_edit, children: /* @__PURE__ */ k.jsx(
                     "button",
