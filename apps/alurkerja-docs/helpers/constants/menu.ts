@@ -7,6 +7,7 @@ export const listMenu = [
   { label: 'FormLowcode', href: '/docs/formlowcode' },
   { label: 'Input', href: '/docs/input' },
   { label: 'InputDate', href: '/docs/inputdate' },
+  { label: 'InputWithModal', href: '/docs/inputwithmodal' },
   { label: 'InputYear', href: '/docs/inputyear' },
   { label: 'Modal', href: '/docs/modal' },
   { label: 'ReactHookWrapper', href: '/docs/reacthookwrapper' },

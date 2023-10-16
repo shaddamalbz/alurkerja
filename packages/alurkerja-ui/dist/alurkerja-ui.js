@@ -39428,11 +39428,27 @@ const hN = (e) => {
     ] }),
     /* @__PURE__ */ k.jsxs("div", { className: "flex items-center", children: [
       /* @__PURE__ */ k.jsx("label", { className: "basis-52", htmlFor: "", children: "Provinsi" }),
-      /* @__PURE__ */ k.jsx(a1, { options: n, onChange: (g) => h(g.value) })
+      /* @__PURE__ */ k.jsx(
+        a1,
+        {
+          options: n,
+          onChange: (g) => {
+            e("province", g.value), h(g.value);
+          }
+        }
+      )
     ] }),
     /* @__PURE__ */ k.jsxs("div", { className: "flex items-center", children: [
       /* @__PURE__ */ k.jsx("label", { className: "basis-52", htmlFor: "", children: "Kabupaten/Kota" }),
-      /* @__PURE__ */ k.jsx(a1, { options: r })
+      /* @__PURE__ */ k.jsx(
+        a1,
+        {
+          options: r,
+          onChange: (g) => {
+            e("regency", g.value);
+          }
+        }
+      )
     ] }),
     /* @__PURE__ */ k.jsxs("div", { className: "flex items-center", children: [
       /* @__PURE__ */ k.jsx("label", { className: "basis-52", htmlFor: "", children: "Geo Location URL" }),
@@ -39446,7 +39462,7 @@ const hN = (e) => {
       /* @__PURE__ */ k.jsx("label", { className: "basis-52", htmlFor: "", children: "Longitude" }),
       /* @__PURE__ */ k.jsx(kp, { name: "longitude", onChange: (g) => e(g.target.name, g.target.value) })
     ] }),
-    /* @__PURE__ */ k.jsx("div", { className: "w-fit ml-auto flex gap-4", children: /* @__PURE__ */ k.jsx(Is, { className: "bg-[#0095E8] text-white", onClick: t, children: "Submit" }) })
+    /* @__PURE__ */ k.jsx("div", { className: "w-fit ml-auto flex gap-4", children: /* @__PURE__ */ k.jsx(Is, { onClick: t, children: "Submit" }) })
   ] }) });
 }, YX = () => /* @__PURE__ */ k.jsx("svg", { width: "18", height: "18", viewBox: "0 0 18 18", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ k.jsx(
   "path",

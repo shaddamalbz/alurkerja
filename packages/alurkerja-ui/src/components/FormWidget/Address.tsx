@@ -57,14 +57,25 @@ export const Address: FC<AddressProps> = ({ setValue, onSubmit }) => {
             Provinsi
           </label>
 
-          <Select options={listProvince} onChange={(selected: any) => setSelectedProvince(selected.value)} />
+          <Select
+            options={listProvince}
+            onChange={(selected: any) => {
+              setValue('province', selected.value)
+              setSelectedProvince(selected.value)
+            }}
+          />
         </div>
         <div className="flex items-center">
           <label className="basis-52" htmlFor="">
             Kabupaten/Kota
           </label>
 
-          <Select options={listRegencies} />
+          <Select
+            options={listRegencies}
+            onChange={(selected: any) => {
+              setValue('regency', selected.value)
+            }}
+          />
         </div>
 
         <div className="flex items-center">
@@ -86,9 +97,7 @@ export const Address: FC<AddressProps> = ({ setValue, onSubmit }) => {
           <Input name="longitude" onChange={(e) => setValue(e.target.name, e.target.value)} />
         </div>
         <div className="w-fit ml-auto flex gap-4">
-          <Button className="bg-[#0095E8] text-white" onClick={onSubmit}>
-            Submit
-          </Button>
+          <Button onClick={onSubmit}>Submit</Button>
         </div>
       </div>
     </>
