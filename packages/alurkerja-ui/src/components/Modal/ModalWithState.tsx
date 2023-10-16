@@ -1,4 +1,5 @@
 import { FC, Dispatch, SetStateAction, ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 import { RxCross2 } from 'react-icons/rx'
 
 export interface ModalWithStateProps {
@@ -8,8 +9,8 @@ export interface ModalWithStateProps {
 }
 
 export const ModalWithState: FC<ModalWithStateProps> = ({ setShow, children, title }) => {
-  return (
-    <div className="fixed inset-0">
+  return createPortal(
+    <div className="fixed inset-0 z-50">
       <div className="fixed inset-0 bg-black opacity-20" onClick={() => setShow(false)} />
       <div className="flex min-h-full items-center justify-center p-4 text-center">
         <div className="w-full max-w-lg transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all relative pb-6 opacity-100 scale-100">
@@ -22,6 +23,7 @@ export const ModalWithState: FC<ModalWithStateProps> = ({ setShow, children, tit
           <div className="px-2.5">{children}</div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

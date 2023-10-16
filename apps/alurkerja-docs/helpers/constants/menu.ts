@@ -10,6 +10,7 @@ export const listMenu = [
   { label: 'InputWithModal', href: '/docs/inputwithmodal' },
   { label: 'InputYear', href: '/docs/inputyear' },
   { label: 'Modal', href: '/docs/modal' },
+  { label: 'ModalWithState', href: '/docs/modalwithstate' },
   { label: 'ReactHookWrapper', href: '/docs/reacthookwrapper' },
   { label: 'TableLowcode', href: '/docs/tablelowcode' },
   { label: 'Radio', href: '/docs/radio' },
