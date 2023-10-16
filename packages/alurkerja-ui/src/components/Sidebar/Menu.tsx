@@ -14,7 +14,7 @@ const Menu: FC<{
     <div
       className={clsx(
         'cursor-pointer font-semibold px-6 rounded-md flex items-center w-full whitespace-nowrap gap-x-2 hover:text-white hover:bg-[#1B1B28] mb-2 h-10 text-sm',
-        currentPathName === menu.href && 'text-white bg-[#1B1B28]'
+        currentPathName === menu.href ? 'text-white bg-[#1B1B28]' : 'text-[#A2A3B7]'
       )}
     >
       <div className="flex items-center h-full w-full gap-x-2">
@@ -33,7 +33,7 @@ const Menu: FC<{
       href={menu.href}
       className={clsx(
         'cursor-pointer font-semibold px-6 rounded-md flex items-center w-full whitespace-nowrap gap-x-2 hover:text-white hover:bg-[#1B1B28] mb-2 h-10 text-sm',
-        currentPathName === menu.href && 'text-white bg-[#1B1B28]'
+        currentPathName === menu.href ? 'text-white bg-[#1B1B28]' : 'text-[#A2A3B7]'
       )}
     >
       <div className="flex items-center h-full w-full gap-x-2">

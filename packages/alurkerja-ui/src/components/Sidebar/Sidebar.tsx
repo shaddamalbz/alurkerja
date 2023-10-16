@@ -22,7 +22,7 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
   ({ width, logo, menuConfig, toggled, className, setToggled, currentPathName, menuWrapper, ...rest }, ref) => {
     const RenderLogo = () => (
       <div className="h-16 flex items-center font-bold tracking-wide top-0 px-6 justify-between">
-        {!toggled && <div>{logo ? logo : 'Lowcode'}</div>}
+        {!toggled && <div className="text-[#A2A3B7]">{logo ? logo : 'Lowcode'}</div>}
         <button
           className="h-[30px] w-[30px] absolute right-0 top-0 translate-y-5  translate-x-1/2 bg-white rounded shadow mx-auto"
           onClick={() => setToggled((prev) => !prev)}
@@ -37,7 +37,7 @@ export const Sidebar = forwardRef<HTMLDivElement, SidebarProps>(
     return (
       <div
         className={clsx(
-          'h-screen z-10 top-0 transition-[width] ease-in-out duration-200 bg-[#1E1E2D] text-[#A2A3B7] hidden sm:block relative',
+          'h-screen z-10 top-0 transition-[width] ease-in-out duration-200 bg-[#1E1E2D] hidden sm:block relative',
           !toggled ? 'w-[270px]' : 'w-20',
           className
         )}

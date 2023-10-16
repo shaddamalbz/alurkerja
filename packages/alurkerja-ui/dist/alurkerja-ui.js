@@ -50152,7 +50152,7 @@ const Pne = ({ innerProps: e, label: t, selectProps: n, isSelected: a, isDisable
     {
       className: ui(
         "cursor-pointer font-semibold px-6 rounded-md flex items-center w-full whitespace-nowrap gap-x-2 hover:text-white hover:bg-[#1B1B28] mb-2 h-10 text-sm",
-        n === e.href && "text-white bg-[#1B1B28]"
+        n === e.href ? "text-white bg-[#1B1B28]" : "text-[#A2A3B7]"
       ),
       children: /* @__PURE__ */ k.jsxs("div", { className: "flex items-center h-full w-full gap-x-2", children: [
         /* @__PURE__ */ k.jsx("span", { className: "text-sm", children: e.icon ? e.icon : /* @__PURE__ */ k.jsx(J0, {}) }),
@@ -50166,7 +50166,7 @@ const Pne = ({ innerProps: e, label: t, selectProps: n, isSelected: a, isDisable
       href: e.href,
       className: ui(
         "cursor-pointer font-semibold px-6 rounded-md flex items-center w-full whitespace-nowrap gap-x-2 hover:text-white hover:bg-[#1B1B28] mb-2 h-10 text-sm",
-        n === e.href && "text-white bg-[#1B1B28]"
+        n === e.href ? "text-white bg-[#1B1B28]" : "text-[#A2A3B7]"
       ),
       children: /* @__PURE__ */ k.jsxs("div", { className: "flex items-center h-full w-full gap-x-2", children: [
         /* @__PURE__ */ k.jsx("span", { className: "text-sm", children: e.icon ? e.icon : /* @__PURE__ */ k.jsx(J0, {}) }),
@@ -50187,7 +50187,7 @@ const Pne = ({ innerProps: e, label: t, selectProps: n, isSelected: a, isDisable
       {
         className: ui(
           "cursor-pointer font-semibold px-6  rounded-md flex items-center justify-between w-full whitespace-nowrap gap-x-2 hover:text-white hover:bg-[#1B1B28] mb-2 text-sm h-10",
-          n === e.href && "text-white bg-[#1B1B28]"
+          n === e.href ? "text-white bg-[#1B1B28]" : "text-[#A2A3B7]"
         ),
         onClick: () => l((h) => !h),
         children: [
@@ -50215,7 +50215,7 @@ const Pne = ({ innerProps: e, label: t, selectProps: n, isSelected: a, isDisable
 ] }, l)) }), hae = Xm(
   ({ width: e, logo: t, menuConfig: n, toggled: a, className: r, setToggled: l, currentPathName: u, menuWrapper: h, ...g }, w) => {
     const C = () => /* @__PURE__ */ k.jsxs("div", { className: "h-16 flex items-center font-bold tracking-wide top-0 px-6 justify-between", children: [
-      !a && /* @__PURE__ */ k.jsx("div", { children: t || "Lowcode" }),
+      !a && /* @__PURE__ */ k.jsx("div", { className: "text-[#A2A3B7]", children: t || "Lowcode" }),
       /* @__PURE__ */ k.jsx(
         "button",
         {
@@ -50229,7 +50229,7 @@ const Pne = ({ innerProps: e, label: t, selectProps: n, isSelected: a, isDisable
       "div",
       {
         className: ui(
-          "h-screen z-10 top-0 transition-[width] ease-in-out duration-200 bg-[#1E1E2D] text-[#A2A3B7] hidden sm:block relative",
+          "h-screen z-10 top-0 transition-[width] ease-in-out duration-200 bg-[#1E1E2D] hidden sm:block relative",
           a ? "w-20" : "w-[270px]",
           r
         ),

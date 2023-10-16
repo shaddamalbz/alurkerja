@@ -28,7 +28,7 @@ export const CodePreview: FC<CodePreviewProps> = ({
 
   return (
     <div className="w-full border border-gray-200 rounded">
-      <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 sm:p-6 space-x-4">{children}</div>
+      <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 sm:p-6 space-x-4 relative">{children}</div>
       <div className="flex justify-between items-center border-b border-gray-200 bg-gray-50">
         <div className="text-xs border-r border-gray-200 bg-gray-100 px-3 py-2">Typescript</div>
         <button

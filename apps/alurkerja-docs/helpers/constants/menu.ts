@@ -12,6 +12,7 @@ export const listMenu = [
   { label: 'Modal', href: '/docs/modal' },
   { label: 'ModalWithState', href: '/docs/modalwithstate' },
   { label: 'ReactHookWrapper', href: '/docs/reacthookwrapper' },
+  { label: 'Sidebar', href: '/docs/sidebar' },
   { label: 'TableLowcode', href: '/docs/tablelowcode' },
   { label: 'Radio', href: '/docs/radio' },
   { label: 'Skeleton', href: '/docs/skeleton' },

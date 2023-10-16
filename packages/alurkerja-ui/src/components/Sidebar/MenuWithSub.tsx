@@ -29,7 +29,7 @@ const MenuWithSub: FC<{
       <div
         className={clsx(
           'cursor-pointer font-semibold px-6  rounded-md flex items-center justify-between w-full whitespace-nowrap gap-x-2 hover:text-white hover:bg-[#1B1B28] mb-2 text-sm h-10',
-          currentPathName === menu.href && 'text-white bg-[#1B1B28]'
+          currentPathName === menu.href ? 'text-white bg-[#1B1B28]' : 'text-[#A2A3B7]'
         )}
         onClick={() => setShowSub((prev) => !prev)}
       >
