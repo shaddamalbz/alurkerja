@@ -13,7 +13,7 @@ interface IModal extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> 
   maxWidth?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl'
 }
 
-export type IRefModal = {
+export type ModalRef = {
   closeModal: () => void
   openModal: () => void
 }
@@ -30,7 +30,7 @@ const maxWidhtMapping = {
   '7xl': 'max-w-7xl',
 }
 
-export const Modal = React.forwardRef<IRefModal, IModal>((props, ref) => {
+export const Modal = React.forwardRef<ModalRef, IModal>((props, ref) => {
   const { title, triggerButton, maxWidth, width, children, style } = props
   const [isOpen, setIsOpen] = useState(false)
 

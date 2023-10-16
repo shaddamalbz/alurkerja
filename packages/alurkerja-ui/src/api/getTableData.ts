@@ -49,7 +49,6 @@ export const getTableData = ({
 
       return { tableData: data, loading, pagination, detail }
     }
-    setLoading(true)
 
     const filterQuery = objToQueryParam('filter', filter)
 
@@ -91,23 +90,23 @@ export const getTableData = ({
       }
     }
 
-    try {
-      const { data, status } = await axiosInstance.get(url, { signal })
-      if (status === 200) {
-        const result = data.data
-        if (id) {
-          setDetail(result)
-        } else {
-          const pagination = _.omit(result, 'content') as PaginationLowcode
-          setTableData(result.content)
-          setPagination(pagination)
+    axiosInstance
+      .get(url, { signal })
+      .then(({ data, status }) => {
+        if (status === 200) {
+          const result = data.data
+          if (id) {
+            setDetail(result)
+          } else {
+            const pagination = _.omit(result, 'content') as PaginationLowcode
+            setTableData(result.content)
+            setPagination(pagination)
+          }
         }
-      }
-    } catch (error) {
-      setTableData([])
-    } finally {
-      setLoading(false)
-    }
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   useEffect(() => {
