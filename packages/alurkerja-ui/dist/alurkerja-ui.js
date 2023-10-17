@@ -47097,7 +47097,7 @@ const MF = (e) => {
   ] });
   return /* @__PURE__ */ k.jsxs(sa, { children: [
     a && /* @__PURE__ */ k.jsx("div", { onClick: A, children: a }),
-    /* @__PURE__ */ k.jsx(aw, { show: g, as: sa, children: /* @__PURE__ */ k.jsxs(r2, { as: "div", className: "relative z-10", onClose: C, children: [
+    /* @__PURE__ */ k.jsx(aw, { show: g, as: sa, children: /* @__PURE__ */ k.jsxs(r2, { as: "div", className: "relative z-50", onClose: C, children: [
       /* @__PURE__ */ k.jsx("div", { className: "fixed inset-0 bg-black opacity-20" }),
       /* @__PURE__ */ k.jsx("div", { className: "fixed inset-0 overflow-y-auto", children: /* @__PURE__ */ k.jsx("div", { className: "flex items-center justify-center min-h-full p-4 text-center", children: /* @__PURE__ */ k.jsx(
         aw.Child,

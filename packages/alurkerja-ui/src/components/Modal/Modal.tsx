@@ -64,7 +64,7 @@ export const Modal = React.forwardRef<ModalRef, IModal>((props, ref) => {
       {triggerButton && <div onClick={openModal}>{triggerButton}</div>}
 
       <Transition show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-50" onClose={closeModal}>
           <div className="fixed inset-0 bg-black opacity-20" />
 
           <div className="fixed inset-0 overflow-y-auto">
