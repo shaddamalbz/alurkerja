@@ -53,6 +53,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     hideActionColumn,
     canBulk = false,
     column,
+    extraRow,
   } = useContext(TableLowcodeContext)
 
   const { handleSubmit, setValue, formState, control } = useForm()
@@ -653,6 +654,11 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                     )}
                   </tr>
                 ))}
+              {extraRow ? (
+                <tr>
+                  <td colSpan={totalColumn}>{extraRow(tableData)}</td>
+                </tr>
+              ) : null}
             </>
           ) : (
             <tr className="text-center">

@@ -6,7 +6,6 @@ import { FieldProperties } from '@/types'
 import { Pagination, DiagramBpmn } from '@/components'
 import TableHeader from './TableHeader'
 import { TableLowcodeContext } from '@/contexts'
-import HeaderRight from './HeaderRight'
 import { TableLayoutProps } from '../TableLowcode.types'
 
 const TableLayout: FC<TableLayoutProps> = ({ children, tableSpec, pagination, extraButton, hideTable = false }) => {
@@ -45,18 +44,7 @@ const TableLayout: FC<TableLayoutProps> = ({ children, tableSpec, pagination, ex
         />
       )}
 
-      {subHeader && (
-        <>
-          {subHeader}
-          <div className="flex justify-end gap-4 px-4 my-4">
-            <HeaderRight
-              fieldList={fieldList}
-              tableSpec={tableSpec}
-              onClickBpmn={() => setIsShowBpmn((prev) => !prev)}
-            />
-          </div>
-        </>
-      )}
+      {subHeader}
       {isShowBpmn && (
         <DiagramBpmn
           url={baseUrl + tableSpec?.path}

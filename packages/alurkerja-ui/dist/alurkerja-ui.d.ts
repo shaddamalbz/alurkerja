@@ -1174,6 +1174,7 @@ declare interface TableLowcodeProps {
     onClickDelete?: (fieldSpec: FieldActionProperties, id: number | string, row: any) => void;
     /**  will be trigger when button detail clicked*/
     onClickDetail?: (id: number, row: any) => void;
+    onClickFilter?: () => void;
     onDeleteConfirm?: (id: number) => void;
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element;
@@ -1227,7 +1228,9 @@ declare interface TableLowcodeProps {
         ButtonDiagram: () => JSX.Element;
     }) => void;
     customButtonFilter?: ({ ButtonFilter }: {
-        ButtonFilter: () => JSX.Element;
+        ButtonFilter: (arg: {
+            onClick?: () => void;
+        }) => JSX.Element;
     }) => void;
     customButtonBpmn?: ({ available_task, rowValue, usertaskMapping, }: {
         available_task: any;
@@ -1258,6 +1261,9 @@ declare interface TableLowcodeProps {
         [x: string]: any;
     }) => JSX.Element;
     extraButton?: () => JSX.Element | null;
+    extraRow?: (data?: {
+        [x: string]: any;
+    }[]) => JSX.Element;
     /** If you want show bpmn manual */
     showBpmn?: boolean;
     hideActionColumn?: boolean;
@@ -1355,6 +1361,7 @@ declare interface TableLowcodeProps_2 {
     onClickDelete?: (fieldSpec: FieldActionProperties_2, id: number | string, row: any) => void
     /**  will be trigger when button detail clicked*/
     onClickDetail?: (id: number, row: any) => void
+    onClickFilter?: () => void
     onDeleteConfirm?: (id: number) => void
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element
@@ -1425,7 +1432,7 @@ declare interface TableLowcodeProps_2 {
     tableConfig?: TableConfig_2
     customActionCell?: (data: { [x: string]: any }) => JSX.Element
     customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
-    customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: () => JSX.Element }) => void
+    customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: (arg: { onClick?: () => void }) => JSX.Element }) => void
     customButtonBpmn?: ({
         available_task,
         rowValue,
@@ -1465,6 +1472,7 @@ declare interface TableLowcodeProps_2 {
     customButtonBulk?: (defaultButton: () => JSX.Element) => JSX.Element
     extraActionButton?: (data: { [x: string]: any }) => JSX.Element
     extraButton?: () => JSX.Element | null
+    extraRow?: (data?: { [x: string]: any }[]) => JSX.Element
 
     /** If you want show bpmn manual */
     showBpmn?: boolean

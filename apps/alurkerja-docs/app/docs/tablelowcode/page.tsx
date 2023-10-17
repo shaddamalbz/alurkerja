@@ -20,6 +20,7 @@ import { CustomActionCellProps } from './CustomActionCellProps'
 import { ColumnProps } from './ColumnProps'
 import { TitleProps } from './TitleProps'
 import { BorderedProps } from './BorderedProps'
+import { ExtraRowProps } from './ExtraRowProps'
 
 export default function page() {
   return (
@@ -54,6 +55,7 @@ export default function page() {
       <CustomHeaderProps />
       <CustomActionCellProps />
       <ExtraActionButtonProps />
+      <ExtraRowProps />
       <ColumnProps />
     </article>
   )

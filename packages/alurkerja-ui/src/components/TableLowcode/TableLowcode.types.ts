@@ -79,6 +79,7 @@ export interface TableLowcodeProps {
   onClickDelete?: (fieldSpec: FieldActionProperties, id: number | string, row: any) => void
   /**  will be trigger when button detail clicked*/
   onClickDetail?: (id: number, row: any) => void
+  onClickFilter?: () => void
   onDeleteConfirm?: (id: number) => void
   /** trying to custom header table? use this*/
   customHeader?: JSX.Element
@@ -149,7 +150,7 @@ export interface TableLowcodeProps {
   tableConfig?: TableConfig
   customActionCell?: (data: { [x: string]: any }) => JSX.Element
   customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
-  customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: () => JSX.Element }) => void
+  customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: (arg: { onClick?: () => void }) => JSX.Element }) => void
   customButtonBpmn?: ({
     available_task,
     rowValue,
@@ -189,6 +190,7 @@ export interface TableLowcodeProps {
   customButtonBulk?: (defaultButton: () => JSX.Element) => JSX.Element
   extraActionButton?: (data: { [x: string]: any }) => JSX.Element
   extraButton?: () => JSX.Element | null
+  extraRow?: (data?: { [x: string]: any }[]) => JSX.Element
 
   /** If you want show bpmn manual */
   showBpmn?: boolean

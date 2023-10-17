@@ -46,6 +46,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
       readonly,
       tooltip,
       setFilterBy,
+      onClickFilter,
     } = useContext(TableLowcodeContext)
 
     const [tempSearch, setTempSearch] = useState<string>('')
@@ -124,7 +125,18 @@ const HeaderRight: FC<HeaderRightProps> = memo(
       )
     }, [])
 
-    const ButtonFilter = useCallback(() => {
+    const ButtonFilter = useCallback(({ onClick }: { onClick?: () => void }) => {
+      if (onClick) {
+        return (
+          <button
+            id="button-filter"
+            className="bg-light-blue-alurkerja text-main-blue-alurkerja p-2 rounded"
+            onClick={() => onClick()}
+          >
+            <FilterIcon />
+          </button>
+        )
+      }
       return (
         <Modal
           title="Filter"
@@ -177,13 +189,35 @@ const HeaderRight: FC<HeaderRightProps> = memo(
         {customButtonFilter ? (
           customButtonFilter({ ButtonFilter: ButtonFilter })
         ) : (
-          <>{setFilterBy && <ButtonFilter />}</>
+          <>
+            {onClickFilter ? (
+              <ButtonFilter key="modal-filter" />
+            ) : (
+              <ButtonFilter key="button-filter" onClick={onClickFilter} />
+            )}
+          </>
         )}
 
         {customButtonDiagram ? (
           customButtonDiagram({ ButtonDiagram: ButtonDiagram })
         ) : (
           <>{tableSpec?.is_bpmn && <ButtonDiagram />}</>
+        )}
+
+        {customButtonBulk ? (
+          customButtonBulk(() => (
+            <button className="p-2 bg-[#F1FAFF] rounded text-[#0095E8]" onClick={() => onClickBulk?.()}>
+              <BiSelectMultiple />
+            </button>
+          ))
+        ) : (
+          <>
+            {selectedRow && selectedRow.length > 0 && (
+              <button className="p-2 bg-[#F1FAFF] rounded text-[#0095E8]" onClick={() => onClickBulk?.()}>
+                <BiSelectMultiple />
+              </button>
+            )}
+          </>
         )}
 
         {!readonly && (
@@ -292,22 +326,6 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                 </Fragment>
               )
             })}
-          </>
-        )}
-
-        {customButtonBulk ? (
-          customButtonBulk(() => (
-            <button className="p-2 bg-[#F1FAFF] rounded text-[#0095E8]" onClick={() => onClickBulk?.()}>
-              <BiSelectMultiple />
-            </button>
-          ))
-        ) : (
-          <>
-            {selectedRow && selectedRow.length > 0 && (
-              <button className="p-2 bg-[#F1FAFF] rounded text-[#0095E8]" onClick={() => onClickBulk?.()}>
-                <BiSelectMultiple />
-              </button>
-            )}
           </>
         )}
 
