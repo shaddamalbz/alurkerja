@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Menu />
           </div>
           <Link className="font-bold text-lg text-main-blue-alurkerja" href="/">
-            Alurkerja
+            Alurkerja v1.0.0@Beta
           </Link>
         </div>
         <div className="hidden items-center gap-1 lg:flex">

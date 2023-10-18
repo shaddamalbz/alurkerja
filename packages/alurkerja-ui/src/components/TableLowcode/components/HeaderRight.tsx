@@ -191,9 +191,9 @@ const HeaderRight: FC<HeaderRightProps> = memo(
         ) : (
           <>
             {onClickFilter ? (
-              <ButtonFilter key="modal-filter" />
+              <ButtonFilter key="modal-filter" onClick={onClickFilter} />
             ) : (
-              <ButtonFilter key="button-filter" onClick={onClickFilter} />
+              <ButtonFilter key="button-filter" />
             )}
           </>
         )}

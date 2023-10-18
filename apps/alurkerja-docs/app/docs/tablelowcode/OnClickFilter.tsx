@@ -7,15 +7,15 @@ import React, { useState } from 'react'
 import spec from './spec.json'
 import data from './data.json'
 
-export const ColumnProps = () => {
+export const OnClickFilterProps = () => {
   const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
   const [renderState, setRenderState] = useState(0)
-  const [selected, setSelected] = useState<number[]>([])
   const [search, setSearch] = useState<string>()
   const [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()
+  const [showFilter, setShowFilter] = useState(false)
 
   return (
-    <SectionLayout title="column()" description="">
+    <SectionLayout title="onClickFilter()" description="">
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
@@ -29,13 +29,13 @@ export const ColumnProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          canBulk
-          selectedRow={selected}
-          setSelectedRow={setSelected}
-          column={[{ key: 'nama_program', label: 'Halo' }]}
+          subHeader={showFilter ? <>Filter di subhead</> : <></>}
+          onClickFilter={() => {
+            setShowFilter((prev) => !prev)
+          }}
         />`}
-        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n\tconst [selected, setSelected] = useState<number[]>([])\n`}
-        externalImport="import { useState } from 'react'"
+        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n\tconst [showFilter, setShowFilter] = useState(false)\n`}
+        externalImport={`import { useState } from 'react'`}
       >
         <TableLowcode
           spec={spec as any}
@@ -50,10 +50,10 @@ export const ColumnProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          canBulk
-          selectedRow={selected}
-          setSelectedRow={setSelected}
-          column={[{ key: 'nama_program', label: 'Halo' }]}
+          subHeader={showFilter ? <>Filter di subhead</> : <></>}
+          onClickFilter={() => {
+            setShowFilter((prev) => !prev)
+          }}
         />
       </CodePreview>
     </SectionLayout>

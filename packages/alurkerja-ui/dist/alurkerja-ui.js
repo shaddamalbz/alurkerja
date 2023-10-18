@@ -50460,7 +50460,7 @@ const zne = T7(
         ),
         /* @__PURE__ */ k.jsx("button", { className: "flex items-center px-2  p-2 bg-gray-100", onClick: () => C == null ? void 0 : C(Le), children: /* @__PURE__ */ k.jsx(tH, { color: "#9CA3AF" }) })
       ] }),
-      pe ? pe({ ButtonFilter: ce }) : /* @__PURE__ */ k.jsx(k.Fragment, { children: Pe ? /* @__PURE__ */ k.jsx(ce, {}, "modal-filter") : /* @__PURE__ */ k.jsx(ce, { onClick: Pe }, "button-filter") }),
+      pe ? pe({ ButtonFilter: ce }) : /* @__PURE__ */ k.jsx(k.Fragment, { children: Pe ? /* @__PURE__ */ k.jsx(ce, { onClick: Pe }, "modal-filter") : /* @__PURE__ */ k.jsx(ce, {}, "button-filter") }),
       De ? De({ ButtonDiagram: Qe }) : /* @__PURE__ */ k.jsx(k.Fragment, { children: (e == null ? void 0 : e.is_bpmn) && /* @__PURE__ */ k.jsx(Qe, {}) }),
       we ? we(() => /* @__PURE__ */ k.jsx("button", { className: "p-2 bg-[#F1FAFF] rounded text-[#0095E8]", onClick: () => Q == null ? void 0 : Q(), children: /* @__PURE__ */ k.jsx(kP, {}) })) : /* @__PURE__ */ k.jsx(k.Fragment, { children: ne && ne.length > 0 && /* @__PURE__ */ k.jsx("button", { className: "p-2 bg-[#F1FAFF] rounded text-[#0095E8]", onClick: () => Q == null ? void 0 : Q(), children: /* @__PURE__ */ k.jsx(kP, {}) }) }),
       !He && /* @__PURE__ */ k.jsx(k.Fragment, { children: e == null ? void 0 : e.header_action.map((Ae, _e) => {

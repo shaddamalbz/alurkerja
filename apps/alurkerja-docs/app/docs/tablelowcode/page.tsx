@@ -21,6 +21,7 @@ import { ColumnProps } from './ColumnProps'
 import { TitleProps } from './TitleProps'
 import { BorderedProps } from './BorderedProps'
 import { ExtraRowProps } from './ExtraRowProps'
+import { OnClickFilterProps } from './OnClickFilter'
 
 export default function page() {
   return (
@@ -47,6 +48,7 @@ export default function page() {
       <OnClickCreateProps />
       <OnClickDetailProps />
       <OnClickEditProps />
+      <OnClickFilterProps />
       <CustomButtonDetailProps />
       <CustomButtonEditProps />
       <CustomButtonFilterProps />
