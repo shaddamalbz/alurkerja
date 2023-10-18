@@ -12,7 +12,7 @@ Enable user interaction with the button component to perform actions on your web
   <Button>Default</Button>
 </CodePreview>
 
-### Button with full width
+### Block
 
 <CodePreview name="button" code="<Button block={false}>Default</Button>">
   <Button block={false}>Default</Button>
@@ -37,7 +37,7 @@ Enable user interaction with the button component to perform actions on your web
   <Button variant="text">Loading</Button>
 </CodePreview>
 
-## Icon
+### Icon
 
 <CodePreview
   name="button"
@@ -47,4 +47,17 @@ Enable user interaction with the button component to perform actions on your web
 >
   <Button icon={<Menu />}>Button</Button>
   <Button icon={<Menu />} />
+</CodePreview>
+
+### Color
+
+<CodePreview
+  name="button"
+  code={`<Button color='red'>Button</Button>
+      <Button color='orange'>Button</Button>
+      <Button color='greed'>Button</Button>`}
+>
+  <Button color="red">Button</Button>
+  <Button color="orange">Button</Button>
+  <Button color="green">Button</Button>
 </CodePreview>

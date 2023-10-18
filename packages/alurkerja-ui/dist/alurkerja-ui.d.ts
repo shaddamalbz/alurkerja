@@ -91,12 +91,13 @@ declare interface BpmnInterface {
 export declare const Button: FC<ButtonProps>;
 
 declare interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    children?: ReactNode;
+    children: ReactNode;
     variant?: 'filled' | 'outlined' | 'text';
     size?: 'small' | 'medium';
     block?: boolean;
     loading?: boolean;
     icon?: JSX.Element;
+    color?: 'blue' | 'red' | 'orange' | 'green';
 }
 
 export declare const Card: FC<CardProps>;
