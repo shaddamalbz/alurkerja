@@ -33,7 +33,7 @@ export const Pagination: FC<PaginationProps> = ({ pagination, pageConfig, setPag
           <div className="flex justify-between item-center relative">
             <nav>
               {pagination.total_page > 0 && (
-                <ul className="pagination flex items-center gap-x-1">
+                <ul className="pagination flex items-center gap-x-1 list-none">
                   {pagination.number > totalShowedPagination - 1 && (
                     <li
                       onClick={() => {
