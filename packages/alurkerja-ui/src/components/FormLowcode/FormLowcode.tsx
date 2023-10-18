@@ -8,7 +8,7 @@ import { FieldProperties } from '@/types'
 import { getDetail } from '@/api'
 
 // components
-import { Button, ModalWithState, Skeleton } from '@/components'
+import { Button, Skeleton } from '@/components'
 import InputTypes from './InputTypes'
 import InputLayout from './InputLayout'
 import { FormLowcodeProps } from './FormLowcode.types'
@@ -28,14 +28,12 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     id,
     disabled,
     readonly,
-    textSubmitButton,
     title,
     onCancel,
     message,
     isUsertask,
     taskId,
     spec,
-    previewBeforeSubmit,
     extraActionButton,
     inline,
     columnNumber = 1,
@@ -55,15 +53,10 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
   const { detail } = getDetail({ baseUrl, id, path: editSpec?.path })
 
   const [loadingSubmit, setLoadingSubmit] = useState(false)
-  const [showPreview, setShowPreview] = useState(false)
-  const [tempData, setTempData] = useState<FieldValues>()
 
   const onSubmitFunction = async (data: FieldValues) => {
     if (onSubmit) {
       onSubmit(data)
-    } else if (previewBeforeSubmit && !showPreview) {
-      setTempData(data)
-      setShowPreview(true)
     } else {
       setLoadingSubmit(true)
       if (id && editSpec) {
@@ -221,70 +214,12 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
             <>
               {!readonly && (
                 <Button type="submit" loading={loadingSubmit} disabled={loadingSubmit}>
-                  {previewBeforeSubmit ? 'Preview' : textSubmitButton || 'Submit'}
+                  Submit
                 </Button>
               )}
             </>
           )}
         </div>
-
-        {showPreview && (
-          <ModalWithState title="Preview" setShow={setShowPreview}>
-            <div className="p-4">
-              <>
-                <>
-                  {createFieldList.map((fieldSpec: FieldProperties, idx: number) => {
-                    if (!fieldSpec.is_hidden_in_create) {
-                      return (
-                        <InputLayout
-                          key={idx}
-                          name={fieldSpec.name.toLowerCase()}
-                          label={fieldSpec.label}
-                          formState={formState}
-                          rules={fieldSpec.rules}
-                          control={control}
-                        >
-                          <InputTypes
-                            baseUrl={baseUrl}
-                            fieldSpec={fieldSpec}
-                            name={fieldSpec.name}
-                            setValue={setValue}
-                            defaultValue={tempData?.[fieldSpec.name]}
-                            disabled={disabled}
-                            readonly={true}
-                            data={tempData}
-                          />
-                        </InputLayout>
-                      )
-                    }
-                  })}
-                  <div className="w-fit ml-auto flex gap-4">
-                    {customCancelButton?.() ?? (
-                      <Button type="button" variant="outlined" onClick={() => onCancel?.()}>
-                        Kembali
-                      </Button>
-                    )}
-
-                    {customSubmitButton?.() ?? (
-                      <>
-                        {!readonly && (
-                          <Button
-                            className="bg-[#0095E8] text-white"
-                            type="submit"
-                            loading={loadingSubmit}
-                            disabled={loadingSubmit}
-                          >
-                            {textSubmitButton || 'Submit'}
-                          </Button>
-                        )}
-                      </>
-                    )}
-                  </div>
-                </>
-              </>
-            </div>
-          </ModalWithState>
-        )}
       </form>
     </section>
   )

@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes, FC, ReactNode } from 'react'
 import { Spinner } from '@/components'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode
+  children?: ReactNode
   variant?: 'filled' | 'outlined' | 'text'
   size?: 'small' | 'medium'
   block?: boolean

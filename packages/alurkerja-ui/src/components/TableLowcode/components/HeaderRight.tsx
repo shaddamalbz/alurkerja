@@ -34,7 +34,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
       message,
       textSubmitButton,
       customFilterField,
-      tableConfig,
+
       selectedRow,
       onClickBulk,
       setPageConfig,
@@ -117,7 +117,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
       return (
         <button
           id="button-diagram"
-          className={`${tableConfig?.button_bpmn_color || 'bg-light-blue-alurkerja'} p-2 rounded text-white`}
+          className="bg-light-blue-alurkerja p-2 rounded text-white"
           onClick={() => onClickBpmn?.()}
         >
           <BpmnIcon />
@@ -232,9 +232,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                         <button
                           type="button"
                           id={`button-create-${idx}`}
-                          className={`${
-                            tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
-                          }  flex items-center rounded py-2 px-4 text-sm gap-2`}
+                          className="flex items-center rounded py-2 px-4 text-sm gap-2"
                           data-testid={`button-create-${idx}`}
                         >
                           <FaPlus />
@@ -245,9 +243,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                       <button
                         type="button"
                         id={`button-create-${idx}`}
-                        className={`${
-                          tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
-                        }  flex items-center rounded py-2 px-4 text-sm gap-2`}
+                        className="bg-main-blue-alurkerja text-white flex items-center rounded py-2 px-4 text-sm gap-2"
                         data-testid={`button-create-${idx}`}
                       >
                         <FaPlus />
@@ -275,7 +271,6 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                         textSubmitButton={textSubmitButton}
                         title={<></>}
                         message={message}
-                        previewBeforeSubmit={tableConfig?.preview_before_submit}
                       />
                     </div>
                   )}
@@ -287,9 +282,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                   <button
                     type="button"
                     id={`button-create-${idx}`}
-                    className={`${
-                      tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
-                    }  flex items-center rounded py-2 px-4 text-sm gap-2`}
+                    className="bg-main-blue-alurkerja text-white flex items-center rounded py-2 px-4 text-sm gap-2"
                     data-testid={`button-create-${idx}`}
                     onClick={onClickCreate}
                   >
@@ -301,9 +294,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                 <button
                   type="button"
                   id={`button-create-${idx}`}
-                  className={`${
-                    tableConfig?.button_create_color || 'bg-main-blue-alurkerja text-white'
-                  }  flex items-center rounded py-2 px-4 text-sm gap-2`}
+                  className="bg-main-blue-alurkerja text-white flex items-center rounded py-2 px-4 text-sm gap-2"
                   data-testid={`button-create-${idx}`}
                   onClick={onClickCreate}
                 >

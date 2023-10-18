@@ -1,11 +1,4 @@
-import {
-  FieldActionProperties,
-  FieldProperties,
-  PaginationLowcode,
-  TableConfig,
-  TableSpec,
-  UserTaskMapping,
-} from '@/types'
+import { FieldActionProperties, FieldProperties, PaginationLowcode, TableSpec, UserTaskMapping } from '@/types'
 import { Dispatch, SetStateAction } from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 
@@ -147,7 +140,6 @@ export interface TableLowcodeProps {
   /** https://tailwindcss.com/docs/table-layout */
   layout?: 'auto' | 'fixed'
   canFilter?: boolean
-  tableConfig?: TableConfig
   customActionCell?: (data: { [x: string]: any }) => JSX.Element
   customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
   customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: (arg: { onClick?: () => void }) => JSX.Element }) => void

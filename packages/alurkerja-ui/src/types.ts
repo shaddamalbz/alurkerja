@@ -152,26 +152,6 @@ export interface PaginationProps {
   tableSpec?: TableSpec
 }
 
-export interface TableConfig {
-  /** use tailwind class eg: bg-red-400 text-red-100 */
-  button_create_color?: string
-  /** use tailwind class eg: bg-red-400 text-red-100 */
-  button_edit_color?: string
-  /** use tailwind class eg: bg-red-400 text-red-100 */
-  button_delete_color?: string
-  /** use tailwind class eg: bg-red-400 text-red-100 */
-  button_detail_color?: string
-  /** use tailwind class eg: bg-red-400 text-red-100 */
-  button_bpmn_color?: string
-
-  preview_before_submit?: boolean
-  message_not_found?: string
-
-  table_number_header?: string
-
-  cell_file_modal_title?: string
-}
-
 export interface IPendingAlurkerjaTableLowcode {
   title?: string
   /** base API url (lowcode spec) */

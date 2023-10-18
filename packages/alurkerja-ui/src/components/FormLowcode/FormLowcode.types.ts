@@ -51,7 +51,6 @@ export interface FormLowcodeProps {
   isBpmn?: boolean
   isUsertask?: boolean
   spec?: TableSpec
-  previewBeforeSubmit?: boolean
   extraActionButton?: () => ReactNode
   inline?: boolean
   customCancelButton?: () => ReactNode

@@ -27,7 +27,6 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     onSelectAll,
     tooltip,
     bordered,
-    tableConfig,
     baseUrl,
     setRenderState,
     selectedRow,
@@ -179,7 +178,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
               id="table_head_col_no"
               className={clsx(theme.table_head_col_no, bordered && 'border-r border-gray-200')}
             >
-              {tableConfig?.table_number_header ?? 'No'}
+              No
             </th>
             {tableSpec && (
               <>
@@ -358,10 +357,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                               <Tooltip content={tooltip.button_edit}>
                                                 <button
                                                   type="button"
-                                                  className={
-                                                    tableConfig?.button_edit_color ||
-                                                    'bg-main-blue-alurkerja text-white p-2 rounded'
-                                                  }
+                                                  className="bg-main-blue-alurkerja text-white p-2 rounded"
                                                   data-testid={`button-edit-${rowIdx}`}
                                                 >
                                                   <IconEdit />
@@ -370,10 +366,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                             ) : (
                                               <button
                                                 type="button"
-                                                className={
-                                                  tableConfig?.button_edit_color ||
-                                                  'bg-main-blue-alurkerja text-white p-2 rounded'
-                                                }
+                                                className="bg-main-blue-alurkerja text-white p-2 rounded"
                                                 data-testid={`button-edit-${rowIdx}`}
                                               >
                                                 <IconEdit />
@@ -401,7 +394,6 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                                 textSubmitButton={textSubmitButton}
                                                 title={<></>}
                                                 message={message}
-                                                previewBeforeSubmit={tableConfig?.preview_before_submit}
                                               />
                                             </div>
                                           )}
@@ -412,10 +404,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                         <Tooltip content={tooltip.button_edit}>
                                           <button
                                             type="button"
-                                            className={
-                                              tableConfig?.button_edit_color ||
-                                              'bg-main-blue-alurkerja text-white p-2 rounded'
-                                            }
+                                            className="bg-main-blue-alurkerja text-white p-2 rounded"
                                             onClick={() => onClickEdit?.(action, row.id, row)}
                                             data-testid={`button-edit-${rowIdx}`}
                                           >
@@ -425,10 +414,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                       ) : (
                                         <button
                                           type="button"
-                                          className={
-                                            tableConfig?.button_edit_color ||
-                                            'bg-main-blue-alurkerja text-white p-2 rounded'
-                                          }
+                                          className="bg-main-blue-alurkerja text-white p-2 rounded"
                                           onClick={() => onClickEdit?.(action, row.id, row)}
                                           data-testid={`button-edit-${rowIdx}`}
                                         >
@@ -452,10 +438,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                           <Tooltip content={tooltip.button_delete}>
                                             <button
                                               type="button"
-                                              className={
-                                                tableConfig?.button_delete_color ||
-                                                'bg-red-alurkerja text-white p-2 rounded'
-                                              }
+                                              className="bg-red-alurkerja text-white p-2 rounded"
                                               onClick={() =>
                                                 onClickDelete
                                                   ? onClickDelete(action, row.id, row)
@@ -469,10 +452,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                         ) : (
                                           <button
                                             type="button"
-                                            className={
-                                              tableConfig?.button_delete_color ||
-                                              'bg-red-alurkerja text-white p-2 rounded'
-                                            }
+                                            className="bg-red-alurkerja text-white p-2 rounded"
                                             onClick={() =>
                                               onClickDelete
                                                 ? onClickDelete(action, row.id, row)
@@ -506,10 +486,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                               <Tooltip content={tooltip.button_detail}>
                                                 <button
                                                   type="button"
-                                                  className={
-                                                    tableConfig?.button_detail_color ||
-                                                    'bg-green-alurkerja text-white p-2 rounded'
-                                                  }
+                                                  className="bg-green-alurkerja text-white p-2 rounded"
                                                   data-testid={`button-detail-${rowIdx}`}
                                                 >
                                                   <IconDetail />
@@ -518,10 +495,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                             ) : (
                                               <button
                                                 type="button"
-                                                className={
-                                                  tableConfig?.button_detail_color ||
-                                                  'bg-green-alurkerja text-white p-2 rounded'
-                                                }
+                                                className="bg-green-alurkerja text-white p-2 rounded"
                                                 data-testid={`button-detail-${rowIdx}`}
                                               >
                                                 <IconDetail />
@@ -535,10 +509,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                         <Tooltip content={tooltip.button_detail}>
                                           <button
                                             type="button"
-                                            className={
-                                              tableConfig?.button_detail_color ||
-                                              'bg-green-alurkerja text-white p-2 rounded'
-                                            }
+                                            className="bg-green-alurkerja text-white p-2 rounded"
                                             onClick={() => onClickDetail?.(row.id, row)}
                                             data-testid={`button-detail-${rowIdx}`}
                                           >
@@ -548,10 +519,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                                       ) : (
                                         <button
                                           type="button"
-                                          className={
-                                            tableConfig?.button_detail_color ||
-                                            'bg-green-alurkerja text-white p-2 rounded'
-                                          }
+                                          className="bg-green-alurkerja text-white p-2 rounded"
                                           onClick={() => onClickDetail?.(row.id, row)}
                                           data-testid={`button-detail-${rowIdx}`}
                                         >

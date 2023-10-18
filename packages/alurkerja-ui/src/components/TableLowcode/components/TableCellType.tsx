@@ -4,7 +4,7 @@ import moment from 'moment'
 
 import { FieldProperties, File } from '@/types'
 import { Avatar, AvatarGroup, Button, Modal } from '@/components'
-import { InputTypesContext, TableLowcodeContext } from '@/contexts'
+import { InputTypesContext } from '@/contexts'
 import { getValueByPath } from '@/helpers/utils'
 import { inputTypes } from '@/helpers/constants/inputTypes'
 
@@ -19,7 +19,6 @@ interface TableCellTypeProps {
 }
 
 export const TableCellType: FC<TableCellTypeProps> = ({ name, fieldSpec, row, nestedSpec }) => {
-  const { tableConfig } = useContext(TableLowcodeContext)
   const inputTypesExtend = useContext(InputTypesContext)
 
   const isBaseCell =
@@ -60,7 +59,7 @@ export const TableCellType: FC<TableCellTypeProps> = ({ name, fieldSpec, row, ne
       {fieldSpec.form_field_type === 'INPUT_FILE_UPLOAD' && (
         <div className="flex justify-center px-3 py-3 text-center text-black">
           <Modal
-            title={tableConfig?.cell_file_modal_title ?? 'Uploaded Files'}
+            title="Uploaded Files"
             triggerButton={
               <Button className="text-gray-400 bg-gray-100 hover:bg-gray-200" size="small" icon={<MdDownload />} />
             }

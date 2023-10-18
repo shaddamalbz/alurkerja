@@ -91,7 +91,7 @@ declare interface BpmnInterface {
 export declare const Button: FC<ButtonProps>;
 
 declare interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    children: ReactNode;
+    children?: ReactNode;
     variant?: 'filled' | 'outlined' | 'text';
     size?: 'small' | 'medium';
     block?: boolean;
@@ -486,7 +486,6 @@ declare interface FormLowcodeProps {
     isBpmn?: boolean;
     isUsertask?: boolean;
     spec?: TableSpec;
-    previewBeforeSubmit?: boolean;
     extraActionButton?: () => ReactNode;
     inline?: boolean;
     customCancelButton?: () => ReactNode;
@@ -1049,43 +1048,6 @@ export declare interface SwtichProps {
     'aria-label?'?: string;
 }
 
-export declare interface TableConfig {
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_create_color?: string;
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_edit_color?: string;
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_delete_color?: string;
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_detail_color?: string;
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_bpmn_color?: string;
-    preview_before_submit?: boolean;
-    message_not_found?: string;
-    table_number_header?: string;
-    cell_file_modal_title?: string;
-}
-
-declare interface TableConfig_2 {
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_create_color?: string
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_edit_color?: string
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_delete_color?: string
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_detail_color?: string
-    /** use tailwind class eg: bg-red-400 text-red-100 */
-    button_bpmn_color?: string
-
-    preview_before_submit?: boolean
-    message_not_found?: string
-
-    table_number_header?: string
-
-    cell_file_modal_title?: string
-}
-
 export declare const TableLowcode: FC<TableLowcodeProps>;
 
 export declare const TableLowcodeContext: Context<TableLowcodeProps_2>;
@@ -1221,7 +1183,6 @@ declare interface TableLowcodeProps {
     /** https://tailwindcss.com/docs/table-layout */
     layout?: 'auto' | 'fixed';
     canFilter?: boolean;
-    tableConfig?: TableConfig;
     customActionCell?: (data: {
         [x: string]: any;
     }) => JSX.Element;
@@ -1430,7 +1391,6 @@ declare interface TableLowcodeProps_2 {
     /** https://tailwindcss.com/docs/table-layout */
     layout?: 'auto' | 'fixed'
     canFilter?: boolean
-    tableConfig?: TableConfig_2
     customActionCell?: (data: { [x: string]: any }) => JSX.Element
     customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
     customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: (arg: { onClick?: () => void }) => JSX.Element }) => void
