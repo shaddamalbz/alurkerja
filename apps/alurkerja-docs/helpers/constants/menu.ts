@@ -5,6 +5,7 @@ export const listMenu = [
   { label: 'Checkbox', href: '/docs/checkbox' },
   { label: 'Dropdown', href: '/docs/dropdown' },
   { label: 'FormLowcode', href: '/docs/formlowcode' },
+  { label: 'FormLowcodeLite', href: '/docs/formlowcodelite' },
   { label: 'Input', href: '/docs/input' },
   { label: 'InputDate', href: '/docs/inputdate' },
   { label: 'InputWithModal', href: '/docs/inputwithmodal' },
