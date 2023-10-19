@@ -44,7 +44,7 @@ export const CodePreview: FC<CodePreviewProps> = ({
             internalImport ? ',' + internalImport.map((elm) => ' ' + elm) : ''
           } } from 'alurkerja-ui'${
             externalImport ? '\n' + externalImport : ''
-          }\n\nexport const ${titleCaseToUpperCamelCase(name)} = () => {${
+          }\n\nexport const ${titleCaseToUpperCamelCase(name)}Page = () => {${
             externalFunction ? '\n\t' + externalFunction : ''
           }\n\treturn (\n\t\t${code}\n\t)\n}`}
         </code>

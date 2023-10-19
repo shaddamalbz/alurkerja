@@ -34,7 +34,6 @@ const HeaderRight: FC<HeaderRightProps> = memo(
       message,
       textSubmitButton,
       customFilterField,
-
       selectedRow,
       onClickBulk,
       setPageConfig,
@@ -193,7 +192,7 @@ const HeaderRight: FC<HeaderRightProps> = memo(
             {onClickFilter ? (
               <ButtonFilter key="modal-filter" onClick={onClickFilter} />
             ) : (
-              <ButtonFilter key="button-filter" />
+              <>{setFilterBy && <ButtonFilter key="button-filter" />}</>
             )}
           </>
         )}
