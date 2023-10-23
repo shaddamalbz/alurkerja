@@ -19,10 +19,14 @@ export const ExtraRowProps = () => {
           baseUrl='https://kpm-sys.merapi.javan.id' 
           specPath='/api/crud/takwim'
           extraRow={(data) => (
-            <div className="flex items-center justify-between">
-              <div>total Data :</div>
-              <div>{data?.length}</div>
-            </div>
+            <tr>
+              <td colSpan={2}>
+                <div className="flex items-center justify-between">
+                  <div>total Data :</div>
+                  <div>{data?.length}</div>
+                </div>
+              </td>
+            </tr>
           )}
         />`}
       >
@@ -32,10 +36,14 @@ export const ExtraRowProps = () => {
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
           extraRow={(data) => (
-            <div className="flex items-center justify-between">
-              <div>total Data :</div>
-              <div>{data?.length}</div>
-            </div>
+            <tr>
+              <td colSpan={2}>
+                <div className="flex items-center justify-between">
+                  <div>total Data :</div>
+                  <div>{data?.length}</div>
+                </div>
+              </td>
+            </tr>
           )}
         />
       </CodePreview>

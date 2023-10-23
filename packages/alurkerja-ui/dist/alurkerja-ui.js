@@ -51183,7 +51183,7 @@ const Wne = _7(
           ) })
         ] }, ze);
       })),
-      ve ? /* @__PURE__ */ k.jsx("tr", { children: /* @__PURE__ */ k.jsx("td", { colSpan: Et, children: ve(n) }) }) : null
+      ve ? ve(n) : null
     ] }) : /* @__PURE__ */ k.jsx("tr", { className: "text-center", children: /* @__PURE__ */ k.jsx("td", { className: "px-3 py-3 text-center text-black", colSpan: Et, children: ((de = t == null ? void 0 : t.languages) == null ? void 0 : de.empty_data) || "Belum dapat menemukan data" }) }) })
   ] }) });
 }, Xne = ({ onSubmit: e, defaultValue: t, spec: n, canSelect: a = !0, limit: r = 10 }) => {

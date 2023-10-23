@@ -622,11 +622,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                     )}
                   </tr>
                 ))}
-              {extraRow ? (
-                <tr>
-                  <td colSpan={totalColumn}>{extraRow(tableData)}</td>
-                </tr>
-              ) : null}
+              {extraRow ? extraRow(tableData) : null}
             </>
           ) : (
             <tr className="text-center">
