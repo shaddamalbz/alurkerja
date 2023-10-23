@@ -16,6 +16,7 @@ export const listMenu = [
   { label: 'Sidebar', href: '/docs/sidebar' },
   { label: 'TableLowcode', href: '/docs/tablelowcode' },
   { label: 'Radio', href: '/docs/radio' },
+  { label: 'Select', href: '/docs/select' },
   { label: 'Skeleton', href: '/docs/skeleton' },
   { label: 'Spinner', href: '/docs/spinner' },
   { label: 'Switch', href: '/docs/switch' },
