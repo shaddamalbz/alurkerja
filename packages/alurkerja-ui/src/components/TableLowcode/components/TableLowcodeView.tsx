@@ -49,6 +49,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     labelAction,
     message,
     extraActionButton,
+    extraRowTableHead,
     hideActionColumn,
     canBulk = false,
     column,
@@ -173,35 +174,45 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     <div id="table_wrapper" className={clsx(layout === 'auto' && 'overflow-x-auto', theme.table_wrapper)}>
       <table id="table" className={clsx(layout === 'auto' ? 'table-auto' : 'table-fixed', theme.table)}>
         <thead id="table_head" className={theme.table_head}>
+          {extraRowTableHead?.()}
+
           <tr id="table_head_row" className={theme.table_head_row}>
-            <th
-              id="table_head_col_no"
-              className={clsx(theme.table_head_col_no, bordered && 'border-r border-gray-200')}
-            >
-              No
-            </th>
+            {!extraRowTableHead && (
+              <th
+                id="table_head_col_no"
+                className={clsx(theme.table_head_col_no, bordered && 'border-r border-gray-200')}
+              >
+                No
+              </th>
+            )}
+
             {tableSpec && (
               <>
-                {(canBulk || tableSpec.can_bulk) && (
-                  <th
-                    id="table_head_col_bulk"
-                    className={clsx(theme.table_head_col_bulk, bordered && 'border-r border-gray-200')}
-                  >
-                    <input
-                      id="table_head_col_bulk_item"
-                      type="checkbox"
-                      checked={selectedAll}
-                      className={theme.table_head_col_bulk_item}
-                      onChange={() => {
-                        if (onSelectAll) {
-                          onSelectAll({ data: tableData, selectedAll: selectedAll, setSelectedAll: setSelectedAll })
-                        } else {
-                          selectAll({ data: tableData })
-                        }
-                      }}
-                    />
-                  </th>
+                {!extraRowTableHead && (
+                  <>
+                    {(canBulk || tableSpec.can_bulk) && (
+                      <th
+                        id="table_head_col_bulk"
+                        className={clsx(theme.table_head_col_bulk, bordered && 'border-r border-gray-200')}
+                      >
+                        <input
+                          id="table_head_col_bulk_item"
+                          type="checkbox"
+                          checked={selectedAll}
+                          className={theme.table_head_col_bulk_item}
+                          onChange={() => {
+                            if (onSelectAll) {
+                              onSelectAll({ data: tableData, selectedAll: selectedAll, setSelectedAll: setSelectedAll })
+                            } else {
+                              selectAll({ data: tableData })
+                            }
+                          }}
+                        />
+                      </th>
+                    )}
+                  </>
                 )}
+
                 {(column ?? listFieldKey)?.map(
                   ({ label, key }, idx) =>
                     (column ? true : false || !tableSpec.fields[key]?.is_hidden_in_list) && (

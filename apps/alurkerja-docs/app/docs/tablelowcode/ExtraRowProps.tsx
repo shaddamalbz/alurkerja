@@ -37,7 +37,7 @@ export const ExtraRowProps = () => {
           specPath="/api/crud/takwim"
           extraRow={(data) => (
             <tr>
-              <td colSpan={2}>
+              <td colSpan={7}>
                 <div className="flex items-center justify-between">
                   <div>total Data :</div>
                   <div>{data?.length}</div>

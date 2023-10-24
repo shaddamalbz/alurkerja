@@ -183,6 +183,19 @@ export interface TableLowcodeProps {
   extraActionButton?: (data: { [x: string]: any }) => JSX.Element
   extraButton?: () => JSX.Element | null
   extraRow?: (data?: { [x: string]: any }[]) => JSX.Element
+  /**
+   * Menambahkan row baru di atas row yang digenerate
+   * @example
+    extraRowTableHead={() => <tr>
+      <th className="whitespace-nowrap py-3 px-3 capitalize relative cursor-pointer border-r w-10" rowSpan={2}>
+        No
+      </th>
+      <td className="whitespace-nowrap py-3 px-3 capitalize relative cursor-pointer border-b text-center" colSpan={6}>
+        A
+      </td>
+    </tr>}
+   */
+  extraRowTableHead?: () => JSX.Element
 
   /** If you want show bpmn manual */
   showBpmn?: boolean

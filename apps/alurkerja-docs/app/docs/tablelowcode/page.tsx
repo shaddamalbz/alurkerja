@@ -22,6 +22,7 @@ import { TitleProps } from './TitleProps'
 import { BorderedProps } from './BorderedProps'
 import { ExtraRowProps } from './ExtraRowProps'
 import { OnClickFilterProps } from './OnClickFilter'
+import { ExtraRowTableHeadProps } from './ExtraRowTableHeadProps'
 
 export default function page() {
   return (
@@ -58,6 +59,7 @@ export default function page() {
       <CustomActionCellProps />
       <ExtraActionButtonProps />
       <ExtraRowProps />
+      <ExtraRowTableHeadProps />
       <ColumnProps />
     </article>
   )
