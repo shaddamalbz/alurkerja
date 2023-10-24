@@ -1,2 +1,5 @@
 node_modules
 build
+
+# visualize build result
+stats.html
