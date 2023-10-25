@@ -23,6 +23,7 @@ import { BorderedProps } from './BorderedProps'
 import { ExtraRowProps } from './ExtraRowProps'
 import { OnClickFilterProps } from './OnClickFilter'
 import { ExtraRowTableHeadProps } from './ExtraRowTableHeadProps'
+import { SubheaderProps } from './SubheaderProps'
 
 export default function page() {
   return (
@@ -61,6 +62,7 @@ export default function page() {
       <ExtraRowProps />
       <ExtraRowTableHeadProps />
       <ColumnProps />
+      <SubheaderProps />
     </article>
   )
 }

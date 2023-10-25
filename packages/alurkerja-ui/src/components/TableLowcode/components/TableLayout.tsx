@@ -44,7 +44,8 @@ const TableLayout: FC<TableLayoutProps> = ({ children, tableSpec, pagination, ex
         />
       )}
 
-      {subHeader}
+      <div className="py-4">{subHeader}</div>
+
       {isShowBpmn && (
         <DiagramBpmn
           url={baseUrl + tableSpec?.path}

@@ -7,23 +7,24 @@ import React from 'react'
 import spec from './spec.json'
 import data from './data.json'
 
-export const TitleProps = () => {
+export const SubheaderProps = () => {
   return (
-    <SectionLayout title="title()" description="ini contoh menambahkan title di table">
+    <SectionLayout title="subHeader()" description="">
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
-          title='Ini Judul'
           baseUrl='https://kpm-sys.merapi.javan.id' 
           specPath='/api/crud/takwim'
+          subHeader={<>ini sub header</>}
+
         />`}
       >
         <TableLowcode
-          title="Ini Judul"
           spec={spec as any}
           data={data.content}
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
+          subHeader={<>ini sub header</>}
         />
       </CodePreview>
     </SectionLayout>
