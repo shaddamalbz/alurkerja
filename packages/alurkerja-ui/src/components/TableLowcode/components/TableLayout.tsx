@@ -4,7 +4,7 @@ import { FieldProperties } from '@/types'
 
 // components
 import { Pagination, DiagramBpmn } from '@/components'
-import TableHeader from './TableHeader'
+import { TableHeader } from './TableHeader'
 import { TableLowcodeContext } from '@/contexts'
 import { TableLayoutProps } from '../TableLowcode.types'
 

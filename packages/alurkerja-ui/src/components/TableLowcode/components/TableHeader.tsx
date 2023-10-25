@@ -5,7 +5,7 @@ import { TableLowcodeContext } from '@/contexts'
 import { getTheme } from '@/helpers/utils'
 import { TableHeaderProps } from '../TableLowcode.types'
 
-const TableHeader: FC<TableHeaderProps> = ({
+export const TableHeader: FC<TableHeaderProps> = ({
   fieldList,
   extraButton,
   tableSpec,
@@ -46,5 +46,3 @@ const TableHeader: FC<TableHeaderProps> = ({
     </>
   )
 }
-
-export default TableHeader
