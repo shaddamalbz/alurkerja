@@ -50558,7 +50558,7 @@ const Wne = _7(
         onClickBpmn: () => J((Y) => !Y)
       }
     ),
-    /* @__PURE__ */ k.jsx("div", { className: "py-4", children: u }),
+    u && /* @__PURE__ */ k.jsx("div", { className: "py-4", children: u }),
     M && /* @__PURE__ */ k.jsx(
       X8,
       {

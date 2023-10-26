@@ -44,7 +44,7 @@ const TableLayout: FC<TableLayoutProps> = ({ children, tableSpec, pagination, ex
         />
       )}
 
-      <div className="py-4">{subHeader}</div>
+      {subHeader && <div className="py-4">{subHeader}</div>}
 
       {isShowBpmn && (
         <DiagramBpmn

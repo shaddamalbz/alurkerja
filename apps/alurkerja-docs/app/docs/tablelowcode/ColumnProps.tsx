@@ -8,11 +8,7 @@ import spec from './spec.json'
 import data from './data.json'
 
 export const ColumnProps = () => {
-  const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
-  const [renderState, setRenderState] = useState(0)
   const [selected, setSelected] = useState<number[]>([])
-  const [search, setSearch] = useState<string>()
-  const [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()
 
   return (
     <SectionLayout title="column()" description="">
@@ -21,14 +17,6 @@ export const ColumnProps = () => {
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
           specPath='/api/crud/takwim'
-          renderState={renderState}
-          setRenderState={setRenderState}
-          pageConfig={pageConfig}
-          setPageConfig={setPageConfig}
-          filterBy={filterBy}
-          setFilterBy={setFilterBy}
-          search={search}
-          setSearch={setSearch}
           canBulk
           selectedRow={selected}
           setSelectedRow={setSelected}
@@ -42,14 +30,6 @@ export const ColumnProps = () => {
           data={data.content}
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
-          renderState={renderState}
-          setRenderState={setRenderState}
-          pageConfig={pageConfig}
-          setPageConfig={setPageConfig}
-          filterBy={filterBy}
-          setFilterBy={setFilterBy}
-          search={search}
-          setSearch={setSearch}
           canBulk
           selectedRow={selected}
           setSelectedRow={setSelected}

@@ -16,7 +16,6 @@ export const SubheaderProps = () => {
           baseUrl='https://kpm-sys.merapi.javan.id' 
           specPath='/api/crud/takwim'
           subHeader={<>ini sub header</>}
-
         />`}
       >
         <TableLowcode
