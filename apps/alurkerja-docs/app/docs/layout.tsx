@@ -6,10 +6,13 @@ import { Menu } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import prism from 'prismjs'
 import _ from 'lodash'
+import { DocSearch } from '@docsearch/react'
 
 import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-tsx'
 import { Sidebar } from '@/components'
+
+import '@docsearch/css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -42,6 +45,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Link>
         </div>
         <div className="hidden items-center gap-1 lg:flex">
+          <DocSearch
+            appId={process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!!}
+            indexName={process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME!!}
+            apiKey={process.env.NEXT_PUBLIC_ALGOLIA_API_KEY!!}
+          />
           <Link
             className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-main-blue-alurkerja"
             href="/docs"
