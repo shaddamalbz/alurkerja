@@ -15,6 +15,7 @@ export const listMenu = [
   { label: 'ReactHookWrapper', href: '/docs/reacthookwrapper' },
   { label: 'Sidebar', href: '/docs/sidebar' },
   { label: 'TableLowcode', href: '/docs/tablelowcode' },
+  { label: 'Tag', href: '/docs/tag' },
   { label: 'Tooltip', href: '/docs/tooltip' },
   { label: 'Radio', href: '/docs/radio' },
   { label: 'Select', href: '/docs/select' },
