@@ -24,6 +24,7 @@ import { ExtraRowProps } from './ExtraRowProps'
 import { OnClickFilterProps } from './OnClickFilter'
 import { ExtraRowTableHeadProps } from './ExtraRowTableHeadProps'
 import { SubheaderProps } from './SubheaderProps'
+import { TooltipsProps } from './TooltipsProps'
 
 export default function page() {
   return (
@@ -63,6 +64,7 @@ export default function page() {
       <ExtraRowTableHeadProps />
       <ColumnProps />
       <SubheaderProps />
+      <TooltipsProps />
     </article>
   )
 }

@@ -7,15 +7,15 @@ import React, { useState } from 'react'
 import spec from './spec.json'
 import data from './data.json'
 
-export const ColumnProps = () => {
+export const TooltipsProps = () => {
   return (
-    <SectionLayout title="column()" description="">
+    <SectionLayout title="tooltips()" description="">
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
           baseUrl='https://kpm-sys.merapi.javan.id' 
           specPath='/api/crud/takwim'
-          column={[{ key: 'nama_program', label: 'Halo' }]}
+          tooltip={{ button_create: 'a', button_delete: 'b', button_detail: 'c', button_edit: 'd' }}
         />`}
       >
         <TableLowcode
@@ -23,7 +23,7 @@ export const ColumnProps = () => {
           data={data.content}
           baseUrl="https://kpm-sys.merapi.javan.id"
           specPath="/api/crud/takwim"
-          column={[{ key: 'nama_program', label: 'Halo' }]}
+          tooltip={{ button_create: 'a', button_delete: 'b', button_detail: 'c', button_edit: 'd' }}
         />
       </CodePreview>
     </SectionLayout>

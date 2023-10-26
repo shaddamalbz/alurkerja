@@ -227,11 +227,11 @@ const HeaderRight: FC<HeaderRightProps> = memo(
                   title={actionSpec.action_label}
                   triggerButton={
                     tooltip?.button_create ? (
-                      <Tooltip content="tes Tooltip">
+                      <Tooltip content={tooltip.button_create}>
                         <button
                           type="button"
                           id={`button-create-${idx}`}
-                          className="flex items-center rounded py-2 px-4 text-sm gap-2"
+                          className="bg-main-blue-alurkerja text-white flex items-center rounded py-2 px-4 text-sm gap-2"
                           data-testid={`button-create-${idx}`}
                         >
                           <FaPlus />
