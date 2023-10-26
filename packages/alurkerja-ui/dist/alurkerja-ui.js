@@ -50540,7 +50540,13 @@ const Wne = _7(
     /* @__PURE__ */ k.jsx("h5", { className: C.table_title, "data-testid": "title", children: h }),
     /* @__PURE__ */ k.jsx("div", { className: "flex flex-row gap-2", children: /* @__PURE__ */ k.jsx(Wne, { ...A }) })
   ] }) }) });
-}, a9 = ({ children: e, tableSpec: t, pagination: n, extraButton: a, hideTable: r = !1 }) => {
+}, a9 = ({
+  children: e,
+  tableSpec: t,
+  pagination: n,
+  extraButton: a,
+  hideTable: r = !1
+}) => {
   const { setValue: l } = Iy(), { subHeader: u, baseUrl: h, filterBy: g, setFilterBy: w, pageConfig: C, setPageConfig: A, customHeader: I, customBadgeDiagram: N } = Jr(Py), [L, V] = qt([]), [M, J] = qt(!1);
   return yn(() => {
     t != null && t.fields && V(Object.entries(t == null ? void 0 : t.fields));
@@ -50578,119 +50584,7 @@ const Wne = _7(
       }
     )
   ] });
-}, gR = (e) => e.spec ? /* @__PURE__ */ k.jsx(Yne, { ...e }) : /* @__PURE__ */ k.jsx(Gne, { ...e }), Yne = (e) => {
-  const {
-    baseUrl: t,
-    filterBy: n,
-    pageConfig: a,
-    renderState: r,
-    search: l,
-    defaultOrder: u,
-    defaultSortBy: h,
-    data: g,
-    spec: w,
-    extendQuery: C,
-    extraButton: A,
-    showBpmn: I,
-    hideTable: N
-  } = e, [L, V] = qt(!1), [M, J] = qt(h), [Y, K] = qt(u), {
-    tableData: ee,
-    pagination: Z,
-    loading: ae
-  } = O5({
-    baseUrl: t,
-    renderState: r,
-    filter: n,
-    search: l,
-    spec: w,
-    pageConfig: a,
-    sortBy: M,
-    orderBy: Y,
-    extendQuery: C,
-    data: g
-  });
-  return /* @__PURE__ */ k.jsx(Py.Provider, { value: { ...e, layout: e.layout ?? "auto", data: g || ee }, children: /* @__PURE__ */ k.jsx(
-    a9,
-    {
-      tableSpec: w,
-      pagination: Z,
-      extraButton: A,
-      showBpmn: I,
-      hideTable: N,
-      children: ae ? /* @__PURE__ */ k.jsx("div", { className: "mx-auto my-6 w-fit", children: /* @__PURE__ */ k.jsx(gg, {}) }) : /* @__PURE__ */ k.jsx(
-        o9,
-        {
-          tableData: g || ee,
-          tableSpec: w,
-          pagination: Z,
-          selectedAll: L,
-          setSelectedAll: V,
-          sortBy: M,
-          setSortBy: J,
-          orderBy: Y,
-          setOrderBy: K
-        }
-      )
-    }
-  ) });
-}, Gne = (e) => {
-  const {
-    baseUrl: t,
-    specPath: n,
-    filterBy: a,
-    pageConfig: r,
-    renderState: l,
-    search: u,
-    defaultOrder: h,
-    defaultSortBy: g,
-    data: w,
-    extendQuery: C,
-    extraButton: A,
-    showBpmn: I,
-    hideTable: N,
-    dataPath: L
-  } = e, [V, M] = qt(!1), [J, Y] = qt(g), [K, ee] = qt(h), { tableSpec: Z, loading: ae } = I5({ baseUrl: t, path: n }), {
-    tableData: ne,
-    pagination: xe,
-    loading: Re
-  } = O5({
-    baseUrl: t,
-    renderState: l,
-    filter: a,
-    search: u,
-    spec: Z,
-    pageConfig: r,
-    sortBy: J,
-    orderBy: K,
-    extendQuery: C,
-    doFetch: !N,
-    dataPath: L
-  });
-  return ae ? /* @__PURE__ */ k.jsx("section", { className: "h-[calc(100vh-64px)] flex items-center justify-center", children: /* @__PURE__ */ k.jsx(gg, { size: 32 }) }) : /* @__PURE__ */ k.jsx(Py.Provider, { value: { ...e, layout: e.layout ?? "auto", data: w || ne }, children: /* @__PURE__ */ k.jsx("section", { className: "px-4", children: /* @__PURE__ */ k.jsx(
-    a9,
-    {
-      tableSpec: Z,
-      pagination: xe,
-      extraButton: A,
-      showBpmn: I,
-      hideTable: N,
-      children: Re ? /* @__PURE__ */ k.jsx("div", { className: "mx-auto my-6 w-fit", children: /* @__PURE__ */ k.jsx(gg, {}) }) : /* @__PURE__ */ k.jsx(
-        o9,
-        {
-          tableData: ne,
-          tableSpec: Z,
-          pagination: xe,
-          selectedAll: V,
-          setSelectedAll: M,
-          sortBy: J,
-          setSortBy: Y,
-          orderBy: K,
-          setOrderBy: ee
-        }
-      )
-    }
-  ) }) });
-}, $ne = [
+}, Yne = [
   "INPUT_TEXT",
   "INPUT_NUMBER",
   "INPUT_DATETIME-LOCAL",
@@ -50706,7 +50600,7 @@ const Wne = _7(
   "INPUT_IMAGE_UPLOAD",
   "INPUT_FILE_UPLOAD"
 ], k4 = ({ name: e, fieldSpec: t, row: n, nestedSpec: a }) => {
-  const r = Jr(FP), l = $ne.includes(t.form_field_type) && t.form_field_type !== "INPUT_IMAGE_UPLOAD" && t.form_field_type !== "INPUT_FILE_UPLOAD", u = (h, g, w) => {
+  const r = Jr(FP), l = Yne.includes(t.form_field_type) && t.form_field_type !== "INPUT_IMAGE_UPLOAD" && t.form_field_type !== "INPUT_FILE_UPLOAD", u = (h, g, w) => {
     if (h)
       switch (g) {
         case "datetime-local":
@@ -51190,6 +51084,118 @@ const Wne = _7(
       dt ? dt(n) : null
     ] }) : /* @__PURE__ */ k.jsx("tr", { className: "text-center", children: /* @__PURE__ */ k.jsx("td", { className: "px-3 py-3 text-center text-black", colSpan: Kt, children: ((Xe = t == null ? void 0 : t.languages) == null ? void 0 : Xe.empty_data) || "Belum dapat menemukan data" }) }) })
   ] }) });
+}, gR = (e) => e.spec ? /* @__PURE__ */ k.jsx(Gne, { ...e }) : /* @__PURE__ */ k.jsx($ne, { ...e }), Gne = (e) => {
+  const {
+    baseUrl: t,
+    filterBy: n,
+    pageConfig: a,
+    renderState: r,
+    search: l,
+    defaultOrder: u,
+    defaultSortBy: h,
+    data: g,
+    spec: w,
+    extendQuery: C,
+    extraButton: A,
+    showBpmn: I,
+    hideTable: N
+  } = e, [L, V] = qt(!1), [M, J] = qt(h), [Y, K] = qt(u), {
+    tableData: ee,
+    pagination: Z,
+    loading: ae
+  } = O5({
+    baseUrl: t,
+    renderState: r,
+    filter: n,
+    search: l,
+    spec: w,
+    pageConfig: a,
+    sortBy: M,
+    orderBy: Y,
+    extendQuery: C,
+    data: g
+  });
+  return /* @__PURE__ */ k.jsx(Py.Provider, { value: { ...e, layout: e.layout ?? "auto", data: g || ee }, children: /* @__PURE__ */ k.jsx(
+    a9,
+    {
+      tableSpec: w,
+      pagination: Z,
+      extraButton: A,
+      showBpmn: I,
+      hideTable: N,
+      children: ae ? /* @__PURE__ */ k.jsx("div", { className: "mx-auto my-6 w-fit", children: /* @__PURE__ */ k.jsx(gg, {}) }) : /* @__PURE__ */ k.jsx(
+        o9,
+        {
+          tableData: g || ee,
+          tableSpec: w,
+          pagination: Z,
+          selectedAll: L,
+          setSelectedAll: V,
+          sortBy: M,
+          setSortBy: J,
+          orderBy: Y,
+          setOrderBy: K
+        }
+      )
+    }
+  ) });
+}, $ne = (e) => {
+  const {
+    baseUrl: t,
+    specPath: n,
+    filterBy: a,
+    pageConfig: r,
+    renderState: l,
+    search: u,
+    defaultOrder: h,
+    defaultSortBy: g,
+    data: w,
+    extendQuery: C,
+    extraButton: A,
+    showBpmn: I,
+    hideTable: N,
+    dataPath: L
+  } = e, [V, M] = qt(!1), [J, Y] = qt(g), [K, ee] = qt(h), { tableSpec: Z, loading: ae } = I5({ baseUrl: t, path: n }), {
+    tableData: ne,
+    pagination: xe,
+    loading: Re
+  } = O5({
+    baseUrl: t,
+    renderState: l,
+    filter: a,
+    search: u,
+    spec: Z,
+    pageConfig: r,
+    sortBy: J,
+    orderBy: K,
+    extendQuery: C,
+    doFetch: !N,
+    dataPath: L
+  });
+  return ae ? /* @__PURE__ */ k.jsx("section", { className: "h-[calc(100vh-64px)] flex items-center justify-center", children: /* @__PURE__ */ k.jsx(gg, { size: 32 }) }) : /* @__PURE__ */ k.jsx(Py.Provider, { value: { ...e, layout: e.layout ?? "auto", data: w || ne }, children: /* @__PURE__ */ k.jsx("section", { className: "px-4", children: /* @__PURE__ */ k.jsx(
+    a9,
+    {
+      tableSpec: Z,
+      pagination: xe,
+      extraButton: A,
+      showBpmn: I,
+      hideTable: N,
+      children: Re ? /* @__PURE__ */ k.jsx("div", { className: "mx-auto my-6 w-fit", children: /* @__PURE__ */ k.jsx(gg, {}) }) : /* @__PURE__ */ k.jsx(
+        o9,
+        {
+          tableData: ne,
+          tableSpec: Z,
+          pagination: xe,
+          selectedAll: V,
+          setSelectedAll: M,
+          sortBy: J,
+          setSortBy: Y,
+          orderBy: K,
+          setOrderBy: ee
+        }
+      )
+    }
+  ) }) });
 }, Xne = ({ onSubmit: e, defaultValue: t, spec: n, canSelect: a = !0, limit: r = 10 }) => {
   const [l, u] = qt(), [h, g] = qt(0);
   return yn(() => {
@@ -54517,7 +54523,6 @@ export {
   i9 as Switch,
   gR as TableLowcode,
   Py as TableLowcodeContext,
-  o9 as TableLowcodeView,
   Xne as TableNested,
   gae as Tag,
   yae as Task,

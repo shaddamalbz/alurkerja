@@ -1,12 +1,11 @@
 import { FC, useState } from 'react'
 
-import { Spinner, TableLowcodeView } from '@/components'
-
+import { Spinner } from '@/components'
 import { getTableData, getTableSpec } from '@/api'
-
-import TableLayout from './components/TableLayout'
 import { TableLowcodeContext } from '@/contexts'
 
+import { TableLayout } from './components/TableLayout'
+import { TableLowcodeView } from './components/TableLowcodeView'
 import { TableLowcodeProps } from './TableLowcode.types'
 
 export const TableLowcode: FC<TableLowcodeProps> = (props) => {

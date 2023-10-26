@@ -8,7 +8,13 @@ import { TableHeader } from './TableHeader'
 import { TableLowcodeContext } from '@/contexts'
 import { TableLayoutProps } from '../TableLowcode.types'
 
-const TableLayout: FC<TableLayoutProps> = ({ children, tableSpec, pagination, extraButton, hideTable = false }) => {
+export const TableLayout: FC<TableLayoutProps> = ({
+  children,
+  tableSpec,
+  pagination,
+  extraButton,
+  hideTable = false,
+}) => {
   const { setValue } = useForm()
   const { subHeader, baseUrl, filterBy, setFilterBy, pageConfig, setPageConfig, customHeader, customBadgeDiagram } =
     useContext(TableLowcodeContext)
@@ -69,5 +75,3 @@ const TableLayout: FC<TableLayoutProps> = ({ children, tableSpec, pagination, ex
     </div>
   )
 }
-
-export default TableLayout

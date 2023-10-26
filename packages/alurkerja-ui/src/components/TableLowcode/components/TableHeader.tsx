@@ -1,6 +1,6 @@
 import { FC, useContext } from 'react'
 
-import HeaderRight from './HeaderRight'
+import { HeaderRight } from './HeaderRight'
 import { TableLowcodeContext } from '@/contexts'
 import { getTheme } from '@/helpers/utils'
 import { TableHeaderProps } from '../TableLowcode.types'

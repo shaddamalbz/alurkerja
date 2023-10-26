@@ -1488,22 +1488,6 @@ declare interface TableLowcodeProps_2 {
     bordered?: boolean
 }
 
-export declare const TableLowcodeView: FC<TableLowcodeViewProps>;
-
-declare interface TableLowcodeViewProps {
-    tableSpec: TableSpec | undefined;
-    tableData: {
-        [x: string]: any;
-    }[] | undefined;
-    pagination: PaginationLowcode | undefined;
-    selectedAll: boolean;
-    setSelectedAll: Dispatch<SetStateAction<boolean>>;
-    sortBy?: string;
-    setSortBy?: Dispatch<SetStateAction<string | undefined>>;
-    orderBy?: 'asc' | 'desc';
-    setOrderBy?: Dispatch<SetStateAction<'asc' | 'desc' | undefined>>;
-}
-
 export declare const TableNested: FC<TableNestedProps>;
 
 declare interface TableNestedProps {

@@ -20,7 +20,7 @@ interface HeaderRightProps {
   showBpmn?: boolean
 }
 
-const HeaderRight: FC<HeaderRightProps> = memo(
+export const HeaderRight: FC<HeaderRightProps> = memo(
   ({ tableSpec, extraButton, fieldList, onClickBpmn, showSearch = true }) => {
     const { handleSubmit, setValue, formState, control } = useForm()
     const HookFormFilter = useForm()
@@ -324,5 +324,3 @@ const HeaderRight: FC<HeaderRightProps> = memo(
     )
   }
 )
-
-export default HeaderRight
