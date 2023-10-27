@@ -3,6 +3,7 @@ import { BaseSection } from './BaseSection'
 import { MultipleProps } from './MultipleProps'
 import { DefaultValueProps } from './DefaultValueProps'
 import { OnChangeProps } from './OnChangeProps'
+import { DisabledProps } from './DisabledProps'
 
 export default function page() {
   return (
@@ -12,6 +13,7 @@ export default function page() {
       <BaseSection />
       <MultipleProps />
       <DefaultValueProps />
+      <DisabledProps />
       <OnChangeProps />
     </article>
   )
