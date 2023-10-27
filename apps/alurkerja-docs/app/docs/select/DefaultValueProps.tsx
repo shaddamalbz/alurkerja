@@ -5,9 +5,9 @@ import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { Select } from 'alurkerja-ui'
 
-export const BaseSection = () => {
+export const DefaultValueProps = () => {
   return (
-    <SectionLayout title="Base" description="">
+    <SectionLayout title="defaultValue()" description="">
       <CodePreview
         name="Select"
         code={`<Select
@@ -15,6 +15,7 @@ export const BaseSection = () => {
             { label: 'Opsi 1', value: 1 },
             { label: 'Opsi 2', value: 2 },
           ]}
+          defaultValue={{ label: 'Opsi 1', value: 1 }}
         />`}
       >
         <Select
@@ -22,6 +23,7 @@ export const BaseSection = () => {
             { label: 'Opsi 1', value: 1 },
             { label: 'Opsi 2', value: 2 },
           ]}
+          defaultValue={{ label: 'Opsi 1', value: 1 }}
         />
       </CodePreview>
     </SectionLayout>

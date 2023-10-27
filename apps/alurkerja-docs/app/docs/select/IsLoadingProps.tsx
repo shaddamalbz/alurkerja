@@ -5,9 +5,9 @@ import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { Select } from 'alurkerja-ui'
 
-export const BaseSection = () => {
+export const IsLoadingProps = () => {
   return (
-    <SectionLayout title="Base" description="">
+    <SectionLayout title="isLoading()" description="">
       <CodePreview
         name="Select"
         code={`<Select
@@ -15,6 +15,8 @@ export const BaseSection = () => {
             { label: 'Opsi 1', value: 1 },
             { label: 'Opsi 2', value: 2 },
           ]}
+          isLoading
+          isDisabled
         />`}
       >
         <Select
@@ -22,6 +24,8 @@ export const BaseSection = () => {
             { label: 'Opsi 1', value: 1 },
             { label: 'Opsi 2', value: 2 },
           ]}
+          isLoading
+          isDisabled
         />
       </CodePreview>
     </SectionLayout>
