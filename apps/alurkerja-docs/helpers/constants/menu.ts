@@ -12,6 +12,7 @@ export const listMenu = [
   { label: 'InputYear', href: '/docs/inputyear' },
   { label: 'Modal', href: '/docs/modal' },
   { label: 'ModalWithState', href: '/docs/modalwithstate' },
+  { label: 'PendingUpload', href: '/docs/pendingupload' },
   { label: 'Radio', href: '/docs/radio' },
   { label: 'ReactHookWrapper', href: '/docs/reacthookwrapper' },
   { label: 'Sidebar', href: '/docs/sidebar' },

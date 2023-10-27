@@ -82,18 +82,12 @@ export const PendingUpload: FC<PendingUploadProps> = ({
             const urlImage = URL.createObjectURL(file)
             const newFile = !asFile ? reader.result : file
 
-            const newUploadedFiles = multiple
-              ? [...uploadedFiles, { original_url: urlImage }]
-              : [{ original_url: urlImage }]
-            const newFiles = multiple ? [...files, newFile] : [newFile]
-            setUploadedFiles(newUploadedFiles)
-            setFiles(newFiles)
+            setUploadedFiles((prev: any) => [...prev, { original_url: urlImage }])
+            setFiles((prev: any) => [...prev, newFile])
           } else {
-            const newUploadedFiles = multiple ? [...uploadedFiles, file] : [file]
             const newFile = !asFile ? reader.result : file
-            const newFiles = multiple ? [...files, newFile] : [newFile]
-            setUploadedFiles(newUploadedFiles)
-            setFiles(newFiles)
+            setUploadedFiles((prev: any) => [...prev, file])
+            setFiles((prev: any) => [...prev, newFile])
           }
         }
         reader.readAsDataURL(file)
