@@ -9,7 +9,7 @@ import data from './data.json'
 
 export const BorderedProps = () => {
   return (
-    <SectionLayout title="Bordered" description="ini contoh jika ingin tablenya memiliki border">
+    <SectionLayout title="bordered()" description="ini contoh jika ingin tablenya memiliki border">
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
