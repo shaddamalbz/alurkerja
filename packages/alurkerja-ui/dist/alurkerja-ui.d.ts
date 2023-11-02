@@ -948,12 +948,10 @@ export declare interface ReactHookWrapperProps {
     labelSize?: 'sm' | 'md' | 'lg';
 }
 
-export declare const Select: FC<SelectProps>;
+export declare const Select: ForwardRefExoticComponent<SelectProps & RefAttributes<any>>;
 
 export declare interface SelectProps extends Props, BaseInputProps {
     height?: string | number;
-    options: any;
-    onChange?: any;
 }
 
 export declare const SelectWithModal: FC<SelectWithModalProps>;

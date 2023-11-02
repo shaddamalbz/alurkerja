@@ -4,6 +4,7 @@ import { DisabledProps } from './DisabledProps'
 import { DefaultValueProps } from './DefaultValueProps'
 import { IsLoadingProps } from './IsLoadingProps'
 import { DataFetchignSection } from './DataFetchingSection'
+import { ResetValueSection } from './ResetValueSection'
 
 export default function page() {
   return (
@@ -11,6 +12,7 @@ export default function page() {
       <h1>Select</h1>
       <BaseSection />
       <DataFetchignSection />
+      <ResetValueSection />
       <DefaultValueProps />
       <DisabledProps />
       <IsLoadingProps />

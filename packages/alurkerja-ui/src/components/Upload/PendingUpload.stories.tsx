@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { PendingUpload } from '@/components'
 
 const meta = {
-  title: 'Components/Upload/PendingUpload',
+  title: 'Components/PendingUpload',
   component: PendingUpload,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ['autodocs'],

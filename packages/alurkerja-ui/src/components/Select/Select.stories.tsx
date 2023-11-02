@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Select } from '@/components'
+import { SelectInstance } from 'react-select'
+import { useRef } from 'react'
 
 const meta = {
   title: 'Select',
@@ -59,5 +61,30 @@ export const MultpleSelect: Story = {
       { label: 'label2', value: 2 },
     ],
     defaultValue: { label: 'label2', value: 2 },
+  },
+}
+
+export const resetValue: Story = {
+  args: {
+    options: [
+      { label: 'label1', value: 1 },
+      { label: 'label2', value: 2 },
+    ],
+    defaultValue: { label: 'label2', value: 2 },
+  },
+  render: (args) => {
+    const ref = useRef<SelectInstance>()
+    return (
+      <>
+        <button
+          onClick={() => {
+            ref.current?.clearValue()
+          }}
+        >
+          reset
+        </button>
+        <Select ref={ref} {...args} />
+      </>
+    )
   },
 }
