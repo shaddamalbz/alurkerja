@@ -1,0 +1,62 @@
+# Configuration
+
+### tailwind.config.js
+
+<iframe
+  className="border"
+  width="800"
+  height="450"
+  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FvbhQEGR12E84Etr20HOges%2FDesign-System-UI-AlurKerja%3Ftype%3Ddesign%26node-id%3D17%253A2%26mode%3Ddesign%26t%3D91wDZs9iD12PV6c2-1"
+  allowFullScreen
+/>
+
+```
+/** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/alurkerja-ui/dist/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Poppins', ...defaultTheme.fontFamily.sans] },
+      colors: {
+        black: '#3F4254',
+        red: {
+          alurkerja: '#F64E60',
+        },
+        orange: { alurkerja: '#FFA800' },
+        purple: { alurkerja: '#9056FC' },
+        blue: { alurkerja: '#586BE2' },
+        'main-blue': { alurkerja: '#0095E8' },
+        'tifany-blue': { alurkerja: '#17BCB4' },
+        green: { alurkerja: '#50CD89' },
+        'forst-white': { alurkerja: '#F3F6F9' },
+        'light-blue': { alurkerja: '#E1F0FF' },
+        black: {
+          alurkerja: {
+            1: '#1E1E2D',
+            2: '#3F4254',
+          },
+        },
+        grey: {
+          alurkerja: {
+            1: '#7E8299',
+            2: '#B5B5C3',
+            3: '#E4E6EF',
+          },
+        },
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
+  ],
+}
+```
