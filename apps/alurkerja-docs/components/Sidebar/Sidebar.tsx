@@ -39,6 +39,20 @@ export const Sidebar = () => {
           ))}
         </div>
       </details>
+      <div className="mt-2 flex flex-col gap-2">
+        <Link
+          className="text-gray-900 text-sm font-semibold hover:text-main-blue-alurkerja cursor-pointer"
+          href="/docs/migration-from-v0"
+        >
+          Migration from v0
+        </Link>
+        <Link
+          className="text-gray-900 text-sm font-semibold hover:text-main-blue-alurkerja cursor-pointer"
+          href="/docs/contributing"
+        >
+          Contributing
+        </Link>
+      </div>
     </div>
   )
 }
