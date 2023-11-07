@@ -17,7 +17,7 @@ export const CardFile: FC<{
       const a = document.createElement('a')
       a.href = file.original_url
       a.target = '_blank'
-      a.download = 'true'
+      a.download = file.name
       a.rel = 'noopener noreferrer'
       a.click()
 

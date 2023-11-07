@@ -9,7 +9,8 @@ export interface SwtichProps {
   /** props to set defaultvalue */
   defaultValue?: boolean
   name?: string
-  'aria-label?'?: string
+  'aria-label'?: string
+  required?: string
 }
 
 export const Switch = (props: SwtichProps) => {

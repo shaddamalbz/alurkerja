@@ -50,7 +50,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     spec,
   })
 
-  const { detail } = getDetail({ baseUrl, id, path: editSpec?.path })
+  const { detail, loading: isLoadingDetail } = getDetail({ baseUrl, id, path: editSpec?.path })
 
   const [loadingSubmit, setLoadingSubmit] = useState(false)
 
@@ -139,7 +139,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
       {customTitle?.() ?? <div className="text-xl font-bold">{title || spec?.label}</div>}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        {!loading && editFieldList && createFieldList ? (
+        {!loading && !isLoadingDetail && editFieldList && createFieldList ? (
           <div className={`grid ${columnNumberMapping[columnNumber]} gap-x-4`}>
             {(id ? (readonly ? detailFieldList : editFieldList) : createFieldList).map(
               (fieldSpec: FieldProperties, idx: number) => {

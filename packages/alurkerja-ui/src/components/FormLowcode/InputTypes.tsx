@@ -86,7 +86,9 @@ const InputTypes: FC<InputTypes> = (props) => {
   }, [defaultValue])
 
   useEffect(() => {
-    setValue(name, selectedTable)
+    if (selectedTable) {
+      setValue(name, selectedTable)
+    }
   }, [selectedTable])
 
   if (readonly) {

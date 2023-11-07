@@ -68,7 +68,7 @@ export const HeaderRight: FC<HeaderRightProps> = memo(
                   {customFilterField ? (
                     customFilterField({
                       field,
-                      setValue,
+                      setValue: HookFormFilter.setValue,
                       defaultField: (
                         <InputTypes
                           baseUrl={baseUrl}

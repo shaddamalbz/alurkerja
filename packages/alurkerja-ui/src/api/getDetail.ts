@@ -13,7 +13,7 @@ export const getDetail = ({ baseUrl, path, renderState, id }: GetDetail) => {
   const axiosInstance = useContext(AuthContext)
 
   const [detail, setDetail] = useState<{ [x: string]: any }>()
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
 
   const fetch = async () => {
     if (id && path) {
