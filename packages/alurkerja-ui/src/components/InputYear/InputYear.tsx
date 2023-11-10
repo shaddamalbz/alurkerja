@@ -7,7 +7,7 @@ interface InputYearProps {
   defaultValue?: Date | null
 }
 
-const InputYear: FC<InputYearProps> = ({ onChange, defaultValue }) => {
+export const InputYear: FC<InputYearProps> = ({ onChange, defaultValue }) => {
   const [selected, setSelected] = useState<Date | null>()
 
   useEffect(() => {
@@ -31,5 +31,3 @@ const InputYear: FC<InputYearProps> = ({ onChange, defaultValue }) => {
     />
   )
 }
-
-export default InputYear

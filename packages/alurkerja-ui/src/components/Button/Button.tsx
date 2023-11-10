@@ -6,7 +6,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode
   variant?: 'filled' | 'outlined' | 'text'
   size?: 'small' | 'medium'
-  block?: boolean
+  isBlock?: boolean
   loading?: boolean
   icon?: JSX.Element
   color?: 'blue' | 'red' | 'orange' | 'green'
@@ -18,7 +18,7 @@ const Button: FC<ButtonProps> = (props) => {
     children,
     size = 'small',
     variant = 'filled',
-    block = true,
+    isBlock = true,
     loading = false,
     disabled = false,
     color = 'blue',
@@ -44,7 +44,7 @@ const Button: FC<ButtonProps> = (props) => {
       return 'text-main-blue-alurkerja'
     }
   }
-  const buttonBlock = () => (block ? 'w-fit' : 'w-full')
+  const buttonBlock = () => (isBlock ? 'w-fit' : 'w-full')
 
   const Children = () => {
     if (loading && children) {

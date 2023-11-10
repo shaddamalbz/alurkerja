@@ -94,7 +94,7 @@ declare interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode;
     variant?: 'filled' | 'outlined' | 'text';
     size?: 'small' | 'medium';
-    block?: boolean;
+    isBlock?: boolean;
     loading?: boolean;
     icon?: JSX.Element;
     color?: 'blue' | 'red' | 'orange' | 'green';
@@ -592,8 +592,8 @@ export declare const Input: React_2.ForwardRefExoticComponent<InputProps & React
 export declare const InputDate: FC<InputDateProps>;
 
 export declare interface InputDateProps extends Omit<ReactDatePickerProps, 'onChange'>, BaseInputProps {
-    onChange?: (date?: Date | null) => void;
-    defaultValue?: Date;
+    onChange?: (date: Date | null | undefined) => void;
+    defaultValue?: Date | null;
 }
 
 export declare interface InputProps extends Omit<React_2.InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'size'>, BaseInputProps {
@@ -638,9 +638,9 @@ export declare interface InputWithModalProps {
 
 export declare const InputYear: FC<InputYearProps>;
 
-export declare interface InputYearProps {
-    onChange?: (value?: Date | null) => void;
-    defaultValue?: Date;
+declare interface InputYearProps {
+    onChange?: (value?: string | null) => void;
+    defaultValue?: Date | null;
 }
 
 export declare interface IPendingAlurkerjaTableLowcode {
@@ -1043,7 +1043,8 @@ export declare interface SwtichProps {
     /** props to set defaultvalue */
     defaultValue?: boolean;
     name?: string;
-    'aria-label?'?: string;
+    'aria-label'?: string;
+    required?: string;
 }
 
 export declare const TableLowcode: FC<TableLowcodeProps>;
