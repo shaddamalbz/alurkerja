@@ -16,6 +16,9 @@ export default function page() {
         <li>
           Menghilangkan component <strong>Wysiwyg</strong>
         </li>
+        <li>
+          Merubah nama component dari <strong>AlurkerjaForm</strong> menjadi <strong>FormLowcode</strong>
+        </li>
       </ul>
     </article>
   )
