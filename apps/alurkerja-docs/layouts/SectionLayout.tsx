@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 interface SectionLayoutProps extends PropsWithChildren {
   title: string
-  description: string
+  description: string | JSX.Element
 }
 
 export const SectionLayout: FC<SectionLayoutProps> = ({ children, title, description }) => {
