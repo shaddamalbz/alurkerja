@@ -6,6 +6,8 @@
   "scripts": {
     "dev:docs": "pnpm --filter alurkerja-docs dev",
     "dev:ui": "pnpm --filter alurkerja-ui storybook",
+    "publish:ui": "pnpm --filter alurkerja-ui publish --no-git-checks --tag beta",
+    "release:ui": "pnpm --filter alurkerja-ui publish ",
     "build:ui": "pnpm --filter alurkerja-ui build --watch",
     "build:docs": "pnpm --filter alurkerja-docs build"
   },
