@@ -137,12 +137,13 @@ export declare interface CheckboxProps {
     className?: string;
 }
 
-export declare const DiagramBpmn: FC<DiagramBpmnProps>;
+export declare const DiagramBpmn: ({ url, onClickActivity, currentEvent, customBadge }: DiagramBpmnProps) => JSX_2.Element;
 
 export declare interface DiagramBpmnProps {
     url: string;
     onClickActivity?: (id: string) => void;
     counterMode?: string;
+    currentEvent?: string;
     /**
      * @param string
      * {children} akan di replace dengan jumlah data per usertask

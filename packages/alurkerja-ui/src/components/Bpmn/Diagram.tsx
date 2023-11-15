@@ -1,9 +1,8 @@
-import { FC, useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { BsPlus, BsDash, BsArrowsCollapse } from 'react-icons/bs'
 import { AuthContext } from '@/contexts'
 
 import BpmnJS from 'bpmn-js/dist/bpmn-navigated-viewer.production.min.js'
-
 import { Spinner } from '@/components'
 
 import '@/assets/scss/bpmn.scss'
@@ -12,13 +11,14 @@ export interface DiagramBpmnProps {
   url: string
   onClickActivity?: (id: string) => void
   counterMode?: string
+  currentEvent?: string
   /**
    * @param string
    * {children} akan di replace dengan jumlah data per usertask
    */
   customBadge?: (task_id: string) => string
 }
-export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity, customBadge }) => {
+export const DiagramBpmn = ({ url, onClickActivity, currentEvent, customBadge }: DiagramBpmnProps) => {
   const buttonZoomInRef = useRef<HTMLButtonElement>(null)
   const buttonZoomOutRef = useRef<HTMLButtonElement>(null)
   const buttonZoomResetRef = useRef<HTMLButtonElement>(null)
@@ -76,6 +76,29 @@ export const DiagramBpmn: FC<DiagramBpmnProps> = ({ url, onClickActivity, custom
       .then((res) => {
         if (res[0].status === 'fulfilled' && res[0].value) {
           bpmnViewer.attachTo('.bpmn-container')
+
+          // Menangkap event ketika elemen ditambahkan ke diagram
+          bpmnViewer.on('shape.added', function (event: any) {
+            var element = event.element
+
+            // Periksa apakah elemen adalah User Task
+            if (element.id === currentEvent) {
+              // Tambahkan elemen SVG untuk menyesuaikan tampilan
+              var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
+              rect.setAttribute('width', '100')
+              rect.setAttribute('height', '80')
+              rect.setAttribute('fill', 'transparent')
+              rect.setAttribute('rx', '10')
+              rect.setAttribute('stroke', '#0095E8')
+              rect.setAttribute('stroke-width', '3')
+
+              // Dapatkan grup SVG yang sudah ada pada elemen bentuk
+              var gfx = bpmnViewer.get('elementRegistry').getGraphics(element)
+
+              // Tambahkan elemen SVG ke grup
+              gfx.appendChild(rect)
+            }
+          })
 
           bpmnViewer.importXML(res[0].value.data).then(() => {
             var eventBus = bpmnViewer.get('eventBus')
