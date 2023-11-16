@@ -19,7 +19,7 @@ export default function page() {
             <DiagramBpmn containerName="bpmn-1" url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt" />
           </CodePreview>
         </SectionLayout>
-        <SectionLayout title="currentEvent" description="menghighlight salah satu usertask berdasarkan ID">
+        <SectionLayout title="currentEvent()" description="menghighlight salah satu usertask berdasarkan ID">
           <CodePreview
             name="DiagramBpmn"
             code={`<DiagramBpmn
