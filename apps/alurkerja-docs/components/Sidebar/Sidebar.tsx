@@ -42,12 +42,6 @@ export const Sidebar = () => {
       <div className="mt-2 flex flex-col gap-2">
         <Link
           className="text-gray-900 text-sm font-semibold hover:text-main-blue-alurkerja cursor-pointer"
-          href="/docs/changelog"
-        >
-          Changelog
-        </Link>
-        <Link
-          className="text-gray-900 text-sm font-semibold hover:text-main-blue-alurkerja cursor-pointer"
           href="/docs/contributing"
         >
           Contributing

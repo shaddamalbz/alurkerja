@@ -43,18 +43,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link className="font-bold text-lg text-main-blue-alurkerja" href="/">
             Alurkerja v1.0.0@Beta
           </Link>
-        </div>
-        <div className="hidden items-center gap-1 lg:flex">
           <DocSearch
             appId={process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!!}
             indexName={process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME!!}
             apiKey={process.env.NEXT_PUBLIC_ALGOLIA_API_KEY!!}
           />
+        </div>
+        <div className="hidden items-center gap-1 lg:flex">
           <Link
             className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-main-blue-alurkerja"
-            href="/docs"
+            href="/docs/changelog/v0"
           >
-            Docs
+            Changelog v0
+          </Link>
+          <Link
+            className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-main-blue-alurkerja"
+            href="/docs/changelog/v1"
+          >
+            Changelog v1
           </Link>
         </div>
       </header>

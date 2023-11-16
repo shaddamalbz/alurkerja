@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import { BsPlus, BsDash, BsArrowsCollapse } from 'react-icons/bs'
+import { Spinner } from '@/components'
 import { AuthContext } from '@/contexts'
 
 import BpmnJS from 'bpmn-js/dist/bpmn-navigated-viewer.production.min.js'
-import { Spinner } from '@/components'
 
 import '@/assets/scss/bpmn.scss'
 
@@ -77,26 +77,45 @@ export const DiagramBpmn = ({ url, onClickActivity, currentEvent, customBadge }:
         if (res[0].status === 'fulfilled' && res[0].value) {
           bpmnViewer.attachTo('.bpmn-container')
 
-          // Menangkap event ketika elemen ditambahkan ke diagram
           bpmnViewer.on('shape.added', function (event: any) {
             var element = event.element
 
-            // Periksa apakah elemen adalah User Task
             if (element.id === currentEvent) {
               // Tambahkan elemen SVG untuk menyesuaikan tampilan
               var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
               rect.setAttribute('width', '100')
               rect.setAttribute('height', '80')
               rect.setAttribute('fill', 'transparent')
-              rect.setAttribute('rx', '10')
+              rect.setAttribute('rx', '5')
+              rect.setAttribute('ry', '10')
               rect.setAttribute('stroke', '#0095E8')
-              rect.setAttribute('stroke-width', '3')
+              rect.setAttribute('stroke-width', '2')
 
               // Dapatkan grup SVG yang sudah ada pada elemen bentuk
               var gfx = bpmnViewer.get('elementRegistry').getGraphics(element)
 
               // Tambahkan elemen SVG ke grup
               gfx.appendChild(rect)
+            }
+          })
+
+          // Menangkap event ketika elemen ditambahkan ke diagram
+          bpmnViewer.on('shape.added', function (event: any) {
+            var element = event.element
+
+            // Dapatkan grup SVG yang sudah ada pada elemen bentuk
+            var gfx = bpmnViewer.get('elementRegistry').getGraphics(element)
+
+            // Dapatkan elemen rect dalam grup
+            var rect = gfx.querySelector('rect')
+
+            // Mengubah properti visual elemen rect
+            if (rect && element.id === currentEvent) {
+              rect.style.fill = '#E1F0FF'
+              rect.style.stroke = 'black'
+              rect.style.strokeWidth = '2'
+              rect.setAttribute('rx', '5') // border-radius (sesuaikan nilai '5' sesuai kebutuhan Anda)
+              rect.setAttribute('ry', '10') // border-radius (sesuaikan nilai '5' sesuai kebutuhan Anda)
             }
           })
 
@@ -131,7 +150,7 @@ export const DiagramBpmn = ({ url, onClickActivity, currentEvent, customBadge }:
                     : `<div class="w-10 text-white text-center bg-blue-400 rounded-full cursor-pointer">
                           ${statistic[key]}
                         </div>
-                        `,
+                      `,
                 })
               })
             }
