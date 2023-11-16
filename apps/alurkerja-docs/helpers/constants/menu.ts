@@ -3,6 +3,7 @@ export const listMenu = [
   { label: 'Badge', href: '/docs/components/badge' },
   { label: 'Button', href: '/docs/components/button' },
   { label: 'Checkbox', href: '/docs/components/checkbox' },
+  { label: 'DiagramBpmn', href: '/docs/components/diagram-bpmn' },
   { label: 'Dropdown', href: '/docs/components/dropdown' },
   { label: 'FormLowcode', href: '/docs/components/formlowcode' },
   { label: 'FormLowcodeLite', href: '/docs/components/formlowcodelite' },

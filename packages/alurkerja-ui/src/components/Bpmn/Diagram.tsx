@@ -8,6 +8,7 @@ import BpmnJS from 'bpmn-js/dist/bpmn-navigated-viewer.production.min.js'
 import '@/assets/scss/bpmn.scss'
 
 export interface DiagramBpmnProps {
+  containerName?: string
   url: string
   onClickActivity?: (id: string) => void
   counterMode?: string
@@ -18,7 +19,13 @@ export interface DiagramBpmnProps {
    */
   customBadge?: (task_id: string) => string
 }
-export const DiagramBpmn = ({ url, onClickActivity, currentEvent, customBadge }: DiagramBpmnProps) => {
+export const DiagramBpmn = ({
+  url,
+  onClickActivity,
+  currentEvent,
+  customBadge,
+  containerName = 'bpmn-container',
+}: DiagramBpmnProps) => {
   const buttonZoomInRef = useRef<HTMLButtonElement>(null)
   const buttonZoomOutRef = useRef<HTMLButtonElement>(null)
   const buttonZoomResetRef = useRef<HTMLButtonElement>(null)
@@ -75,7 +82,8 @@ export const DiagramBpmn = ({ url, onClickActivity, currentEvent, customBadge }:
     Promise.allSettled([getXml(), getStatistic()])
       .then((res) => {
         if (res[0].status === 'fulfilled' && res[0].value) {
-          bpmnViewer.attachTo('.bpmn-container')
+          const container = `.${containerName}`
+          bpmnViewer.attachTo(container)
 
           bpmnViewer.on('shape.added', function (event: any) {
             var element = event.element
@@ -173,7 +181,7 @@ export const DiagramBpmn = ({ url, onClickActivity, currentEvent, customBadge }:
           </div>
         )}
 
-        <div className="h-full bpmn-container react-bpmn-diagram-cntr" />
+        <div className={`h-full ${containerName} react-bpmn-diagram-cntr`} />
 
         <div className="absolute bottom-14 right-6 grid gap-1">
           <button className="cursor-pointer" ref={buttonZoomInRef}>

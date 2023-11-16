@@ -137,9 +137,10 @@ export declare interface CheckboxProps {
     className?: string;
 }
 
-export declare const DiagramBpmn: ({ url, onClickActivity, currentEvent, customBadge }: DiagramBpmnProps) => JSX_2.Element;
+export declare const DiagramBpmn: ({ url, onClickActivity, currentEvent, customBadge, containerName, }: DiagramBpmnProps) => JSX_2.Element;
 
 export declare interface DiagramBpmnProps {
+    containerName?: string;
     url: string;
     onClickActivity?: (id: string) => void;
     counterMode?: string;

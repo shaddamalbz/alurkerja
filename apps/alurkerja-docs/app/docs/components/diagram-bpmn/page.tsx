@@ -14,10 +14,21 @@ export default function page() {
             name="DiagramBpmn"
             code={`<DiagramBpmn
           url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt"
+        />`}
+          >
+            <DiagramBpmn containerName="bpmn-1" url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt" />
+          </CodePreview>
+        </SectionLayout>
+        <SectionLayout title="currentEvent" description="menghighlight salah satu usertask berdasarkan ID">
+          <CodePreview
+            name="DiagramBpmn"
+            code={`<DiagramBpmn
+          url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt"
           currentEvent="SemakBilanganMuridRmt"
         />`}
           >
             <DiagramBpmn
+              containerName="bpmn-2"
               url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt"
               currentEvent="SemakBilanganMuridRmt"
             />
