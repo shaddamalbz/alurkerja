@@ -1,27 +1,35 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { FaFileImage, FaTrash } from 'react-icons/fa'
 import { File } from '@/types'
 import { toKiloByte } from '@/helpers/utils'
 import { MdDownload } from 'react-icons/md'
+import { AuthContext } from '@/contexts'
 
 export const CardFile: FC<{
   data: File[]
   onClickDelete?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, file: File) => void
   onClickDownload?: (file: File) => void
   readonly?: boolean
-}> = ({ data, onClickDownload, onClickDelete, readonly }) => {
+  downloadWithAxios?: boolean
+}> = ({ data, onClickDownload, onClickDelete, readonly = false, downloadWithAxios = false }) => {
+  const axiosInstance = useContext(AuthContext)
+
   const downloadAction = (file: File) => {
     if (onClickDownload) {
       onClickDownload(file)
     } else {
-      const a = document.createElement('a')
-      a.href = file.original_url
-      a.target = '_blank'
-      a.download = file.name
-      a.rel = 'noopener noreferrer'
-      a.click()
+      if (downloadWithAxios) {
+        axiosInstance.post(file.original_url)
+      } else {
+        const a = document.createElement('a')
+        a.href = file.original_url
+        a.target = '_blank'
+        a.download = file.name
+        a.rel = 'noopener noreferrer'
+        a.click()
 
-      a.remove()
+        a.remove()
+      }
     }
   }
 
@@ -38,7 +46,7 @@ export const CardFile: FC<{
               <div onClick={() => downloadAction(file)}>
                 <MdDownload />
               </div>
-              {/* <a href={file.original_url} target="_blank" download rel="noopener noreferrer"></a> */}
+
               {!readonly && (
                 <button type="button" onClick={(e) => onClickDelete?.(e, file)}>
                   <FaTrash />

@@ -4,6 +4,7 @@ import { MultipleProps } from './MultipleProps'
 import { DefaultValueProps } from './DefaultValueProps'
 import { OnChangeProps } from './OnChangeProps'
 import { DisabledProps } from './DisabledProps'
+import { FetchBeforeLoad } from './FetchBeforeLoad'
 
 export default function page() {
   return (
@@ -15,6 +16,7 @@ export default function page() {
       <DefaultValueProps />
       <DisabledProps />
       <OnChangeProps />
+      <FetchBeforeLoad />
     </article>
   )
 }

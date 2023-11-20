@@ -107,12 +107,15 @@ export declare const CardFile: FC<{
     onClickDelete?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, file: File_2) => void;
     onClickDownload?: (file: File_2) => void;
     readonly?: boolean;
+    downloadWithAxios?: boolean;
 }>;
 
 export declare const CardImage: FC<{
-    data: File_2[];
-    onClickDelete?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, file: File_2) => void;
+    data: any[];
+    onClickDelete?: (e: React.SyntheticEvent, file: File_2) => void;
+    onClickDownload?: (file: File_2) => void;
     readonly?: boolean;
+    fetchBeforeLoad?: boolean;
 }>;
 
 export declare interface CardProps {
@@ -878,7 +881,7 @@ export declare interface PendingTableLayoutProps {
 
 export declare const PendingUpload: FC<PendingUploadProps>;
 
-export declare interface PendingUploadProps {
+declare interface PendingUploadProps {
     name?: string;
     required?: boolean;
     type?: 'file' | 'image';
@@ -892,6 +895,7 @@ export declare interface PendingUploadProps {
     defaultValue?: any[];
     hidePreview?: boolean;
     description?: string;
+    fetchBeforeLoad?: boolean;
 }
 
 /**

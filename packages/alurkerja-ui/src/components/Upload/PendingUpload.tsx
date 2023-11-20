@@ -5,7 +5,7 @@ import { FaUpload } from 'react-icons/fa'
 // utils
 import { CardFile, CardImage } from '../Card'
 
-export interface PendingUploadProps {
+interface PendingUploadProps {
   name?: string
   required?: boolean
   type?: 'file' | 'image'
@@ -19,6 +19,7 @@ export interface PendingUploadProps {
   defaultValue?: any[]
   hidePreview?: boolean
   description?: string
+  fetchBeforeLoad?: boolean
 }
 
 export const PendingUpload: FC<PendingUploadProps> = ({
@@ -34,6 +35,7 @@ export const PendingUpload: FC<PendingUploadProps> = ({
   defaultValue,
   hidePreview = false,
   description = 'Klik untuk mengunggah, atau drag file',
+  fetchBeforeLoad = false,
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<any>([])
   const [files, setFiles] = useState<any>([])
@@ -81,7 +83,6 @@ export const PendingUpload: FC<PendingUploadProps> = ({
           if (type === 'image') {
             const urlImage = URL.createObjectURL(file)
             const newFile = !asFile ? reader.result : file
-
             setUploadedFiles((prev: any) => [...prev, { original_url: urlImage }])
             setFiles((prev: any) => [...prev, newFile])
           } else {
@@ -133,7 +134,14 @@ export const PendingUpload: FC<PendingUploadProps> = ({
       </div>
       {!hidePreview && uploadedFiles.length !== 0 && (
         <>
-          {type === 'image' && <CardImage data={uploadedFiles} onClickDelete={handleDelete} />}
+          {type === 'image' && (
+            <CardImage
+              data={uploadedFiles}
+              onClickDelete={handleDelete}
+              onClickDownload={onDownload}
+              fetchBeforeLoad={fetchBeforeLoad}
+            />
+          )}
           {type === 'file' && (
             <CardFile data={uploadedFiles} onClickDelete={handleDelete} onClickDownload={onDownload} />
           )}

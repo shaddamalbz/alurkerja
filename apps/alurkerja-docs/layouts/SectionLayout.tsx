@@ -11,12 +11,12 @@ export const SectionLayout: FC<SectionLayoutProps> = ({ children, title, descrip
     <section>
       <h3
         id={_.toLower(title).replaceAll(' ', '-').replaceAll('()', '')}
-        className="group relative z-10 text-2xl font-bold text-gray-900 before:invisible before:-mt-20 before:block before:h-20 before:content"
+        className="group relative text-2xl font-bold text-gray-900 before:invisible before:-mt-20 before:block before:h-20 before:content z-0"
       >
         {title}
       </h3>
       <p>{description}</p>
-      <div>{children}</div>
+      <div className="relative z-10">{children}</div>
     </section>
   )
 }
