@@ -6,6 +6,37 @@ export default function page() {
   return (
     <article>
       <h2 className="text-3xl font-bold text-gray-900">Changelog</h2>
+      <SectionLayout title="0.0.444 (Next)" description="penambahan fitur pada komponen">
+        <ul>
+          <li>
+            AlurkerjaForm bisa custom header via customHeader dan footer via customFooter, props customFooter juga
+            memiliki arg berupa ButtonCancel, ButtonSubmit, dan DefaultFooter sedangkan props customHeader memiliki arg
+            DefaultHeader
+            <pre>
+              <code className="language-tsx">
+                {`<AlurkerjaForm
+  formState={formState}
+  handleSubmit={handleSubmit}
+  control={control}
+  setValue={setValue}
+  onSubmit={(data) => console.log(data)}
+  customFooter={({ ButtonSubmit }) => (
+    <div>
+      <>Button Baru</>
+      <ButtonSubmit />
+    </div>
+  )}
+  customHeader={(DefaultHeader) => (
+    <div>
+      <DefaultHeader />
+    </div>
+  )}
+/>`}
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </SectionLayout>
       <SectionLayout title="0.0.440" description="penambahan fitur pada komponen">
         <ul>
           <li>
