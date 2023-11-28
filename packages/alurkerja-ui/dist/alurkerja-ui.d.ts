@@ -590,6 +590,7 @@ declare interface IModal extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'c
     }) => JSX.Element) | JSX.Element;
     width?: string | number;
     maxWidth?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
+    onOpen?: () => void;
 }
 
 export declare const Input: React_2.ForwardRefExoticComponent<InputProps & React_2.RefAttributes<HTMLInputElement>>;

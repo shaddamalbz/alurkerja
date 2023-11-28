@@ -6,6 +6,24 @@ export default function page() {
   return (
     <article>
       <h2 className="text-3xl font-bold text-gray-900">Changelog</h2>
+      <SectionLayout title="0.0.446" description="penambahan fitur pada komponen">
+        <ul>
+          <li>
+            bisa memanggil fungsi ketika{' '}
+            <Link className="text-main-blue-alurkerja cursor-pointer" href="/docs/components/modal#onopen">
+              Modal
+            </Link>{' '}
+            terbuka
+            <pre>
+              <code className="language-tsx">
+                {`<Modal title="Modal" onOpen={() => alert('open modal')} triggerButton={<Button>Open</Button>}>
+  <div>Content</div>
+</Modal>`}
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </SectionLayout>
       <SectionLayout title="0.0.444 (Next)" description="penambahan fitur pada komponen">
         <ul>
           <li>

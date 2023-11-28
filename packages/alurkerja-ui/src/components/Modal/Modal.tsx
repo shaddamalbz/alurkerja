@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import React, { CSSProperties, Fragment, useImperativeHandle, useState } from 'react'
+import React, { CSSProperties, Fragment, useEffect, useImperativeHandle, useState } from 'react'
 import { RxCross2 } from 'react-icons/rx'
 
 interface IModal extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
@@ -11,6 +11,7 @@ interface IModal extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> 
     | JSX.Element
   width?: string | number
   maxWidth?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl'
+  onOpen?: () => void
 }
 
 export type ModalRef = {
@@ -31,7 +32,7 @@ const maxWidhtMapping = {
 }
 
 export const Modal = React.forwardRef<ModalRef, IModal>((props, ref) => {
-  const { title, triggerButton, maxWidth, width, children, style } = props
+  const { title, triggerButton, maxWidth, width, children, style, onOpen } = props
   const [isOpen, setIsOpen] = useState(false)
 
   useImperativeHandle(ref, () => ({
@@ -47,15 +48,21 @@ export const Modal = React.forwardRef<ModalRef, IModal>((props, ref) => {
     setIsOpen(true)
   }
 
+  useEffect(() => {
+    if (isOpen) {
+      onOpen?.()
+    }
+  }, [isOpen])
+
   const Title = (): JSX.Element => (
     <div className="flex items-center justify-between p-6 border-b">
       <Dialog.Title as="h3" className="text-xl font-medium leading-6 text-gray-900">
-        {title || ''}
+        {title ?? ''}
       </Dialog.Title>
 
-      <div className="rounded bg-[#FEF5F5] p-2 cursor-pointer text-[#DD0E0E]" onClick={() => closeModal()}>
+      <button className="rounded bg-[#FEF5F5] p-2 cursor-pointer text-[#DD0E0E]" onClick={() => closeModal()}>
         <RxCross2 />
-      </div>
+      </button>
     </div>
   )
 

@@ -1,12 +1,14 @@
 'use client'
 
 import React from 'react'
-import ModalDocs from './Modal.mdx'
+import { BaseSection } from './BaseSection'
+import { OnOpenProps } from './OnOpenProps'
 
 export default function page() {
   return (
     <article>
-      <ModalDocs />
+      <BaseSection />
+      <OnOpenProps />
     </article>
   )
 }
