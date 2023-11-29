@@ -41,6 +41,10 @@ export const Checkbox: FC<CheckboxProps> = (props) => {
     }
   }, [value])
 
+  useEffect(() => {
+    if (defaultValue) setValue(defaultValue)
+  }, [defaultValue])
+
   const getData = useCallback(async () => {
     if (listOptionWithAPI) {
       const { labelKey, nameKey, url, valueKey } = listOptionWithAPI
@@ -67,8 +71,8 @@ export const Checkbox: FC<CheckboxProps> = (props) => {
 
   return (
     <div className={clsx({ 'flex items-center gap-x-2': !className })}>
-      {options?.map((option, idx) => (
-        <div key={idx}>
+      {options?.map((option) => (
+        <div key={option.value}>
           <input
             name={name}
             type="checkbox"

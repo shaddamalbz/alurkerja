@@ -495,6 +495,12 @@ declare interface FormLowcodeProps {
     inline?: boolean;
     customCancelButton?: () => ReactNode;
     customSubmitButton?: () => ReactNode;
+    customHeader?: (DefaultHeader: () => JSX.Element) => ReactNode;
+    customFooter?: ({ ButtonBack, ButtonSubmit, DefaultFooter, }: {
+        DefaultFooter: () => ReactNode;
+        ButtonBack: () => ReactNode;
+        ButtonSubmit: () => ReactNode;
+    }) => ReactNode;
     /**
      * render form using grid with 1/2/3 column
      * @param number
@@ -540,7 +546,6 @@ declare interface FormLowcodeProps {
     columnSpan?: {
         [x: string]: 2 | 3;
     };
-    customTitle?: () => ReactNode;
 }
 
 export declare const Header: FC<HeaderProps>;

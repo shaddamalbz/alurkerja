@@ -13,6 +13,8 @@ import { CustomSubmitButton } from './CustomSubmitButton'
 import { InlineProps } from './InlineProps'
 import { OnSubmitProps } from './OnSubmitProps'
 import { OnCancelProps } from './OnCancelProps'
+import { CustomHeaderProps } from './CustomHeader'
+import { CustomFooterProps } from './CustomFooter'
 
 export default function page() {
   return (
@@ -112,6 +114,8 @@ export default function page() {
       <InlineProps />
       <OnSubmitProps />
       <OnCancelProps />
+      <CustomHeaderProps />
+      <CustomFooterProps />
     </article>
   )
 }

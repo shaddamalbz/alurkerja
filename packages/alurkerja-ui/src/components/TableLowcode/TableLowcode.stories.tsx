@@ -25,6 +25,7 @@ export const NonBpmn: Story = {
     onClickDetail: undefined,
     onClickDelete: undefined,
     onDeleteConfirm: undefined,
+    customButtonFilter: undefined,
   },
   render: (args) => {
     const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })

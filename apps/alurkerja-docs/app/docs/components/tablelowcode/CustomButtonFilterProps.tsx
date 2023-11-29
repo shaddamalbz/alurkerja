@@ -31,7 +31,7 @@ export const CustomButtonFilterProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          customButtonEdit={(Modal,Button, row) => <div>ini id {row.id}</div>}
+          customButtonFilter={({ButtonFilter}) => <ButtonFilter onClick={() => alert('filter clicked')} />}
         />`}
         externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
         externalImport={`import { useState } from 'react'`}
@@ -49,7 +49,7 @@ export const CustomButtonFilterProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          customButtonFilter={() => <>custom</>}
+          customButtonFilter={({ ButtonFilter }) => <ButtonFilter onClick={() => alert('filter clicked')} />}
         />
       </CodePreview>
     </SectionLayout>

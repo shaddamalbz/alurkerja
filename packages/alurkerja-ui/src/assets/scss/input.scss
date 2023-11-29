@@ -36,7 +36,7 @@
 }
 
 .input-disabled {
-  @apply bg-gray-100 text-gray-400 cursor-not-allowed;
+  @apply bg-gray-100 text-black cursor-not-allowed;
 
   &::placeholder {
     @apply opacity-70;

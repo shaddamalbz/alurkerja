@@ -40,7 +40,8 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     columnSpan,
     customSubmitButton,
     customCancelButton,
-    customTitle,
+    customHeader,
+    customFooter,
   } = props
   const axiosInstance = useContext(AuthContext)
 
@@ -62,8 +63,8 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
       if (id && editSpec) {
         const { path, method } = editSpec
         try {
-          var actMethod = method
-          var url = baseUrl + path.replace('{id}', `${id}`)
+          let actMethod = method
+          let url = baseUrl + path.replace('{id}', `${id}`)
           if (isUsertask) {
             url = url + `/task/${taskId}/submit`
             actMethod = 'POST'
@@ -75,8 +76,8 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
           if (response.status === 200 || response.status === 201) {
             Swal.fire({
               icon: 'success',
-              title: message?.success_edit_title || 'Sukses!',
-              text: message?.success_edit_text || 'Data telah berhasil diedit',
+              title: message?.success_edit_title ?? 'Sukses!',
+              text: message?.success_edit_text ?? 'Data telah berhasil diedit',
             }).then(() => onSuccess?.())
           }
         } catch (error: any) {
@@ -85,7 +86,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
             Swal.fire({
               icon: 'error',
               title: 'Error',
-              text: error.response?.data?.message || 'Terjadi kesalahan. Silahkan coba beberapa saat lagi.',
+              text: error.response?.data?.message ?? 'Terjadi kesalahan. Silahkan coba beberapa saat lagi.',
             })
           }
         } finally {
@@ -96,14 +97,14 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
           const { path, method } = createSpec
 
           try {
-            var url = baseUrl + path
+            let url = baseUrl + path
             const response = await axiosInstance(url, { method: method, data: data })
             if (response.status === 200 || response.status === 201) {
               Swal.fire({
                 icon: 'success',
-                title: message?.success_create_title || 'Sukses!',
-                text: message?.success_create_text || 'Data telah berhasil ditambahkan',
-              }).then(() => onSuccess && onSuccess())
+                title: message?.success_create_title ?? 'Sukses!',
+                text: message?.success_create_text ?? 'Data telah berhasil ditambahkan',
+              }).then(() => onSuccess?.())
             }
           } catch (error: any) {
             if (onError) onError(error)
@@ -111,7 +112,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
               Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: error.response?.data?.message || 'Terjadi kesalahan. Silahkan coba beberapa saat lagi.',
+                text: error.response?.data?.message ?? 'Terjadi kesalahan. Silahkan coba beberapa saat lagi.',
               })
             }
           } finally {
@@ -134,65 +135,100 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
     3: 'col-span-3',
   }
 
+  const Header = () => <div className="text-xl font-bold">{title ?? spec?.label}</div>
+
+  const ButtonBack = () => (
+    <Button type="button" variant="outlined" onClick={() => onCancel?.()}>
+      Kembali
+    </Button>
+  )
+
+  const ButtonSubmit = () => (
+    <Button type="submit" loading={loadingSubmit} disabled={loadingSubmit}>
+      Submit
+    </Button>
+  )
+
+  const Footer = () => (
+    <div className="w-fit ml-auto flex gap-4 mt-4">
+      {customCancelButton?.() ?? <ButtonBack />}
+
+      {extraActionButton?.()}
+
+      {customSubmitButton?.() ?? <>{!readonly && <ButtonSubmit />}</>}
+    </div>
+  )
+
+  const isEdit = id && !readonly
+  const isDetail = id && readonly
+
+  let fieldList
+
+  if (isEdit) {
+    fieldList = editFieldList
+  } else if (isDetail) {
+    fieldList = detailFieldList
+  } else {
+    fieldList = createFieldList
+  }
+
   return (
     <section className="p-4 space-y-6">
-      {customTitle?.() ?? <div className="text-xl font-bold">{title || spec?.label}</div>}
+      {customHeader?.(Header) ?? <Header />}
 
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        {!loading && !isLoadingDetail && editFieldList && createFieldList ? (
+        {!loading && !isLoadingDetail && fieldList ? (
           <div className={`grid ${columnNumberMapping[columnNumber]} gap-x-4`}>
-            {(id ? (readonly ? detailFieldList : editFieldList) : createFieldList).map(
-              (fieldSpec: FieldProperties, idx: number) => {
-                return (
-                  <div
-                    className={
-                      columnSpan?.[fieldSpec.name] ? columnSpanMapping[columnSpan[fieldSpec.name]] : 'col-span-1'
-                    }
+            {fieldList.map((fieldSpec: FieldProperties) => {
+              return (
+                <div
+                  key={fieldSpec.name}
+                  className={
+                    columnSpan?.[fieldSpec.name] ? columnSpanMapping[columnSpan[fieldSpec.name]] : 'col-span-1'
+                  }
+                >
+                  <InputLayout
+                    inline={inline}
+                    name={fieldSpec.name.toLowerCase()}
+                    label={fieldSpec.label}
+                    formState={formState}
+                    rules={fieldSpec.rules}
+                    control={control}
                   >
-                    <InputLayout
-                      inline={inline}
-                      key={idx}
-                      name={fieldSpec.name.toLowerCase()}
-                      label={fieldSpec.label}
-                      formState={formState}
-                      rules={fieldSpec.rules}
-                      control={control}
-                    >
-                      {customField ? (
-                        customField({
-                          field: fieldSpec,
-                          setValue,
-                          defaultField: (
-                            <InputTypes
-                              readonly={readonly}
-                              disabled={disabled}
-                              baseUrl={baseUrl}
-                              fieldSpec={fieldSpec}
-                              name={fieldSpec.name}
-                              setValue={setValue}
-                              defaultValue={detail?.[fieldSpec.name]}
-                              data={detail}
-                            />
-                          ),
-                          value: detail?.[fieldSpec.name],
-                        })
-                      ) : (
-                        <InputTypes
-                          baseUrl={baseUrl}
-                          fieldSpec={fieldSpec}
-                          name={fieldSpec.name}
-                          setValue={setValue}
-                          defaultValue={detail?.[fieldSpec.name]}
-                          disabled={disabled}
-                          readonly={readonly}
-                          data={detail}
-                        />
-                      )}
-                    </InputLayout>
-                  </div>
-                )
-              }
-            )}
+                    {customField ? (
+                      customField({
+                        field: fieldSpec,
+                        setValue,
+                        defaultField: (
+                          <InputTypes
+                            readonly={readonly}
+                            disabled={disabled}
+                            baseUrl={baseUrl}
+                            fieldSpec={fieldSpec}
+                            name={fieldSpec.name}
+                            setValue={setValue}
+                            defaultValue={detail?.[fieldSpec.name]}
+                            data={detail}
+                          />
+                        ),
+                        value: detail?.[fieldSpec.name],
+                      })
+                    ) : (
+                      <InputTypes
+                        baseUrl={baseUrl}
+                        fieldSpec={fieldSpec}
+                        name={fieldSpec.name}
+                        setValue={setValue}
+                        defaultValue={detail?.[fieldSpec.name]}
+                        disabled={disabled}
+                        readonly={readonly}
+                        data={detail}
+                      />
+                    )}
+                  </InputLayout>
+                </div>
+              )
+            })}
           </div>
         ) : (
           <div className="space-y-4">
@@ -201,25 +237,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
           </div>
         )}
 
-        <div className="w-fit ml-auto flex gap-4 mt-4">
-          {customCancelButton?.() ?? (
-            <Button type="button" variant="outlined" onClick={() => onCancel?.()}>
-              Kembali
-            </Button>
-          )}
-
-          {extraActionButton?.()}
-
-          {customSubmitButton?.() ?? (
-            <>
-              {!readonly && (
-                <Button type="submit" loading={loadingSubmit} disabled={loadingSubmit}>
-                  Submit
-                </Button>
-              )}
-            </>
-          )}
-        </div>
+        {customFooter?.({ ButtonBack, ButtonSubmit, DefaultFooter: Footer }) ?? <Footer />}
       </form>
     </section>
   )
