@@ -1,53 +1,26 @@
-import { FC, Fragment, useContext, useMemo } from 'react'
-import { FieldValues, UseFormSetValue, useForm } from 'react-hook-form'
-import { FaChevronDown, FaChevronUp, FaPlay } from 'react-icons/fa'
-import Swal from 'sweetalert2'
+import { FC, useContext, useMemo } from 'react'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import clsx from 'clsx'
 import _ from 'lodash'
-
-import { FieldActionProperties, FieldProperties } from '@/types'
 import { getTheme } from '@/helpers/utils'
-import { IconDelete, IconDetail, IconEdit } from '@/assets/icons'
-import { AuthContext, TableLowcodeContext } from '@/contexts'
-import { Button, Modal, Tooltip, FormLowcode } from '@/components'
+import { TableLowcodeContext } from '@/contexts'
 import { useFieldOrder } from '@/hooks'
-
-import { TableCellType } from './TableCellType'
 import { TableLowcodeViewProps } from '../TableLowcode.types'
+import { TableRow } from './TableRow'
 
 export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
   const { tableSpec, tableData, pagination, selectedAll, setSelectedAll, orderBy, setOrderBy, sortBy, setSortBy } =
     props
   const theme = getTheme()
 
-  const axiosInstance = useContext(AuthContext)
   const {
     readonly,
-    customBulkCell,
     onSelectAll,
-    tooltip,
     bordered,
-    baseUrl,
-    setRenderState,
-    selectedRow,
     setSelectedRow,
-    customCell,
-    onClickDelete,
-    onClickDetail,
-    onClickEdit,
-    customActionCell,
-    customButtonBpmn,
-    customButtonDetail,
-    customButtonEdit,
-    customButtonDelete,
-    customDetailField,
-    customEditField,
-    customField,
-    onDeleteConfirm,
-    textSubmitButton,
+    customRow,
     layout,
     labelAction,
-    message,
     extraActionButton,
     extraRowTableHead,
     hideActionColumn,
@@ -56,42 +29,7 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     extraRow,
   } = useContext(TableLowcodeContext)
 
-  const { handleSubmit, setValue, formState, control } = useForm()
   const { listFieldKey } = useFieldOrder({ fields: tableSpec?.fields })
-
-  const handleDelete = (actionSpec: FieldActionProperties, id: number) => {
-    const { confirm, path } = actionSpec
-    if (confirm) {
-      Swal.fire({
-        icon: 'warning',
-        title: confirm.title,
-        text: confirm.message,
-        showCancelButton: true,
-        confirmButtonColor: '#0095E8',
-        cancelButtonColor: '#d33',
-        cancelButtonText: confirm.cancel_text,
-        confirmButtonText: confirm.confirm_text,
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          if (onDeleteConfirm) {
-            onDeleteConfirm(id)
-          } else {
-            const res = await axiosInstance({
-              method: actionSpec.method,
-              url: baseUrl + path.replace('{id}', id.toString()),
-            })
-            if (res.status === 200) {
-              Swal.fire({
-                icon: 'success',
-                title: message?.success_delete_title || 'Sukses!',
-                text: message?.success_delete_text || 'Data telah berhasil dihapus',
-              }).then(() => setRenderState?.((prev) => prev + 1))
-            }
-          }
-        }
-      })
-    }
-  }
 
   const selectAll = ({ data }: { data?: { [x: string]: any }[] }) => {
     if (data) {
@@ -114,61 +52,6 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
         .filter((field) => field.is_hidden_in_list === false).length + 2,
     [tableSpec]
   )
-
-  const ModalAction = ({
-    triggerButton,
-    action,
-    row,
-    customField,
-    readonly = false,
-  }: {
-    triggerButton: JSX.Element
-    readonly?: boolean
-    action: FieldActionProperties
-    row: { [x: string]: any }
-    customField?: ({
-      field,
-      setValue,
-      defaultField,
-      value,
-    }: {
-      field: FieldProperties
-      setValue: UseFormSetValue<FieldValues>
-      defaultField: JSX.Element
-      value: string | number | boolean
-    }) => JSX.Element
-  }) => {
-    return (
-      <Modal title={action.action_label} triggerButton={triggerButton}>
-        {({ closeModal }) => (
-          <div>
-            <FormLowcode
-              readonly={readonly}
-              spec={tableSpec}
-              title={<></>}
-              id={row.id}
-              baseUrl={baseUrl}
-              specPath={tableSpec?.path}
-              formState={formState}
-              handleSubmit={handleSubmit}
-              control={control}
-              setValue={setValue}
-              onSuccess={() => {
-                closeModal()
-                setRenderState?.((prev) => prev + 1)
-              }}
-              onCancel={() => {
-                closeModal()
-              }}
-              customField={customField}
-              textSubmitButton={textSubmitButton}
-              message={message}
-            />
-          </div>
-        )}
-      </Modal>
-    )
-  }
 
   return (
     <div id="table_wrapper" className={clsx(layout === 'auto' && 'overflow-x-auto', theme.table_wrapper)}>
@@ -270,372 +153,33 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
         <tbody>
           {tableData?.length !== 0 ? (
             <>
-              {tableSpec &&
-                tableData?.map((row, rowIdx) => (
-                  <tr id="table_body_row" className={theme.table_body_row} key={rowIdx}>
-                    <td
-                      id="table_body_col"
-                      className={clsx(theme.table_body_col, 'text-center', bordered && 'border-r border-gray-200')}
-                    >
-                      {pagination ? rowIdx + 1 + pagination.size * pagination.number : rowIdx + 1}
-                    </td>
-                    {(canBulk || tableSpec.can_bulk) && (
-                      <td
-                        id="table_body_col"
-                        className={clsx(theme.table_body_col, 'text-center', bordered && 'border-r border-gray-200')}
-                      >
-                        {customBulkCell ? (
-                          customBulkCell({ row: row })
-                        ) : (
-                          <input
-                            type="checkbox"
-                            className="form-checkbox rounded bg-[#EBEDF3] text-indigo-600 border-none focus:border-none focus:outline-indigo-600"
-                            checked={selectedRow && selectedRow.includes(row.id)}
-                            onChange={() => {
-                              if (selectedRow && !selectedRow.includes(row.id)) {
-                                setSelectedRow?.((prev) => [...prev, row.id])
-                              } else {
-                                setSelectedRow?.((prev) => _.without(prev, row.id))
-                              }
-                            }}
-                          />
-                        )}
-                      </td>
-                    )}
-                    {tableSpec &&
-                      (column ?? listFieldKey)?.map(({ key }, idx) => {
-                        const nestedSpec = {
-                          valueKey: tableSpec.fields[key]?.table_value_mapping?.value,
-                          dataKey: tableSpec.fields[key]?.table_value_mapping?.relation,
-                        }
-
-                        const isCenter =
-                          tableSpec.fields[key]?.type === 'number' || tableSpec.fields[key]?.type === 'datetime-local'
-
-                        return (
-                          <Fragment key={idx}>
-                            {(column ? true : false || !tableSpec.fields[key]?.is_hidden_in_list) && (
-                              <td
-                                id="table_body_col"
-                                className={clsx(
-                                  theme.table_body_col,
-                                  isCenter && 'text-center',
-                                  bordered && 'border-r border-gray-200'
-                                )}
-                              >
-                                {customCell ? (
-                                  customCell({
-                                    name: key,
-                                    fields: tableSpec.fields,
-                                    value: !nestedSpec.dataKey ? row[key] : row[nestedSpec.dataKey],
-                                    rowValue: row,
-                                    defaultCell: (
-                                      <TableCellType
-                                        fieldSpec={tableSpec.fields[key]}
-                                        name={key}
-                                        row={row}
-                                        nestedSpec={nestedSpec}
-                                      />
-                                    ),
-                                  })
-                                ) : (
-                                  <TableCellType
-                                    fieldSpec={tableSpec.fields[key]}
-                                    name={key}
-                                    row={row}
-                                    nestedSpec={nestedSpec}
-                                  />
-                                )}
-                              </td>
-                            )}
-                          </Fragment>
-                        )
-                      })}
-                    {!readonly && (
-                      <>
-                        {!hideActionColumn && (
-                          <td
-                            id="table_body_col_action"
-                            className={clsx(theme.table_body_col_action, bordered && 'border-r border-gray-200')}
-                          >
-                            <div className="flex flex-row items-center justify-center gap-x-2">
-                              {customActionCell
-                                ? customActionCell(row)
-                                : tableSpec?.field_action.map((action, idx) => {
-                                    if (action.label === 'Edit') {
-                                      const ButtonWithModal = (
-                                        <Modal
-                                          title={action.action_label}
-                                          triggerButton={
-                                            tooltip?.button_edit ? (
-                                              <Tooltip content={tooltip.button_edit}>
-                                                <button
-                                                  type="button"
-                                                  className="bg-main-blue-alurkerja text-white p-2 rounded"
-                                                  data-testid={`button-edit-${rowIdx}`}
-                                                >
-                                                  <IconEdit />
-                                                </button>
-                                              </Tooltip>
-                                            ) : (
-                                              <button
-                                                type="button"
-                                                className="bg-main-blue-alurkerja text-white p-2 rounded"
-                                                data-testid={`button-edit-${rowIdx}`}
-                                              >
-                                                <IconEdit />
-                                              </button>
-                                            )
-                                          }
-                                        >
-                                          {({ closeModal }) => (
-                                            <div className="px-2.5">
-                                              <FormLowcode
-                                                id={row.id}
-                                                spec={tableSpec}
-                                                baseUrl={baseUrl}
-                                                formState={formState}
-                                                specPath={tableSpec?.path}
-                                                handleSubmit={handleSubmit}
-                                                control={control}
-                                                setValue={setValue}
-                                                onSuccess={() => {
-                                                  closeModal()
-                                                  setRenderState?.((prev) => prev + 1)
-                                                }}
-                                                onCancel={() => closeModal()}
-                                                customField={customField ?? customEditField}
-                                                textSubmitButton={textSubmitButton}
-                                                title={<></>}
-                                                message={message}
-                                              />
-                                            </div>
-                                          )}
-                                        </Modal>
-                                      )
-
-                                      const ButtonWithAction = tooltip?.button_edit ? (
-                                        <Tooltip content={tooltip.button_edit}>
-                                          <button
-                                            type="button"
-                                            className="bg-main-blue-alurkerja text-white p-2 rounded"
-                                            onClick={() => onClickEdit?.(action, row.id, row)}
-                                            data-testid={`button-edit-${rowIdx}`}
-                                          >
-                                            <IconEdit />
-                                          </button>
-                                        </Tooltip>
-                                      ) : (
-                                        <button
-                                          type="button"
-                                          className="bg-main-blue-alurkerja text-white p-2 rounded"
-                                          onClick={() => onClickEdit?.(action, row.id, row)}
-                                          data-testid={`button-edit-${rowIdx}`}
-                                        >
-                                          <IconEdit />
-                                        </button>
-                                      )
-                                      return (
-                                        tableSpec.can_edit && (
-                                          <Fragment key={`button-edit-${idx}`}>
-                                            {customButtonEdit ? (
-                                              customButtonEdit(ButtonWithModal, ButtonWithAction, row)
-                                            ) : (
-                                              <>{!onClickEdit ? ButtonWithModal : ButtonWithAction}</>
-                                            )}
-                                          </Fragment>
-                                        )
-                                      )
-                                    } else if (action.label === 'Hapus') {
-                                      const DefaultButton = () =>
-                                        tooltip?.button_delete ? (
-                                          <Tooltip content={tooltip.button_delete}>
-                                            <button
-                                              type="button"
-                                              className="bg-red-alurkerja text-white p-2 rounded"
-                                              onClick={() =>
-                                                onClickDelete
-                                                  ? onClickDelete(action, row.id, row)
-                                                  : handleDelete?.(action, row.id)
-                                              }
-                                              data-testid={`button-delete-${rowIdx}`}
-                                            >
-                                              <IconDelete />
-                                            </button>
-                                          </Tooltip>
-                                        ) : (
-                                          <button
-                                            type="button"
-                                            className="bg-red-alurkerja text-white p-2 rounded"
-                                            onClick={() =>
-                                              onClickDelete
-                                                ? onClickDelete(action, row.id, row)
-                                                : handleDelete?.(action, row.id)
-                                            }
-                                            data-testid={`button-delete-${rowIdx}`}
-                                          >
-                                            <IconDelete />
-                                          </button>
-                                        )
-                                      return (
-                                        tableSpec.can_delete && (
-                                          <Fragment key={'button-delete-' + idx}>
-                                            {customButtonDelete ? (
-                                              customButtonDelete(DefaultButton, row)
-                                            ) : (
-                                              <DefaultButton />
-                                            )}
-                                          </Fragment>
-                                        )
-                                      )
-                                    } else if (action.label === 'Detail') {
-                                      const ButtonWithModal = (
-                                        <ModalAction
-                                          readonly
-                                          action={action}
-                                          row={row}
-                                          customField={customField ?? customDetailField}
-                                          triggerButton={
-                                            tooltip?.button_detail ? (
-                                              <Tooltip content={tooltip.button_detail}>
-                                                <button
-                                                  type="button"
-                                                  className="bg-green-alurkerja text-white p-2 rounded"
-                                                  data-testid={`button-detail-${rowIdx}`}
-                                                >
-                                                  <IconDetail />
-                                                </button>
-                                              </Tooltip>
-                                            ) : (
-                                              <button
-                                                type="button"
-                                                className="bg-green-alurkerja text-white p-2 rounded"
-                                                data-testid={`button-detail-${rowIdx}`}
-                                              >
-                                                <IconDetail />
-                                              </button>
-                                            )
-                                          }
-                                        />
-                                      )
-
-                                      const ButtonWithAction = tooltip?.button_detail ? (
-                                        <Tooltip content={tooltip.button_detail}>
-                                          <button
-                                            type="button"
-                                            className="bg-green-alurkerja text-white p-2 rounded"
-                                            onClick={() => onClickDetail?.(row.id, row)}
-                                            data-testid={`button-detail-${rowIdx}`}
-                                          >
-                                            <IconDetail />
-                                          </button>
-                                        </Tooltip>
-                                      ) : (
-                                        <button
-                                          type="button"
-                                          className="bg-green-alurkerja text-white p-2 rounded"
-                                          onClick={() => onClickDetail?.(row.id, row)}
-                                          data-testid={`button-detail-${rowIdx}`}
-                                        >
-                                          <IconDetail />
-                                        </button>
-                                      )
-                                      return (
-                                        tableSpec.can_detail && (
-                                          <Fragment key={`button-detail-${idx}`}>
-                                            {customButtonDetail ? (
-                                              customButtonDetail(ButtonWithModal, ButtonWithAction, row)
-                                            ) : (
-                                              <>{!onClickDetail ? ButtonWithModal : ButtonWithAction}</>
-                                            )}
-                                          </Fragment>
-                                        )
-                                      )
-                                    }
-                                  })}
-
-                              {row.available_task && row.available_task.length > 0 && tableSpec.usertask_mapping && (
-                                <>
-                                  {customButtonBpmn ? (
-                                    customButtonBpmn({
-                                      available_task: row.available_task,
-                                      rowValue: row,
-                                      usertaskMapping: tableSpec.usertask_mapping,
-                                    })
-                                  ) : (
-                                    <Modal
-                                      title={'Usertasks'}
-                                      triggerButton={
-                                        <Button
-                                          type="button"
-                                          className="text-gray-400 bg-gray-100"
-                                          size="small"
-                                          icon={<FaPlay />}
-                                        />
-                                      }
-                                    >
-                                      {({}) => (
-                                        <>
-                                          {row.available_task.map((task: any, idx: number) => {
-                                            const taskMapping = tableSpec.usertask_mapping?.filter(
-                                              (spec) => spec.id === task.taskDefinitionKey
-                                            )[0]
-                                            if (taskMapping) {
-                                              return (
-                                                <Modal
-                                                  key={idx}
-                                                  title={task.name}
-                                                  triggerButton={
-                                                    <button
-                                                      type="button"
-                                                      className="w-full px-4 py-2 text-left rounded hover:bg-gray-100"
-                                                      key={idx}
-                                                    >
-                                                      {task.name}
-                                                    </button>
-                                                  }
-                                                >
-                                                  {({ closeModal }) => (
-                                                    <FormLowcode
-                                                      title={<></>}
-                                                      baseUrl={baseUrl}
-                                                      specPath={taskMapping?.url}
-                                                      formState={formState}
-                                                      id={row.id}
-                                                      taskId={task.id}
-                                                      isUsertask={true}
-                                                      handleSubmit={handleSubmit}
-                                                      control={control}
-                                                      setValue={setValue}
-                                                      onSuccess={() => {
-                                                        closeModal()
-                                                        setRenderState?.((prev) => prev + 1)
-                                                      }}
-                                                      onCancel={() => closeModal()}
-                                                      customField={customField}
-                                                      textSubmitButton={textSubmitButton}
-                                                      message={message}
-                                                    />
-                                                  )}
-                                                </Modal>
-                                              )
-                                            }
-                                          })}
-                                        </>
-                                      )}
-                                    </Modal>
-                                  )}
-                                </>
-                              )}
-
-                              {extraActionButton?.(row)}
-                            </div>
-                          </td>
-                        )}
-                      </>
-                    )}
-                  </tr>
-                ))}
+              {tableData?.map((row, rowIdx) =>
+                customRow ? (
+                  customRow({
+                    row,
+                    DefaultElement: (
+                      <TableRow
+                        className={theme.table_body_row}
+                        classNameColAction={clsx(theme.table_body_col_action, bordered && 'border-r border-gray-200')}
+                        tableSpec={tableSpec}
+                        pagination={pagination}
+                        row={row}
+                        rowIdx={rowIdx}
+                        key={`tr-${rowIdx}`}
+                      />
+                    ),
+                  })
+                ) : (
+                  <TableRow
+                    className={theme.table_body_row}
+                    tableSpec={tableSpec}
+                    pagination={pagination}
+                    row={row}
+                    rowIdx={rowIdx}
+                    key={`tr-${rowIdx}`}
+                  />
+                )
+              )}
               {extraRow ? extraRow(tableData) : null}
             </>
           ) : (

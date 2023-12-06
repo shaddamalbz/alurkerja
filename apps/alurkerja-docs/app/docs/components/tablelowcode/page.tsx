@@ -26,6 +26,7 @@ import { ExtraRowTableHeadProps } from './ExtraRowTableHeadProps'
 import { SubheaderProps } from './SubheaderProps'
 import { TooltipsProps } from './TooltipsProps'
 import { SearchPlaceholderProps } from './SearchPlaceholderProps'
+import { CustomRowProps } from './customRowProps'
 
 export default function page() {
   return (
@@ -58,6 +59,7 @@ export default function page() {
       <CustomButtonFilterProps />
       <CustomButtonCreateProps />
       <CustomCellProps />
+      <CustomRowProps />
       <CustomHeaderProps />
       <CustomActionCellProps />
       <ExtraActionButtonProps />

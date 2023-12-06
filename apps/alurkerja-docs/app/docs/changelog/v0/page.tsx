@@ -6,6 +6,35 @@ export default function page() {
   return (
     <article>
       <h2 className="text-3xl font-bold text-gray-900">Changelog</h2>
+      <SectionLayout title="0.0.464" description="penambahan fitur pada komponen">
+        <ul>
+          <li>
+            bisa custom row di{' '}
+            <Link className="text-main-blue-alurkerja cursor-pointer" href="/docs/components/tablelowcode#customrow">
+              Tablelowcode
+            </Link>
+            <pre>
+              <code className="language-tsx">
+                {`<TableLowcode
+  customRow={({ row, DefaultElement }) => {
+    if (row.id % 2 !== 0) {
+      const CustomElement = cloneElement(DefaultElement, {
+        className: 'border-b border-gray-200 bg-red-50',
+        classNameColAction: 'bg-red-50 border-b border-gray-200 py-3 px-4',
+      })
+
+      return CustomElement
+    }
+
+    return DefaultElement
+  }}
+/>
+               `}
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </SectionLayout>
       <SectionLayout title="0.0.459 (Next)" description="penambahan fitur pada komponen">
         <ul>
           <li>

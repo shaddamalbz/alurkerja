@@ -120,7 +120,7 @@ export interface FieldProperties {
   create_order: number
 }
 
-export interface PaginationLowcode {
+export interface PaginationSpec {
   empty: boolean
   first: boolean
   last: boolean
@@ -306,7 +306,7 @@ export interface PendingTableLayoutProps {
   textSubmitButton?: string
   children: React.ReactNode
   tableSpec: TableSpec | undefined
-  pagination: PaginationLowcode | undefined
+  pagination: PaginationSpec | undefined
   extraButton?: () => JSX.Element | null
   customFilterField?: ({
     field,

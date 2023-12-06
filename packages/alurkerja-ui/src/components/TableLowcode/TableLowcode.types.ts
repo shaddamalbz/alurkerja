@@ -1,5 +1,5 @@
-import { FieldActionProperties, FieldProperties, PaginationLowcode, TableSpec, UserTaskMapping } from '@/types'
-import { Dispatch, SetStateAction } from 'react'
+import { FieldActionProperties, FieldProperties, PaginationSpec, TableSpec, UserTaskMapping } from '@/types'
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 
 export interface TableLowcodeProps {
@@ -76,6 +76,7 @@ export interface TableLowcodeProps {
   onDeleteConfirm?: (id: number) => void
   /** trying to custom header table? use this*/
   customHeader?: JSX.Element
+  customRow?: ({ row, DefaultElement }: { row: { [x: string]: any }; DefaultElement: JSX.Element }) => ReactNode
   customField?: ({
     field,
     setValue,
@@ -228,7 +229,7 @@ export interface TableLowcodeProps {
 export interface TableLowcodeViewProps {
   tableSpec: TableSpec | undefined
   tableData: { [x: string]: any }[] | undefined
-  pagination: PaginationLowcode | undefined
+  pagination: PaginationSpec | undefined
   selectedAll: boolean
   setSelectedAll: Dispatch<SetStateAction<boolean>>
   sortBy?: string
@@ -238,7 +239,7 @@ export interface TableLowcodeViewProps {
 }
 
 export interface TableLayoutProps {
-  pagination: PaginationLowcode | undefined
+  pagination: PaginationSpec | undefined
   extraButton?: () => JSX.Element | null
   children: React.ReactNode
   tableSpec: TableSpec | undefined

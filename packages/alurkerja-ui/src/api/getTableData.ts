@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import _ from 'lodash'
 
-import { PaginationLowcode, TableSpec } from '@/types'
+import { PaginationSpec, TableSpec } from '@/types'
 import { AuthContext } from '@/contexts'
 import { objToQueryParam } from '@/helpers/utils'
 
@@ -40,7 +40,7 @@ export const getTableData = ({
 
   const [tableData, setTableData] = useState<{ id: number; [x: string]: any }[]>()
   const [detail, setDetail] = useState<{ [x: string]: any }>()
-  const [pagination, setPagination] = useState<PaginationLowcode>()
+  const [pagination, setPagination] = useState<PaginationSpec>()
   const [loading, setLoading] = useState<boolean>(true)
 
   const fetch = async (signal: AbortSignal) => {
@@ -98,7 +98,7 @@ export const getTableData = ({
           if (id) {
             setDetail(result)
           } else {
-            const pagination = _.omit(result, 'content') as PaginationLowcode
+            const pagination = _.omit(result, 'content') as PaginationSpec
             setTableData(result.content)
             setPagination(pagination)
           }

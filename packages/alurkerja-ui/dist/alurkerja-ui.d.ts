@@ -793,7 +793,20 @@ export declare interface Pageable {
 
 export declare const Pagination: FC<PaginationProps>;
 
-export declare interface PaginationLowcode {
+export declare interface PaginationProps {
+    pagination?: any | undefined;
+    pageConfig?: {
+        limit: number;
+        page: number;
+    };
+    setPageConfig?: Dispatch<SetStateAction<{
+        limit: number;
+        page: number;
+    }>>;
+    tableSpec?: TableSpec;
+}
+
+export declare interface PaginationSpec {
     empty: boolean;
     first: boolean;
     last: boolean;
@@ -812,19 +825,6 @@ export declare interface PaginationLowcode {
     };
     total_elements: number;
     total_page: number;
-}
-
-export declare interface PaginationProps {
-    pagination?: any | undefined;
-    pageConfig?: {
-        limit: number;
-        page: number;
-    };
-    setPageConfig?: Dispatch<SetStateAction<{
-        limit: number;
-        page: number;
-    }>>;
-    tableSpec?: TableSpec;
 }
 
 export declare interface PendingTableLayoutProps {
@@ -868,7 +868,7 @@ export declare interface PendingTableLayoutProps {
     textSubmitButton?: string;
     children: React.ReactNode;
     tableSpec: TableSpec | undefined;
-    pagination: PaginationLowcode | undefined;
+    pagination: PaginationSpec | undefined;
     extraButton?: () => JSX.Element | null;
     customFilterField?: ({ field, setValue, defaultField, }: {
         field: [string, FieldProperties];
@@ -1154,6 +1154,12 @@ declare interface TableLowcodeProps {
     onDeleteConfirm?: (id: number) => void;
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element;
+    customRow?: ({ row, DefaultElement }: {
+        row: {
+            [x: string]: any;
+        };
+        DefaultElement: JSX.Element;
+    }) => ReactNode;
     customField?: ({ field, setValue, defaultField, }: {
         field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
@@ -1354,6 +1360,7 @@ declare interface TableLowcodeProps_2 {
     onDeleteConfirm?: (id: number) => void
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element
+    customRow?: ({ row, DefaultElement }: { row: { [x: string]: any }; DefaultElement: JSX.Element }) => ReactNode
     customField?: ({
         field,
         setValue,
