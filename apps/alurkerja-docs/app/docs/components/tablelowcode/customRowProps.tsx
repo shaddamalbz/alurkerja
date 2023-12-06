@@ -18,8 +18,8 @@ export const CustomRowProps = () => {
           customRow={({ row, DefaultElement }) => {
             if (row.status % 2 !== 0) {
               const CustomElement = cloneElement(DefaultElement, {
-                className: 'border-b border-gray-200 bg-slate-50',
-                classNameColAction: 'bg-slate-50 border-b border-gray-200 py-3 px-4',
+                className: 'border-b border-gray-200 bg-red-50',
+                classNameColAction: 'bg-red-50 border-b border-gray-200 py-3 px-4',
               })
   
               return CustomElement
