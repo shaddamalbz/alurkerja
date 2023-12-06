@@ -5,9 +5,10 @@ import moment from 'moment'
 interface InputYearProps {
   onChange?: (value?: string | null) => void
   defaultValue?: Date | null
+  disabled?: boolean
 }
 
-export const InputYear: FC<InputYearProps> = ({ onChange, defaultValue }) => {
+export const InputYear: FC<InputYearProps> = ({ onChange, defaultValue, disabled }) => {
   const [selected, setSelected] = useState<Date | null>()
 
   useEffect(() => {
@@ -28,6 +29,7 @@ export const InputYear: FC<InputYearProps> = ({ onChange, defaultValue }) => {
       }}
       showYearPicker
       dateFormat="yyyy"
+      disabled={disabled}
     />
   )
 }

@@ -25,6 +25,7 @@ import { OnClickFilterProps } from './OnClickFilter'
 import { ExtraRowTableHeadProps } from './ExtraRowTableHeadProps'
 import { SubheaderProps } from './SubheaderProps'
 import { TooltipsProps } from './TooltipsProps'
+import { SearchPlaceholderProps } from './SearchPlaceholderProps'
 
 export default function page() {
   return (
@@ -65,6 +66,7 @@ export default function page() {
       <ColumnProps />
       <SubheaderProps />
       <TooltipsProps />
+      <SearchPlaceholderProps />
     </article>
   )
 }

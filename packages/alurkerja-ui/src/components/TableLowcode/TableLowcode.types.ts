@@ -18,7 +18,7 @@ export interface TableLowcodeProps {
    * apabila ingin menampilkan column nama saja maka propsnya akan seperti ini
    * `column={[{label: 'Nama User', value: 'nama'}]}`
    */
-  column?: { label: string; key: string }[]
+  column?: { label: string; key: string; className?: string }[]
   title?: string
   /** base API url (lowcode spec) */
   baseUrl: string
@@ -222,6 +222,7 @@ export interface TableLowcodeProps {
     button_delete?: string
   }
   bordered?: boolean
+  searchPlaceholder?: string
 }
 
 export interface TableLowcodeViewProps {

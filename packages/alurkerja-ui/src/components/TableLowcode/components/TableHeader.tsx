@@ -33,8 +33,8 @@ export const TableHeader: FC<TableHeaderProps> = ({
   return (
     <>
       <div className="py-4 border-b">
-        <div className="px-7 flex flex-row items-center justify-between gap-2">
-          <h5 className={theme.table_title} data-testid="title">
+        <div className={theme.table_header} id="table_header" data-testid="table_header">
+          <h5 className={theme.table_title} id="table_title" data-testid="table_title">
             {title}
           </h5>
           <div className="flex flex-row gap-2">

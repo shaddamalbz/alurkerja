@@ -2,6 +2,7 @@ import { Theme } from '@/types'
 
 export const themeConfig: Theme = {
   table: 'w-full scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-thumb-rounded text-xs m-0',
+  table_header: 'px-7 flex flex-row items-center justify-between gap-2',
   table_title: 'mb-0 mr-4 font-bold uppercase',
   table_head_row: 'text-gray-400 border-b border-gray-200',
   table_head_col: 'whitespace-nowrap py-3 px-3',

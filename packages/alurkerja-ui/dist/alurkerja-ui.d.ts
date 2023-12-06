@@ -652,6 +652,7 @@ export declare const InputYear: FC<InputYearProps>;
 declare interface InputYearProps {
     onChange?: (value?: string | null) => void;
     defaultValue?: Date | null;
+    disabled?: boolean;
 }
 
 export declare interface IPendingAlurkerjaTableLowcode {
@@ -1084,6 +1085,7 @@ declare interface TableLowcodeProps {
     column?: {
         label: string;
         key: string;
+        className?: string;
     }[];
     title?: string;
     /** base API url (lowcode spec) */
@@ -1275,6 +1277,7 @@ declare interface TableLowcodeProps {
         button_delete?: string;
     };
     bordered?: boolean;
+    searchPlaceholder?: string;
 }
 
 declare interface TableLowcodeProps_2 {
@@ -1293,7 +1296,7 @@ declare interface TableLowcodeProps_2 {
      * apabila ingin menampilkan column nama saja maka propsnya akan seperti ini
      * `column={[{label: 'Nama User', value: 'nama'}]}`
      */
-    column?: { label: string; key: string }[]
+    column?: { label: string; key: string; className?: string }[]
     title?: string
     /** base API url (lowcode spec) */
     baseUrl: string
@@ -1497,6 +1500,7 @@ declare interface TableLowcodeProps_2 {
         button_delete?: string
     }
     bordered?: boolean
+    searchPlaceholder?: string
 }
 
 export declare const TableNested: FC<TableNestedProps>;
@@ -1535,6 +1539,10 @@ export declare interface TableSpec {
     languages?: {
         pagination_info?: string;
         empty_data?: string;
+        filter_title?: string;
+        filter_submit?: string;
+        filter_reset?: string;
+        filter_cancel?: string;
     };
 }
 
@@ -1561,6 +1569,10 @@ declare interface TableSpec_2 {
     languages?: {
         pagination_info?: string
         empty_data?: string
+        filter_title?: string
+        filter_submit?: string
+        filter_reset?: string
+        filter_cancel?: string
     }
 }
 
@@ -1599,6 +1611,7 @@ export declare interface TaskType {
 export declare interface Theme {
     table_wrapper?: string;
     table?: string;
+    table_header?: string;
     table_title?: string;
     table_head?: string;
     table_head_row?: string;

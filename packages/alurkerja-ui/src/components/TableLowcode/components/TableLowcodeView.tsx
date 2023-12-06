@@ -214,17 +214,20 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
                 )}
 
                 {(column ?? listFieldKey)?.map(
-                  ({ label, key }, idx) =>
+                  ({ label, key, className }) =>
                     (column ? true : false || !tableSpec.fields[key]?.is_hidden_in_list) && (
                       <th
                         id="table_head_col"
-                        className={clsx(
-                          theme.table_head_col,
-                          'relative',
-                          bordered && 'border-r border-gray-200',
-                          tableSpec.fields[key]?.sortable && 'cursor-pointer'
-                        )}
-                        key={idx}
+                        className={
+                          className ??
+                          clsx(
+                            theme.table_head_col,
+                            'relative',
+                            bordered && 'border-r border-gray-200',
+                            tableSpec.fields[key]?.sortable && 'cursor-pointer'
+                          )
+                        }
+                        key={`th-${key}`}
                         onClick={() => {
                           if (tableSpec.fields[key]?.sortable) {
                             setOrderBy?.((prev) => {

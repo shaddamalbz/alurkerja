@@ -70,7 +70,7 @@ export const Checkbox: FC<CheckboxProps> = (props) => {
   }, [optionsFromAPI, listOption])
 
   return (
-    <div className={clsx({ 'flex items-center gap-x-2': !className })}>
+    <div className={clsx(className ?? 'flex items-center gap-x-2')}>
       {options?.map((option) => (
         <div key={option.value}>
           <input

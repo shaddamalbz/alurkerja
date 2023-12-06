@@ -55,7 +55,7 @@ export const Modal = React.forwardRef<ModalRef, IModal>((props, ref) => {
   }, [isOpen])
 
   const Title = (): JSX.Element => (
-    <div className="flex items-center justify-between p-6 border-b">
+    <div className="flex items-center justify-between py-4 px-6 border-b">
       <Dialog.Title as="h3" className="text-xl font-medium leading-6 text-gray-900">
         {title ?? ''}
       </Dialog.Title>

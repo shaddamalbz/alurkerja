@@ -25,6 +25,7 @@ export const HeaderRight: FC<HeaderRightProps> = memo(
     const { handleSubmit, setValue, formState, control } = useForm()
     const HookFormFilter = useForm()
     const {
+      filterBy,
       setSearch,
       onClickCreate,
       baseUrl,
@@ -46,6 +47,7 @@ export const HeaderRight: FC<HeaderRightProps> = memo(
       tooltip,
       setFilterBy,
       onClickFilter,
+      searchPlaceholder,
     } = useContext(TableLowcodeContext)
 
     const [tempSearch, setTempSearch] = useState<string>('')
@@ -57,56 +59,63 @@ export const HeaderRight: FC<HeaderRightProps> = memo(
         onClose()
       }
       return (
-        <div className="space-y-4 p-4">
-          {fieldList.map((field: [string, FieldProperties], idx: number) => {
-            const [key, spec] = field
+        <div>
+          <div className="p-6 border-b">
+            {fieldList.map((field: [string, FieldProperties]) => {
+              const [key, spec] = field
 
-            if (spec.filterable) {
-              return (
-                <div key={idx}>
-                  <label htmlFor={key}>{spec.label}</label>
-                  {customFilterField ? (
-                    customFilterField({
-                      field,
-                      setValue: HookFormFilter.setValue,
-                      defaultField: (
-                        <InputTypes
-                          baseUrl={baseUrl}
-                          fieldSpec={spec}
-                          name={spec.name}
-                          setValue={HookFormFilter.setValue}
-                          defaultValue={HookFormFilter.watch(key)}
-                        />
-                      ),
-                    })
-                  ) : (
-                    <InputTypes
-                      baseUrl={baseUrl}
-                      fieldSpec={spec}
-                      name={spec.name}
-                      setValue={HookFormFilter.setValue}
-                      defaultValue={HookFormFilter.watch(key)}
-                    />
-                  )}
-                </div>
-              )
-            }
-          })}
-          <div className="w-full flex gap-4 justify-end">
-            <Button
-              size="small"
-              variant="outlined"
-              onClick={() => {
-                setFilterBy?.(undefined)
-                HookFormFilter.reset()
-                onClose()
-              }}
-            >
-              Clear Filter
+              if (spec.filterable) {
+                return (
+                  <div key={`filter-field-${spec.name}`}>
+                    <label htmlFor={key}>{spec.label}</label>
+                    {customFilterField ? (
+                      customFilterField({
+                        field,
+                        setValue: HookFormFilter.setValue,
+                        defaultField: (
+                          <InputTypes
+                            baseUrl={baseUrl}
+                            fieldSpec={spec}
+                            name={spec.name}
+                            setValue={HookFormFilter.setValue}
+                            defaultValue={filterBy?.[key]}
+                          />
+                        ),
+                      })
+                    ) : (
+                      <InputTypes
+                        baseUrl={baseUrl}
+                        fieldSpec={spec}
+                        name={spec.name}
+                        setValue={HookFormFilter.setValue}
+                        defaultValue={filterBy?.[key]}
+                      />
+                    )}
+                  </div>
+                )
+              }
+            })}
+          </div>
+          <div className="flex justify-between px-6 py-5">
+            <Button size="small" onClick={() => close()}>
+              {tableSpec?.languages?.filter_cancel ?? 'Cancel'}
             </Button>
-            <Button size="small" onClick={() => HookFormFilter.handleSubmit((data) => handleFilter(data))()}>
-              Filter
-            </Button>
+            <div className="flex justify-end w-full gap-4">
+              <Button
+                size="small"
+                variant="outlined"
+                onClick={() => {
+                  setFilterBy?.(undefined)
+                  HookFormFilter.reset()
+                  onClose()
+                }}
+              >
+                Clear Filter
+              </Button>
+              <Button size="small" onClick={() => HookFormFilter.handleSubmit((data) => handleFilter(data))()}>
+                Filter
+              </Button>
+            </div>
           </div>
         </div>
       )
@@ -160,6 +169,7 @@ export const HeaderRight: FC<HeaderRightProps> = memo(
               id="search"
               name="search"
               value={tempSearch}
+              placeholder={searchPlaceholder}
               onChange={(e) => setTempSearch(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {

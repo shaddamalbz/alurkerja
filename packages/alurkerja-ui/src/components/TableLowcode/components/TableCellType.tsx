@@ -64,7 +64,7 @@ export const TableCellType: FC<TableCellTypeProps> = ({ name, fieldSpec, row, ne
               <Button className="text-gray-400 bg-gray-100 hover:bg-gray-200" size="small" icon={<MdDownload />} />
             }
           >
-            <>
+            <div className="p-6">
               {row[name].length > 0 ? (
                 row[name].map((item: File, idx: number) => (
                   <div className="flex items-center justify-between w-full" key={idx}>
@@ -83,7 +83,7 @@ export const TableCellType: FC<TableCellTypeProps> = ({ name, fieldSpec, row, ne
                   <p>Tidak memiliki file</p>
                 </div>
               )}
-            </>
+            </div>
           </Modal>
         </div>
       )}

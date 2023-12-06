@@ -30,6 +30,10 @@ export interface TableSpec {
   languages?: {
     pagination_info?: string
     empty_data?: string
+    filter_title?: string
+    filter_submit?: string
+    filter_reset?: string
+    filter_cancel?: string
   }
 }
 
@@ -350,6 +354,7 @@ export interface File {
 export interface Theme {
   table_wrapper?: string
   table?: string
+  table_header?: string
   table_title?: string
   table_head?: string
   table_head_row?: string

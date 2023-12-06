@@ -6,6 +6,48 @@ export default function page() {
   return (
     <article>
       <h2 className="text-3xl font-bold text-gray-900">Changelog</h2>
+      <SectionLayout title="0.0.459 (Next)" description="penambahan fitur pada komponen">
+        <ul>
+          <li>
+            bisa menambahkan placeholder pada field search di{' '}
+            <Link
+              className="text-main-blue-alurkerja cursor-pointer"
+              href="/docs/components/tablelowcode#searchplaceholder"
+            >
+              Tablelowcode
+            </Link>
+            <pre>
+              <code className="language-tsx">
+                {`<TableLowcode
+  searchPlaceholder="Ini placeholder"
+/>
+               `}
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </SectionLayout>
+      <SectionLayout title="0.0.458" description="penambahan fitur pada komponen">
+        <ul>
+          <li>
+            bisa menambahkan placeholder pada field search di{' '}
+            <Link
+              className="text-main-blue-alurkerja cursor-pointer"
+              href="/docs/components/tablelowcode#searchplaceholder"
+            >
+              Tablelowcode
+            </Link>
+            <pre>
+              <code className="language-tsx">
+                {`<TableLowcode
+  searchPlaceholder="Ini placeholder"
+/>
+               `}
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </SectionLayout>
       <SectionLayout title="0.0.446" description="penambahan fitur pada komponen">
         <ul>
           <li>
