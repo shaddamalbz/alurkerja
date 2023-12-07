@@ -12,6 +12,6 @@
     "build:docs": "pnpm --filter alurkerja-docs build"
   },
   "keywords": [],
-  "author": "",
+  "author": "shaddamalbz",
   "license": "ISC"
 }
