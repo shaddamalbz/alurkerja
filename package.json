@@ -12,8 +12,8 @@
     "build:docs": "pnpm --filter alurkerja-docs build"
   },
   "keywords": [
-    "Reactjs",
-    "Nextjs"
+    "reactjs",
+    "nextjs"
   ],
   "author": "shaddamalbz",
   "license": "ISC"
