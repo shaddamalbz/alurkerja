@@ -11,7 +11,10 @@
     "build:ui": "pnpm --filter alurkerja-ui build --watch",
     "build:docs": "pnpm --filter alurkerja-docs build"
   },
-  "keywords": [],
+  "keywords": [
+    "Reactjs",
+    "Nextjs"
+  ],
   "author": "shaddamalbz",
   "license": "ISC"
 }
