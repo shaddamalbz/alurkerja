@@ -27,5 +27,3 @@ Running development packages using storybook
 ```bash
   pnpm dev:ui
 ```
-
-## Tes
