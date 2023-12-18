@@ -52,6 +52,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="hidden items-center gap-1 lg:flex">
           <Link
             className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-main-blue-alurkerja"
+            href="https://codesandbox.io/p/devbox/alurkerja-ui-sandbox-g9zz59?file=%2Fsrc%2FApp.tsx%3A1%2C34"
+            target="_blank"
+          >
+            Playground
+          </Link>
+          <Link
+            className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-main-blue-alurkerja"
             href="/docs/changelog/v0"
           >
             Changelog v0
