@@ -118,6 +118,7 @@ export interface FieldProperties {
   list_order: number
   edit_order: number
   create_order: number
+  description?: string
 }
 
 export interface PaginationSpec {

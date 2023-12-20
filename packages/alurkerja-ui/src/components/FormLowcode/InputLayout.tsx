@@ -11,6 +11,7 @@ interface InputLayout {
   label: string
   rules: string[]
   control: Control
+  description?: string
 }
 
 interface Rules {
@@ -28,6 +29,7 @@ const InputLayout = (props: InputLayout) => {
     rules,
     control,
     inline,
+    description,
   } = props
 
   const isRequired = rules.includes('required')
@@ -61,12 +63,13 @@ const InputLayout = (props: InputLayout) => {
 
   return (
     <div className={clsx(inline && 'flex items-center gap-4 space-y-4')}>
-      <label className="mb-1 basis-40 text-sm font-semibold" htmlFor={name}>
+      <label className={clsx(inline && 'basis-40', 'mb-1 text-sm font-semibold')} htmlFor={name}>
         {label}
         {isRequired && <span className="text-red-400 text-sm">*</span>}
       </label>
 
       <Controller name={name} control={control} rules={parseRules(rules)} render={() => children} />
+      {description && <span className="text-slate-500 text-xs font-normal">{description}</span>}
       <div className="text-red-400 text-xs h-4 mb-2">
         {errors[name] && (
           <>
