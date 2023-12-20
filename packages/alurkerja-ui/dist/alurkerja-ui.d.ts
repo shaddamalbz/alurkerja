@@ -291,6 +291,7 @@ export declare interface FieldProperties {
     list_order: number;
     edit_order: number;
     create_order: number;
+    description?: string;
 }
 
 declare interface FieldProperties_2 {
@@ -341,6 +342,7 @@ declare interface FieldProperties_2 {
     list_order: number
     edit_order: number
     create_order: number
+    description?: string
 }
 
 declare interface File_2 {
