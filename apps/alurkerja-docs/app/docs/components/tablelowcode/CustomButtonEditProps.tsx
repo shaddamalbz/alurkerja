@@ -24,8 +24,8 @@ export const CustomButtonEditProps = () => {
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           renderState={renderState}
           setRenderState={setRenderState}
           pageConfig={pageConfig}
@@ -42,8 +42,8 @@ export const CustomButtonEditProps = () => {
         <TableLowcode
           spec={spec as any}
           data={data.content}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           renderState={renderState}
           setRenderState={setRenderState}
           pageConfig={pageConfig}

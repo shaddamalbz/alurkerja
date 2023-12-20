@@ -20,8 +20,8 @@ export const CustomFieldProps = () => {
         name="FormLowcode"
         code={`<FormLowcode
           title="Create"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -39,14 +39,14 @@ export const CustomFieldProps = () => {
         <FormLowcode
           spec={spec as any}
           title="Create"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
           customField={({ defaultField, field }) => {
-            if (field.name === 'status') {
+            if (field.name === 'name') {
               return <div>ini bisa buat custom klo form nya tidak standar</div>
             }
             return defaultField

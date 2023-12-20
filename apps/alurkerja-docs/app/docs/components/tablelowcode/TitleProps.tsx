@@ -14,16 +14,16 @@ export const TitleProps = () => {
         name="TableLowcode"
         code={`<TableLowcode
           title='Ini Judul'
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
         />`}
       >
         <TableLowcode
           title="Ini Judul"
           spec={spec as any}
           data={data.content}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
         />
       </CodePreview>
     </SectionLayout>

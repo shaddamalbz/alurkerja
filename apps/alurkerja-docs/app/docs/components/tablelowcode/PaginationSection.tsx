@@ -17,8 +17,8 @@ export const PaginationSection = () => {
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           pageConfig={pageConfig}
           setPageConfig={setPageConfig}
         />`}
@@ -27,8 +27,8 @@ export const PaginationSection = () => {
       >
         <TableLowcode
           spec={spec as any}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           pageConfig={pageConfig}
           setPageConfig={setPageConfig}
         />

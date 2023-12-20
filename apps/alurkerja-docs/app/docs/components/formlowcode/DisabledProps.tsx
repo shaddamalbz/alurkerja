@@ -18,8 +18,8 @@ export const DisabledProps = () => {
         code={`<FormLowcode
           title="Disabled"
           id={1}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -33,8 +33,8 @@ export const DisabledProps = () => {
           id={1}
           spec={spec as any}
           title="Disabled"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}

@@ -5,6 +5,7 @@ import { SectionLayout } from '@/layouts'
 import { FormLowcode } from 'alurkerja-ui'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import spec from './spec.json'
 
 export const BaseSection = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
@@ -15,8 +16,8 @@ export const BaseSection = () => {
         name="FormLowcode"
         code={`<FormLowcode
           title="Create"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -26,9 +27,10 @@ export const BaseSection = () => {
         externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
       >
         <FormLowcode
+          spec={spec}
           title="Create"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}

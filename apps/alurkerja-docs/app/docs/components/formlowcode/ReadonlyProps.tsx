@@ -18,8 +18,8 @@ export const ReadonlyProps = () => {
         code={`<FormLowcode
           id={1}
           title="Readonly"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -33,8 +33,8 @@ export const ReadonlyProps = () => {
           id={1}
           spec={spec as any}
           title="Readonly"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}

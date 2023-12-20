@@ -18,8 +18,8 @@ export const OnSubmitProps = () => {
         code={`<FormLowcode
           id={1}
           title="OnSubmit"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -33,8 +33,8 @@ export const OnSubmitProps = () => {
           id={1}
           spec={spec as any}
           title="OnSubmit"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}

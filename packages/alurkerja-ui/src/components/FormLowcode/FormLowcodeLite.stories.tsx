@@ -74,7 +74,7 @@ export const Init: Story = {
     return (
       <FormLowcodeLite
         spec={spec}
-        baseUrl="https://kpm-sys.merapi.javan.id"
+        baseUrl="https://alurkerja-ui-bot.vercel.app"
         onCancel={(_reset) => {}}
         onSubmit={(data) => console.log(data)}
       />

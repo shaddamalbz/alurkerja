@@ -17,8 +17,8 @@ export const ColumnSpanColumnNumberProps = () => {
         name="FormLowcode"
         code={`<FormLowcode
           title="Create"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -32,14 +32,14 @@ export const ColumnSpanColumnNumberProps = () => {
         <FormLowcode
           spec={spec as any}
           title="Create"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
           columnNumber={2}
-          columnSpan={{ status: 2 }}
+          columnSpan={{ name: 2 }}
         />
       </CodePreview>
     </SectionLayout>

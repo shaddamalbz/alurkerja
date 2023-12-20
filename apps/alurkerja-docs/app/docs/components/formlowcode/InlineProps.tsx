@@ -17,8 +17,8 @@ export const InlineProps = () => {
         name="FormLowcode"
         code={`<FormLowcode
           title="Inline"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -32,8 +32,8 @@ export const InlineProps = () => {
         <FormLowcode
           spec={spec as any}
           title="Inline"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}

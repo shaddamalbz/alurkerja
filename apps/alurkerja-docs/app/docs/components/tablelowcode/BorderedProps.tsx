@@ -14,16 +14,16 @@ export const BorderedProps = () => {
         name="TableLowcode"
         code={`<TableLowcode
           bordered
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
         />`}
       >
         <TableLowcode
           bordered
           spec={spec as any}
           data={data.content}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
         />
       </CodePreview>
     </SectionLayout>

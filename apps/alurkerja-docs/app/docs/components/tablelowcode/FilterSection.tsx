@@ -18,8 +18,8 @@ export const FilterSection = () => {
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           filterBy={filterBy}
           setFilterBy={setFilterBy}
         />`}
@@ -29,8 +29,8 @@ export const FilterSection = () => {
         <TableLowcode
           spec={spec as any}
           data={data.content}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           filterBy={filterBy}
           setFilterBy={setFilterBy}
         />

@@ -18,8 +18,8 @@ export const SearchSection = () => {
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           search={search}
           setSearch={setSearch}
         />`}
@@ -29,8 +29,8 @@ export const SearchSection = () => {
         <TableLowcode
           spec={spec as any}
           data={data.content}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           search={search}
           setSearch={setSearch}
         />

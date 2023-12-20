@@ -21,8 +21,8 @@ export const AllFeatureSection = () => {
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           renderState={renderState}
           setRenderState={setRenderState}
           pageConfig={pageConfig}
@@ -40,8 +40,8 @@ export const AllFeatureSection = () => {
       >
         <TableLowcode
           spec={spec as any}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           renderState={renderState}
           setRenderState={setRenderState}
           pageConfig={pageConfig}

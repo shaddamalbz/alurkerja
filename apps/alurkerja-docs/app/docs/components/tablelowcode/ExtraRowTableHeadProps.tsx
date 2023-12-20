@@ -13,8 +13,8 @@ export const ExtraRowTableHeadProps = () => {
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           extraRowTableHead={() => (
             <tr>
               <th
@@ -36,8 +36,8 @@ export const ExtraRowTableHeadProps = () => {
         <TableLowcode
           spec={spec as any}
           data={data.content}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           extraRowTableHead={() => (
             <tr>
               <th

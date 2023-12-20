@@ -58,7 +58,7 @@ export const BaseSection = () => {
         name="FormLowcodeLite"
         code={`<FormLowcodeLite
         spec={spec}
-        baseUrl="https://kpm-sys.merapi.javan.id"
+        baseUrl="https://alurkerja-ui-bot.vercel.app"
         onCancel={(_reset) => {}}
         onSubmit={(data) => console.log(data)}
       />`}
@@ -112,7 +112,7 @@ export const BaseSection = () => {
       >
         <FormLowcodeLite
           spec={spec}
-          baseUrl="https://kpm-sys.merapi.javan.id"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
           onCancel={(_reset) => {}}
           onSubmit={(data) => console.log(data)}
         />

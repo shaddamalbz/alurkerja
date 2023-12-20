@@ -18,7 +18,7 @@ type Story = StoryObj<typeof FormLowcode>
 
 export const Create: Story = {
   args: {
-    baseUrl: 'https://kpm-sys.merapi.javan.id',
+    baseUrl: 'https://alurkerja-ui-bot.vercel.app',
     specPath: '/api/crud/murid-layak-embpk',
   },
   render: (args) => {
@@ -39,7 +39,7 @@ export const Create: Story = {
 
 export const Edit: Story = {
   args: {
-    baseUrl: 'https://kpm-sys.merapi.javan.id',
+    baseUrl: 'https://alurkerja-ui-bot.vercel.app',
     specPath: '/api/crud/murid-layak-embpk',
     id: 1,
   },
@@ -61,7 +61,7 @@ export const Edit: Story = {
 
 export const Detail: Story = {
   args: {
-    baseUrl: 'https://kpm-sys.merapi.javan.id',
+    baseUrl: 'https://alurkerja-ui-bot.vercel.app',
     specPath: '/api/crud/murid-layak-embpk',
     readonly: true,
     id: 1,

@@ -17,8 +17,8 @@ export const CustomSubmitButton = () => {
         name="FormLowcode"
         code={`<FormLowcode
           title="Custom Submit Button"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}
@@ -31,8 +31,8 @@ export const CustomSubmitButton = () => {
         <FormLowcode
           spec={spec as any}
           title="Custom Submit Button"
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           formState={formState}
           handleSubmit={handleSubmit}
           control={control}

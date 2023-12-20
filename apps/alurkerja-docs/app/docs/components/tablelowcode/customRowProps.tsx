@@ -13,8 +13,8 @@ export const CustomRowProps = () => {
       <CodePreview
         name="TableLowcode"
         code={`<TableLowcode
-          baseUrl='https://kpm-sys.merapi.javan.id' 
-          specPath='/api/crud/takwim'
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           customRow={({ row, DefaultElement }) => {
             if (row.id % 2 !== 0) {
               const CustomElement = cloneElement(DefaultElement, {
@@ -32,8 +32,8 @@ export const CustomRowProps = () => {
         <TableLowcode
           spec={spec as any}
           data={data.content}
-          baseUrl="https://kpm-sys.merapi.javan.id"
-          specPath="/api/crud/takwim"
+          baseUrl="https://alurkerja-ui-bot.vercel.app"
+          specPath="/api/data"
           customRow={({ row, DefaultElement }) => {
             if (row.id % 2 !== 0) {
               const CustomElement = cloneElement(DefaultElement, {

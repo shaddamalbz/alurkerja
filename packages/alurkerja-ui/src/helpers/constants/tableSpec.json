@@ -1,9 +1,9 @@
 {
   "show_as_menu": true,
   "name": "cuti",
-  "is_bpmn": true,
+  "is_bpmn": false,
   "is_usertask": false,
-  "can_bulk": true,
+  "can_bulk": false,
   "can_create": true,
   "can_delete": true,
   "can_edit": true,
