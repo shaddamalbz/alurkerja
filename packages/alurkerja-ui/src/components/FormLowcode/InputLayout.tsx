@@ -11,7 +11,6 @@ interface InputLayout {
   label: string
   rules: string[]
   control: Control
-  description?: string
 }
 
 interface Rules {
@@ -29,7 +28,6 @@ const InputLayout = (props: InputLayout) => {
     rules,
     control,
     inline,
-    description,
   } = props
 
   const isRequired = rules.includes('required')
@@ -69,7 +67,6 @@ const InputLayout = (props: InputLayout) => {
       </label>
 
       <Controller name={name} control={control} rules={parseRules(rules)} render={() => children} />
-      {description && <span className="text-slate-500 text-xs font-normal">{description}</span>}
       <div className="text-red-400 text-xs h-4 mb-2">
         {errors[name] && (
           <>

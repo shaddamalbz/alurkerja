@@ -194,7 +194,6 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
                     formState={formState}
                     rules={fieldSpec.rules}
                     control={control}
-                    description={fieldSpec.description}
                   >
                     {customField ? (
                       customField({
@@ -210,6 +209,7 @@ export const FormLowcode: FC<FormLowcodeProps> = (props) => {
                             setValue={setValue}
                             defaultValue={detail?.[fieldSpec.name]}
                             data={detail}
+                            description={fieldSpec.description}
                           />
                         ),
                         value: detail?.[fieldSpec.name],

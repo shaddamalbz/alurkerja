@@ -17,6 +17,7 @@ interface InputTypes {
   disabled?: boolean
   readonly?: boolean
   data?: { [x: string]: any }
+  description?: string
 }
 
 interface SelectedOption {
@@ -25,7 +26,7 @@ interface SelectedOption {
 }
 
 const InputTypes: FC<InputTypes> = (props) => {
-  const { fieldSpec, name, setValue, defaultValue, disabled, baseUrl, readonly, data } = props
+  const { fieldSpec, name, setValue, defaultValue, disabled, baseUrl, readonly, data, description } = props
   const axiosInstance = useContext(AuthContext)
   const inputTypesExtend = useContext(InputTypesContext)
 
@@ -191,6 +192,7 @@ const InputTypes: FC<InputTypes> = (props) => {
           </div>
         ) : null
       )}
+      {description && <span className="text-slate-500 text-xs font-normal">{description}</span>}
     </>
   )
 }
