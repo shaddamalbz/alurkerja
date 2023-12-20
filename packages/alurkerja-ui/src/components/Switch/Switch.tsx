@@ -5,27 +5,25 @@ export interface SwtichProps {
   disabled?: boolean
   options: any[]
   /** callback to get value */
-  onChange?: (value: boolean | undefined) => void
+  onChange?: (value: string | number | boolean | undefined) => void
   /** props to set defaultvalue */
-  defaultValue?: boolean
+  defaultValue?: string | number | boolean
   name?: string
   'aria-label'?: string
-  required?: string
+  required?: boolean
 }
 
 export const Switch = (props: SwtichProps) => {
   const { onChange, defaultValue, options, disabled } = props
 
-  const [selected, setSelected] = useState<boolean>()
+  const [selected, setSelected] = useState<string | number | boolean>()
 
   useEffect(() => {
     onChange?.(selected)
   }, [selected])
 
   useEffect(() => {
-    if (defaultValue === false || defaultValue === true) {
-      setSelected(defaultValue)
-    }
+    setSelected(defaultValue ?? undefined)
   }, [defaultValue])
 
   return (

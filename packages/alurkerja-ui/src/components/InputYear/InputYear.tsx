@@ -6,9 +6,10 @@ interface InputYearProps {
   onChange?: (value?: string | null) => void
   defaultValue?: Date | null
   disabled?: boolean
+  placeholder?: string
 }
 
-export const InputYear: FC<InputYearProps> = ({ onChange, defaultValue, disabled }) => {
+export const InputYear: FC<InputYearProps> = ({ onChange, defaultValue, disabled, placeholder }) => {
   const [selected, setSelected] = useState<Date | null>()
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export const InputYear: FC<InputYearProps> = ({ onChange, defaultValue, disabled
       showYearPicker
       dateFormat="yyyy"
       disabled={disabled}
+      placeholderText={placeholder}
     />
   )
 }

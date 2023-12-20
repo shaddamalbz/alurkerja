@@ -31,6 +31,7 @@ export interface DirectUploadProps {
   defaultValue?: File[]
   message?: DirectUploadMesageProps
   hidePreview?: boolean
+  readonlyPreview?: boolean
 }
 
 const defaultMessage: DirectUploadMesageProps = {
@@ -55,6 +56,7 @@ export const DirectUpload: FC<DirectUploadProps> = ({
   defaultValue,
   message = defaultMessage,
   hidePreview = false,
+  readonlyPreview = false,
 }) => {
   const axiosInstance = useContext(AuthContext)
   const { setRenderState } = useContext(TableLowcodeContext)
@@ -255,8 +257,12 @@ export const DirectUpload: FC<DirectUploadProps> = ({
             {uploadedFiles.length > 0 && (
               <>
                 {loadingDelete && 'Deleting...'}
-                {type === 'image' && <CardImage data={uploadedFiles} onClickDelete={handleDelete} />}
-                {type === 'file' && <CardFile data={uploadedFiles} onClickDelete={handleDelete} />}
+                {type === 'image' && (
+                  <CardImage data={uploadedFiles} onClickDelete={handleDelete} readonly={readonlyPreview} />
+                )}
+                {type === 'file' && (
+                  <CardFile data={uploadedFiles} onClickDelete={handleDelete} readonly={readonlyPreview} />
+                )}
               </>
             )}
           </>

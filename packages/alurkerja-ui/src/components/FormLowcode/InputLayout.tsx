@@ -61,7 +61,7 @@ const InputLayout = (props: InputLayout) => {
 
   return (
     <div className={clsx(inline && 'flex items-center gap-4 space-y-4')}>
-      <label className="mb-1 basis-40" htmlFor={name}>
+      <label className="mb-1 basis-40 text-sm font-semibold" htmlFor={name}>
         {label}
         {isRequired && <span className="text-red-400 text-sm">*</span>}
       </label>

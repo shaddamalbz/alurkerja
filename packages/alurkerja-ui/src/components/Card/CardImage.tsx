@@ -39,8 +39,10 @@ const RenderImage: FC<{ image: any; fetchBeforeLoad: boolean }> = ({ image, fetc
   const [data, setData] = useState('')
   const [loading, setLoading] = useState(true)
 
+  const isBlob = image.original_url.startsWith('blob:')
+
   useEffect(() => {
-    if (fetchBeforeLoad) {
+    if (fetchBeforeLoad && !isBlob) {
       axiosInstance
         .get(image.original_url, {
           responseType: 'arraybuffer',
@@ -57,7 +59,7 @@ const RenderImage: FC<{ image: any; fetchBeforeLoad: boolean }> = ({ image, fetc
     }
   }, [image.original_url])
 
-  if (fetchBeforeLoad) {
+  if (fetchBeforeLoad && !isBlob) {
     return <> {loading ? 'Fetching Image' : <img className="object-cover rounded-lg" src={data} alt={image.name} />}</>
   }
 
