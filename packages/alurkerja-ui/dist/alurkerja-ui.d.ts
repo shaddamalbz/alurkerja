@@ -190,6 +190,7 @@ export declare interface DirectUploadProps {
     defaultValue?: File_2[];
     message?: DirectUploadMesageProps;
     hidePreview?: boolean;
+    readonlyPreview?: boolean;
 }
 
 export declare const Drawer: FC<DrawerProps>;
@@ -653,6 +654,7 @@ declare interface InputYearProps {
     onChange?: (value?: string | null) => void;
     defaultValue?: Date | null;
     disabled?: boolean;
+    placeholder?: string;
 }
 
 export declare interface IPendingAlurkerjaTableLowcode {
@@ -1052,12 +1054,12 @@ export declare interface SwtichProps {
     disabled?: boolean;
     options: any[];
     /** callback to get value */
-    onChange?: (value: boolean | undefined) => void;
+    onChange?: (value: string | number | boolean | undefined) => void;
     /** props to set defaultvalue */
-    defaultValue?: boolean;
+    defaultValue?: string | number | boolean;
     name?: string;
     'aria-label'?: string;
-    required?: string;
+    required?: boolean;
 }
 
 export declare const TableLowcode: FC<TableLowcodeProps>;
