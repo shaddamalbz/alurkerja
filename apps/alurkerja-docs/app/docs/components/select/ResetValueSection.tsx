@@ -12,24 +12,23 @@ export const ResetValueSection = () => {
     <SectionLayout title="ResetValueSection" description="masih experimental belum di release">
       <CodePreview
         name="Select"
-        code={`<div className="space-y-4">
-          <Select
-            ref={ref}
-            options={[
-              { label: 'Opsi 1', value: 1 },
-              { label: 'Opsi 2', value: 2 },
-            ]}
-          />
-          <Button
-            onClick={() => {
-              ref.current?.clearValue()
-            }}
-          >
-            Reset
-          </Button>
-        </div>`}
-        externalFunction="const ref = useRef<SelectInstance>()"
-        externalImport="import { SelectInstance } from 'react-select'"
+        code={[
+          '<div className="space-y-4">',
+          '  <Select',
+          '    ref={ref}',
+          "    options={[{ label: 'Opsi 1', value: 1 },{ label: 'Opsi 2', value: 2 },]}",
+          '  />',
+          '  <Button',
+          '    onClick={() => {',
+          '      ref.current?.clearValue()',
+          '     }}',
+          '  >',
+          '    Reset',
+          '  </Button>',
+          '</div>',
+        ]}
+        externalFunction={['const ref = useRef<SelectInstance>()']}
+        externalImport={["import { SelectInstance } from 'react-select'"]}
       >
         <div className="space-y-4">
           <Select

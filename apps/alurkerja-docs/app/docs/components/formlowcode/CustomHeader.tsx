@@ -10,22 +10,34 @@ import spec from './spec.json'
 export const CustomHeaderProps = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
+  const customHeader = () => {
+    return <>Custom Header</>
+  }
+
   return (
     <SectionLayout title="customHeader()" description="">
       <CodePreview
         name="FormLowcode"
-        code={`<FormLowcode
-          title="Create"
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-          customHeader={() => <>tes</>}
-        />`}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
+        code={[
+          '<FormLowcode',
+          '  title="Create"',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          '  specPath="/api/data"',
+          '  formState={formState}',
+          '  handleSubmit={handleSubmit}',
+          '  control={control}',
+          '  setValue={setValue}',
+          '  customHeader={customHeader}',
+          '/>',
+        ]}
+        externalImport={[`import { useForm } from 'react-hook-form'`]}
+        externalFunction={[
+          `const { formState, handleSubmit, control, setValue } = useForm()`,
+          '',
+          'const customHeader  = () => {',
+          '  return <>Custom Header</>',
+          '}',
+        ]}
       >
         <FormLowcode
           spec={spec as any}
@@ -36,7 +48,7 @@ export const CustomHeaderProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          customHeader={() => <>tes</>}
+          customHeader={customHeader}
         />
       </CodePreview>
     </SectionLayout>

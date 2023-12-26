@@ -27,18 +27,20 @@ export const DataFetchignSection = () => {
     <SectionLayout title="Data Fetching" description="">
       <CodePreview
         name="Select"
-        code={`<Select options={options} isLoading={isLoading} />
-        `}
-        externalImport='import axios from "axios"'
-        externalFunction={`const [options, setOptions] = useState()\n\tconst [isLoading, setIsLoading] = useState(false)\n\n\tuseEffect(() => {\n\t\tsetIsLoading(true)\n\t\taxios
-            .get('https://dummyjson.com/products')
-            .then((res) => {
-              setOptions(res.data.products.map((item: any) => ({ label: item.title, value: item.id })))
-            })
-            .finally(() => {
-              setIsLoading(false)
-            })
-        }, [])\n`}
+        code={['<Select options={options} isLoading={isLoading} />']}
+        externalImport={['import axios from "axios"']}
+        externalFunction={[
+          'const [options, setOptions] = useState()',
+          'const [isLoading, setIsLoading] = useState(false)',
+          '',
+          'useEffect(() => {',
+          '  setIsLoading(true)',
+          '  axios',
+          "   .get('https://dummyjson.com/products')",
+          '   .then((res) => { setOptions(res.data.products.map((item: any) => ({ label: item.title, value: item.id })))})',
+          '   .finally(() => {setIsLoading(false)})',
+          '}, [])',
+        ]}
       >
         <Select options={options} isLoading={isLoading} />
       </CodePreview>

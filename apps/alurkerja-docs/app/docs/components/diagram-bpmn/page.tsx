@@ -12,9 +12,7 @@ export default function page() {
         <SectionLayout title="base" description="">
           <CodePreview
             name="DiagramBpmn"
-            code={`<DiagramBpmn
-          url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt"
-        />`}
+            code={['<DiagramBpmn url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt" />']}
           >
             <DiagramBpmn containerName="bpmn-1" url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt" />
           </CodePreview>
@@ -22,10 +20,9 @@ export default function page() {
         <SectionLayout title="currentEvent()" description="menghighlight salah satu usertask berdasarkan ID">
           <CodePreview
             name="DiagramBpmn"
-            code={`<DiagramBpmn
-          url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt"
-          currentEvent="SemakBilanganMuridRmt"
-        />`}
+            code={[
+              '<DiagramBpmn url="https://kpm-sys.merapi.javan.id/api/bpmn/permohonan-bantuan-rmt" currentEvent="SemakBilanganMuridRmt" />',
+            ]}
           >
             <DiagramBpmn
               containerName="bpmn-2"

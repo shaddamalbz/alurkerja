@@ -7,12 +7,14 @@ import { CodePreview } from '@/components'
 
 <CodePreview
   name="Switch"
-  code={`<Switch
-          options={[
-            { label: 'Ya', value: true },
-            { label: 'Tidak', value: false },
-          ]}
-        />`}
+  code={[
+    '<Switch',
+    '  options={[',
+    "    { label: 'Ya', value: true },",
+    "    { label: 'Tidak', value: false },",
+    '   ]}',
+    '/>',
+  ]}
 >
   <Switch
     options={[
@@ -26,13 +28,15 @@ import { CodePreview } from '@/components'
 
 <CodePreview
   name="Switch"
-  code={`<Switch
-          options={[
-            { label: 'Ya', value: true },
-            { label: 'Tidak', value: false },
-          ]}
-          defaultValue={false}
-        />`}
+  code={[
+    '<Switch',
+    '  options={[',
+    "    { label: 'Ya', value: true },",
+    "    { label: 'Tidak', value: false },",
+    '   ]}',
+    '   defaultValue={false}',
+    '/>',
+  ]}
 >
   <Switch
     options={[
@@ -47,13 +51,15 @@ import { CodePreview } from '@/components'
 
 <CodePreview
   name="Switch"
-  code={`<Switch
-          options={[
-            { label: 'Ya', value: true },
-            { label: 'Tidak', value: false },
-          ]}
-          onChange={(value) => value !== undefined && alert(value)}
-        />`}
+  code={[
+    '<Switch',
+    '  options={[',
+    "    { label: 'Ya', value: true },",
+    "    { label: 'Tidak', value: false },",
+    '   ]}',
+    '   onChange={(value) => value !== undefined && alert(value)}',
+    '/>',
+  ]}
 
 >
 

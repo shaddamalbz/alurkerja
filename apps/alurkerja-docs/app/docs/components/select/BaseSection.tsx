@@ -10,12 +10,14 @@ export const BaseSection = () => {
     <SectionLayout title="Base" description="">
       <CodePreview
         name="Select"
-        code={`<Select
-          options={[
-            { label: 'Opsi 1', value: 1 },
-            { label: 'Opsi 2', value: 2 },
-          ]}
-        />`}
+        code={[
+          '<Select',
+          '  options={[',
+          "    { label: 'Opsi 1', value: 1 },",
+          "    { label: 'Opsi 2', value: 2 },",
+          '  ]}',
+          '/>',
+        ]}
       >
         <Select
           options={[

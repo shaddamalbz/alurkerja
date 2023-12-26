@@ -9,9 +9,7 @@ export const BaseSection = () => {
     <SectionLayout title="Base" description="">
       <CodePreview
         name="Modal"
-        code={`<Modal title="Modal" triggerButton={<Button>Open</Button>}>
-          <div>Content</div>
-        </Modal>`}
+        code={['<Modal title="Modal" triggerButton={<Button>Open</Button>}>', '  <div>Content</div>', '</Modal>']}
         internalImport={['Button']}
       >
         <Modal title="Modal" triggerButton={<Button>Open</Button>}>

@@ -11,23 +11,34 @@ import spec from './spec.json'
 export const OnCancelProps = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
+  const onCancel = () => {
+    return alert(JSON.stringify('cancel clicked'))
+  }
+
   return (
     <SectionLayout title="onCancel()" description="">
       <CodePreview
         name="FormLowcode"
-        code={`<FormLowcode
-          id={1}
-          title="OnCancel"
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-          onCancel={() => alert(JSON.stringify('cancel clicked'))}
-        />`}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
+        code={[
+          '<FormLowcode',
+          '  title="Create"',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          '  specPath="/api/data"',
+          '  formState={formState}',
+          '  handleSubmit={handleSubmit}',
+          '  control={control}',
+          '  setValue={setValue}',
+          '  onCancel={onCancel}',
+          '/>',
+        ]}
+        externalImport={[`import { useForm } from 'react-hook-form'`]}
+        externalFunction={[
+          `const { formState, handleSubmit, control, setValue } = useForm()`,
+          '',
+          'const onCancel = () => {',
+          "  return alert(JSON.stringify('cancel clicked'))",
+          '}',
+        ]}
       >
         <FormLowcode
           id={1}
@@ -39,7 +50,7 @@ export const OnCancelProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onCancel={() => alert(JSON.stringify('cancel clicked'))}
+          onCancel={onCancel}
         />
       </CodePreview>
     </SectionLayout>

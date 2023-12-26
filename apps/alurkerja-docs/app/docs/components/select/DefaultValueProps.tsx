@@ -10,13 +10,15 @@ export const DefaultValueProps = () => {
     <SectionLayout title="defaultValue()" description="">
       <CodePreview
         name="Select"
-        code={`<Select
-          options={[
-            { label: 'Opsi 1', value: 1 },
-            { label: 'Opsi 2', value: 2 },
-          ]}
-          defaultValue={{ label: 'Opsi 1', value: 1 }}
-        />`}
+        code={[
+          '<Select',
+          '  options={[',
+          "    { label: 'Opsi 1', value: 1 },",
+          "    { label: 'Opsi 2', value: 2 },",
+          '  ]}',
+          "  defaultValue={{ label: 'Opsi 1', value: 1 }}",
+          '/>',
+        ]}
       >
         <Select
           options={[

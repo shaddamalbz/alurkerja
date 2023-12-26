@@ -8,19 +8,19 @@ Enable user interaction with the button component to perform actions on your web
 
 ### Base
 
-<CodePreview name="button" code="<Button>Default</Button>">
+<CodePreview name="button" code={['<Button>Default</Button>']}>
   <Button>Default</Button>
 </CodePreview>
 
 ### isBlock()
 
-<CodePreview name="button" code="<Button isBlock={false}>Default</Button>">
+<CodePreview name="button" code={['<Button isBlock={false}>Default</Button>']}>
   <Button isBlock={false}>Default</Button>
 </CodePreview>
 
 ### loading()
 
-<CodePreview name="button" code="<Button loading>Loading</Button>">
+<CodePreview name="button" code={['<Button loading>Loading</Button>']}>
   <Button loading>Loading</Button>
 </CodePreview>
 
@@ -28,9 +28,11 @@ Enable user interaction with the button component to perform actions on your web
 
 <CodePreview
   name="button"
-  code={`<Button variant='outlined'>Button</Button>
-        <Button variant='filled'>Loading</Button>
-        <Button variant='text'>Loading</Button>`}
+  code={[
+    "<Button variant='outlined'>Button</Button>",
+    "<Button variant='filled'>Loading</Button>",
+    "<Button variant='text'>Loading</Button>",
+  ]}
 >
   <Button variant="outlined">Button</Button>
   <Button variant="filled">Loading</Button>
@@ -41,9 +43,8 @@ Enable user interaction with the button component to perform actions on your web
 
 <CodePreview
   name="button"
-  code={`<Button icon={<Menu />}>Button</Button>
-        <Button icon={<Menu />} />`}
-  externalImport={`import { Menu } from 'lucide-react'`}
+  code={['<Button icon={<Menu />}>Button</Button>', '<Button icon={<Menu />} />']}
+  externalImport={[`import { Menu } from 'lucide-react'`]}
 >
   <Button icon={<Menu />}>Button</Button>
   <Button icon={<Menu />} />
@@ -53,9 +54,11 @@ Enable user interaction with the button component to perform actions on your web
 
 <CodePreview
   name="button"
-  code={`<Button color='red'>Button</Button>
-      <Button color='orange'>Button</Button>
-      <Button color='greed'>Button</Button>`}
+  code={[
+    "<Button color='red'>Button</Button>",
+    "<Button color='orange'>Button</Button>",
+    "<Button color='greed'>Button</Button>",
+  ]}
 >
   <Button color="red">Button</Button>
   <Button color="orange">Button</Button>

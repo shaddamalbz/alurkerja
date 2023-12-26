@@ -56,13 +56,14 @@ export const BaseSection = () => {
     <SectionLayout title="Base" description="">
       <CodePreview
         name="FormLowcodeLite"
-        code={`<FormLowcodeLite
-        spec={spec}
-        baseUrl="https://alurkerja-ui-bot.vercel.app"
-        onCancel={(_reset) => {}}
-        onSubmit={(data) => console.log(data)}
-      />`}
-        externalFunction={`const spec = [
+        code={[
+          '<FormLowcodeLite',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          'onCancel={(_reset) => {}}',
+          '  onSubmit={(data) => console.log(data)}',
+        ]}
+        externalFunction={[
+          `const spec = [
           {
             form_field_type: 'INPUT_TEXT',
             label: 'Nama',
@@ -108,7 +109,8 @@ export const BaseSection = () => {
               ],
             },
           },
-        ]`}
+        ]`,
+        ]}
       >
         <FormLowcodeLite
           spec={spec}

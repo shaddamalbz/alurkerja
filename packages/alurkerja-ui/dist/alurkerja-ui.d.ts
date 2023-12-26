@@ -162,6 +162,19 @@ declare interface CustomCellProperties_2 {
     defaultCell: JSX.Element
 }
 
+export declare interface CustomFieldProperties {
+    field: FieldProperties;
+    setValue: UseFormSetValue<FieldValues>;
+    defaultField: JSX.Element;
+    value: string | number | boolean;
+}
+
+export declare interface CustomFooterProperties {
+    DefaultFooter: () => ReactNode;
+    ButtonBack: () => ReactNode;
+    ButtonSubmit: () => ReactNode;
+}
+
 export declare interface CustomRowProperties {
     row: {
         [x: string]: any;
@@ -498,12 +511,7 @@ declare interface FormLowcodeProps {
     /**  setValue from  react-hook-form*/
     setValue: UseFormSetValue<FieldValues>;
     /**  render custom field form base for ex custom by fieldSpec.name*/
-    customField?: ({ field, setValue, defaultField, value, }: {
-        field: FieldProperties;
-        setValue: UseFormSetValue<FieldValues>;
-        defaultField: JSX.Element;
-        value: string | number | boolean;
-    }) => JSX.Element;
+    customField?: ({ field, setValue, defaultField, value }: CustomFieldProperties) => JSX.Element;
     /**  handler success action*/
     onSuccess?: () => void;
     /**  handler error action*/
@@ -533,11 +541,7 @@ declare interface FormLowcodeProps {
     customCancelButton?: () => ReactNode;
     customSubmitButton?: () => ReactNode;
     customHeader?: (DefaultHeader: () => JSX.Element) => ReactNode;
-    customFooter?: ({ ButtonBack, ButtonSubmit, DefaultFooter, }: {
-        DefaultFooter: () => ReactNode;
-        ButtonBack: () => ReactNode;
-        ButtonSubmit: () => ReactNode;
-    }) => ReactNode;
+    customFooter?: ({ ButtonBack, ButtonSubmit, DefaultFooter }: CustomFooterProperties) => ReactNode;
     /**
      * render form using grid with 1/2/3 column
      * @param number

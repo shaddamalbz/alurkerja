@@ -11,22 +11,34 @@ import spec from './spec.json'
 export const ExtraActionButtonProps = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
+  const extraActionButton = () => {
+    return <Button variant="outlined">Button Extra</Button>
+  }
+
   return (
     <SectionLayout title="extraActionButton()" description="">
       <CodePreview
         name="FormLowcode"
-        code={`<FormLowcode
-          title="Extra Action Button"
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-          extraActionButton={<Button variant="outlined">Button Extra</Button>}
-        />`}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
+        code={[
+          '<FormLowcode',
+          '  title="Create"',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          '  specPath="/api/data"',
+          '  formState={formState}',
+          '  handleSubmit={handleSubmit}',
+          '  control={control}',
+          '  setValue={setValue}',
+          '/>',
+        ]}
+        externalImport={[`import { useForm } from 'react-hook-form'`]}
+        externalFunction={[
+          `const { formState, handleSubmit, control, setValue } = useForm()`,
+          '',
+          'const extraActionButton = () => {',
+          '  return <Button variant="outlined">Button Extra</Button>',
+          '}',
+        ]}
+        internalImport={['Button']}
       >
         <FormLowcode
           id={1}
@@ -38,7 +50,7 @@ export const ExtraActionButtonProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          extraActionButton={() => <Button variant="outlined">Button Extra</Button>}
+          extraActionButton={extraActionButton}
         />
       </CodePreview>
     </SectionLayout>

@@ -10,14 +10,16 @@ export const DisabledProps = () => {
     <SectionLayout title="isDisabled()" description="">
       <CodePreview
         name="Select"
-        code={`<Select
-          options={[
-            { label: 'Opsi 1', value: 1 },
-            { label: 'Opsi 2', value: 2 },
-          ]}
-          isDisabled
-          defaultValue={{ label: 'Opsi 1', value: 1 }}
-        />`}
+        code={[
+          '<Select',
+          '  options={[',
+          "    { label: 'Opsi 1', value: 1 },",
+          "    { label: 'Opsi 2', value: 2 },",
+          '  ]}',
+          "  defaultValue={{ label: 'Opsi 1', value: 1 }}",
+          '  isDisabled',
+          '/>',
+        ]}
       >
         <Select
           options={[

@@ -14,17 +14,19 @@ export const BaseSection = () => {
     <SectionLayout title="Base" description="ini contoh sederhana penggunaan TableLowcode">
       <CodePreview
         name="FormLowcode"
-        code={`<FormLowcode
-          title="Create"
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-        />`}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
+        code={[
+          '<FormLowcode',
+          '  title="Create"',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          '  specPath="/api/data"',
+          '  formState={formState}',
+          '  handleSubmit={handleSubmit}',
+          '  control={control}',
+          '  setValue={setValue}',
+          '/>',
+        ]}
+        externalImport={[`import { useForm } from 'react-hook-form'`]}
+        externalFunction={[`const { formState, handleSubmit, control, setValue } = useForm()`]}
       >
         <FormLowcode
           spec={spec}

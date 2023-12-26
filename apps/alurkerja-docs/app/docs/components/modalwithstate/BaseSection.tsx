@@ -12,15 +12,17 @@ export const BaseSection = () => {
     <SectionLayout title="Base" description="">
       <CodePreview
         name="ModalWithState"
-        code={`<>
-        <Button onClick={() => setShow(true)}>Modal</Button>
-        {show && (
-          <ModalWithState title="title" setShow={setShow}>
-            <div className="p-4">Content</div>
-          </ModalWithState>
-        )}
-      </>`}
-        externalFunction={`const [show, setShow] = useState(false)`}
+        code={[
+          '<>',
+          '  <Button onClick={() => setShow(true)}>Modal</Button>',
+          '  {show && (',
+          '    <ModalWithState title="title" setShow={setShow}>',
+          '      <div className="p-4">Content</div>',
+          '    </ModalWithState>',
+          '   )}',
+          '</>',
+        ]}
+        externalFunction={[`const [show, setShow] = useState(false)`]}
         internalImport={['Button']}
       >
         <>

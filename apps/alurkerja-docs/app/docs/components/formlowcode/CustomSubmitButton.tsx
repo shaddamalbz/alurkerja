@@ -11,22 +11,35 @@ import spec from './spec.json'
 export const CustomSubmitButton = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
+  const customSubmitButton = () => {
+    return <Button variant="outlined">Custom Submit</Button>
+  }
+
   return (
     <SectionLayout title="customSubmitButton()" description="">
       <CodePreview
         name="FormLowcode"
-        code={`<FormLowcode
-          title="Custom Submit Button"
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-          customSubmitButton={() => <Button variant="outlined">Custom Submit</Button>}
-        />`}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
+        code={[
+          '<FormLowcode',
+          '  title="Create"',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          '  specPath="/api/data"',
+          '  formState={formState}',
+          '  handleSubmit={handleSubmit}',
+          '  control={control}',
+          '  setValue={setValue}',
+          '  customSubmitButton={customSubmitButton}',
+          '/>',
+        ]}
+        externalImport={[`import { useForm } from 'react-hook-form'`]}
+        externalFunction={[
+          `const { formState, handleSubmit, control, setValue } = useForm()`,
+          '',
+          'const customSubmitButton = () => {',
+          '  return <Button variant="outlined">Custom Submit</Button>',
+          '}',
+        ]}
+        internalImport={['Button']}
       >
         <FormLowcode
           spec={spec as any}
@@ -37,7 +50,7 @@ export const CustomSubmitButton = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          customSubmitButton={() => <Button variant="outlined">Custom Submit</Button>}
+          customSubmitButton={customSubmitButton}
         />
       </CodePreview>
     </SectionLayout>

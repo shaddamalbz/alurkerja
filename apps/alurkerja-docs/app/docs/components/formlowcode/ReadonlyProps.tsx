@@ -15,19 +15,20 @@ export const ReadonlyProps = () => {
     <SectionLayout title="readonly()" description="">
       <CodePreview
         name="FormLowcode"
-        code={`<FormLowcode
-          id={1}
-          title="Readonly"
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-          readonly
-        />`}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
+        code={[
+          '<FormLowcode',
+          '  title="Create"',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          '  specPath="/api/data"',
+          '  formState={formState}',
+          '  handleSubmit={handleSubmit}',
+          '  control={control}',
+          '  setValue={setValue}',
+          '  readonly',
+          '/>',
+        ]}
+        externalImport={[`import { useForm } from 'react-hook-form'`]}
+        externalFunction={[`const { formState, handleSubmit, control, setValue } = useForm()`]}
       >
         <FormLowcode
           id={1}

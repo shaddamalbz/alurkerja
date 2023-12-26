@@ -19,20 +19,30 @@ export const BaseSection = () => {
     <SectionLayout title="Base" description="">
       <CodePreview
         name="InputWithModal"
-        code={`<InputWithModal title="Data Alamat" >
-        {({ closeModal }) => (
-          <Address
-            setValue={setValue}
-            onSubmit={() => {
-              handleSubmit(onSubmit)()
-              closeModal()
-            }}
-          />
-        )}
-      </InputWithModal>`}
+        code={[
+          '<InputWithModal title="Data Alamat" value={alamat?.address}>',
+          '  {({ closeModal }) => (',
+          '    <Address',
+          '      setValue={setValue}',
+          '      onSubmit={() => {',
+          '        handleSubmit(onSubmit)()',
+          '        closeModal()',
+          '      }}',
+          '    />',
+          '  )}',
+          '</InputWithModal>',
+        ]}
         internalImport={['Address']}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { setValue } = useForm()\n\tconst [alamat, setAlamat] = useState<FieldValues>()\n\n\tconst onSubmit = (data: FieldValues) => {\n\t\tsetAlamat(data)\n\t}\n`}
+        externalImport={[`import { useForm } from 'react-hook-form'`]}
+        externalFunction={[
+          'const { setValue } = useForm()',
+          'const [alamat, setAlamat] = useState<FieldValues>()',
+          '',
+          'const onSubmit = (data: FieldValues) => {',
+          '  setAlamat(data)',
+          '  alert(JSON.stringify(data))',
+          '}',
+        ]}
       >
         <InputWithModal title="Data Alamat" value={alamat?.address}>
           {({ closeModal }) => (

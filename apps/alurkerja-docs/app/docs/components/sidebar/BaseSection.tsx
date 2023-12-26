@@ -14,21 +14,24 @@ export const BaseSection = () => {
     <SectionLayout title="Base" description="">
       <CodePreview
         name="Sidebar"
-        code={`<Sidebar
-        toggled={toogled}
-        setToggled={setToggled}
-        menuWrapper={({ children, menu }) => (
-          <Link href={menu.href}>
-            <>{children}</>
-          </Link>
-        )}
-        menuConfig={[
-          { label: 'Menu1', href: '/menu1' },
-          { label: 'Menu Nested 2', href: '/menu2', child: [{ href: '/menu2/child1', label: 'Child1' }] },
+        code={[
+          '<Sidebar',
+          '  currentPathName="/"',
+          '  toggled={toogled}',
+          '  setToggled={setToggled}',
+          '  menuWrapper={({ children, menu }) => (',
+          '    <Link href={menu.href}>',
+          '      <>{children}</>',
+          '    </Link>',
+          '  )}',
+          '  menuConfig={[',
+          "    { label: 'Menu1', href: '/menu1' },",
+          "    { label: 'Menu Nested 2', href: '/menu2', child: [{ href: '/menu2/child1', label: 'Child1' }] },",
+          '  ]}',
+          '/>',
         ]}
-      />`}
-        externalImport={`import { useState } from 'react'\nimport Link from 'next/link'\nimport clsx from 'clsx'`}
-        externalFunction={`const [toogled, setToggled] = useState(false)`}
+        externalImport={[`import { useState } from 'react'`, `import Link from 'next/link'`, `import clsx from 'clsx'`]}
+        externalFunction={[`const [toogled, setToggled] = useState(false)`]}
       >
         <Sidebar
           currentPathName="/"

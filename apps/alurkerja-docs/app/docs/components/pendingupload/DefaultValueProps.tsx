@@ -20,16 +20,17 @@ export const DefaultValueProps = () => {
     <SectionLayout title="defaultValue()" description="">
       <CodePreview
         name="PendingUpload"
-        code={`<PendingUpload defaultValue={dummy} />`}
-        externalFunction={`const dummy = [
-      {
-        id: '99826655-5aa9-4735-8805-ddd298817d86',
-        name: 'SK Libur Idul Adha 2023.pdf',
-        original_url:
-          'https://minio.cloud.javan.co.id/kpk-sppt/public/files/2023-06/99826655-5aa9-4735-8805-ddd298817d86-SK%20Libur%20Idul%20Adha%202023.pdf',
-        size: 10000,
-      },
-    ]\n`}
+        code={[`<PendingUpload defaultValue={dummy} />`]}
+        externalFunction={[
+          'const dummy = [',
+          '  {',
+          "    id: '99826655-5aa9-4735-8805-ddd298817d86'",
+          "    name: 'SK Libur Idul Adha 2023.pdf',",
+          "    original_url: 'https://minio.cloud.javan.co.id/kpk-sppt/public/files/2023-06/99826655-5aa9-4735-8805-ddd298817d86-SK%20Libur%20Idul%20Adha%202023.pdf',",
+          '    size: 10000',
+          '  }',
+          ']',
+        ]}
       >
         <PendingUpload defaultValue={dummy} />
       </CodePreview>

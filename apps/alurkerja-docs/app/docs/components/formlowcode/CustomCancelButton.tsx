@@ -11,22 +11,35 @@ import spec from './spec.json'
 export const CustomCancelButton = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
+  const customCancelButton = () => {
+    return <Button variant="filled">Custom Cancel</Button>
+  }
+
   return (
     <SectionLayout title="customCancelButton()" description="">
       <CodePreview
         name="FormLowcode"
-        code={`<FormLowcode
-          title="Custom Cancel Button"
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-          customCancelButton={() => <Button variant="filled">Custom Cancel</Button>}
-        />`}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
+        code={[
+          '<FormLowcode',
+          '  title="Create"',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          '  specPath="/api/data"',
+          '  formState={formState}',
+          '  handleSubmit={handleSubmit}',
+          '  control={control}',
+          '  setValue={setValue}',
+          '  customCancelButton={customCancelButton}',
+          '/>',
+        ]}
+        externalImport={[`import { useForm } from 'react-hook-form'`]}
+        externalFunction={[
+          `const { formState, handleSubmit, control, setValue } = useForm()`,
+          '',
+          'const customCancelButton = () => {',
+          '  return <Button variant="filled">Custom Cancel</Button>',
+          '}',
+        ]}
+        internalImport={['Button']}
       >
         <FormLowcode
           spec={spec as any}
@@ -37,7 +50,7 @@ export const CustomCancelButton = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          customCancelButton={() => <Button variant="filled">Custom Cancel</Button>}
+          customCancelButton={customCancelButton}
         />
       </CodePreview>
     </SectionLayout>

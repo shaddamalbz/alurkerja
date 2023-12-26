@@ -4,30 +4,41 @@ import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { FormLowcode } from 'alurkerja-ui'
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { FieldValues, useForm } from 'react-hook-form'
 
 import spec from './spec.json'
 
 export const OnSubmitProps = () => {
   const { formState, handleSubmit, control, setValue } = useForm()
 
+  const onSubmit = (data: FieldValues) => {
+    return alert(JSON.stringify(data))
+  }
+
   return (
     <SectionLayout title="onSubmit()" description="">
       <CodePreview
         name="FormLowcode"
-        code={`<FormLowcode
-          id={1}
-          title="OnSubmit"
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          formState={formState}
-          handleSubmit={handleSubmit}
-          control={control}
-          setValue={setValue}
-          onSubmit={(data) => alert(JSON.stringify(data))}
-        />`}
-        externalImport={`import { useForm } from 'react-hook-form'`}
-        externalFunction={`const { formState, handleSubmit, control, setValue } = useForm()`}
+        code={[
+          '<FormLowcode',
+          '  title="Create"',
+          '  baseUrl="https://alurkerja-ui-bot.vercel.app"',
+          '  specPath="/api/data"',
+          '  formState={formState}',
+          '  handleSubmit={handleSubmit}',
+          '  control={control}',
+          '  setValue={setValue}',
+          '  onSubmit={onSubmit}',
+          '/>',
+        ]}
+        externalImport={[`import { useForm, FieldValues } from 'react-hook-form'`]}
+        externalFunction={[
+          `const { formState, handleSubmit, control, setValue } = useForm()`,
+          '',
+          'const onSubmit = (data: FieldValues) => {',
+          "  return alert(JSON.stringify('cancel clicked'))",
+          '}',
+        ]}
       >
         <FormLowcode
           id={1}
@@ -39,7 +50,7 @@ export const OnSubmitProps = () => {
           handleSubmit={handleSubmit}
           control={control}
           setValue={setValue}
-          onSubmit={(data) => alert(JSON.stringify(data))}
+          onSubmit={onSubmit}
         />
       </CodePreview>
     </SectionLayout>

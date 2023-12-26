@@ -9,9 +9,7 @@ export default function page() {
     <SectionLayout title="Base" description="">
       <CodePreview
         name="Tooltip"
-        code={`<Tooltip content="ini contentnya tooltip">
-          <Button>Button</Button>
-        </Tooltip>`}
+        code={['<Tooltip content="ini contentnya tooltip">', '  <Button>Button</Button>', '</Tooltip>']}
         internalImport={['Button']}
       >
         <Tooltip content="ini contentnya tooltip">

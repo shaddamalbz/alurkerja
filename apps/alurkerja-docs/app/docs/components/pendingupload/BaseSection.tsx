@@ -8,7 +8,7 @@ import React from 'react'
 export const BaseSection = () => {
   return (
     <SectionLayout title="Base" description="">
-      <CodePreview name="PendingUpload" code={`<PendingUpload />`}>
+      <CodePreview name="PendingUpload" code={[`<PendingUpload />`]}>
         <PendingUpload />
       </CodePreview>
     </SectionLayout>

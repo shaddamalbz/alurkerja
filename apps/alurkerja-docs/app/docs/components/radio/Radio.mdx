@@ -9,9 +9,15 @@ note: props name di Radio harus uniq, jika ada 2 component radio di satu halaman
 
 <CodePreview
   name="Radio"
-  code={`<Radio name="radio" 
-          listOption={{ label: 'radio1', key: 1 },{ label: 'radio2', key: 2 }} 
-        />`}
+  code={[
+    '<Radio',
+    '  name="radio"',
+    '  listOption={[',
+    "    { label: 'radio1', key: 1 },",
+    "    { label: 'radio2', key: 2 },",
+    '  ]}',
+    '/>',
+  ]}
 >
   <Radio
     name="radio"
@@ -26,10 +32,16 @@ note: props name di Radio harus uniq, jika ada 2 component radio di satu halaman
 
 <CodePreview
   name="Radio"
-  code={`<Radio name="radio-1" 
-          listOption={{ label: 'radio1', key: 1 },{ label: 'radio2', key: 2 }} 
-          defaultValue={2}
-        />`}
+  code={[
+    '<Radio',
+    '  name="radio"',
+    '  listOption={[',
+    "    { label: 'radio1', key: 1 },",
+    "    { label: 'radio2', key: 2 },",
+    "  ]}",
+    "  defaultValue={2}",
+    '/>',
+  ]}
 >
   <Radio
     name="radio-1"
@@ -46,11 +58,17 @@ note: props name di Radio harus uniq, jika ada 2 component radio di satu halaman
 
 <CodePreview
   name="Radio"
-  code={`<Radio name="radio-2" 
-          listOption={{ label: 'radio1', key: 1 },{ label: 'radio2', key: 2 }} 
-          defaultValue={2}
-          disabled
-        />`}
+  code={[
+    '<Radio',
+    '  name="radio"',
+    '  listOption={[',
+    "    { label: 'radio1', key: 1 },",
+    "    { label: 'radio2', key: 2 },",
+    "  ]}",
+    "  defaultValue={2}",
+    "  disabled",
+    '/>',
+  ]}
 >
   <Radio
     name="radio-2"
@@ -68,11 +86,16 @@ note: props name di Radio harus uniq, jika ada 2 component radio di satu halaman
 
 <CodePreview
   name="Radio"
-  code={`<Radio name="radio-3" 
-          listOption={{ label: 'radio1', key: 1 },{ label: 'radio2', key: 2 }} 
-          onChange={(value) => value !== undefined && alert(value)}
-        />`}
-
+  code={[
+    '<Radio',
+    '  name="radio"',
+    '  listOption={[',
+    "    { label: 'radio1', key: 1 },",
+    "    { label: 'radio2', key: 2 },",
+    "  ]}",
+    "  onChange={(value) => value !== undefined && alert(value)}",
+    '/>',
+  ]}
 >
 
   <Radio
