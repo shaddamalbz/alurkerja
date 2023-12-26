@@ -12,10 +12,7 @@ export const BaseSection = () => {
     <SectionLayout title="Base" description="ini contoh sederhana penggunaan TableLowcode">
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-        />`}
+        code={['<TableLowcode', "  baseUrl='https://alurkerja-ui-bot.vercel.app'", "  specPath='/api/data'", '/>']}
       >
         <TableLowcode
           spec={spec as any}

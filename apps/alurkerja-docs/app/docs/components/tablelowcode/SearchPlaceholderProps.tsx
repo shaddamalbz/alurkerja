@@ -14,13 +14,16 @@ export const SearchPlaceholderProps = () => {
     <SectionLayout title="searchPlaceholder()" description="memberikan placeholer pada field search di table">
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          search={search}
-          setSearch={setSearch}
-          searchPlaceholder='Ini placeholder'
-        />`}
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          '  search={search}',
+          '  setSearch={setSearch}',
+          '  searchPlaceholder="Ini placeholder"',
+          '/>',
+        ]}
+        externalFunction={['const [search, setSearch] = useState<string>()']}
       >
         <TableLowcode
           spec={spec as any}

@@ -14,14 +14,16 @@ export const BulkSection = () => {
       <span>selected: {JSON.stringify(selected)}</span>
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          canBulk
-          selectedRow={selected}
-          setSelectedRow={setSelected}
-        />`}
-        externalFunction="const [selected, setSelected] = useState<number[]>([])"
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          '  canBulk',
+          '  selectedRow={selected}',
+          '  setSelectedRow={setSelected}',
+          '/>',
+        ]}
+        externalFunction={['const [selected, setSelected] = useState<number[]>([])']}
       >
         <TableLowcode
           spec={spec as any}

@@ -12,11 +12,13 @@ export const TitleProps = () => {
     <SectionLayout title="title()" description="ini contoh menambahkan title di table">
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          title='Ini Judul'
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-        />`}
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          '  title="Ini Judul"',
+          '/>',
+        ]}
       >
         <TableLowcode
           title="Ini Judul"

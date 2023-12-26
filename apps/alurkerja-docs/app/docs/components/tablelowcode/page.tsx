@@ -39,7 +39,7 @@ export default function page() {
         ada opsi menggantikan bukan mengedit
       </p>
 
-      <BaseSection />
+      {/* <BaseSection />
 
       <h2>Feature</h2>
       <PaginationSection />
@@ -49,9 +49,9 @@ export default function page() {
       <AllFeatureSection />
       <h2>Props</h2>
       <TitleProps />
-      <BorderedProps />
+      <BorderedProps /> */}
       <OnClickCreateProps />
-      <OnClickDetailProps />
+      {/* <OnClickDetailProps />
       <OnClickEditProps />
       <OnClickFilterProps />
       <CustomButtonDetailProps />
@@ -69,6 +69,7 @@ export default function page() {
       <SubheaderProps />
       <TooltipsProps />
       <SearchPlaceholderProps />
+       */}
     </article>
   )
 }

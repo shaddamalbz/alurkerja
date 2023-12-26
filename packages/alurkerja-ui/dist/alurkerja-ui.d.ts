@@ -140,6 +140,40 @@ export declare interface CheckboxProps {
     className?: string;
 }
 
+export declare interface CustomCellProperties {
+    name: string;
+    fields: {
+        [x: string]: FieldProperties;
+    };
+    value: any;
+    rowValue: {
+        [x: string]: any;
+    };
+    defaultCell: JSX.Element;
+}
+
+declare interface CustomCellProperties_2 {
+    name: string
+    fields: { [x: string]: FieldProperties_2 }
+    // cell value
+    value: any
+    // row value
+    rowValue: { [x: string]: any }
+    defaultCell: JSX.Element
+}
+
+export declare interface CustomRowProperties {
+    row: {
+        [x: string]: any;
+    };
+    DefaultElement: JSX.Element;
+}
+
+declare interface CustomRowProperties_2 {
+    row: { [x: string]: any }
+    DefaultElement: JSX.Element
+}
+
 export declare const DiagramBpmn: ({ url, onClickActivity, currentEvent, customBadge, containerName, }: DiagramBpmnProps) => JSX_2.Element;
 
 export declare interface DiagramBpmnProps {
@@ -1135,17 +1169,7 @@ declare interface TableLowcodeProps {
     /**  setter to set selected row*/
     setSelectedRow?: Dispatch<SetStateAction<number[]>>;
     /**  render custom cell table base for ex custom by fields.name*/
-    customCell?: ({ name, fields, value, rowValue, defaultCell, }: {
-        name: string;
-        fields: {
-            [x: string]: FieldProperties;
-        };
-        value: any;
-        rowValue: {
-            [x: string]: any;
-        };
-        defaultCell: JSX.Element;
-    }) => JSX.Element;
+    customCell?: ({ name, fields, value, rowValue, defaultCell }: CustomCellProperties) => JSX.Element;
     /**  will be trigger when create button clicked*/
     onClickCreate?: () => void;
     /**  will be trigger when button edit clicked*/
@@ -1158,12 +1182,7 @@ declare interface TableLowcodeProps {
     onDeleteConfirm?: (id: number) => void;
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element;
-    customRow?: ({ row, DefaultElement }: {
-        row: {
-            [x: string]: any;
-        };
-        DefaultElement: JSX.Element;
-    }) => ReactNode;
+    customRow?: ({ row, DefaultElement }: CustomRowProperties) => ReactNode;
     customField?: ({ field, setValue, defaultField, }: {
         field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
@@ -1227,7 +1246,7 @@ declare interface TableLowcodeProps {
     customBadgeDiagram?: (task_id: string) => string;
     defaultOrder?: 'asc' | 'desc';
     defaultSortBy?: string;
-    subHeader?: JSX.Element;
+    subHeader?: () => JSX.Element;
     onClickBulk?: () => void;
     customButtonCreate?: (ButtonWithModal: JSX.Element, ButtonWithAction: JSX.Element, data?: {
         [x: string]: any;
@@ -1337,21 +1356,7 @@ declare interface TableLowcodeProps_2 {
     /**  setter to set selected row*/
     setSelectedRow?: Dispatch<SetStateAction<number[]>>
     /**  render custom cell table base for ex custom by fields.name*/
-    customCell?: ({
-        name,
-        fields,
-        value,
-        rowValue,
-        defaultCell,
-    }: {
-        name: string
-        fields: { [x: string]: FieldProperties_2 }
-        // cell value
-        value: any
-        // row value
-        rowValue: { [x: string]: any }
-        defaultCell: JSX.Element
-    }) => JSX.Element
+    customCell?: ({ name, fields, value, rowValue, defaultCell }: CustomCellProperties_2) => JSX.Element
     /**  will be trigger when create button clicked*/
     onClickCreate?: () => void
     /**  will be trigger when button edit clicked*/
@@ -1364,7 +1369,7 @@ declare interface TableLowcodeProps_2 {
     onDeleteConfirm?: (id: number) => void
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element
-    customRow?: ({ row, DefaultElement }: { row: { [x: string]: any }; DefaultElement: JSX.Element }) => ReactNode
+    customRow?: ({ row, DefaultElement }: CustomRowProperties_2) => ReactNode
     customField?: ({
         field,
         setValue,
@@ -1444,7 +1449,7 @@ declare interface TableLowcodeProps_2 {
     customBadgeDiagram?: (task_id: string) => string
     defaultOrder?: 'asc' | 'desc'
     defaultSortBy?: string
-    subHeader?: JSX.Element
+    subHeader?: () => JSX.Element
     onClickBulk?: () => void
     customButtonCreate?: (
     // Button edit feature using modal

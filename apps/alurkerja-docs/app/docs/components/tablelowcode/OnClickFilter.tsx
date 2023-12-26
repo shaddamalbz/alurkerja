@@ -8,52 +8,53 @@ import spec from './spec.json'
 import data from './data.json'
 
 export const OnClickFilterProps = () => {
-  const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })
-  const [renderState, setRenderState] = useState(0)
-  const [search, setSearch] = useState<string>()
-  const [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()
   const [showFilter, setShowFilter] = useState(false)
+
+  const subHeader = () => {
+    if (!showFilter) {
+      return <></>
+    }
+    return <>Filter di subhead</>
+  }
+
+  const onClickFilter = () => {
+    setShowFilter((prev) => !prev)
+  }
 
   return (
     <SectionLayout title="onClickFilter()" description="">
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          renderState={renderState}
-          setRenderState={setRenderState}
-          pageConfig={pageConfig}
-          setPageConfig={setPageConfig}
-          filterBy={filterBy}
-          setFilterBy={setFilterBy}
-          search={search}
-          setSearch={setSearch}
-          subHeader={showFilter ? <>Filter di subhead</> : <></>}
-          onClickFilter={() => {
-            setShowFilter((prev) => !prev)
-          }}
-        />`}
-        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n\tconst [showFilter, setShowFilter] = useState(false)\n`}
-        externalImport={`import { useState } from 'react'`}
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          '  onClickEdit={onClickEdit}',
+          '/>',
+        ]}
+        externalFunction={[
+          'const [showFilter, setShowFilter] = useState(false)',
+          '',
+          'const subHeader = () => {',
+          '  if(!showFilter){',
+          '    return <></>',
+          '  }',
+          '  return <>Filter di subhead</>',
+          '}',
+          '',
+          'const onClickFilter = () => {',
+          '  setShowFilter((prev) => !prev)',
+          '}',
+        ]}
+        externalImport={[`import { useState } from 'react'`]}
       >
         <TableLowcode
           spec={spec as any}
           data={data.content}
           baseUrl="https://alurkerja-ui-bot.vercel.app"
           specPath="/api/data"
-          renderState={renderState}
-          setRenderState={setRenderState}
-          pageConfig={pageConfig}
-          setPageConfig={setPageConfig}
-          filterBy={filterBy}
-          setFilterBy={setFilterBy}
-          search={search}
-          setSearch={setSearch}
-          subHeader={showFilter ? <>Filter di subhead</> : <></>}
-          onClickFilter={() => {
-            setShowFilter((prev) => !prev)
-          }}
+          subHeader={subHeader}
+          onClickFilter={onClickFilter}
         />
       </CodePreview>
     </SectionLayout>

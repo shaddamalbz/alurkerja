@@ -49,21 +49,7 @@ export interface TableLowcodeProps {
   /**  setter to set selected row*/
   setSelectedRow?: Dispatch<SetStateAction<number[]>>
   /**  render custom cell table base for ex custom by fields.name*/
-  customCell?: ({
-    name,
-    fields,
-    value,
-    rowValue,
-    defaultCell,
-  }: {
-    name: string
-    fields: { [x: string]: FieldProperties }
-    // cell value
-    value: any
-    // row value
-    rowValue: { [x: string]: any }
-    defaultCell: JSX.Element
-  }) => JSX.Element
+  customCell?: ({ name, fields, value, rowValue, defaultCell }: CustomCellProperties) => JSX.Element
   /**  will be trigger when create button clicked*/
   onClickCreate?: () => void
   /**  will be trigger when button edit clicked*/
@@ -76,7 +62,7 @@ export interface TableLowcodeProps {
   onDeleteConfirm?: (id: number) => void
   /** trying to custom header table? use this*/
   customHeader?: JSX.Element
-  customRow?: ({ row, DefaultElement }: { row: { [x: string]: any }; DefaultElement: JSX.Element }) => ReactNode
+  customRow?: ({ row, DefaultElement }: CustomRowProperties) => ReactNode
   customField?: ({
     field,
     setValue,
@@ -156,7 +142,7 @@ export interface TableLowcodeProps {
   customBadgeDiagram?: (task_id: string) => string
   defaultOrder?: 'asc' | 'desc'
   defaultSortBy?: string
-  subHeader?: JSX.Element
+  subHeader?: () => JSX.Element
   onClickBulk?: () => void
   customButtonCreate?: (
     // Button edit feature using modal
@@ -226,6 +212,20 @@ export interface TableLowcodeProps {
   searchPlaceholder?: string
 }
 
+export interface CustomRowProperties {
+  row: { [x: string]: any }
+  DefaultElement: JSX.Element
+}
+
+export interface CustomCellProperties {
+  name: string
+  fields: { [x: string]: FieldProperties }
+  // cell value
+  value: any
+  // row value
+  rowValue: { [x: string]: any }
+  defaultCell: JSX.Element
+}
 export interface TableLowcodeViewProps {
   tableSpec: TableSpec | undefined
   tableData: { [x: string]: any }[] | undefined

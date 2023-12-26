@@ -12,11 +12,13 @@ export const ColumnProps = () => {
     <SectionLayout title="column()" description="">
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          column={[{ key: 'name', label: 'Halo' }]}
-        />`}
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          "  column={[{ key: 'name', label: 'Halo' }]}",
+          '/>',
+        ]}
       >
         <TableLowcode
           spec={spec as any}

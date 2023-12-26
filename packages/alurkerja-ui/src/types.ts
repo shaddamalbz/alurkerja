@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from 'react'
 import { FieldValues, UseFormSetValue, RegisterOptions } from 'react-hook-form'
 
+export type { CustomCellProperties, CustomRowProperties } from './components/TableLowcode/TableLowcode.types'
+
 export interface AppSpec {
   name: string
   description: string

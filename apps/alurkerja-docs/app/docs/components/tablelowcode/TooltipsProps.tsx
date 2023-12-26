@@ -12,11 +12,13 @@ export const TooltipsProps = () => {
     <SectionLayout title="tooltips()" description="">
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          tooltip={{ button_create: 'a', button_delete: 'b', button_detail: 'c', button_edit: 'd' }}
-        />`}
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          "  tooltip={{ button_create: 'a', button_delete: 'b', button_detail: 'c', button_edit: 'd' }}",
+          '/>',
+        ]}
       >
         <TableLowcode
           spec={spec as any}

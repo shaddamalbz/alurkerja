@@ -13,6 +13,10 @@ export const CustomActionCellProps = () => {
   const [search, setSearch] = useState<string>()
   const [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()
 
+  const customActionCell = (data: any) => {
+    return <Button variant="filled">{data.id}</Button>
+  }
+
   return (
     <SectionLayout
       title="customActionCell()"
@@ -20,23 +24,33 @@ export const CustomActionCellProps = () => {
     >
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          renderState={renderState}
-          setRenderState={setRenderState}
-          pageConfig={pageConfig}
-          setPageConfig={setPageConfig}
-          filterBy={filterBy}
-          setFilterBy={setFilterBy}
-          search={search}
-          setSearch={setSearch}
-          customActionCell={(data) => {
-            return <Button variant="filled">{data.id}</Button>
-          }}
-        />`}
-        externalFunction={`const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })\n\tconst [renderState, setRenderState] = useState(0)\n\tconst [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()\n\tconst [search, setSearch] = useState<string>()\n`}
-        externalImport="import { useState } from 'react'"
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          '  renderState={renderState}',
+          '  setRenderState={setRenderState}',
+          '  pageConfig={pageConfig}',
+          '  setPageConfig={setPageConfig}',
+          '  filterBy={filterBy}',
+          '  setFilterBy={setFilterBy}',
+          '  search={search}',
+          '  setSearch={setSearch}',
+          '  customActionCell={customActionCell}',
+          '/>',
+        ]}
+        externalFunction={[
+          'const [pageConfig, setPageConfig] = useState({ limit: 10, page: 0 })',
+          'const [renderState, setRenderState] = useState(0)',
+          'const [filterBy, setFilterBy] = useState<{ [x: string]: any } | undefined>()',
+          'const [search, setSearch] = useState<string>()',
+          '',
+          'const customActionCell = (data: any) => {',
+          '  return <Button variant="filled">{data.id}</Button>',
+          '}',
+        ]}
+        externalImport={['import { useState } from react']}
+        internalImport={['Button']}
       >
         <TableLowcode
           spec={spec as any}
@@ -51,9 +65,7 @@ export const CustomActionCellProps = () => {
           setFilterBy={setFilterBy}
           search={search}
           setSearch={setSearch}
-          customActionCell={(data) => {
-            return <Button variant="filled">{data.id}</Button>
-          }}
+          customActionCell={customActionCell}
         />
       </CodePreview>
     </SectionLayout>

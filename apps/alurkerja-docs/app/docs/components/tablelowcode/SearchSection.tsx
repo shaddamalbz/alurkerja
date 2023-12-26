@@ -17,14 +17,15 @@ export const SearchSection = () => {
     >
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-          search={search}
-          setSearch={setSearch}
-        />`}
-        externalImport="import { useState } from 'react'"
-        externalFunction={`const [search, setSearch] = useState<string>()\n`}
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          '  search={search}',
+          '  setSearch={setSearch}',
+          '/>',
+        ]}
+        externalFunction={['const [search, setSearch] = useState<string>()']}
       >
         <TableLowcode
           spec={spec as any}

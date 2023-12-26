@@ -12,11 +12,13 @@ export const BorderedProps = () => {
     <SectionLayout title="bordered()" description="ini contoh jika ingin tablenya memiliki border">
       <CodePreview
         name="TableLowcode"
-        code={`<TableLowcode
-          bordered
-          baseUrl="https://alurkerja-ui-bot.vercel.app"
-          specPath="/api/data"
-        />`}
+        code={[
+          '<TableLowcode',
+          "  baseUrl='https://alurkerja-ui-bot.vercel.app'",
+          "  specPath='/api/data'",
+          '  bordered',
+          '/>',
+        ]}
       >
         <TableLowcode
           bordered
