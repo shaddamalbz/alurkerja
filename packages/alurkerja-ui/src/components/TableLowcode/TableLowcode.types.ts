@@ -142,7 +142,7 @@ export interface TableLowcodeProps {
   customBadgeDiagram?: (task_id: string) => string
   defaultOrder?: 'asc' | 'desc'
   defaultSortBy?: string
-  subHeader?: () => JSX.Element
+  subHeader?: () => ReactNode
   onClickBulk?: () => void
   customButtonCreate?: (
     // Button edit feature using modal

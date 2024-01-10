@@ -1250,7 +1250,7 @@ declare interface TableLowcodeProps {
     customBadgeDiagram?: (task_id: string) => string;
     defaultOrder?: 'asc' | 'desc';
     defaultSortBy?: string;
-    subHeader?: () => JSX.Element;
+    subHeader?: () => ReactNode;
     onClickBulk?: () => void;
     customButtonCreate?: (ButtonWithModal: JSX.Element, ButtonWithAction: JSX.Element, data?: {
         [x: string]: any;
@@ -1453,7 +1453,7 @@ declare interface TableLowcodeProps_2 {
     customBadgeDiagram?: (task_id: string) => string
     defaultOrder?: 'asc' | 'desc'
     defaultSortBy?: string
-    subHeader?: () => JSX.Element
+    subHeader?: () => ReactNode
     onClickBulk?: () => void
     customButtonCreate?: (
     // Button edit feature using modal
