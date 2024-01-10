@@ -18,8 +18,8 @@ type Story = StoryObj<typeof TableLowcode>
 
 export const NonBpmn: Story = {
   args: {
-    baseUrl: 'https://alurkerja-ui-bot.vercel.app',
-    specPath: '/api/crud/main-kursus',
+    baseUrl: 'https://kpm-sys.merapi.javan.id',
+    specPath: '/api/crud/takwim',
     onClickCreate: undefined,
     onClickEdit: undefined,
     onClickDetail: undefined,

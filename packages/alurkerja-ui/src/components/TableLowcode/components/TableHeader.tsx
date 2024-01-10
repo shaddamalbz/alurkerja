@@ -37,7 +37,7 @@ export const TableHeader: FC<TableHeaderProps> = ({
           <h5 className={theme.table_title} id="table_title" data-testid="table_title">
             {title}
           </h5>
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row items-center gap-2">
             {/* extraButton used in HeaderRight */}
             <HeaderRight {...ActionProps} />
           </div>

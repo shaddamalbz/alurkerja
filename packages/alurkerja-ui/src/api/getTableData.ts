@@ -44,6 +44,7 @@ export const getTableData = ({
   const [loading, setLoading] = useState<boolean>(true)
 
   const fetch = async (signal: AbortSignal) => {
+    setLoading(true)
     if (data) {
       setLoading(false)
 

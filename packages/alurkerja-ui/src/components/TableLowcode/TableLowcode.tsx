@@ -149,8 +149,8 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
               setOrderBy={setOrderBy}
             />
           ) : (
-            <div className="mx-auto my-6 w-fit">
-              <Spinner />
+            <div className="mx-auto my-6 w-fit flex items-center">
+              <Spinner className="text-main-blue-alurkerja" /> Loading data
             </div>
           )}
         </TableLayout>
@@ -158,7 +158,7 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
     </TableLowcodeContext.Provider>
   ) : (
     <section className="h-[calc(100vh-64px)] flex items-center justify-center">
-      <Spinner size={32} />
+      <Spinner className="text-main-blue-alurkerja" size={32} /> Loading spesification
     </section>
   )
 }

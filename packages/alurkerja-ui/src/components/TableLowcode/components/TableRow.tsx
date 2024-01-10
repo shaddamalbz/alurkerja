@@ -195,19 +195,10 @@ export const TableRow: FC<TableBodyRowProps> = ({
             dataKey: tableSpec.fields[key]?.table_value_mapping?.relation,
           }
 
-          const isCenter = tableSpec.fields[key]?.type === 'number' || tableSpec.fields[key]?.type === 'datetime-local'
-
           return (
             <Fragment key={idx}>
               {(column ? true : false || !tableSpec.fields[key]?.is_hidden_in_list) && (
-                <td
-                  id="table_body_col"
-                  className={clsx(
-                    theme.table_body_col,
-                    isCenter && 'text-center',
-                    bordered && 'border-r border-gray-200'
-                  )}
-                >
+                <td id="table_body_col" className={clsx(theme.table_body_col, bordered && 'border-r border-gray-200')}>
                   {customCell ? (
                     customCell({
                       name: key,
