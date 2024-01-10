@@ -140,6 +140,22 @@ export declare interface CheckboxProps {
     className?: string;
 }
 
+declare interface ColumnInstance {
+    label: string;
+    key: string;
+    className?: string;
+}
+
+declare interface ColumnInstance_2 {
+    label: string
+    key: string
+    className?: string
+}
+
+export declare type ColumnProps = ColumnInstance[];
+
+declare type ColumnProps_2 = ColumnInstance_2[]
+
 export declare interface CustomCellProperties {
     name: string;
     fields: {
@@ -1124,11 +1140,7 @@ declare interface TableLowcodeProps {
      * apabila ingin menampilkan column nama saja maka propsnya akan seperti ini
      * `column={[{label: 'Nama User', value: 'nama'}]}`
      */
-    column?: {
-        label: string;
-        key: string;
-        className?: string;
-    }[];
+    column?: ColumnProps;
     title?: string;
     /** base API url (lowcode spec) */
     baseUrl: string;
@@ -1329,7 +1341,7 @@ declare interface TableLowcodeProps_2 {
      * apabila ingin menampilkan column nama saja maka propsnya akan seperti ini
      * `column={[{label: 'Nama User', value: 'nama'}]}`
      */
-    column?: { label: string; key: string; className?: string }[]
+    column?: ColumnProps_2
     title?: string
     /** base API url (lowcode spec) */
     baseUrl: string

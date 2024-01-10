@@ -2,6 +2,13 @@ import { FieldActionProperties, FieldProperties, PaginationSpec, TableSpec, User
 import { Dispatch, ReactNode, SetStateAction } from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 
+interface ColumnInstance {
+  label: string
+  key: string
+  className?: string
+}
+export type ColumnProps = ColumnInstance[]
+
 export interface TableLowcodeProps {
   spec?: TableSpec
   data?: { [x: string]: any }[]
@@ -18,7 +25,7 @@ export interface TableLowcodeProps {
    * apabila ingin menampilkan column nama saja maka propsnya akan seperti ini
    * `column={[{label: 'Nama User', value: 'nama'}]}`
    */
-  column?: { label: string; key: string; className?: string }[]
+  column?: ColumnProps
   title?: string
   /** base API url (lowcode spec) */
   baseUrl: string
