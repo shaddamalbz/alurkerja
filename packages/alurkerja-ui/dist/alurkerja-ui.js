@@ -51645,7 +51645,7 @@ const tre = P8(
         onClickBpmn: () => q((X) => !X)
       }
     ),
-    u && /* @__PURE__ */ k.jsx("div", { className: "py-4", children: u() }),
+    u && /* @__PURE__ */ k.jsx("div", { children: u() }),
     N && /* @__PURE__ */ k.jsx(
       iH,
       {

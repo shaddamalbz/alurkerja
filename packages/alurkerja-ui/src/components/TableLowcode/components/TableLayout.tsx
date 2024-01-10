@@ -50,7 +50,7 @@ export const TableLayout: FC<TableLayoutProps> = ({
         />
       )}
 
-      {subHeader && <div className="py-4">{subHeader()}</div>}
+      {subHeader && <div>{subHeader()}</div>}
 
       {isShowBpmn && (
         <DiagramBpmn
