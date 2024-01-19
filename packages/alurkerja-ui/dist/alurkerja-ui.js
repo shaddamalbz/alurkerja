@@ -48169,7 +48169,7 @@ const VF = (e) => {
   return /* @__PURE__ */ k.jsxs(da, { children: [
     a && /* @__PURE__ */ k.jsx("div", { onClick: I, children: a }),
     /* @__PURE__ */ k.jsx(lw, { show: b, as: da, children: /* @__PURE__ */ k.jsxs(a2, { as: "div", className: "relative z-50", onClose: T, children: [
-      /* @__PURE__ */ k.jsx("div", { className: "fixed inset-0 bg-black opacity-20" }),
+      /* @__PURE__ */ k.jsx("div", { className: "fixed inset-0 bg-[#000000] opacity-50" }),
       /* @__PURE__ */ k.jsx("div", { className: "fixed inset-0 overflow-y-auto", children: /* @__PURE__ */ k.jsx("div", { className: "flex items-center justify-center min-h-full p-4 text-center", children: /* @__PURE__ */ k.jsx(
         lw.Child,
         {
@@ -48410,7 +48410,7 @@ const WF = (e) => {
     r && g(r);
   }, [r]), yn(() => {
     a == null || a(p);
-  }, [p]), /* @__PURE__ */ k.jsx("fieldset", { className: u || "flex items-center gap-x-2", children: t == null ? void 0 : t.map((b, C) => /* @__PURE__ */ k.jsxs("div", { children: [
+  }, [p]), /* @__PURE__ */ k.jsx("fieldset", { className: u || "flex items-center gap-x-2", children: t == null ? void 0 : t.map((b, C) => /* @__PURE__ */ k.jsxs("div", { className: "flex items-center", children: [
     /* @__PURE__ */ cE(
       "input",
       {
