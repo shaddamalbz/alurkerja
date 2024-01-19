@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 const config: Config = {
   content: [
@@ -13,7 +14,6 @@ const config: Config = {
     extend: {
       fontFamily: { sans: ['Poppins', ...defaultTheme.fontFamily.sans] },
       colors: {
-        black: '#3F4254',
         red: {
           alurkerja: '#F64E60',
         },
@@ -25,18 +25,18 @@ const config: Config = {
         green: { alurkerja: '#50CD89' },
         'forst-white': { alurkerja: '#F3F6F9' },
         'light-blue': { alurkerja: '#E1F0FF' },
+        black: {
+          alurkerja: {
+            1: '#1E1E2D',
+            2: '#3F4254',
+          },
+          DEFAULT: colors.black,
+        },
         gray: {
           alurkerja: {
             1: '#7E8299',
             2: '#B5B5C3',
             3: '#E4E6EF',
-          },
-        },
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: '100%',
           },
         },
       },

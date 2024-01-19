@@ -72,7 +72,7 @@ export const Modal = React.forwardRef<ModalRef, IModal>((props, ref) => {
 
       <Transition show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={closeModal}>
-          <div className="fixed inset-0 bg-black opacity-20" />
+          <div className="fixed inset-0 bg-[#000000] opacity-50" />
 
           <div className="fixed inset-0 overflow-y-auto">
             <div className="flex items-center justify-center min-h-full p-4 text-center">

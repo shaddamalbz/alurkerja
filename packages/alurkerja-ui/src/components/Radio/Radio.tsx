@@ -38,7 +38,7 @@ export const Radio: FC<RadioProps> = (props) => {
   return (
     <fieldset className={optionClassName ? optionClassName : 'flex items-center gap-x-2'}>
       {listOption?.map((option, idx) => (
-        <div key={idx}>
+        <div className="flex items-center" key={idx}>
           <input
             {...props}
             key={idx}
