@@ -885,6 +885,27 @@ export declare interface PaginationSpec {
     total_page: number;
 }
 
+declare interface PaginationSpec_2 {
+    empty: boolean
+    first: boolean
+    last: boolean
+    number: number
+    number_of_element: number
+    pageable: {
+        offset: number
+        unpaged: false
+        paged: boolean
+    }
+    size: number
+    sort: {
+        empty: boolean
+        sorted: boolean
+        unsorted: boolean
+    }
+    total_elements: number
+    total_page: number
+}
+
 export declare interface PendingTableLayoutProps {
     title?: string;
     /** base API url (lowcode spec) */
@@ -1127,6 +1148,7 @@ declare interface TableLowcodeProps {
     data?: {
         [x: string]: any;
     }[];
+    pagination?: PaginationSpec;
     /**
      * when u facing issue for example API endpoint for list data not same as API endpoint for spec, used this for overide endpoint for list data
      * @param string eg '/api/crud/custom-path'
@@ -1328,6 +1350,7 @@ declare interface TableLowcodeProps {
 declare interface TableLowcodeProps_2 {
     spec?: TableSpec_2
     data?: { [x: string]: any }[]
+    pagination?: PaginationSpec_2
     /**
      * when u facing issue for example API endpoint for list data not same as API endpoint for spec, used this for overide endpoint for list data
      * @param string eg '/api/crud/custom-path'

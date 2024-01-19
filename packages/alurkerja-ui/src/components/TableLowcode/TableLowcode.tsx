@@ -30,17 +30,14 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
     extraButton,
     showBpmn,
     hideTable,
+    pagination,
   } = props
 
   const [selectedAll, setSelectedAll] = useState<boolean>(false)
   const [sortBy, setSortBy] = useState<string | undefined>(defaultSortBy)
   const [orderBy, setOrderBy] = useState<'asc' | 'desc' | undefined>(defaultOrder)
 
-  const {
-    tableData,
-    pagination,
-    loading: loadingData,
-  } = getTableData({
+  const { tableData, loading: loadingData } = getTableData({
     baseUrl: baseUrl,
     renderState: renderState,
     filter: filterBy,

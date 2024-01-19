@@ -12,6 +12,7 @@ export type ColumnProps = ColumnInstance[]
 export interface TableLowcodeProps {
   spec?: TableSpec
   data?: { [x: string]: any }[]
+  pagination?: PaginationSpec
   /**
    * when u facing issue for example API endpoint for list data not same as API endpoint for spec, used this for overide endpoint for list data
    * @param string eg '/api/crud/custom-path'
