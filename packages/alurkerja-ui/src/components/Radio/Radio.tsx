@@ -21,7 +21,7 @@ interface ListOption {
 }
 
 export const Radio: FC<RadioProps> = (props) => {
-  const { listOption, name, onChange, defaultValue, disabled, optionClassName } = props
+  const { listOption, name, onChange, defaultValue, disabled, optionClassName, ...restProps } = props
 
   const [value, setValue] = useState<string | number>()
 
@@ -40,7 +40,6 @@ export const Radio: FC<RadioProps> = (props) => {
       {listOption?.map((option, idx) => (
         <div className="flex items-center" key={idx}>
           <input
-            {...props}
             key={idx}
             className="mr-2"
             type="radio"
@@ -49,6 +48,7 @@ export const Radio: FC<RadioProps> = (props) => {
             onChange={(e) => setValue(e.target.value)}
             checked={value?.toString() === option.key.toString() ? true : false}
             disabled={disabled}
+            {...restProps}
           />
 
           <label htmlFor={name}>{option.label}</label>
