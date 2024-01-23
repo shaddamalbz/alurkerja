@@ -33,7 +33,9 @@
     "react-router-dom": "^6.15.0"
   },
   "peerDependencies": {
-    "react-select": "^5.7.4"
+    "react-select": "^5.7.4",
+    "react-datepicker": "4.17.0",
+    "@types/react-datepicker": "4.15.0"
   },
   "devDependencies": {
     "@floating-ui/core": "^1.4.1",
