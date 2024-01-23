@@ -30,7 +30,7 @@ export const Pagination: FC<PaginationProps> = ({ pagination, pageConfig, setPag
     <>
       {pagination && pageConfig && setPageConfig && (
         <div className="alurkerja-pagination text-xs md:text-base sm:text-sm py-4 px-4 rounded border-t">
-          <div className="flex justify-between item-center relative">
+          <div className="flex flex-wrap gap-4 justify-between item-center relative">
             <nav>
               {pagination.total_page > 0 && (
                 <ul className="pagination flex items-center gap-x-1 list-none">
