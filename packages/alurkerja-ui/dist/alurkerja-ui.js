@@ -48218,7 +48218,7 @@ const VF = (e) => {
     }
   }, [e]);
   const p = () => e.number * e.size === 0 ? 1 : e.number * e.size, g = () => (e.number + 1) * e.size > e.total_elements ? e.total_elements : (e.number + 1) * e.size, b = () => e.total_elements;
-  return /* @__PURE__ */ k.jsx(k.Fragment, { children: e && t && n && /* @__PURE__ */ k.jsx("div", { className: "alurkerja-pagination text-xs md:text-base sm:text-sm py-4 px-4 rounded border-t", children: /* @__PURE__ */ k.jsxs("div", { className: "flex justify-between item-center relative", children: [
+  return /* @__PURE__ */ k.jsx(k.Fragment, { children: e && t && n && /* @__PURE__ */ k.jsx("div", { className: "alurkerja-pagination text-xs md:text-base sm:text-sm py-4 px-4 rounded border-t", children: /* @__PURE__ */ k.jsxs("div", { className: "flex flex-wrap gap-4 justify-between item-center relative", children: [
     /* @__PURE__ */ k.jsx("nav", { children: e.total_page > 0 && /* @__PURE__ */ k.jsxs("ul", { className: "pagination flex items-center gap-x-1 list-none", children: [
       e.number > r - 1 && /* @__PURE__ */ k.jsx(
         "li",
