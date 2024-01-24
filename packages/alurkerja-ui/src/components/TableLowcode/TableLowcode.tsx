@@ -58,7 +58,7 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
         showBpmn={showBpmn}
         hideTable={hideTable}
       >
-        {isLoadingData || !loadingData ? (
+        {!isLoadingData || !loadingData ? (
           <TableLowcodeView
             tableData={data || tableData}
             tableSpec={spec}
