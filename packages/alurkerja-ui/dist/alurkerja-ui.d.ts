@@ -1143,6 +1143,10 @@ export declare const TableLowcode: FC<TableLowcodeProps>;
 export declare const TableLowcodeContext: Context<TableLowcodeProps_2>;
 
 declare interface TableLowcodeProps {
+    /**
+     * expected to be used on tablelowcode with static data & static spec
+     */
+    isLoadingData?: boolean;
     spec?: TableSpec;
     data?: {
         [x: string]: any;
@@ -1200,6 +1204,10 @@ declare interface TableLowcodeProps {
         limit: number;
         page: number;
     }>>;
+    sortBy?: string;
+    setSortBy?: Dispatch<SetStateAction<string | undefined>>;
+    orderBy?: 'asc' | 'desc';
+    setOrderBy?: Dispatch<SetStateAction<'asc' | 'desc' | undefined>>;
     canBulk?: boolean;
     /**  state to store selected row*/
     selectedRow?: number[];
@@ -1277,7 +1285,13 @@ declare interface TableLowcodeProps {
         usertaskMapping: UserTaskMapping[];
     }) => JSX.Element;
     customBadgeDiagram?: (task_id: string) => string;
+    /**
+     * @deprecated
+     */
     defaultOrder?: 'asc' | 'desc';
+    /**
+     * @deprecated
+     */
     defaultSortBy?: string;
     subHeader?: () => ReactNode;
     onClickBulk?: () => void;
@@ -1343,6 +1357,10 @@ declare interface TableLowcodeProps {
 }
 
 declare interface TableLowcodeProps_2 {
+    /**
+     * expected to be used on tablelowcode with static data & static spec
+     */
+    isLoadingData?: boolean
     spec?: TableSpec_2
     data?: { [x: string]: any }[]
     pagination?: PaginationSpec_2
@@ -1384,6 +1402,10 @@ declare interface TableLowcodeProps_2 {
     pageConfig?: { limit: number; page: number }
     /**  setter to set page config*/
     setPageConfig?: Dispatch<SetStateAction<{ limit: number; page: number }>>
+    sortBy?: string
+    setSortBy?: Dispatch<SetStateAction<string | undefined>>
+    orderBy?: 'asc' | 'desc'
+    setOrderBy?: Dispatch<SetStateAction<'asc' | 'desc' | undefined>>
     canBulk?: boolean
     /**  state to store selected row*/
     selectedRow?: number[]
@@ -1484,7 +1506,13 @@ declare interface TableLowcodeProps_2 {
         usertaskMapping: UserTaskMapping_2[]
     }) => JSX.Element
     customBadgeDiagram?: (task_id: string) => string
+    /**
+     * @deprecated
+     */
     defaultOrder?: 'asc' | 'desc'
+    /**
+     * @deprecated
+     */
     defaultSortBy?: string
     subHeader?: () => ReactNode
     onClickBulk?: () => void
