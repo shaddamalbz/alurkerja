@@ -51179,7 +51179,6 @@ const u1 = jh(({ components: e, unstyled: t = !0, ...n }, a) => {
         DropdownIndicator: r,
         ...e
       },
-      menuIsOpen: !0,
       ...n
     }
   );
