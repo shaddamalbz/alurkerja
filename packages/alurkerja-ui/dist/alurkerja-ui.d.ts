@@ -1269,11 +1269,7 @@ declare interface TableLowcodeProps {
     customButtonDiagram?: ({ ButtonDiagram }: {
         ButtonDiagram: () => JSX.Element;
     }) => void;
-    customButtonFilter?: ({ ButtonFilter }: {
-        ButtonFilter: (arg: {
-            onClick?: () => void;
-        }) => JSX.Element;
-    }) => void;
+    customButtonFilter?: (Modal: () => JSX.Element, Button: (props: ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element) => void;
     customButtonBpmn?: ({ available_task, rowValue, usertaskMapping, }: {
         available_task: any;
         rowValue: {
@@ -1475,7 +1471,10 @@ declare interface TableLowcodeProps_2 {
     canFilter?: boolean
     customActionCell?: (data: { [x: string]: any }) => JSX.Element
     customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
-    customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: (arg: { onClick?: () => void }) => JSX.Element }) => void
+    customButtonFilter?: (
+    Modal: () => JSX.Element,
+    Button: (props: ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
+    ) => void
     customButtonBpmn?: ({
         available_task,
         rowValue,

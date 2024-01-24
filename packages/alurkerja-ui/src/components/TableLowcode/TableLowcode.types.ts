@@ -1,5 +1,5 @@
 import { FieldActionProperties, FieldProperties, PaginationSpec, TableSpec, UserTaskMapping } from '@/types'
-import { Dispatch, ReactNode, SetStateAction } from 'react'
+import { ButtonHTMLAttributes, Dispatch, ReactNode, SetStateAction } from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 
 interface ColumnInstance {
@@ -137,7 +137,10 @@ export interface TableLowcodeProps {
   canFilter?: boolean
   customActionCell?: (data: { [x: string]: any }) => JSX.Element
   customButtonDiagram?: ({ ButtonDiagram }: { ButtonDiagram: () => JSX.Element }) => void
-  customButtonFilter?: ({ ButtonFilter }: { ButtonFilter: (arg: { onClick?: () => void }) => JSX.Element }) => void
+  customButtonFilter?: (
+    Modal: () => JSX.Element,
+    Button: (props: ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
+  ) => void
   customButtonBpmn?: ({
     available_task,
     rowValue,

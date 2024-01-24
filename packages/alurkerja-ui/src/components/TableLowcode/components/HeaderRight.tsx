@@ -1,4 +1,14 @@
-import { Dispatch, FC, SetStateAction, useState, Fragment, useContext, useCallback, memo } from 'react'
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useState,
+  Fragment,
+  useContext,
+  useCallback,
+  memo,
+  ButtonHTMLAttributes,
+} from 'react'
 import { FaSearch, FaPlus } from 'react-icons/fa'
 import { BiSelectMultiple } from 'react-icons/bi'
 import { RxCross2 } from 'react-icons/rx'
@@ -133,31 +143,17 @@ export const HeaderRight: FC<HeaderRightProps> = memo(
       )
     }, [])
 
-    const ButtonFilter = useCallback(({ onClick }: { onClick?: () => void }) => {
-      if (onClick) {
-        return (
-          <button
-            id="button-filter"
-            className="bg-light-blue-alurkerja text-main-blue-alurkerja p-2 rounded"
-            onClick={() => onClick()}
-          >
-            <FilterIcon />
-          </button>
-        )
-      }
-      return (
-        <Modal
-          title="Filter"
-          triggerButton={
-            <button id="button-filter" className="bg-light-blue-alurkerja text-main-blue-alurkerja p-2 rounded">
-              <FilterIcon />
-            </button>
-          }
-        >
-          {({ closeModal }) => <FormFilter onClose={() => closeModal()} />}
-        </Modal>
-      )
-    }, [])
+    const ButtonFilter = (props: ButtonHTMLAttributes<HTMLButtonElement>) => (
+      <button id="button-filter" className="bg-light-blue-alurkerja text-main-blue-alurkerja p-2 rounded" {...props}>
+        <FilterIcon />
+      </button>
+    )
+
+    const ModalFilter = () => (
+      <Modal title="Filter" triggerButton={<ButtonFilter />}>
+        {({ closeModal }) => <FormFilter onClose={() => closeModal()} />}
+      </Modal>
+    )
 
     return (
       <>
@@ -196,15 +192,9 @@ export const HeaderRight: FC<HeaderRightProps> = memo(
         )}
 
         {customButtonFilter ? (
-          customButtonFilter({ ButtonFilter: ButtonFilter })
+          customButtonFilter(ModalFilter, ButtonFilter)
         ) : (
-          <>
-            {onClickFilter ? (
-              <ButtonFilter key="modal-filter" onClick={onClickFilter} />
-            ) : (
-              <>{setFilterBy && <ButtonFilter key="button-filter" />}</>
-            )}
-          </>
+          <>{onClickFilter ? <ButtonFilter onClick={onClickFilter} /> : <>{setFilterBy && <ModalFilter />}</>}</>
         )}
 
         {customButtonDiagram ? (

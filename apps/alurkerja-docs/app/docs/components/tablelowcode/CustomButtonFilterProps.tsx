@@ -3,14 +3,16 @@
 import { CodePreview } from '@/components'
 import { SectionLayout } from '@/layouts'
 import { TableLowcode } from 'alurkerja-ui'
-import React from 'react'
+import React, { ButtonHTMLAttributes } from 'react'
 import spec from './spec.json'
 import data from './data.json'
 
 export const CustomButtonFilterProps = () => {
-  const customButtonFilter = (arg: { ButtonFilter: (arg: { onClick?: (() => void) | undefined }) => JSX.Element }) => {
-    const { ButtonFilter } = arg
-    return <ButtonFilter onClick={() => alert('filter clicked')} />
+  const customButtonFilter = (
+    _Modal: () => JSX.Element,
+    Button: (props: ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element
+  ) => {
+    return <Button onClick={() => alert('filter clicked')} />
   }
 
   return (
@@ -28,9 +30,8 @@ export const CustomButtonFilterProps = () => {
           '/>',
         ]}
         externalFunction={[
-          'const customButtonFilter = (arg: { ButtonFilter: (arg: { onClick?: (() => void) | undefined }) => JSX.Element }) => {',
-          '  const { ButtonFilter } = arg',
-          "  return <ButtonFilter onClick={() => alert('filter clicked')} />",
+          'const customButtonFilter = ( _Modal: () => JSX.Element,Button: (props: ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element) => {',
+          "  return <Button onClick={() => alert('filter clicked')} />",
           '}',
         ]}
       >

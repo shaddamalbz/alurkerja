@@ -24,6 +24,7 @@ export const NonBpmn: Story = {
     onClickEdit: undefined,
     onClickDetail: undefined,
     onClickDelete: undefined,
+    onClickFilter: undefined,
     onDeleteConfirm: undefined,
     customButtonFilter: undefined,
   },
