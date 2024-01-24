@@ -4,16 +4,12 @@ import _ from 'lodash'
 import { HiChevronDown } from 'react-icons/hi'
 import { BaseInputProps } from '@/types'
 
-import '@/assets/scss/select.scss'
+export interface SelectProps extends Props, BaseInputProps {}
 
-export interface SelectProps extends Props, BaseInputProps {
-  height?: string | number
-}
-
-export const Select = forwardRef<any, SelectProps>(({ height = 33, components, ...rest }, ref) => {
+export const Select = forwardRef<any, SelectProps>(({ components, unstyled = true, ...rest }, ref) => {
   const DefaultDropdownIndicator = () => {
     return (
-      <div className="select-dropdown-indicator">
+      <div className="select-dropdown-indicator ">
         <HiChevronDown />
       </div>
     )
@@ -21,21 +17,29 @@ export const Select = forwardRef<any, SelectProps>(({ height = 33, components, .
   return (
     <ReactSelect
       ref={ref}
+      classNamePrefix="select"
       styles={{
-        control: (baseStyles) => ({
-          ...baseStyles,
-          height: height,
-          minHeight: 33,
+        control: () => ({}),
+        valueContainer: () => ({}),
+        input: () => ({ gridArea: '1 / 1 / 2 / 3' }),
+        option: (base, state) => ({
+          ...base,
+          backgroundColor: state.isSelected ? '#0095E8' : '#fff',
+          ':hover': { backgroundColor: '#E4E6EF', color: '#000' },
         }),
       }}
-      classNamePrefix={'select'}
+      classNames={{
+        control: () =>
+          'h-11 flex rounded-md border border-[#c4c4c480] py-2 px-3 bg-white focus:ring-indigo-600 focus-within:ring-indigo-600 focus-within:border-indigo-600 focus:border-indigo-600',
+        valueContainer: () => 'p-0 overflow-hidden relative grid items-center flex-1',
+        input: () => 'visible',
+      }}
       components={{
         IndicatorSeparator: () => null,
-
         DropdownIndicator: DefaultDropdownIndicator,
-
         ...components,
       }}
+      menuIsOpen
       {...rest}
     />
   )

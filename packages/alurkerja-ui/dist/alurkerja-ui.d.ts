@@ -1043,7 +1043,6 @@ export declare interface ReactHookWrapperProps {
 export declare const Select: ForwardRefExoticComponent<SelectProps & RefAttributes<any>>;
 
 export declare interface SelectProps extends Props, BaseInputProps {
-    height?: string | number;
 }
 
 export declare const SelectWithModal: FC<SelectWithModalProps>;

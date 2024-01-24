@@ -51152,25 +51152,34 @@ var Xne = /* @__PURE__ */ jh(function(e, t) {
     ref: t
   }, n));
 }), Zne = Xne;
-const u1 = jh(({ height: e = 33, components: t, ...n }, a) => {
-  const r = () => /* @__PURE__ */ k.jsx("div", { className: "select-dropdown-indicator", children: /* @__PURE__ */ k.jsx(nk, {}) });
+const u1 = jh(({ components: e, unstyled: t = !0, ...n }, a) => {
+  const r = () => /* @__PURE__ */ k.jsx("div", { className: "select-dropdown-indicator ", children: /* @__PURE__ */ k.jsx(nk, {}) });
   return /* @__PURE__ */ k.jsx(
     Zne,
     {
       ref: a,
+      classNamePrefix: "select",
       styles: {
-        control: (l) => ({
+        control: () => ({}),
+        valueContainer: () => ({}),
+        input: () => ({ gridArea: "1 / 1 / 2 / 3" }),
+        option: (l, u) => ({
           ...l,
-          height: e,
-          minHeight: 33
+          backgroundColor: u.isSelected ? "#0095E8" : "#fff",
+          ":hover": { backgroundColor: "#E4E6EF", color: "#000" }
         })
       },
-      classNamePrefix: "select",
+      classNames: {
+        control: () => "h-11 flex rounded-md border border-[#c4c4c480] py-2 px-3 bg-white focus:ring-indigo-600 focus-within:ring-indigo-600 focus-within:border-indigo-600 focus:border-indigo-600",
+        valueContainer: () => "p-0 overflow-hidden relative grid items-center flex-1",
+        input: () => "visible"
+      },
       components: {
         IndicatorSeparator: () => null,
         DropdownIndicator: r,
-        ...t
+        ...e
       },
+      menuIsOpen: !0,
       ...n
     }
   );
