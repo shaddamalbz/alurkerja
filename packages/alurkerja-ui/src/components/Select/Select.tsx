@@ -39,7 +39,6 @@ export const Select = forwardRef<any, SelectProps>(({ components, unstyled = tru
         DropdownIndicator: DefaultDropdownIndicator,
         ...components,
       }}
-      menuIsOpen
       {...rest}
     />
   )
