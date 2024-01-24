@@ -10,6 +10,10 @@ interface ColumnInstance {
 export type ColumnProps = ColumnInstance[]
 
 export interface TableLowcodeProps {
+  /**
+   * expected to be used on tablelowcode with static data & static spec
+   */
+  isLoadingData?: boolean
   spec?: TableSpec
   data?: { [x: string]: any }[]
   pagination?: PaginationSpec
@@ -51,6 +55,10 @@ export interface TableLowcodeProps {
   pageConfig?: { limit: number; page: number }
   /**  setter to set page config*/
   setPageConfig?: Dispatch<SetStateAction<{ limit: number; page: number }>>
+  sortBy?: string
+  setSortBy?: Dispatch<SetStateAction<string | undefined>>
+  orderBy?: 'asc' | 'desc'
+  setOrderBy?: Dispatch<SetStateAction<'asc' | 'desc' | undefined>>
   canBulk?: boolean
   /**  state to store selected row*/
   selectedRow?: number[]
@@ -151,7 +159,13 @@ export interface TableLowcodeProps {
     usertaskMapping: UserTaskMapping[]
   }) => JSX.Element
   customBadgeDiagram?: (task_id: string) => string
+  /**
+   * @deprecated
+   */
   defaultOrder?: 'asc' | 'desc'
+  /**
+   * @deprecated
+   */
   defaultSortBy?: string
   subHeader?: () => ReactNode
   onClickBulk?: () => void
@@ -243,10 +257,6 @@ export interface TableLowcodeViewProps {
   pagination: PaginationSpec | undefined
   selectedAll: boolean
   setSelectedAll: Dispatch<SetStateAction<boolean>>
-  sortBy?: string
-  setSortBy?: Dispatch<SetStateAction<string | undefined>>
-  orderBy?: 'asc' | 'desc'
-  setOrderBy?: Dispatch<SetStateAction<'asc' | 'desc' | undefined>>
 }
 
 export interface TableLayoutProps {

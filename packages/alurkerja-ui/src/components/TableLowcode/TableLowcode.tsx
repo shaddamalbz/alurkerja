@@ -22,8 +22,6 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
     pageConfig,
     renderState,
     search,
-    defaultOrder,
-    defaultSortBy,
     data,
     spec,
     extendQuery,
@@ -31,11 +29,12 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
     showBpmn,
     hideTable,
     pagination,
+    sortBy,
+    orderBy,
+    isLoadingData = false,
   } = props
 
   const [selectedAll, setSelectedAll] = useState<boolean>(false)
-  const [sortBy, setSortBy] = useState<string | undefined>(defaultSortBy)
-  const [orderBy, setOrderBy] = useState<'asc' | 'desc' | undefined>(defaultOrder)
 
   const { tableData, loading: loadingData } = getTableData({
     baseUrl: baseUrl,
@@ -59,17 +58,13 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
         showBpmn={showBpmn}
         hideTable={hideTable}
       >
-        {!loadingData ? (
+        {isLoadingData || !loadingData ? (
           <TableLowcodeView
             tableData={data || tableData}
             tableSpec={spec}
             pagination={pagination}
             selectedAll={selectedAll}
             setSelectedAll={setSelectedAll}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-            orderBy={orderBy}
-            setOrderBy={setOrderBy}
           />
         ) : (
           <div className="mx-auto my-6 w-fit">
@@ -89,19 +84,17 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
     pageConfig,
     renderState,
     search,
-    defaultOrder,
-    defaultSortBy,
     data,
     extendQuery,
     extraButton,
     showBpmn,
     hideTable,
     dataPath,
+    sortBy,
+    orderBy,
   } = props
 
   const [selectedAll, setSelectedAll] = useState<boolean>(false)
-  const [sortBy, setSortBy] = useState<string | undefined>(defaultSortBy)
-  const [orderBy, setOrderBy] = useState<'asc' | 'desc' | undefined>(defaultOrder)
 
   const { tableSpec, loading: loadingSpec } = getTableSpec({ baseUrl, path: specPath })
 
@@ -140,10 +133,6 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
               pagination={pagination}
               selectedAll={selectedAll}
               setSelectedAll={setSelectedAll}
-              sortBy={sortBy}
-              setSortBy={setSortBy}
-              orderBy={orderBy}
-              setOrderBy={setOrderBy}
             />
           ) : (
             <div className="mx-auto my-6 w-fit flex items-center">

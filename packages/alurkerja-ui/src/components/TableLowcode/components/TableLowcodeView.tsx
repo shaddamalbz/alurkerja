@@ -9,8 +9,7 @@ import { TableLowcodeViewProps } from '../TableLowcode.types'
 import { TableRow } from './TableRow'
 
 export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
-  const { tableSpec, tableData, pagination, selectedAll, setSelectedAll, orderBy, setOrderBy, sortBy, setSortBy } =
-    props
+  const { tableSpec, tableData, pagination, selectedAll, setSelectedAll } = props
   const theme = getTheme()
 
   const {
@@ -27,6 +26,10 @@ export const TableLowcodeView: FC<TableLowcodeViewProps> = (props) => {
     canBulk = false,
     column,
     extraRow,
+    orderBy,
+    setOrderBy,
+    sortBy,
+    setSortBy,
   } = useContext(TableLowcodeContext)
 
   const { listFieldKey } = useFieldOrder({ fields: tableSpec?.fields })
