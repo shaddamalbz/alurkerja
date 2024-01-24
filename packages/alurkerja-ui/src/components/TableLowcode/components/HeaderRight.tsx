@@ -97,7 +97,7 @@ export const HeaderRight: FC<HeaderRightProps> = memo(
             })}
           </div>
           <div className="flex justify-between px-6 py-5">
-            <Button size="small" onClick={() => close()}>
+            <Button size="small" onClick={() => onClose()}>
               {tableSpec?.languages?.filter_cancel ?? 'Cancel'}
             </Button>
             <div className="flex justify-end w-full gap-4">
