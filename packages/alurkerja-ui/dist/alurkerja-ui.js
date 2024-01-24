@@ -51152,20 +51152,20 @@ var Xne = /* @__PURE__ */ jh(function(e, t) {
     ref: t
   }, n));
 }), Zne = Xne;
-const u1 = jh(({ components: e, unstyled: t = !0, ...n }, a) => {
-  const r = () => /* @__PURE__ */ k.jsx("div", { className: "select-dropdown-indicator ", children: /* @__PURE__ */ k.jsx(nk, {}) });
+const u1 = jh(({ components: e, ...t }, n) => {
+  const a = () => /* @__PURE__ */ k.jsx("div", { className: "select-dropdown-indicator ", children: /* @__PURE__ */ k.jsx(nk, {}) });
   return /* @__PURE__ */ k.jsx(
     Zne,
     {
-      ref: a,
+      ref: n,
       classNamePrefix: "select",
       styles: {
         control: () => ({}),
         valueContainer: () => ({}),
         input: () => ({ gridArea: "1 / 1 / 2 / 3" }),
-        option: (l, u) => ({
-          ...l,
-          backgroundColor: u.isSelected ? "#0095E8" : "#fff",
+        option: (r, l) => ({
+          ...r,
+          backgroundColor: l.isSelected ? "#0095E8" : "#fff",
           ":hover": { backgroundColor: "#E4E6EF", color: "#000" }
         })
       },
@@ -51176,10 +51176,10 @@ const u1 = jh(({ components: e, unstyled: t = !0, ...n }, a) => {
       },
       components: {
         IndicatorSeparator: () => null,
-        DropdownIndicator: r,
+        DropdownIndicator: a,
         ...e
       },
-      ...n
+      ...t
     }
   );
 }), Tae = ({ options: e, onChange: t, placeholder: n, title: a }) => {

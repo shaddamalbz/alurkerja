@@ -6,7 +6,7 @@ import { BaseInputProps } from '@/types'
 
 export interface SelectProps extends Props, BaseInputProps {}
 
-export const Select = forwardRef<any, SelectProps>(({ components, unstyled = true, ...rest }, ref) => {
+export const Select = forwardRef<any, SelectProps>(({ components, ...rest }, ref) => {
   const DefaultDropdownIndicator = () => {
     return (
       <div className="select-dropdown-indicator ">
