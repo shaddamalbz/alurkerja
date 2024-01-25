@@ -36260,8 +36260,7 @@ const Lz = ({
   loadingData: M = !1
 }) => {
   const P = Br(bc), [V, N] = ln(), [q, X] = ln(), [te, ie] = ln(), [J, fe] = ln(!0), re = async (De) => {
-    if (fe(!0), C)
-      return fe(!1), { tableData: C, loading: !1, pagination: te, detail: q };
+    fe(!0), C && (fe(!1), N(C));
     const Pe = vH("filter", r);
     let ge = e;
     if (O ? ge += O : ge += a == null ? void 0 : a.path, n)
