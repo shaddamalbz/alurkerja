@@ -19,6 +19,7 @@ export interface GetTableData {
   data?: any
   doFetch?: boolean
   dataPath?: string
+  loadingData?: boolean
 }
 
 export const getTableData = ({
@@ -35,6 +36,7 @@ export const getTableData = ({
   data,
   doFetch = true,
   dataPath,
+  loadingData = false,
 }: GetTableData) => {
   const axiosInstance = useContext(AuthContext)
 
@@ -114,7 +116,7 @@ export const getTableData = ({
     const abortController = new AbortController()
     const signal = abortController.signal
 
-    if (spec?.path && doFetch) {
+    if (spec?.path && doFetch && !loadingData) {
       fetch(signal)
     }
 
@@ -122,6 +124,10 @@ export const getTableData = ({
       abortController.abort()
     }
   }, [spec, baseUrl, renderState, filter, search, pageConfig, orderBy, sortBy, extendQuery, doFetch])
+
+  useEffect(() => {
+    setLoading(loadingData)
+  }, [loadingData])
 
   return { tableData, loading, pagination, detail }
 }

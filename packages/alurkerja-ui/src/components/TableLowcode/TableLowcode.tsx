@@ -36,7 +36,7 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
 
   const [selectedAll, setSelectedAll] = useState<boolean>(false)
 
-  const { tableData, loading: loadingData } = getTableData({
+  const { tableData, loading } = getTableData({
     baseUrl: baseUrl,
     renderState: renderState,
     filter: filterBy,
@@ -47,6 +47,7 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
     orderBy: orderBy,
     extendQuery: extendQuery,
     data: data,
+    loadingData: isLoadingData,
   })
 
   return (
@@ -58,7 +59,7 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
         showBpmn={showBpmn}
         hideTable={hideTable}
       >
-        {!isLoadingData && !loadingData ? (
+        {!loading ? (
           <TableLowcodeView
             tableData={tableData}
             tableSpec={spec}
@@ -114,10 +115,11 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
     extendQuery: extendQuery,
     doFetch: !hideTable,
     dataPath: dataPath,
+    data: data,
   })
 
   return !loadingSpec ? (
-    <TableLowcodeContext.Provider value={{ ...props, layout: props.layout ?? 'auto', data: data || tableData }}>
+    <TableLowcodeContext.Provider value={{ ...props, layout: props.layout ?? 'auto', data: tableData }}>
       <section className="px-4">
         <TableLayout
           tableSpec={tableSpec}
