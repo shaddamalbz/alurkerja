@@ -50,65 +50,65 @@ export const getTableData = ({
     if (data) {
       setLoading(false)
       setTableData(data)
-    }
-
-    const filterQuery = objToQueryParam('filter', filter)
-
-    let url = baseUrl
-    if (dataPath) {
-      url += dataPath
     } else {
-      url += spec?.path
-    }
+      const filterQuery = objToQueryParam('filter', filter)
 
-    if (id) {
-      url += `/${id}`
-    } else {
-      if (extendQuery) {
-        Object.keys(extendQuery).forEach((key, idx) => {
-          url += `${idx > 0 ? '&' : '?'}${key}=${extendQuery[key]}`
-        })
+      let url = baseUrl
+      if (dataPath) {
+        url += dataPath
+      } else {
+        url += spec?.path
       }
 
-      if (filter) {
-        url += `${extendQuery ? '&' : '?'}${filterQuery}`
-      }
-
-      if (search && search !== '') {
-        url += `${filter || extendQuery ? '&' : '?'}search=${search}`
-      }
-
-      if (pageConfig) {
-        const paginationQuery = `page=${pageConfig.page}&limit=${pageConfig.limit}`
-        url += `${filter || search || extendQuery ? '&' : '?'}${paginationQuery}`
-      }
-
-      if (orderBy) {
-        url += `${filter || search || pageConfig || extendQuery ? '&' : '?'}asc=${orderBy === 'asc'}`
-      }
-
-      if (sortBy) {
-        url += `${filter || search || pageConfig || orderBy ? '&' : '?'}sort=${sortBy}`
-      }
-    }
-
-    axiosInstance
-      .get(url, { signal })
-      .then(({ data, status }) => {
-        if (status === 200) {
-          const result = data.data
-          if (id) {
-            setDetail(result)
-          } else {
-            const pagination = _.omit(result, 'content') as PaginationSpec
-            setTableData(result.content)
-            setPagination(pagination)
-          }
+      if (id) {
+        url += `/${id}`
+      } else {
+        if (extendQuery) {
+          Object.keys(extendQuery).forEach((key, idx) => {
+            url += `${idx > 0 ? '&' : '?'}${key}=${extendQuery[key]}`
+          })
         }
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+
+        if (filter) {
+          url += `${extendQuery ? '&' : '?'}${filterQuery}`
+        }
+
+        if (search && search !== '') {
+          url += `${filter || extendQuery ? '&' : '?'}search=${search}`
+        }
+
+        if (pageConfig) {
+          const paginationQuery = `page=${pageConfig.page}&limit=${pageConfig.limit}`
+          url += `${filter || search || extendQuery ? '&' : '?'}${paginationQuery}`
+        }
+
+        if (orderBy) {
+          url += `${filter || search || pageConfig || extendQuery ? '&' : '?'}asc=${orderBy === 'asc'}`
+        }
+
+        if (sortBy) {
+          url += `${filter || search || pageConfig || orderBy ? '&' : '?'}sort=${sortBy}`
+        }
+      }
+
+      axiosInstance
+        .get(url, { signal })
+        .then(({ data, status }) => {
+          if (status === 200) {
+            const result = data.data
+            if (id) {
+              setDetail(result)
+            } else {
+              const pagination = _.omit(result, 'content') as PaginationSpec
+              setTableData(result.content)
+              setPagination(pagination)
+            }
+          }
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    }
   }
 
   useEffect(() => {
