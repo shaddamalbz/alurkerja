@@ -52201,7 +52201,7 @@ const tre = N8(
     extendQuery: g,
     data: u
   });
-  return /* @__PURE__ */ k.jsx(bg.Provider, { value: { ...e, layout: e.layout ?? "auto", data: u || X }, children: /* @__PURE__ */ k.jsx(
+  return /* @__PURE__ */ k.jsx(bg.Provider, { value: { ...e, layout: e.layout ?? "auto", data: X }, children: /* @__PURE__ */ k.jsx(
     h9,
     {
       tableSpec: p,
@@ -52209,10 +52209,10 @@ const tre = N8(
       extraButton: b,
       showBpmn: C,
       hideTable: T,
-      children: !V || !te ? /* @__PURE__ */ k.jsx(
+      children: !V && !te ? /* @__PURE__ */ k.jsx(
         m9,
         {
-          tableData: u || X,
+          tableData: X,
           tableSpec: p,
           pagination: O,
           selectedAll: N,

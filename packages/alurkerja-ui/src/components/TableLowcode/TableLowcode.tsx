@@ -50,7 +50,7 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
   })
 
   return (
-    <TableLowcodeContext.Provider value={{ ...props, layout: props.layout ?? 'auto', data: data || tableData }}>
+    <TableLowcodeContext.Provider value={{ ...props, layout: props.layout ?? 'auto', data: tableData }}>
       <TableLayout
         tableSpec={spec}
         pagination={pagination}
@@ -58,9 +58,9 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
         showBpmn={showBpmn}
         hideTable={hideTable}
       >
-        {!isLoadingData || !loadingData ? (
+        {!isLoadingData && !loadingData ? (
           <TableLowcodeView
-            tableData={data || tableData}
+            tableData={tableData}
             tableSpec={spec}
             pagination={pagination}
             selectedAll={selectedAll}
