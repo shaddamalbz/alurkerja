@@ -36261,7 +36261,7 @@ const Lz = ({
 }) => {
   const P = Br(bc), [V, N] = ln(), [q, X] = ln(), [te, ie] = ln(), [J, fe] = ln(!0), re = async (De) => {
     if (fe(!0), C)
-      return fe(!1), { tableData: C, loading: J, pagination: te, detail: q };
+      return fe(!1), { tableData: C, loading: !1, pagination: te, detail: q };
     const Pe = vH("filter", r);
     let ge = e;
     if (O ? ge += O : ge += a == null ? void 0 : a.path, n)
@@ -36294,7 +36294,7 @@ const Lz = ({
     return a != null && a.path && T && !M && re(Pe), () => {
       De.abort();
     };
-  }, [a, e, t, r, l, u, p, g, b, T]), gn(() => {
+  }, [a, e, t, r, l, u, p, g, b, T, C]), gn(() => {
     fe(M);
   }, [M]), { tableData: V, loading: J, pagination: te, detail: q };
 }, H5 = ({ baseUrl: e, path: t, spec: n }) => {
@@ -52213,7 +52213,10 @@ const tre = N8(
       extraButton: b,
       showBpmn: C,
       hideTable: T,
-      children: te ? /* @__PURE__ */ k.jsx("div", { className: "mx-auto my-6 w-fit", children: /* @__PURE__ */ k.jsx(Fy, {}) }) : /* @__PURE__ */ k.jsx(
+      children: te ? /* @__PURE__ */ k.jsxs("div", { className: "mx-auto my-6 w-fit flex items-center gap-2.5", children: [
+        /* @__PURE__ */ k.jsx(Fy, { className: "text-main-blue-alurkerja" }),
+        "Mengambil data.."
+      ] }) : /* @__PURE__ */ k.jsx(
         m9,
         {
           tableData: X,
