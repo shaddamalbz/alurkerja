@@ -36260,33 +36260,36 @@ const Lz = ({
   loadingData: M = !1
 }) => {
   const P = Br(bc), [V, N] = ln(), [q, X] = ln(), [te, ie] = ln(), [J, fe] = ln(!0), re = async (De) => {
-    fe(!0), C && (fe(!1), N(C));
-    const Pe = vH("filter", r);
-    let ge = e;
-    if (O ? ge += O : ge += a == null ? void 0 : a.path, n)
-      ge += `/${n}`;
+    if (fe(!0), C)
+      fe(!1), N(C);
     else {
-      if (b && Object.keys(b).forEach((Ce, Ve) => {
-        ge += `${Ve > 0 ? "&" : "?"}${Ce}=${b[Ce]}`;
-      }), r && (ge += `${b ? "&" : "?"}${Pe}`), l && l !== "" && (ge += `${r || b ? "&" : "?"}search=${l}`), u) {
-        const Ce = `page=${u.page}&limit=${u.limit}`;
-        ge += `${r || l || b ? "&" : "?"}${Ce}`;
-      }
-      p && (ge += `${r || l || u || b ? "&" : "?"}asc=${p === "asc"}`), g && (ge += `${r || l || u || p ? "&" : "?"}sort=${g}`);
-    }
-    P.get(ge, { signal: De }).then(({ data: Ce, status: Ve }) => {
-      if (Ve === 200) {
-        const me = Ce.data;
-        if (n)
-          X(me);
-        else {
-          const se = tf.omit(me, "content");
-          N(me.content), ie(se);
+      const Pe = vH("filter", r);
+      let ge = e;
+      if (O ? ge += O : ge += a == null ? void 0 : a.path, n)
+        ge += `/${n}`;
+      else {
+        if (b && Object.keys(b).forEach((Ce, Ve) => {
+          ge += `${Ve > 0 ? "&" : "?"}${Ce}=${b[Ce]}`;
+        }), r && (ge += `${b ? "&" : "?"}${Pe}`), l && l !== "" && (ge += `${r || b ? "&" : "?"}search=${l}`), u) {
+          const Ce = `page=${u.page}&limit=${u.limit}`;
+          ge += `${r || l || b ? "&" : "?"}${Ce}`;
         }
+        p && (ge += `${r || l || u || b ? "&" : "?"}asc=${p === "asc"}`), g && (ge += `${r || l || u || p ? "&" : "?"}sort=${g}`);
       }
-    }).finally(() => {
-      fe(!1);
-    });
+      P.get(ge, { signal: De }).then(({ data: Ce, status: Ve }) => {
+        if (Ve === 200) {
+          const me = Ce.data;
+          if (n)
+            X(me);
+          else {
+            const se = tf.omit(me, "content");
+            N(me.content), ie(se);
+          }
+        }
+      }).finally(() => {
+        fe(!1);
+      });
+    }
   };
   return gn(() => {
     const De = new AbortController(), Pe = De.signal;
