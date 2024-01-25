@@ -49,8 +49,7 @@ export const getTableData = ({
     setLoading(true)
     if (data) {
       setLoading(false)
-
-      return { tableData: data, loading: false, pagination, detail }
+      setTableData(data)
     }
 
     const filterQuery = objToQueryParam('filter', filter)
