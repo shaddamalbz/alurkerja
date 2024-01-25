@@ -50,7 +50,7 @@ export const getTableData = ({
     if (data) {
       setLoading(false)
 
-      return { tableData: data, loading, pagination, detail }
+      return { tableData: data, loading: false, pagination, detail }
     }
 
     const filterQuery = objToQueryParam('filter', filter)
@@ -123,7 +123,7 @@ export const getTableData = ({
     return () => {
       abortController.abort()
     }
-  }, [spec, baseUrl, renderState, filter, search, pageConfig, orderBy, sortBy, extendQuery, doFetch])
+  }, [spec, baseUrl, renderState, filter, search, pageConfig, orderBy, sortBy, extendQuery, doFetch, data])
 
   useEffect(() => {
     setLoading(loadingData)

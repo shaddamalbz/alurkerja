@@ -68,8 +68,9 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
             setSelectedAll={setSelectedAll}
           />
         ) : (
-          <div className="mx-auto my-6 w-fit">
-            <Spinner />
+          <div className="mx-auto my-6 w-fit flex items-center gap-2.5">
+            <Spinner className="text-main-blue-alurkerja" />
+            Mengambil data..
           </div>
         )}
       </TableLayout>
