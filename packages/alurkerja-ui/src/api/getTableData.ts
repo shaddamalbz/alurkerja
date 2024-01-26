@@ -40,7 +40,7 @@ export const getTableData = ({
 }: GetTableData) => {
   const axiosInstance = useContext(AuthContext)
 
-  const [tableData, setTableData] = useState<{ id: number; [x: string]: any }[]>()
+  const [tableData, setTableData] = useState<{ [x: string]: any }[]>()
   const [detail, setDetail] = useState<{ [x: string]: any }>()
   const [pagination, setPagination] = useState<PaginationSpec>()
   const [loading, setLoading] = useState<boolean>(true)

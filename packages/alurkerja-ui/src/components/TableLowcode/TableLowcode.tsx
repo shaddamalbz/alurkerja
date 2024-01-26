@@ -32,6 +32,7 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
     sortBy,
     orderBy,
     isLoadingData = false,
+    customList,
   } = props
 
   const [selectedAll, setSelectedAll] = useState<boolean>(false)
@@ -60,13 +61,19 @@ const StaticTableLowcode: FC<TableLowcodeProps> = (props) => {
         hideTable={hideTable}
       >
         {!loading ? (
-          <TableLowcodeView
-            tableData={tableData}
-            tableSpec={spec}
-            pagination={pagination}
-            selectedAll={selectedAll}
-            setSelectedAll={setSelectedAll}
-          />
+          <>
+            {customList ? (
+              customList(tableData)
+            ) : (
+              <TableLowcodeView
+                tableData={tableData}
+                tableSpec={spec}
+                pagination={pagination}
+                selectedAll={selectedAll}
+                setSelectedAll={setSelectedAll}
+              />
+            )}
+          </>
         ) : (
           <div className="mx-auto my-6 w-fit flex items-center gap-2.5">
             <Spinner className="text-main-blue-alurkerja" />

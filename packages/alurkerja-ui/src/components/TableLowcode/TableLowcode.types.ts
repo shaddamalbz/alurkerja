@@ -79,6 +79,7 @@ export interface TableLowcodeProps {
   /** trying to custom header table? use this*/
   customHeader?: JSX.Element
   customRow?: ({ row, DefaultElement }: CustomRowProperties) => ReactNode
+  customList?: (data?: { [x: string]: any }[]) => ReactNode
   customField?: ({
     field,
     setValue,
