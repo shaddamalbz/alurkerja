@@ -1228,6 +1228,9 @@ declare interface TableLowcodeProps {
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element;
     customRow?: ({ row, DefaultElement }: CustomRowProperties) => ReactNode;
+    customList?: (data?: {
+        [x: string]: any;
+    }[]) => ReactNode;
     customField?: ({ field, setValue, defaultField, }: {
         field: FieldProperties;
         setValue: UseFormSetValue<FieldValues>;
@@ -1426,6 +1429,7 @@ declare interface TableLowcodeProps_2 {
     /** trying to custom header table? use this*/
     customHeader?: JSX.Element
     customRow?: ({ row, DefaultElement }: CustomRowProperties_2) => ReactNode
+    customList?: (data?: { [x: string]: any }[]) => ReactNode
     customField?: ({
         field,
         setValue,
