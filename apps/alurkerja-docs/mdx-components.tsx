@@ -8,7 +8,7 @@ export const useMDXComponents: (components: MDXComponents) => MDXComponents = (c
         id={_.toLower(props.children?.toString())
           .replaceAll(' ', '-')
           .replaceAll('()', '')}
-        className="group relative z-20 text-2xl font-bold text-gray-900 before:invisible before:-mt-20 before:block before:h-20 before:content-['']"
+        className="group relative z-20 text-2xl font-bold text-gray-900 before:invisible before:-mt-22 before:block before:h-20 before:content-['']"
         {...props}
       >
         {props.children}
@@ -19,7 +19,7 @@ export const useMDXComponents: (components: MDXComponents) => MDXComponents = (c
         id={_.toLower(props.children?.toString())
           .replaceAll(' ', '-')
           .replaceAll('()', '')}
-        className="group relative z-10 text-2xl font-bold text-gray-900 before:invisible before:-mt-20 before:block before:h-20 before:content-[''] "
+        className="group relative z-10 text-2xl font-bold text-gray-900 before:invisible before:-mt-22 before:block before:h-20 before:content-[''] "
         {...props}
       >
         {props.children}
