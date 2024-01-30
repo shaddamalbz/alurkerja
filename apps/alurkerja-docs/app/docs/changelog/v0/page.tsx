@@ -1,11 +1,25 @@
 import { SectionLayout } from '@/layouts'
 import Link from 'next/link'
 import React from 'react'
+import V486 from './V486'
+import V485 from './V485'
+import V483 from './V483'
+import V482 from './V482'
+import V481 from './V481'
+import V480 from './V480'
+import V479 from './V479'
 
 export default function page() {
   return (
     <article>
       <h2 className="text-3xl font-bold text-gray-900">Changelog</h2>
+      <V486 />
+      <V485 />
+      <V483 />
+      <V482 />
+      <V481 />
+      <V480 />
+      <V479 />
       <SectionLayout title="0.0.464" description="penambahan fitur pada komponen">
         <ul>
           <li>

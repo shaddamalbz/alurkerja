@@ -49,9 +49,7 @@ export const TableLayout: FC<TableLayoutProps> = ({
           onClickBpmn={() => setIsShowBpmn((prev) => !prev)}
         />
       )}
-
       {subHeader && <div>{subHeader()}</div>}
-
       {isShowBpmn && (
         <DiagramBpmn
           url={baseUrl + tableSpec?.path}
@@ -61,7 +59,6 @@ export const TableLayout: FC<TableLayoutProps> = ({
           customBadge={customBadgeDiagram}
         />
       )}
-
       {!hideTable && children}
 
       {!hideTable && pageConfig && setPageConfig && (

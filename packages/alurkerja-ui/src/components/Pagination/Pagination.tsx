@@ -28,6 +28,8 @@ export const Pagination: FC<PaginationProps> = ({ pagination, pageConfig, setPag
 
   return (
     <>
+      {JSON.stringify(pagination)}
+      {pagination && pageConfig && setPageConfig ? 'true' : 'flase'}
       {pagination && pageConfig && setPageConfig && (
         <div className="alurkerja-pagination text-xs md:text-base sm:text-sm py-4 px-4 rounded border-t">
           <div className="flex flex-wrap gap-4 justify-between item-center relative">

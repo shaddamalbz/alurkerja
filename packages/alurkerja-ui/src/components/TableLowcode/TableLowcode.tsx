@@ -101,6 +101,7 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
     dataPath,
     sortBy,
     orderBy,
+    customList,
   } = props
 
   const [selectedAll, setSelectedAll] = useState<boolean>(false)
@@ -137,13 +138,19 @@ const FetchedTableLowcode: FC<TableLowcodeProps> = (props) => {
           hideTable={hideTable}
         >
           {!loadingData ? (
-            <TableLowcodeView
-              tableData={tableData}
-              tableSpec={tableSpec}
-              pagination={pagination}
-              selectedAll={selectedAll}
-              setSelectedAll={setSelectedAll}
-            />
+            <>
+              {customList ? (
+                customList(tableData)
+              ) : (
+                <TableLowcodeView
+                  tableData={tableData}
+                  tableSpec={tableSpec}
+                  pagination={pagination}
+                  selectedAll={selectedAll}
+                  setSelectedAll={setSelectedAll}
+                />
+              )}
+            </>
           ) : (
             <div className="mx-auto my-6 w-fit flex items-center">
               <Spinner className="text-main-blue-alurkerja" /> Loading data
