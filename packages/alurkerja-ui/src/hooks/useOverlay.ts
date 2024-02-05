@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 
 export const useOverlay = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false)
-  const [windowSize, setWindowSize] = useState([window.innerHeight, window.innerWidth])
+  const [windowSize, setWindowSize] = useState(() => {
+    if (typeof window === 'undefined') {
+      return [0, 0]
+    }
+    return [window.innerHeight, window.innerWidth]
+  })
 
   const elementRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -19,6 +24,7 @@ export const useOverlay = () => {
     const windowSizeHandler = () => {
       setWindowSize([window.innerWidth, window.innerHeight])
     }
+
     window.addEventListener('resize', windowSizeHandler)
 
     return () => {

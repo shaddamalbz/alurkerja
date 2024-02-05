@@ -393,19 +393,21 @@ export const Calendar = ({ onChange, type = 'range' }: AlurkerjaCalendar) => {
       : moment(selectedDate[0]).format('DD/MM/YYYY')
     : ''
 
-  return (
-    <div ref={elementRef} className="relative">
-      <Input onClick={show} value={inputValue} />
-      {createPortal(
-        <div ref={overlayRef} className={classNameOverlay}>
-          {overlayHeader}
-          {datePicker}
-          {monthPicker}
-          {yearPicker}
-          {overlayFooter}
-        </div>,
-        document.body
-      )}
-    </div>
-  )
+  if (typeof document !== 'undefined') {
+    return (
+      <div ref={elementRef} className="relative">
+        <Input onClick={show} value={inputValue} readOnly />
+        {createPortal(
+          <div ref={overlayRef} className={classNameOverlay}>
+            {overlayHeader}
+            {datePicker}
+            {monthPicker}
+            {yearPicker}
+            {overlayFooter}
+          </div>,
+          document.body
+        )}
+      </div>
+    )
+  }
 }

@@ -36437,7 +36437,7 @@ const nY = ({
   Kz(e, { role: n }),
   ...a
 ]), sY = () => {
-  const [e, t] = Gt(!1), [n, a] = Gt([window.innerHeight, window.innerWidth]), r = Pn(null), l = Pn(null), u = () => {
+  const [e, t] = Gt(!1), [n, a] = Gt(() => typeof window > "u" ? [0, 0] : [window.innerHeight, window.innerWidth]), r = Pn(null), l = Pn(null), u = () => {
     t(!1);
   }, p = () => {
     t(!0);
@@ -55903,19 +55903,20 @@ const Mae = {
     },
     `year-${qe}`
   )).reverse() }) }) : null, Ae = ve(), Ke = se(), we = $e(), Ne = Qe(), Re = Fe(), Be = p ? p[1] ? `${gn(p[0]).format("DD/MM/YYYY")} - ${gn(p[1]).format("DD/MM/YYYY")}` : gn(p[0]).format("DD/MM/YYYY") : "";
-  return /* @__PURE__ */ k.jsxs("div", { ref: l, className: "relative", children: [
-    /* @__PURE__ */ k.jsx(Fd, { onClick: r, value: Be }),
-    wg.createPortal(
-      /* @__PURE__ */ k.jsxs("div", { ref: u, className: Pe, children: [
-        Ae,
-        Ke,
-        we,
-        Ne,
-        Re
-      ] }),
-      document.body
-    )
-  ] });
+  if (typeof document < "u")
+    return /* @__PURE__ */ k.jsxs("div", { ref: l, className: "relative", children: [
+      /* @__PURE__ */ k.jsx(Fd, { onClick: r, value: Be, readOnly: !0 }),
+      wg.createPortal(
+        /* @__PURE__ */ k.jsxs("div", { ref: u, className: Pe, children: [
+          Ae,
+          Ke,
+          we,
+          Ne,
+          Re
+        ] }),
+        document.body
+      )
+    ] });
 };
 export {
   $ae as Address,
