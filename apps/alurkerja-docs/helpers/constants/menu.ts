@@ -2,6 +2,7 @@ export const listMenu = [
   { label: 'Avatar', href: '/docs/components/avatar' },
   { label: 'Badge', href: '/docs/components/badge' },
   { label: 'Button', href: '/docs/components/button' },
+  { label: 'Calendar', href: '/docs/components/calendar' },
   { label: 'Checkbox', href: '/docs/components/checkbox' },
   { label: 'DiagramBpmn', href: '/docs/components/diagram-bpmn' },
   { label: 'Dropdown', href: '/docs/components/dropdown' },

@@ -16,7 +16,7 @@ export const SectionLayout: FC<SectionLayoutProps> = ({ children, title, descrip
         {title}
       </h3>
       <p className="capitalize">{description}</p>
-      <div className="relative z-10">{children}</div>
+      <div className="relative">{children}</div>
     </section>
   )
 }

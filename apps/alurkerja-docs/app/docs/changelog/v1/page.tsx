@@ -5,11 +5,12 @@ import React from 'react'
 export default function page() {
   return (
     <article>
-      <SectionLayout title="Changelog" description="Rangkuman update setiap versi">
-        <h4>1.0.9</h4>
+      <SectionLayout title="Changelog" description="New Component">
+        <h4>1.0.37</h4>
         <ul>
-          <li>a</li>
-          <li>b</li>
+          <li>
+            🎉 <Link href="/docs/components/calendar">Calendar</Link>
+          </li>
         </ul>
       </SectionLayout>
       <SectionLayout

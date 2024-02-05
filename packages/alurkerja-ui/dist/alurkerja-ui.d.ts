@@ -33,6 +33,19 @@ export declare interface AddressProps {
     onSubmit?: () => void;
 }
 
+declare interface AlurkerjaCalendar {
+    /**
+     *
+     * @param value
+     * @returns Object {date_start, date_end}
+     */
+    onChange?: (value: {
+        date_start?: Date | null;
+        date_end?: Date | null;
+    }) => void;
+    type?: 'date' | 'range' | 'month' | 'year';
+}
+
 export declare interface AppSpec {
     name: string;
     description: string;
@@ -99,6 +112,13 @@ declare interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     icon?: JSX.Element;
     color?: 'blue' | 'red' | 'orange' | 'green';
 }
+
+/**
+ * Component Calendar
+ * @param onChange
+ * @returns object with date_start & date_end
+ */
+export declare const Calendar: ({ onChange, type }: AlurkerjaCalendar) => JSX_2.Element;
 
 export declare const Card: FC<CardProps>;
 
