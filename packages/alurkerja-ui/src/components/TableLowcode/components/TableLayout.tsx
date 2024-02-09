@@ -40,7 +40,7 @@ export const TableLayout: FC<TableLayoutProps> = ({
   return (
     <div className="bg-white rounded">
       {customHeader ? (
-        customHeader
+        customHeader()
       ) : (
         <TableHeader
           tableSpec={tableSpec}

@@ -8,7 +8,9 @@ import spec from './spec.json'
 import data from './data.json'
 
 export const CustomHeaderProps = () => {
-  const customHeader = <div>Ini Header Custom</div>
+  const customHeader = () => {
+    return <div>Ini Header Custom</div>
+  }
 
   return (
     <SectionLayout title="customHeader()" description="">

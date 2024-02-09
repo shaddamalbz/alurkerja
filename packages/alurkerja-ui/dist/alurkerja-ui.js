@@ -51748,7 +51748,7 @@ const Cre = V8(
       l(te, ie);
     });
   }, [v]), /* @__PURE__ */ k.jsxs("div", { className: "bg-white rounded", children: [
-    O || /* @__PURE__ */ k.jsx(
+    O ? O() : /* @__PURE__ */ k.jsx(
       Ere,
       {
         tableSpec: t,
