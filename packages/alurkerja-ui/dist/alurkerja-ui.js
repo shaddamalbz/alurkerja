@@ -48324,108 +48324,104 @@ const XF = (e) => {
     }
   }, [e]);
   const p = () => e.number * e.size === 0 ? 1 : e.number * e.size, v = () => (e.number + 1) * e.size > e.total_elements ? e.total_elements : (e.number + 1) * e.size, b = () => e.total_elements;
-  return /* @__PURE__ */ k.jsxs(k.Fragment, { children: [
-    JSON.stringify(e),
-    e && t && n ? "true" : "flase",
-    e && t && n && /* @__PURE__ */ k.jsx("div", { className: "alurkerja-pagination text-xs md:text-base sm:text-sm py-4 px-4 rounded border-t", children: /* @__PURE__ */ k.jsxs("div", { className: "flex flex-wrap gap-4 justify-between item-center relative", children: [
-      /* @__PURE__ */ k.jsx("nav", { children: e.total_page > 0 && /* @__PURE__ */ k.jsxs("ul", { className: "pagination flex items-center gap-x-1 list-none", children: [
-        e.number > r - 1 && /* @__PURE__ */ k.jsx(
-          "li",
-          {
-            onClick: () => {
-              e.first || n({ ...t, page: 0 });
-            },
-            children: /* @__PURE__ */ k.jsxs("span", { className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3  border-0 outline-none transition-all duration-300 rounded focus:shadow-none bg-gray-100", children: [
-              /* @__PURE__ */ k.jsx(a2, { color: "#5E6278" }),
-              /* @__PURE__ */ k.jsx(a2, { color: "#5E6278" })
-            ] })
-          }
-        ),
-        !e.first && /* @__PURE__ */ k.jsx(
-          "li",
-          {
-            onClick: () => {
-              e.first || n({
-                ...t,
-                page: e.number - 1
-              });
-            },
-            children: /* @__PURE__ */ k.jsx("span", { className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3  border-0 outline-none transition-all duration-300 rounded focus:shadow-none bg-gray-100", children: /* @__PURE__ */ k.jsx(a2, { size: 7, color: "#5E6278" }) })
-          }
-        ),
-        l.map((O) => /* @__PURE__ */ k.jsx(
-          "li",
-          {
-            onClick: () => {
-              e.number !== O && n({ ...t, page: O });
-            },
-            className: e.number === O ? "active" : "",
-            children: /* @__PURE__ */ k.jsx(
-              "span",
-              {
-                className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3 rounded border-0 outline-none transition-all duration-300  focus:shadow-none" + (e.number === O ? " bg-blue-400 text-white hover:bg-blue-500 outline-none transition-all duration-300 rounded focus:shadow-none" : " bg-gray-100 text-gray-400 hover:bg-gray-200 woutline-none transition-all duration-300 rounded focus:shadow-none"),
-                children: O + 1
-              }
-            )
+  return /* @__PURE__ */ k.jsx(k.Fragment, { children: e && t && n && /* @__PURE__ */ k.jsx("div", { className: "alurkerja-pagination text-xs md:text-base sm:text-sm py-4 px-4 rounded border-t", children: /* @__PURE__ */ k.jsxs("div", { className: "flex flex-wrap gap-4 justify-between item-center relative", children: [
+    /* @__PURE__ */ k.jsx("nav", { children: e.total_page > 0 && /* @__PURE__ */ k.jsxs("ul", { className: "pagination flex items-center gap-x-1 list-none", children: [
+      e.number > r - 1 && /* @__PURE__ */ k.jsx(
+        "li",
+        {
+          onClick: () => {
+            e.first || n({ ...t, page: 0 });
           },
-          O
-        )),
-        !e.last && /* @__PURE__ */ k.jsx(
-          "li",
-          {
-            className: "page-item",
-            onClick: () => {
-              e.last || n({
-                ...t,
-                page: e.number + 1
-              });
-            },
-            children: /* @__PURE__ */ k.jsx("span", { className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3  border-0 outline-none transition-all duration-300 rounded focus:shadow-none bg-gray-100", children: /* @__PURE__ */ k.jsx(o2, { size: 7, color: "#5E6278" }) })
-          }
-        ),
-        e.number - 1 < e.total_page && !e.last && /* @__PURE__ */ k.jsx(
-          "li",
-          {
-            className: "page-item",
-            onClick: () => {
-              e.last || n({
-                ...t,
-                page: e.total_page - 1
-              });
-            },
-            children: /* @__PURE__ */ k.jsxs("span", { className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3  border-0 outline-none transition-all duration-300 rounded focus:shadow-none bg-gray-100", children: [
-              /* @__PURE__ */ k.jsx(o2, { color: "#5E6278" }),
-              /* @__PURE__ */ k.jsx(o2, { color: "#5E6278" })
-            ] })
-          }
-        )
-      ] }) }),
-      /* @__PURE__ */ k.jsxs("div", { className: "flex flex-row gap-2 items-center ", children: [
-        /* @__PURE__ */ k.jsxs(
-          "select",
-          {
-            onChange: (O) => {
-              n({
-                ...t,
-                limit: Number(O.target.value),
-                page: 0
-              });
-            },
-            className: "alurkerja-form w-full  rounded border border-gray-100 text-xs bg-gray-100 p-2 pr-10",
-            style: { paddingRight: "30px" },
-            children: [
-              /* @__PURE__ */ k.jsx("option", { value: 10, children: "10" }),
-              /* @__PURE__ */ k.jsx("option", { value: 15, children: "15" }),
-              /* @__PURE__ */ k.jsx("option", { value: 20, children: "20" }),
-              /* @__PURE__ */ k.jsx("option", { value: 25, children: "25" }),
-              /* @__PURE__ */ k.jsx("option", { value: 30, children: "30" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ k.jsx("span", { className: "whitespace-nowrap text-xs text-[#5E6278]", children: (C = a == null ? void 0 : a.languages) != null && C.pagination_info ? (_ = a.languages) == null ? void 0 : _.pagination_info.replace("{page}", `${p()}`).replace("{limit}", `${v()}`).replace("{total}", `${b()}`) : `Memunculkan data dari ${p()} sampai  ${v()} total ${b()}` })
-      ] })
-    ] }) })
-  ] });
+          children: /* @__PURE__ */ k.jsxs("span", { className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3  border-0 outline-none transition-all duration-300 rounded focus:shadow-none bg-gray-100", children: [
+            /* @__PURE__ */ k.jsx(a2, { color: "#5E6278" }),
+            /* @__PURE__ */ k.jsx(a2, { color: "#5E6278" })
+          ] })
+        }
+      ),
+      !e.first && /* @__PURE__ */ k.jsx(
+        "li",
+        {
+          onClick: () => {
+            e.first || n({
+              ...t,
+              page: e.number - 1
+            });
+          },
+          children: /* @__PURE__ */ k.jsx("span", { className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3  border-0 outline-none transition-all duration-300 rounded focus:shadow-none bg-gray-100", children: /* @__PURE__ */ k.jsx(a2, { size: 7, color: "#5E6278" }) })
+        }
+      ),
+      l.map((O) => /* @__PURE__ */ k.jsx(
+        "li",
+        {
+          onClick: () => {
+            e.number !== O && n({ ...t, page: O });
+          },
+          className: e.number === O ? "active" : "",
+          children: /* @__PURE__ */ k.jsx(
+            "span",
+            {
+              className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3 rounded border-0 outline-none transition-all duration-300  focus:shadow-none" + (e.number === O ? " bg-blue-400 text-white hover:bg-blue-500 outline-none transition-all duration-300 rounded focus:shadow-none" : " bg-gray-100 text-gray-400 hover:bg-gray-200 woutline-none transition-all duration-300 rounded focus:shadow-none"),
+              children: O + 1
+            }
+          )
+        },
+        O
+      )),
+      !e.last && /* @__PURE__ */ k.jsx(
+        "li",
+        {
+          className: "page-item",
+          onClick: () => {
+            e.last || n({
+              ...t,
+              page: e.number + 1
+            });
+          },
+          children: /* @__PURE__ */ k.jsx("span", { className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3  border-0 outline-none transition-all duration-300 rounded focus:shadow-none bg-gray-100", children: /* @__PURE__ */ k.jsx(o2, { size: 7, color: "#5E6278" }) })
+        }
+      ),
+      e.number - 1 < e.total_page && !e.last && /* @__PURE__ */ k.jsx(
+        "li",
+        {
+          className: "page-item",
+          onClick: () => {
+            e.last || n({
+              ...t,
+              page: e.total_page - 1
+            });
+          },
+          children: /* @__PURE__ */ k.jsxs("span", { className: "flex flex-row items-center justify-center cursor-pointer w-8 h-8 page-link relative py-1.5 px-3  border-0 outline-none transition-all duration-300 rounded focus:shadow-none bg-gray-100", children: [
+            /* @__PURE__ */ k.jsx(o2, { color: "#5E6278" }),
+            /* @__PURE__ */ k.jsx(o2, { color: "#5E6278" })
+          ] })
+        }
+      )
+    ] }) }),
+    /* @__PURE__ */ k.jsxs("div", { className: "flex flex-row gap-2 items-center ", children: [
+      /* @__PURE__ */ k.jsxs(
+        "select",
+        {
+          onChange: (O) => {
+            n({
+              ...t,
+              limit: Number(O.target.value),
+              page: 0
+            });
+          },
+          className: "alurkerja-form w-full  rounded border border-gray-100 text-xs bg-gray-100 p-2 pr-10",
+          style: { paddingRight: "30px" },
+          children: [
+            /* @__PURE__ */ k.jsx("option", { value: 10, children: "10" }),
+            /* @__PURE__ */ k.jsx("option", { value: 15, children: "15" }),
+            /* @__PURE__ */ k.jsx("option", { value: 20, children: "20" }),
+            /* @__PURE__ */ k.jsx("option", { value: 25, children: "25" }),
+            /* @__PURE__ */ k.jsx("option", { value: 30, children: "30" })
+          ]
+        }
+      ),
+      /* @__PURE__ */ k.jsx("span", { className: "whitespace-nowrap text-xs text-[#5E6278]", children: (C = a == null ? void 0 : a.languages) != null && C.pagination_info ? (_ = a.languages) == null ? void 0 : _.pagination_info.replace("{page}", `${p()}`).replace("{limit}", `${v()}`).replace("{total}", `${b()}`) : `Memunculkan data dari ${p()} sampai  ${v()} total ${b()}` })
+    ] })
+  ] }) }) });
 }, Bee = {
   XS: "xs",
   SM: "sm",
