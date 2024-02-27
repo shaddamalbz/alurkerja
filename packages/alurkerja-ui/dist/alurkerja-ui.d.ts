@@ -118,7 +118,7 @@ declare interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @param onChange
  * @returns object with date_start & date_end
  */
-export declare const Calendar: ({ onChange, type }: AlurkerjaCalendar) => JSX_2.Element | undefined;
+export declare const Calendar: ({ onChange, type }: AlurkerjaCalendar) => JSX_2.Element;
 
 export declare const Card: FC<CardProps>;
 

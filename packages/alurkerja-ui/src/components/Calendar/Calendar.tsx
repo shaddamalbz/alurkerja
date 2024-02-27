@@ -410,4 +410,6 @@ export const Calendar = ({ onChange, type = 'range' }: AlurkerjaCalendar) => {
       </div>
     )
   }
+
+  return <></>
 }
